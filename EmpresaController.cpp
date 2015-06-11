@@ -44,7 +44,7 @@ void EmpresaController::SeleccionarEmpresa(string rut) {
 }
 
 void EmpresaController::SeleccionarSucursal(string nombre) {
-
+	this->sucursal = this->empresa->getSucursal(nombre);
 }
 
 void EmpresaController::SeleccionarSeccion(string nombre) {
