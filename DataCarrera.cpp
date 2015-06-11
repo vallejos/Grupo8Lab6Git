@@ -2,7 +2,7 @@
 
 DataCarrera::DataCarrera()
 {
-
+//HOLADS
 }
 
 DataCarrera::DataCarrera(int codigo, string nombre)
