@@ -1,0 +1,44 @@
+#include "ManejadorEmpresa.h"
+
+ManejadorEmpresa* ManejadorEmpresa::instance = NULL;
+
+ManejadorEmpresa::ManejadorEmpresa()
+{
+    //ctor
+    this->empresas = NULL;
+}
+
+ManejadorEmpresa::ManejadorEmpresa(IDictionary* empresas)
+{
+    this->empresas = empresas;
+}
+
+ManejadorEmpresa* ManejadorEmpresa::getInstance()
+{
+    if(instance == NULL)
+        instance = new ManejadorEmpresa();
+    return instance;
+}
+
+ICollection* ManejadorEmpresa::getDataEmpresas()
+{
+    List* result = new List();
+    IIterator * it = this->empresas->getElemIterator();
+    while(it.hasCurrent())
+    {
+        result->add(it.current()->getDatosEmpresa());
+        it.next();
+    }
+    delete it;
+    return result;
+}
+
+Empresa* ManejadorEmpresa::getEmpresa(string rut)
+{
+    return this->empresas->find(rut);
+}
+
+ManejadorEmpresa::~ManejadorEmpresa()
+{
+    //dtor
+}

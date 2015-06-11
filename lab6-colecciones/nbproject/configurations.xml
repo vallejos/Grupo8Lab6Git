@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="80">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>interfaces/ICollectible.h</itemPath>
+      <itemPath>interfaces/ICollection.h</itemPath>
+      <itemPath>interfaces/IDictionary.h</itemPath>
+      <itemPath>interfaces/IIterator.h</itemPath>
+      <itemPath>interfaces/IKey.h</itemPath>
+      <itemPath>Integer.h</itemPath>
+      <itemPath>collections/List.h</itemPath>
+      <itemPath>collections/ListIterator.h</itemPath>
+      <itemPath>collections/ListNode.h</itemPath>
+      <itemPath>collections/OrderedDictionary.h</itemPath>
+      <itemPath>collections/OrderedDictionaryEntry.h</itemPath>
+      <itemPath>interfaces/OrderedKey.h</itemPath>
+      <itemPath>String.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>interfaces/ICollectible.cpp</itemPath>
+      <itemPath>interfaces/ICollection.cpp</itemPath>
+      <itemPath>interfaces/IDictionary.cpp</itemPath>
+      <itemPath>interfaces/IIterator.cpp</itemPath>
+      <itemPath>interfaces/IKey.cpp</itemPath>
+      <itemPath>Integer.cpp</itemPath>
+      <itemPath>collections/List.cpp</itemPath>
+      <itemPath>collections/ListIterator.cpp</itemPath>
+      <itemPath>collections/ListNode.cpp</itemPath>
+      <itemPath>collections/OrderedDictionary.cpp</itemPath>
+      <itemPath>collections/OrderedDictionaryEntry.cpp</itemPath>
+      <itemPath>interfaces/OrderedKey.cpp</itemPath>
+      <itemPath>String.cpp</itemPath>
+      <itemPath>test.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>-Wextra -ansi -pedantic</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>
