@@ -5,14 +5,13 @@
 #include "Rango.h"
 #include <string>
 
-//No tengo claro si va creditosMinimos porque no estaba en el datatype original.
 using namespace std;
 
 class DataOfertaLaboral
 {
     public:
 		DataOfertaLaboral();
-        DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, int creditosMinimos);
+        DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios);
         DataOfertaLaboral(const DataOfertaLaboral &dol);
         ~DataOfertaLaboral();
         string getNumExpediente();
@@ -23,7 +22,6 @@ class DataOfertaLaboral
         Date *getFechaComienzo();
         Date *getFechaFin();
         int getCantidadPuestosNecesarios();
-        int getCreditosMinimos();
 
     private:
         string numExpediente;
@@ -34,7 +32,6 @@ class DataOfertaLaboral
         Date *fechaComienzo;
         Date *fechaFin;
         int cantidadPuestosNecesarios;
-        int creditosMinimos;
 };
 
 #endif // DATAOFERTALABORAL_H

@@ -2,7 +2,12 @@
 
 ManejadorOfertaLaboral* ManejadorOfertaLaboral::instance = NULL;
 
-ManejadorOfertaLaboral ManejadorOfertaLaboral::getInstance()
+ManejadorOfertaLaboral::ManejadorOfertaLaboral()
+{
+    this->ofertasLaborales = NULL;
+}
+
+ManejadorOfertaLaboral *ManejadorOfertaLaboral::getInstance()
 {
     //Se crea una instancia de ManejadorOfertaLaboral.
     if(instance == NULL)
@@ -45,12 +50,12 @@ ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
 void ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
 {
     //Va a buscar en la coleccion que tiene de ofertas como pseudoatributo la oferta con numero de expediente numExpediente.
-    return this->ofertasLaborales->find(numExpediente);
+    return this->ofertasLaborales->find(numExpediente);// si es void no habria que retornar una oferta laboral
 }
 
 void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral ol)
 {
-    //Se agrega a la coleccion de ofertas del sistema y la del manejador una oferta que fue dada de alta y el manejador conoce.
+    //Se agrega a la coleccion de ofertas del manejador una oferta que fue dada de alta y que conoce seccion.
     //obtener numexpediente y hacer add (ikey, objeto)
 }
 

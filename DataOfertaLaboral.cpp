@@ -1,6 +1,5 @@
 #include "DataOfertaLaboral.h"
 
-//No tengo claro si va creditosMinimos porque no estaba en el datatype original.
 DataOfertaLaboral::DataOfertaLaboral()
 {
     this->numExpediente = '\0';
@@ -11,10 +10,9 @@ DataOfertaLaboral::DataOfertaLaboral()
     this->fechaComienzo = NULL;
     this->fechaFin = NULL;
     this->cantidadPuestosNecesarios = 0;
-    this->creditosMinimos = 0;
 }
 
-DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, int creditosMinimos)
+DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios)
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;
@@ -24,7 +22,6 @@ DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string
     this->fechaComienzo = fechaComienzo;
     this->fechaFin = fechaFin;
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
-    this->creditosMinimos = creditosMinimos;
 }
 
 DataOfertaLaboral::DataOfertaLaboral(const DataOfertaLaboral &dol)
@@ -37,7 +34,6 @@ DataOfertaLaboral::DataOfertaLaboral(const DataOfertaLaboral &dol)
     this->fechaComienzo = dol.fechaComienzo;
     this->fechaFin = dol.fechaFin;
     this->cantidadPuestosNecesarios = dol.cantidadPuestosNecesarios;
-    this->creditosMinimos = dol.creditosMinimos;
 }
 
 string DataOfertaLaboral::getNumExpediente()
@@ -78,11 +74,6 @@ Date *DataOfertaLaboral::getFechaFin()
 int DataOfertaLaboral::getCantidadPuestosNecesarios()
 {
 	return this->cantidadPuestosNecesarios;
-}
-
-int DataOfertaLaboral::getCreditosMinimos()
-{
-	return this->creditosMinimos;
 }
 
 DataOfertaLaboral::~DataOfertaLaboral()

@@ -10,10 +10,9 @@ OfertaLaboral::OfertaLaboral()
     this->fechaComienzo = NULL;
     this->fechaFin = NULL;
     this->cantidadPuestosNecesarios = 0;
-    this->creditosMinimos = 0;
 }
 
-OfertaLaboral::OfertaLaboral(String numExpediente, String titulo, String descripcion, Integer cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, Integer cantidadPuestosNecesarios, Integer creditosMinimos)
+OfertaLaboral::OfertaLaboral(String numExpediente, String titulo, String descripcion, Integer cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, Integer cantidadPuestosNecesarios)
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;
@@ -23,7 +22,6 @@ OfertaLaboral::OfertaLaboral(String numExpediente, String titulo, String descrip
     this->fechaComienzo = fechaComienzo;
     this->fechaFin = fechaFin;
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
-    this->creditosMinimos = creditosMinimos;
 }
 
 OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
@@ -36,7 +34,6 @@ OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
     this->fechaComienzo = o.fechaComienzo;
     this->fechaFin = o.fechaFin;
     this->cantidadPuestosNecesarios = o.cantidadPuestosNecesarios;
-    this->creditosMinimos = o.creditosMinimos;
 }
 
 String OfertaLaboral::getNumExpediente()
@@ -79,11 +76,6 @@ Integer OfertaLaboral::getCantidadPuestosNecesarios()
 	return this->cantidadPuestosNecesarios;
 }
 
-Integer OfertaLaboral::getCreditosMinimos()
-{
-	return this->creditosMinimos;
-}
-
 void OfertaLaboral::setNumExpediente(String numExpediente)
 {
     this->numExpediente = numExpediente;
@@ -124,32 +116,33 @@ void OfertaLaboral::setCantidadPuestosNecesarios(Integer cantidadPuestosNecesari
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
 }
 
-void OfertaLaboral::setCreditosMinimos(Integer creditosMinimos)
-{
-    this->creditosMinimos = creditosMinimos;
-}
-
 DataOfertaLaboral *OfertaLaboral::getDataOfertaLaboral()
 {
     return new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
         this->cantidadHorasSemanales, this->rangoSalarial, this->fechaComienzo, this->fechaFin,
-        this->cantidadPuestosNecesarios, this->creditosMinimos);
+        this->cantidadPuestosNecesarios);
 }
 
 DataOfertaEmpresa* OfertaLaboral::getDataOfertaLaboralEmpresa()
 {
-    //Debería llamar al constructor de DataOfertaEmpresa.
+
+   /* DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
+                                                          this->cantidadHorasSemanales, new Rango(this->rangoSalarial),
+                                                          new Date(this->fechaComienzo), new Date(this->fechaFin),
+                                                          this->cantidadPuestosNecesarios);*/
+    DataEmpresa *dataEmpresa = this->seccion->getDataEmpresa();
     DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
                                                           this->cantidadHorasSemanales, new Rango(this->rangoSalarial),
                                                           new Date(this->fechaComienzo), new Date(this->fechaFin),
                                                           this->cantidadPuestosNecesarios);
-    return dataOferta;
+    DataOfertaEmpresa *dataOfertaEmpresa = new DataOfertaEmpresa(dataEmpresa,dataOferta);
+    return dataOfertaEmpresa;
 }
 
 void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 {
     //Debo llamar al constructor de inscripcion y pasarle por parametro fechaInscripcion.
-    Estudiante* e = EstudianteController::getEstudiante();// esta bien getEstudiante???
+    Estudiante* e = EstudianteController::getEstudiante();// esta bien getEstudiante??? // me parece que EstudianteController tiene que tener un puntero a el estudiante recordado en el seleccionar, porque la op getEstudiante no es del manejador
     Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
     e->AsociarInscripcion(i);
     this->inscripciones->add(i);
@@ -158,6 +151,8 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 bool OfertaLaboral::EsOferta(String numExpediente)
 {
     //Debo corroborar que la oferta sea la oferta con numExpediente.
+    String(const numExpediente);// que hace?
+    return (compare(OrderedKey *k)== EQUAl);//No veo como pasar mis string numExpediente y this->numExpediente a un OrderedKey para pasarlo como parámetro
 }
 
 bool OfertaLaboral::EsActiva()
