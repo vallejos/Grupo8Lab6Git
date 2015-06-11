@@ -47,7 +47,7 @@ class Estudiante : public ICollectible, public IObserver
 
         //operaciones particulares
         DataEstudiante* getDataEstudiante();
-        bool EstNoInscripto();
+        bool EstNoInscripto(int numExpediente);
         void AsociarInscripcion(Inscripcion *insc);
         DataDatosEstudiante *getDataDatosEstudiante();
         void enviarMail();

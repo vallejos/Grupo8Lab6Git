@@ -123,14 +123,85 @@ void Estudiante::setEmail(String email)
     this->email = email;
 }
 
-DataEstudiante* getDataEstudiante()
+DataEstudiante* Estudiante::getDataEstudiante()
 {
+    try
+    {
+        //Se obtiene la coleccion de DataAsignatura
+        List* dataAsignaturas = new List();
+        ListIterator * lIt = this->aprobadas->getIterator();
+        while(lIt.hasCurrent())
+        {
+            Aprobacion *apro;
+            if( (apro = dynamic_cast<Aprobacion*> (lIt.current())) != NULL )
+            {
+                dataAsignaturas->add(apro->getDataAsignatura());
+            } else
+            {
+                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Aprobacion.");
+            }
+
+            lIt.next();
+        }
+        delete lIt;
+
+        //Se obtiene la coleccion de DataCarrera
+        List* dataCarreras = new List();
+        IIterator * It = this->carreras->getElemIterator();
+        while(It.hasCurrent())
+        {
+            Carrera *carr;
+            if( (carr = dynamic_cast<Carrera*> (It.current())) != NULL )
+            {
+                dataCarreras->add(carr->getDataCarrera());
+            } else
+            {
+                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Carrera.");
+            }
+
+            It.next();
+        }
+        delete It;
+
+        DataEstudiante* dataEstudiante = new DataEstudiante(this->cedula, this->nombre, this->apellido, this->telefono, this->fechaNacimiento, this->creditos, dataAsignaturas, dataCarreras);
+
+        return dataEstudiante;
+
+    }
+    catch(const std::invalid_argument &e)
+    {
+    	throw std::invalid_argument(e.what());
+    }
 
 }
 
-bool EstNoInscripto()
+bool Estudiante::EstNoInscripto(int numExpediente)
 {
+    try
+    {
+        bool res;
+        ListIterator * lIt = this->inscripciones->getIterator();
+        while(lIt.hasCurrent())
+        {
+            Inscripcion *insc;
+            if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
+            {
+                res = insc->EstInscripto(numExpediente);
+            } else
+            {
+                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
+            }
 
+            lIt.next();
+        }
+        delete lIt;
+
+        return res;
+    }
+    catch(const std::invalid_argument &e)
+    {
+    	throw std::invalid_argument(e.what());
+    }
 }
 
 void AsociarInscripcion (Inscripcion *insc)
@@ -138,9 +209,54 @@ void AsociarInscripcion (Inscripcion *insc)
     this->inscripciones->add(insc);
 }
 
-DataDatosEstudiante *getDataDatosEstudiante()
+DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
 {
+    try
+    {
+        //Se obtiene la coleccion de DataAprobada
+        List* dataAprobadas = new List();
+        ListIterator * lIt = this->aprobadas->getIterator();
+        while(lIt.hasCurrent())
+        {
+            Aprobacion *apro;
+            if( (apro = dynamic_cast<Aprobacion*> (lIt.current())) != NULL )
+            {
+                dataAprobadas->add(apro->getDataAprobada());
+            } else
+            {
+                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Aprobacion.");
+            }
 
+            lIt.next();
+        }
+        delete lIt;
+
+        List* dataOfertasEmpresas = new List();
+        ListIterator * lIt = this->inscripciones->getIterator();
+        while(lIt.hasCurrent())
+        {
+            Inscripcion *insc;
+            if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
+            {
+                dataOfertasEmpresas->add(insc->getDataOfertaLaboral());
+            } else
+            {
+                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
+            }
+
+            lIt.next();
+        }
+        delete lIt;
+
+        DataDatosEstudiante* datosEstudiante = new DataDatosEstudiante(dataAprobadas, dataOfertasEmpresas,
+                                                                       "Faltaria una coleccion de DataEmpresa de acuerdo al DataType");
+
+        return datosEstudiante;
+    }
+    catch(const std::invalid_argument &e)
+    {
+    	throw std::invalid_argument(e.what());
+    }
 }
 
 void enviarMail(){
