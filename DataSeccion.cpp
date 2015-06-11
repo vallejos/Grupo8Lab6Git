@@ -32,7 +32,7 @@ string DataSeccion::getInterno()
 	return this->interno;
 }
 
-DataEncargado DataSeccion::getEncargado()
+DataEncargado *DataSeccion::getEncargado()
 {
 	return this->encargado;
 }

@@ -19,7 +19,8 @@ class Asignatura
         void setCodigo(int codigo);
         void setNombre(string nombre);
         void setCreditos(int creditos);
-        DataAsignatura getDataAsignatura();
+        DataAsignatura *getDataAsignatura();
+
     private:
         int codigo;
         string nombre;

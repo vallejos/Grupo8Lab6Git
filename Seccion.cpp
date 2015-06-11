@@ -40,33 +40,34 @@ void Seccion::setInterno(string interno)
 
 DataSeccion *Seccion::getDataSeccion()
 {
-    //Debería llamar al constructor de DataSeccion
-    //con los datos nombre e interno de seccion y retornarlo.
     DataEncargado *de = this->encargado->getDataEncargado();
     return new DataSeccion(this->nombre, this->interno, de);
 }
 
-DataEmpresa Seccion::getDataEmpresa()
+DataEmpresa *Seccion::getDataEmpresa()
 {
-    //Debería llamar al constructor de DataEmpresa.
+    return this->sucursal->getDataEmpresa();
 
 }
 
-OfertaLaboral Seccion::addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, int creditosMinimos, Set(DataAsignatura) asignaturas)
+OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, Set(DataAsignatura) asignaturas)
 {
-    //Debo llamar al constructor de DataOfertaLaboral
+    //Debo llamar al constructor de OfertaLaboral
     //con los datos de la oferta pasados como parametros
     //y de alguna manera asociar esta nueva oferta a las asignaturas pasadas en el set.
+    OfertaLaboral * dataOferta = OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios);
+    this->ofertasLaborales->add(dataOferta);// creo que hay que pasarle la clave y un Icollectible
+    return dataOferta;
 }
 
-void Seccion::addObserver(IObserver obs)
+void Seccion::addObserver(IObserver *obs)
 {
-    //Debo llamar al constructor por copia de IObserver y pasarle como parametro obs.
+   this->observers->add(obs);
 }
 
-void Seccion::removeObserver(IObserver obs)
+void Seccion::removeObserver(IObserver *obs)
 {
-    //Debo llamar al destructor de IObserver y pasarle como parametro obs.
+     this->observers->remove(obs);
 }
 
 Seccion::~Seccion()

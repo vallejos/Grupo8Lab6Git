@@ -15,7 +15,7 @@ class DataSeccion
         ~DataSeccion();
         string getNombre();
         string getInterno();
-        DataEncargado getEncargado();
+        DataEncargado *getEncargado();
 
     private:
         string nombre;
