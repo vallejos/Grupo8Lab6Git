@@ -16,6 +16,7 @@
 class Estudiante : public ICollectible, public IObserver
 {
     public:
+
         Estudiante();
         Estudiante(String cedula, String nombre, String apellido, String telefono, Date* fechaNacimiento, Integer creditos,
                     String email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones);
