@@ -2,7 +2,7 @@
 
 // constructor
 Criterio1::Criterio1() {
-
+//HOLA
 }
 
 // destructor
