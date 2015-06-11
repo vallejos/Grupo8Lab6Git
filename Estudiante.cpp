@@ -246,6 +246,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
 
             lIt.next();
         }
+
         delete lIt;
 
         DataDatosEstudiante* datosEstudiante = new DataDatosEstudiante(dataAprobadas, dataOfertasEmpresas,
