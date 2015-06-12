@@ -7,6 +7,7 @@
 #include "DataOfertaEmpresa.h"
 #include "Seccion.h"
 #include "ICollection.h"
+#include "IDictionary.h"
 #include "String.h"
 #include "Integer.h"
 
@@ -52,6 +53,7 @@ class OfertaLaboral
         Integer cantidadPuestosNecesarios;
         Seccion * seccion; //Pseudoatributo para representar la asociación con una Seccion
         ICollection *inscripciones; //Pseudoatributo para representar la asociación con una colección de Incripcion
+        IDictionary *asignaturas;
 };
 
 #endif // OFERTALABORAL_H

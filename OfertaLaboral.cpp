@@ -126,10 +126,6 @@ DataOfertaLaboral *OfertaLaboral::getDataOfertaLaboral()
 DataOfertaEmpresa* OfertaLaboral::getDataOfertaLaboralEmpresa()
 {
 
-   /* DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
-                                                          this->cantidadHorasSemanales, new Rango(this->rangoSalarial),
-                                                          new Date(this->fechaComienzo), new Date(this->fechaFin),
-                                                          this->cantidadPuestosNecesarios);*/
     DataEmpresa *dataEmpresa = this->seccion->getDataEmpresa();
     DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
                                                           this->cantidadHorasSemanales, new Rango(this->rangoSalarial),

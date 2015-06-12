@@ -1,8 +1,17 @@
 #include "DataOfertaEmpresa.h"
 
 // constructor
-DataOfertaEmpresa::DataOfertaEmpresa() {
+DataOfertaEmpresa::DataOfertaEmpresa()
+{
+    this->dataEmpresa = NULL;
+    this->dataOferta = NULL;
 
+}
+
+DataOfertaEmpresa::DataOfertaEmpresa(DataEmpresa *dataEmpresa, DataOfertaLaboral *dataOferta)
+{
+    this->dataEmpresa = dataEmpresa;
+    this->dataOferta = dataOferta;
 }
 
 // destructor

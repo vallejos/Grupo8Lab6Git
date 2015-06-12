@@ -7,9 +7,12 @@
 class DataOfertaEmpresa {
     public:
         DataOfertaEmpresa();
+        DataOfertaEmpresa(DataEmpresa *dataEmpresa, DataOfertaLaboral *dataOferta);
         ~DataOfertaEmpresa();
     protected:
     private:
+        DataEmpresa *dataEmpresa;
+        DataOfertaLaboral *dataOferta;
 };
 
 #endif // DATAOFERTAEMPRESA_H

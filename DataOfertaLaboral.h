@@ -4,10 +4,11 @@
 #include "Date.h"
 #include "Rango.h"
 #include <string>
+#include "ICollectible.h"
 
 using namespace std;
 
-class DataOfertaLaboral
+class DataOfertaLaboral: public ICollectible
 {
     public:
 		DataOfertaLaboral();
