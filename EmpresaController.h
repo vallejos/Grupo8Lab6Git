@@ -27,6 +27,7 @@ class EmpresaController {
     private:
         EmpresaController();
         Empresa *empresa; // la empresa que se recuerda
+        Sucursal *sucursal; // la sucursal que se recuerda
     	static EmpresaController *instance;
 };
 

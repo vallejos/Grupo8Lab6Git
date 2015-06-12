@@ -39,5 +39,9 @@ ICollection *Empresa::getDataSucursales()
 }
 
 Sucursal *Empresa::getSucursal(string nombre) {
-	return NULL;
+    String *keyNombre = new String(nombre);
+    Sucursal *sucursal = this->sucursales->find(keyNombre);
+    delete keyNombre;
+
+	return sucursal;
 }
