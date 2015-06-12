@@ -38,7 +38,7 @@ class Seccion: public ICollectible
         Sucursal * sucursal;//Pseudoatributo para representar la asociación con una Sucursal
         Encargado * encargado;//Pseudoatributo para representar la asociación con un Encargado
         IColeccion * observers;//Pseudoatributo para representar la asociación con una coleccion de IObserver
-        IDictionary *ofertasLaborales; // Es necesario para el addOferta
+        IDictionary *ofertasLaborales;
 };
 
 #endif // SECCION_H
