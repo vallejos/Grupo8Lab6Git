@@ -2,7 +2,6 @@
 #define FABRICA_H
 
 #include <string>
-#include <set>
 
 using namespace std;
 
@@ -10,13 +9,15 @@ using namespace std;
 class Fabrica
 {
     private:
+        Fabrica();
         static Fabrica* instance;
+        ~Fabrica();
     public:
         static Fabrica* getInstance();
-        IOfertaLaboralController getIOfertaLaboralController();
-        IEmpresaController getIEmpresaController();
-        IEstudianteController getIEstudianteController();
-        ~Fabrica();
+        IOfertaLaboralController *getIOfertaLaboralController();
+        IEmpresaController *getIEmpresaController();
+        IEstudianteController *getIEstudianteController();
+        void destroyFabrica();
 };
 
 #endif // FABRICA_H

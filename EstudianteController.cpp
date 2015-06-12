@@ -14,26 +14,26 @@ EstudianteController* EstudianteController::getInstance()
     return instance;
 }
 
-ICollection *ListarEstudiantesNoInscriptos()
+ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
 {
 	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
 	return (me->getEstNoInscriptos);
 }
 
-void SeleccionarEstudiante(string cedula)
+void EstudianteController::SeleccionarEstudiante(string cedula)
 {
 	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
 	this->estudiante = me->SeleccionarEstudiante(cedula);
 }
 
-DataDatosEstudiante *ConsultarDatosEstudiante(string cedula)
+DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedula)
 {
 	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     Estudiante *e = me->SeleccionarEstudiante(cedula);
     return (e->getDataDatosEstudiante());
 }
 
-ICollection *ListarEstudiantesRegistrados()
+ICollection* EstudianteController::ListarEstudiantesRegistrados()
 {
 	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
 	return (me->getEstudiante);
@@ -44,6 +44,13 @@ Estudiante* EstudianteController::getEstudiante()
     return this->estudiante;
 }
 
+void EstudianteController::destroyEstudianteController()
+{
+     if (instance != NULL)
+     {
+        delete EstudianteController;
+     }
+}
 
 EstudianteController::~EstudianteController()
 {
