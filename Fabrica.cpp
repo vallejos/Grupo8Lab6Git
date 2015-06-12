@@ -1,28 +1,45 @@
 #include "Fabrica.h"
 
+Fabrica::Fabrica()
+{
+    //Constructor
+}
+
 Fabrica* Fabrica::instance = NULL;
 
-Fabrica* Fabrica::getInstance(){
+Fabrica* Fabrica::getInstance()
+{
     if (instance = NULL)
         instance = new Fabrica();
     return instance;
 }
 
-IOfertaLaboralController Fabrica::getIOfertaLaboralController(){
+IOfertaLaboralController* Fabrica::getIOfertaLaboralController()
+{
     return OfertaLaboralController.getInstance();
 }
 
-IEmpresaController Fabrica::getIEmpresaController(){
+IEmpresaController* Fabrica::getIEmpresaController()
+{
     return EmpresaController.getInstance();
 }
 
-IEstudianteController Fabrica::getIEstudianteController(){
+IEstudianteController* Fabrica::getIEstudianteController()
+{
     return EstudianteController.getInstance();
+}
+
+void Fabrica::destroyFabrica()
+{
+    if (instance != NULL)
+    {
+        delete Fabrica;
+    }
 }
 
 Fabrica::~Fabrica()
 {
-    //dtor
+    //destructor
     delete instance;
     instance = NULL;
 }

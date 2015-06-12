@@ -13,6 +13,7 @@ class EstudianteController
         EstudianteController();
         Estudiante *estudiante; // el estudiante que se recuerda
         static EstudianteController* instance;
+        ~EstudianteController();
     public:
         static EstudianteController* getInstance();
         ICollection *ListarEstudiantesNoInscriptos();
@@ -20,7 +21,7 @@ class EstudianteController
         DataDatosEstudiante *ConsultarDatosEstudiante(String cedula);
         ICollection *ListarEstudiantesRegistrados();
         Estudiante* getEstudiante();
-        ~EstudianteController();
+        void destroyEstudianteController();
 };
 
 #endif // ESTUDIANTECONTROLLER_H

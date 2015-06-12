@@ -9,6 +9,7 @@
 #include "IDictionary.h"
 #include "String.h"
 #include "Integer.h"
+#include "EmpresaController.h"
 
 using namespace std;
 
