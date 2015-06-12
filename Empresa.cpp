@@ -38,6 +38,7 @@ ICollection *Empresa::getDataSucursales()
     return result;
 }
 
+// comentario de ejemplo
 Sucursal *Empresa::getSucursal(string nombre) {
     String *keyNombre = new String(nombre);
     Sucursal *sucursal = this->sucursales->find(keyNombre);
