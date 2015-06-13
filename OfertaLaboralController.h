@@ -13,6 +13,7 @@ class OfertaLaboralController {
         void SeleccionarOferta(string numExpediente);
         void Inscribir(Date *fechaInscripcion);
         void Entrevistar(Date *fechaEntrevista);
+        void AltaAsignacionDelCargo();
         ICollection *MostrarOfertasActivas();
         void DarBajaLlamado();
     protected:

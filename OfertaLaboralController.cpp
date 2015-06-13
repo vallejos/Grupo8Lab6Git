@@ -43,6 +43,13 @@ ICollection *OfertaLaboralController::MostrarOfertasActivas()
 	return mol->getDataOfertaLaboral();
 }
 
+void OfertaLaboralController::AltaAsignacionDelCargo()
+{
+	ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
+	this->oferta->AltaAsignacionCargo();
+    // BORRAR MEMORIA??
+}
+
 void OfertaLaboralController::DarBajaLlamado() {
 
 }

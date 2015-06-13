@@ -50,7 +50,7 @@ ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
 void ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
 {
     //Va a buscar en la coleccion que tiene de ofertas como pseudoatributo la oferta con numero de expediente numExpediente.
-    return this->ofertasLaborales->find(numExpediente);// si es void no habria que retornar una oferta laboral
+    return this->ofertasLaborales->find(numExpediente);// si es void no habria que retornar una oferta laboral //creo que lo que no va es el return
 }
 
 void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral ol)
@@ -58,6 +58,14 @@ void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral ol)
     //Se agrega a la coleccion de ofertas del manejador una oferta que fue dada de alta y que conoce seccion.
     //obtener numexpediente y hacer add (ikey, objeto)
 }
+
+void ManejadorOfertaLaboral::AltaAsignacionCargo()
+{
+    // con el estudiante y la oferta recordadas en memoria
+    // accedo a la inscripcion y le setteo la efectivizacion (de la inscripcion)
+    // no se con que fecha ni con que sueldo :/
+}
+
 
 void ManejadorOfertaLaboral::DarDeBajaLlamado()
 {
