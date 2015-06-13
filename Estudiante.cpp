@@ -13,11 +13,12 @@ Estudiante::Estudiante()
     this->carreras = NULL;
     this->aprobadas= NULL;
     this->inscripciones = NULL;
+    this->notificaciones = NULL;
 
 }
 
-Estudiante::Estudiante(String cedula,String nombre,String apellido, String telefono, Date* fechaNacimiento, Integer creditos,
-                        String email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones)
+Estudiante::Estudiante(string cedula,string nombre,string apellido, string telefono, Date* fechaNacimiento, Integer creditos,
+                        string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones, ICollection* notificaciones)
 {
     this->cedula = cedula;
     this->nombre = nombre;
@@ -29,6 +30,7 @@ Estudiante::Estudiante(String cedula,String nombre,String apellido, String telef
     this->carreras = carreras;
     this->aprobadas = aprobadas;
     this->inscripciones = inscripciones;
+    this->notificaciones = notificaciones;
 }
 
 Estudiante::Estudiante(const Estudiante &e)
@@ -43,22 +45,22 @@ Estudiante::Estudiante(const Estudiante &e)
     //falta carreras, aprobadas e inscripciones pero es al pedo xq no lo vamos a usar
 }
 
-String Estudiante::getCedula()
+string Estudiante::getCedula()
 {
     return this->cedula;
 }
 
-String Estudiante::getNombre()
+string Estudiante::getNombre()
 {
     return this->nombre;
 }
 
-String Estudiante::getApellido()
+string Estudiante::getApellido()
 {
     return this->apellido;
 }
 
-String Estudiante::getTelefono()
+string Estudiante::getTelefono()
 {
     return this->telefono;
 }
@@ -73,7 +75,7 @@ Integer Estudiante::getCreditos()
     return this->creditos;
 }
 
-String Estudiante::getEmail()
+string Estudiante::getEmail()
 {
     return this->email;
 }
@@ -88,22 +90,32 @@ List* Estudiante::getAprobadas()
     return this->aprobadas;
 }
 
-void Estudiante::setCedula(String cedula)
+List* Estudiante::getInscripciones()
+{
+    return this->inscripciones;
+}
+
+List* Estudiante::getNotificaciones()
+{
+    return this->notificaciones;
+}
+
+void Estudiante::setCedula(string cedula)
 {
     this->cedula = cedula;
 }
 
-void Estudiante::setNombre(String nombre)
+void Estudiante::setNombre(string nombre)
 {
     this->nombre = nombre;
 }
 
-void Estudiante::setApellido(String apellido)
+void Estudiante::setApellido(string apellido)
 {
     this->apellido = apellido;
 }
 
-void Estudiante::setTelefono(String telefono)
+void Estudiante::setTelefono(string telefono)
 {
     this->telefono = telefono;
 }
@@ -118,7 +130,7 @@ void Estudiante::setCreditos(Integer creditos)
     this->creditos = creditos;
 }
 
-void Estudiante::setEmail(String email)
+void Estudiante::setEmail(string email)
 {
     this->email = email;
 }
@@ -260,8 +272,10 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
     }
 }
 
-void enviarMail(){
-
+void Estudiante::enviarMail(string numExpediente)
+{
+    String* nExp = new String(numExpediente);
+    this->notificaciones->add(nExp);
 }
 
 Estudiante::~Estudiante()

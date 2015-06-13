@@ -2,6 +2,7 @@
 #define CARRERA_H
 
 #include "DataCarrera.h"
+#include "ICollectible.h"
 
 
 class Carrera : public ICollectible

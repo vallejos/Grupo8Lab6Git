@@ -5,8 +5,9 @@
 #include "DataAsignatura.h"
 #include "DataAprobada.h"
 #include "Asignatura.h"
+#include "ICollectible.h"
 
-class Aprobacion
+class Aprobacion : public ICollectible
 {
     public:
         Aprobacion();
