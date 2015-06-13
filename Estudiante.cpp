@@ -13,12 +13,14 @@ Estudiante::Estudiante()
     this->carreras = NULL;
     this->aprobadas= NULL;
     this->inscripciones = NULL;
+    this->entrevistas = NULL;
     this->notificaciones = NULL;
 
 }
 
 Estudiante::Estudiante(string cedula,string nombre,string apellido, string telefono, Date* fechaNacimiento, Integer creditos,
-                        string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones, ICollection* notificaciones)
+                        string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones, ICollection* entrevistas,
+                        ICollection* notificaciones)
 {
     this->cedula = cedula;
     this->nombre = nombre;
@@ -30,6 +32,7 @@ Estudiante::Estudiante(string cedula,string nombre,string apellido, string telef
     this->carreras = carreras;
     this->aprobadas = aprobadas;
     this->inscripciones = inscripciones;
+    this->entrevistas = entrevistas;
     this->notificaciones = notificaciones;
 }
 
@@ -93,6 +96,11 @@ List* Estudiante::getAprobadas()
 List* Estudiante::getInscripciones()
 {
     return this->inscripciones;
+}
+
+List* Estudiante::getEntrevistas()
+{
+    return this->entrevistas;
 }
 
 List* Estudiante::getNotificaciones()
@@ -219,6 +227,11 @@ bool Estudiante::EstNoInscripto(int numExpediente)
 void AsociarInscripcion (Inscripcion *insc)
 {
     this->inscripciones->add(insc);
+}
+
+void AsociarEntrevista (Entrevista *ent)
+{
+    this->entrevistas->add(ent);
 }
 
 DataDatosEstudiante* Estudiante::getDataDatosEstudiante()

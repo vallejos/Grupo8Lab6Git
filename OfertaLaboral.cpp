@@ -144,6 +144,14 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
     this->inscripciones->add(i);
 }
 
+void OfertaLaboral::Entrevista(Date *fechaEntrevista)
+{
+    Estudiante* e = EstudianteController::getEstudiante();// esta bien getEstudiante??? // me parece que EstudianteController tiene que tener un puntero a el estudiante recordado en el seleccionar, porque la op getEstudiante no es del manejador
+    Entrevista *ent = new Entrevista(fechaEntrevista, this, e);
+    e->AsociarEntrevista(ent);
+    this->entrevistas->add(ent);
+}
+
 bool OfertaLaboral::EsOferta(String numExpediente)
 {
     //Debo corroborar que la oferta sea la oferta con numExpediente.

@@ -19,7 +19,7 @@ class Estudiante : public ICollectible, public IObserver
 
         Estudiante();
         Estudiante(string cedula, string nombre, string apellido, string telefono, Date* fechaNacimiento, Integer creditos,
-                    string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones);
+                    string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones, ICollection* entrevistas);
         Estudiante(const Estudiante &e);
 
         //getters
@@ -33,6 +33,7 @@ class Estudiante : public ICollectible, public IObserver
         IDictionary* getCarreras();
         ICollection* getAprobadas();
         ICollection* getInscripciones();
+        ICollection* getEntrevistas();
         ICollection* getNotificaciones();
 
         //setters
@@ -44,6 +45,7 @@ class Estudiante : public ICollectible, public IObserver
         static void setCreditos(Integer creditos);
         static void setEmail(string email);
         static void setInscripciones(ICollection* inscripciones);
+        static void setEntrevistas(ICollection* entrevistas);
         static void setCarreras(IDictionary* carreras);
         static void setAprobadas(ICollection* aprobadas);
 
@@ -51,6 +53,7 @@ class Estudiante : public ICollectible, public IObserver
         DataEstudiante* getDataEstudiante();
         bool EstNoInscripto(int numExpediente);
         void AsociarInscripcion(Inscripcion *insc);
+        void AsociarEntrevista(Entrevista *ent);
         DataDatosEstudiante *getDataDatosEstudiante();
         void enviarMail(string numExpediente);
 
@@ -67,6 +70,7 @@ class Estudiante : public ICollectible, public IObserver
         IDictionary *carreras;
         ICollection *aprobadas;
         ICollection *inscripciones;
+        ICollection *entrevistas;
         ICollection *notificaciones;
 };
 

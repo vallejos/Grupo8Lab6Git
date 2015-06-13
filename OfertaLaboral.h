@@ -40,6 +40,7 @@ class OfertaLaboral
         DataOfertaLaboral *getDataOfertaLaboral();
         DataOfertaEmpresa *getDataOfertaLaboralEmpresa();
         void Inscripcion(Date *fechaInscripcion);
+        void Entrevista(Date *fechaEntrevista);
         bool EsOferta(String numExpediente);
         bool EsActiva();
 
@@ -54,6 +55,7 @@ class OfertaLaboral
         Integer cantidadPuestosNecesarios;
         Seccion * seccion; //Pseudoatributo para representar la asociación con una Seccion
         ICollection *inscripciones; //Pseudoatributo para representar la asociación con una colección de Incripcion
+        ICollection *entrevistas; //Pseudoatributo para representar la asociación con una colección de Entrevistas
         IDictionary *asignaturas;
 };
 

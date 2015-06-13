@@ -32,6 +32,11 @@ void OfertaLaboralController::Inscribir(Date *fechaInscripcion) {
     //BORRAR MEMORIA ??
 }
 
+void OfertaLaboralController::Entrevistar(Date *fechaEntrevista) {
+    this->oferta->Entrevista(fechaEntrevista);
+    //BORRAR MEMORIA ??
+}
+
 ICollection *OfertaLaboralController::MostrarOfertasActivas()
 {
     ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
