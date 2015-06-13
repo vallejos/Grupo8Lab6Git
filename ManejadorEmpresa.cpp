@@ -35,7 +35,13 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
 
 Empresa* ManejadorEmpresa::getEmpresa(string rut)
 {
-    return this->empresas->find(rut);
+    String* sRut = new String(rut);
+    return this->empresas->find(sRut);
+}
+
+IDictionary* Estudiante::getEmpresas()
+{
+    return this->empresas;
 }
 
 ManejadorEmpresa::~ManejadorEmpresa()

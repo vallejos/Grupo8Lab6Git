@@ -18,30 +18,31 @@ class Estudiante : public ICollectible, public IObserver
     public:
 
         Estudiante();
-        Estudiante(String cedula, String nombre, String apellido, String telefono, Date* fechaNacimiento, Integer creditos,
-                    String email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones);
+        Estudiante(string cedula, string nombre, string apellido, string telefono, Date* fechaNacimiento, Integer creditos,
+                    string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones);
         Estudiante(const Estudiante &e);
 
         //getters
-        String getCedula();
-        String getNombre();
-        String getApellido();
-        String getTelefono();
+        string getCedula();
+        string getNombre();
+        string getApellido();
+        string getTelefono();
         Date* getFechaNacimiento();
         Integer getCreditos();
-        String getEmail();
+        string getEmail();
         IDictionary* getCarreras();
         ICollection* getAprobadas();
         ICollection* getInscripciones();
+        ICollection* getNotificaciones();
 
         //setters
-        static void setCedula(String cedula);
-        static void setNombre(String nombre);
-        static void setApellido(String apellido);
-        static void setTelefono(String telefono);
+        static void setCedula(string cedula);
+        static void setNombre(string nombre);
+        static void setApellido(string apellido);
+        static void setTelefono(string telefono);
         static void setFechaNacimiento(Date* fechaNacimiento);
         static void setCreditos(Integer creditos);
-        static void setEmail(String email);
+        static void setEmail(string email);
         static void setInscripciones(ICollection* inscripciones);
         static void setCarreras(IDictionary* carreras);
         static void setAprobadas(ICollection* aprobadas);
@@ -51,21 +52,22 @@ class Estudiante : public ICollectible, public IObserver
         bool EstNoInscripto(int numExpediente);
         void AsociarInscripcion(Inscripcion *insc);
         DataDatosEstudiante *getDataDatosEstudiante();
-        void enviarMail();
+        void enviarMail(string numExpediente);
 
         ~Estudiante();
     protected:
     private:
-        String cedula;
-        String nombre;
-        String apellido;
-        String telefono;
+        string cedula;
+        string nombre;
+        string apellido;
+        string telefono;
         Date *fechaNacimiento;
         Integer creditos;
-        String email;
+        string email;
         IDictionary *carreras;
         ICollection *aprobadas;
         ICollection *inscripciones;
+        ICollection *notificaciones;
 };
 
 #endif // ESTUDIANTE_H

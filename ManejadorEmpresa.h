@@ -11,6 +11,7 @@ class ManejadorEmpresa
         static ManejadorEmpresa *getInstance();
         ICollection *getDataEmpresas();
         Empresa *getEmpresa(string rut);
+        IDictionary* getEmpresas();
         //Se debe crear un getter y un setter para la coleccion???
         ~ManejadorEmpresa();
     protected:
