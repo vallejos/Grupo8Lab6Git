@@ -20,6 +20,12 @@ ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
 	return (me->getEstNoInscriptos);
 }
 
+ICollection* EstudianteController::ListarEstudiantesInscriptosEnOferta()
+{
+	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+	return (me->getEstInscriptosEnOferta);
+}
+
 void EstudianteController::SeleccionarEstudiante(string cedula)
 {
 	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();

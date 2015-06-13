@@ -17,6 +17,7 @@ class EstudianteController
     public:
         static EstudianteController* getInstance();
         ICollection *ListarEstudiantesNoInscriptos();
+        ICollection *ListarEstudiantesInscriptosEnOferta();
         void SeleccionarEstudiante(String cedula);
         DataDatosEstudiante *ConsultarDatosEstudiante(String cedula);
         ICollection *ListarEstudiantesRegistrados();

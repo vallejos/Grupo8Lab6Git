@@ -13,6 +13,7 @@ class IEstudianteController {
         void SeleccionarEstudiante(string cedula);
         DataDatosEstudiante **ConsultarDatosEstudiante(string cedula);
         DataEstudiante **ListarEstudiantesRegistrados();
+        DataEstudiante **ListarEstudiantesInscriptosEnOferta();
     protected:
     private:
 };
