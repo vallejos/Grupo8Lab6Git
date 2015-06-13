@@ -1,4 +1,5 @@
 #include "ManejadorOfertaLaboral.h"
+#include "String"
 
 ManejadorOfertaLaboral* ManejadorOfertaLaboral::instance = NULL;
 
@@ -47,10 +48,11 @@ ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
 }
 
 
-void ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
+OfertaLaboral *ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
 {
     //Va a buscar en la coleccion que tiene de ofertas como pseudoatributo la oferta con numero de expediente numExpediente.
-    return this->ofertasLaborales->find(numExpediente);// si es void no habria que retornar una oferta laboral
+    String(numExpediente);
+    return this->ofertasLaborales->find(numExpediente);
 }
 
 void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral ol)

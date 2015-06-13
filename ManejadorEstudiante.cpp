@@ -22,7 +22,7 @@ IDictionary *ManejadorEstudiante::getEstNoInscriptos()
     //por cada estudiante no inscripto se crea un DataEstudiante para luego retornar un set de DataEstudiante.
 }
 
-void ManejadorEstudiante::SeleccionarEstudiante(String cedula)
+void ManejadorEstudiante::SeleccionarEstudiante(string cedula)
 {
     //Va a buscar en la coleccion de estudiantes no inscriptos que de alguna manera recordó el manejador,
     //y va a buscar el estudiante con cedula "cedula".
