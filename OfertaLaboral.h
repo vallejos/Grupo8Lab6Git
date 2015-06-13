@@ -8,8 +8,6 @@
 #include "Seccion.h"
 #include "ICollection.h"
 #include "IDictionary.h"
-#include "String.h"
-#include "Integer.h"
 #include "EmpresaController.h"
 
 using namespace std;
@@ -18,40 +16,40 @@ class OfertaLaboral
 {
     public:
 		OfertaLaboral();
-        OfertaLaboral(String numExpediente, String titulo, String descripcion, Integer cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, Integer cantidadPuestosNecesarios);
+        OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas);
         OfertaLaboral(const OfertaLaboral &o);
         ~OfertaLaboral();
-        String getNumExpediente();
-        String getTitulo();
-        String getDescripcion();
-        Integer getCantidadHorasSemanales();
+        string getNumExpediente();
+        string getTitulo();
+        string getDescripcion();
+        int getCantidadHorasSemanales();
         Rango *getRangoSalarial();
         Date *getFechaComienzo();
         Date *getFechaFin();
-        Integer getCantidadPuestosNecesarios();
-        void setNumExpediente(String numExpediente);
-        void setTitulo(String titulo);
-        void setDescripcion(String descripcion);
-        void setCantidadHorasSemanales(Integer cantidadHorasSemanales);
+        int getCantidadPuestosNecesarios();
+        void setNumExpediente(string numExpediente);
+        void setTitulo(string titulo);
+        void setDescripcion(string descripcion);
+        void setCantidadHorasSemanales(int cantidadHorasSemanales);
         void setRangoSalarial(Rango *rangoSalarial);
         void setFechaComienzo(Date *fechaComienzo);
         void setFechaFin(Date *fechaFin);
-        void setCantidadPuestosNecesarios(Integer cantidadPuestosNecesarios);
+        void setCantidadPuestosNecesarios(int cantidadPuestosNecesarios);
         DataOfertaLaboral *getDataOfertaLaboral();
         DataOfertaEmpresa *getDataOfertaLaboralEmpresa();
         void Inscripcion(Date *fechaInscripcion);
-        bool EsOferta(String numExpediente);
+        bool EsOferta(string numExpediente);
         bool EsActiva();
 
     private:
-        String numExpediente;
-        String titulo;
-        String descripcion;
-        Integer cantidadHorasSemanales;
+        string numExpediente;
+        string titulo;
+        string descripcion;
+        int cantidadHorasSemanales;
         Rango *rangoSalarial;
         Date *fechaComienzo;
         Date *fechaFin;
-        Integer cantidadPuestosNecesarios;
+        int cantidadPuestosNecesarios;
         Seccion * seccion; //Pseudoatributo para representar la asociación con una Seccion
         ICollection *inscripciones; //Pseudoatributo para representar la asociación con una colección de Incripcion
         IDictionary *asignaturas;

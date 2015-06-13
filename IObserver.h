@@ -1,6 +1,8 @@
 #ifndef IOBSERVER_H
 #define	IOBSERVER_H
 
+#include "ICollectible.h";
+
 class IObserver: public ICollectible
 {
 public:

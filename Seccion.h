@@ -2,6 +2,8 @@
 #define SECCION_H
 
 #include <string>
+#include "Rango.h"
+#include "Date.h"
 #include "DataSeccion.h"
 #include "DataEmpresa.h"
 #include "OfertaLaboral.h"
@@ -28,7 +30,7 @@ class Seccion: public ICollectible
         void setInterno(string interno);
         DataSeccion *getDataSeccion();
         DataEmpresa *getDataEmpresa();
-        OfertaLaboral *addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, Set(DataAsignatura) asignaturas);//Está bien asi lo del set?
+        OfertaLaboral *addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas);
         void addObserver(IObserver *obs);
         void removeObserver(IObserver *obs);
 

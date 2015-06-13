@@ -12,7 +12,7 @@ OfertaLaboral::OfertaLaboral()
     this->cantidadPuestosNecesarios = 0;
 }
 
-OfertaLaboral::OfertaLaboral(String numExpediente, String titulo, String descripcion, Integer cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, Integer cantidadPuestosNecesarios)
+OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas)
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;
@@ -22,6 +22,7 @@ OfertaLaboral::OfertaLaboral(String numExpediente, String titulo, String descrip
     this->fechaComienzo = fechaComienzo;
     this->fechaFin = fechaFin;
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
+    this->asignaturas = asignaturas;// está bien que sea asi directa la asociación?
 }
 
 OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
@@ -36,22 +37,22 @@ OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
     this->cantidadPuestosNecesarios = o.cantidadPuestosNecesarios;
 }
 
-String OfertaLaboral::getNumExpediente()
+string OfertaLaboral::getNumExpediente()
 {
 	return this->numExpediente;
 }
 
-String OfertaLaboral::getTitulo()
+string OfertaLaboral::getTitulo()
 {
 	return this->titulo;
 }
 
-String OfertaLaboral::getDescripcion()
+string OfertaLaboral::getDescripcion()
 {
 	return this->descripcion;
 }
 
-Integer OfertaLaboral::getCantidadHorasSemanales()
+int OfertaLaboral::getCantidadHorasSemanales()
 {
 	return this->cantidadHorasSemanales;
 }
@@ -71,27 +72,27 @@ Date *OfertaLaboral::getFechaFin()
 	return this->fechaFin;
 }
 
-Integer OfertaLaboral::getCantidadPuestosNecesarios()
+int OfertaLaboral::getCantidadPuestosNecesarios()
 {
 	return this->cantidadPuestosNecesarios;
 }
 
-void OfertaLaboral::setNumExpediente(String numExpediente)
+void OfertaLaboral::setNumExpediente(string numExpediente)
 {
     this->numExpediente = numExpediente;
 }
 
-void OfertaLaboral::setTitulo(String titulo)
+void OfertaLaboral::setTitulo(string titulo)
 {
     this->titulo = titulo;
 }
 
-void OfertaLaboral::setDescripcion(String descripcion)
+void OfertaLaboral::setDescripcion(string descripcion)
 {
     this->descripcion = descripcion;
 }
 
-void OfertaLaboral::setCantidadHorasSemanales(Integer cantidadHorasSemanales)
+void OfertaLaboral::setCantidadHorasSemanales(int cantidadHorasSemanales)
 {
     this->cantidadHorasSemanales = cantidadHorasSemanales;
 }
@@ -111,7 +112,7 @@ void OfertaLaboral::setFechaFin(Date *fechaFin)
     this->fechaFin = fechaFin;
 }
 
-void OfertaLaboral::setCantidadPuestosNecesarios(Integer cantidadPuestosNecesarios)
+void OfertaLaboral::setCantidadPuestosNecesarios(int cantidadPuestosNecesarios)
 {
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
 }
@@ -144,7 +145,7 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
     this->inscripciones->add(i);
 }
 
-bool OfertaLaboral::EsOferta(String numExpediente)
+bool OfertaLaboral::EsOferta(string numExpediente)
 {
     //Debo corroborar que la oferta sea la oferta con numExpediente.
     String(const numExpediente);// que hace?
