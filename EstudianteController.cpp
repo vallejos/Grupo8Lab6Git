@@ -1,4 +1,6 @@
 #include "EstudianteController.h"
+#include "OfertaLaboralController.h"
+#include "OfertaLaboral.h"
 
 EstudianteController::EstudianteController()
 {
@@ -16,14 +18,18 @@ EstudianteController* EstudianteController::getInstance()
 
 ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
 {
+    OfertaLaboralController *olc = OfertaLaboralController::getInstance();
+    string numExpe = olc->getOfertaLaboral()->getNumExpediente();
 	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-	return (me->getEstNoInscriptos);
+	return (me->getEstNoInscriptos(numExpe));
 }
 
 ICollection* EstudianteController::ListarEstudiantesInscriptosEnOferta()
 {
+    OfertaLaboralController *olc = OfertaLaboralController::getInstance();
+    string numExpe = olc->getOfertaLaboral()->getNumExpediente();
 	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-	return (me->getEstInscriptosEnOferta);
+	return (me->getEstInscriptosEnOferta(numExpe));
 }
 
 void EstudianteController::SeleccionarEstudiante(string cedula)

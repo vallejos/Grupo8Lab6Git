@@ -16,10 +16,11 @@ class ManejadorOfertaLaboral
 		ICollection *getAllDataOfertaLaboral(); // Set DataOfertaLaboral
 		OfertaLaboral *SeleccionarOferta(string numExpediente); // Devuleve un DataOfertaLaboral o no devuelve nada?
 		void addOfertaManejador(OfertaLaboral *ol);
-		void AltaAsignacionCargo();
 		void DarDeBajaLlamado(OfertaLaboral *ol);
-        ~ManejadorOfertaLaboral();
+		destroyManejadorOfertaLaboral();
+
     private:
+        ~ManejadorOfertaLaboral();
     	ManejadorOfertaLaboral();
         static ManejadorOfertaLaboral *instance;
         IDictionary *ofertasLaborales; //Pseudoatributo para representar la asociación con una coleccion de OfertaLaboral

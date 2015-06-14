@@ -27,7 +27,7 @@ class Inscripcion : public ICollectible
         void setEfectivizacion(Efectivizacion* efe);
 
         //operaciones
-        bool EstInscripto(int numExpediente);
+        bool EstInscripto(string numExpediente);
 
         ~Inscripcion();
     protected:

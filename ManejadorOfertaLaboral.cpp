@@ -64,13 +64,6 @@ void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral *ol)
     this->ofertasLaborales->add(numExp,ol);
 }
 
-void ManejadorOfertaLaboral::AltaAsignacionCargo()
-{
-    // con el estudiante y la oferta recordadas en memoria
-    // accedo a la inscripcion y le setteo la efectivizacion (de la inscripcion)
-    // no se con que fecha ni con que sueldo :/
-}
-
 void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
 {
    //buscar oferta
@@ -85,8 +78,18 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     //luego borrar la coleccion de inscripciones, borrar el link con seccion, borrar la coleccion de asignaturas (con el destructor de oferta creo)
     //luego dar de baja la oferta de la coleccion de ofertasLaborales
 }
+void ManejadorOfertaLaboral::destroyManejadorOfertaLaboral()
+{
+     if (instance != NULL)
+     {
+        delete ManejadorOfertaLaboral;
+     }
+}
 
 ManejadorOfertaLaboral::~ManejadorOfertaLaboral()
 {
     // debo liberar la memoria de la coleccion de ofertasLaborales
+    delete this->ofertasLaborales;
+    delete instance;
+    instance = NULL;
 }

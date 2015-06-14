@@ -15,7 +15,7 @@ ManejadorEstudiante *ManejadorEstudiante::getInstance()
     return instance;
 }
 
-ICollection *ManejadorEstudiante::getEstNoInscriptos()
+ICollection *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
 {
     //Se va a mover por la coleccion de estudiantes que el manejador conoce, pasando por las inscripciones de cada estudiante
     //y ofertas, para corroborar si están inscriptos o no
@@ -24,7 +24,7 @@ ICollection *ManejadorEstudiante::getEstNoInscriptos()
     IIterator * it = this->estudiantes->getElemIterator();
     while(it.hasCurrent())
     {
-        if (EstNoInscripto())
+        if (it.current()->EstNoInscripto(numExpediente))
             result->add(it.current()->getDataEstudiante());
         it.next();
     }
@@ -32,11 +32,18 @@ ICollection *ManejadorEstudiante::getEstNoInscriptos()
     return result;
 }
 
-ICollection* ManejadorEstudiante::getEstInscriptosEnOferta()
+ICollection* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
 {
-    //Se va a mover por la coleccion de estudiantes que el manejador conoce, pasando por las inscripciones de cada estudiante
-    //y ofertas, para corroborar si están inscriptos o no
-    //por cada estudiante inscripto se crea un DataEstudiante para luego retornar un set de DataEstudiante.
+    List* result = new List();
+    IIterator * it = this->estudiantes->getElemIterator();
+    while(it.hasCurrent())
+    {
+        if (it.current()->EstInscripto(numExpediente))
+            result->add(it.current()->getDataEstudiante());
+        it.next();
+    }
+    delete it;
+    return result;
 }
 
 Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
