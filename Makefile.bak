@@ -6,7 +6,6 @@ LFLAGS=-Wall
 
 all: lab6
 
-
 lab6:  Aprobacion.o Asignatura.o Carrera.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o EmpresaController.o Empresa.o Encargado.o EstudianteController.o Estudiante.o Fabrica.o IEstudianteController.o Inscripcion.o IObserver.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o
 	$(CC) $(LFLAGS)  Aprobacion.o Asignatura.o Carrera.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o EmpresaController.o Empresa.o Encargado.o EstudianteController.o Estudiante.o Fabrica.o IEstudianteController.o Inscripcion.o IObserver.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o -o lab6
 
