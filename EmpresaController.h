@@ -13,12 +13,15 @@
 class EmpresaController {
     public:
         EmpresaController *getInstance();
-        void AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, 
-        	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, 
+        void AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
+        	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
         	DataAsignatura *asignaturas);
-        DataEmpresa **ListarEmpresas();
-        DataSucursal **ListarSucursales();
-        DataSeccion **ListarSecciones();
+        ICollection* ListarEmpresas();
+        ICollection* ListarSucursales();
+        ICollection* ListarSecciones();
+        Empresa* getEmpresa();
+        Sucursal* getSucursal();
+        Seccion* getSeccion();
         void SeleccionarEmpresa(string rut);
         void SeleccionarSucursal(string nombre);
         void SeleccionarSeccion(string nombre);
@@ -28,6 +31,7 @@ class EmpresaController {
         EmpresaController();
         Empresa *empresa; // la empresa que se recuerda
         Sucursal *sucursal; // la sucursal que se recuerda
+        Seccion *seccion;
     	static EmpresaController *instance;
 };
 
