@@ -274,8 +274,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
 
         delete lIt;
 
-        DataDatosEstudiante* datosEstudiante = new DataDatosEstudiante(dataAprobadas, dataOfertasEmpresas,
-                                                                       "Faltaria una coleccion de DataEmpresa de acuerdo al DataType");
+        DataDatosEstudiante* datosEstudiante = new DataDatosEstudiante(dataAprobadas, dataOfertasEmpresas);
 
         return datosEstudiante;
     }
