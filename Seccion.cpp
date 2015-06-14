@@ -74,5 +74,6 @@ void Seccion::removeObserver(IObserver *obs)
 
 Seccion::~Seccion()
 {
+    //Debo destruir la memoria de observers, ofertasLaborales, encargado y sucursal
 
 }

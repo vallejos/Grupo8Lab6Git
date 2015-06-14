@@ -39,5 +39,5 @@ DataEncargado *DataSeccion::getEncargado()
 
 DataSeccion::~DataSeccion()
 {
-
+    delete this->encargado; //o llama a constructor de dataEncargado
 }

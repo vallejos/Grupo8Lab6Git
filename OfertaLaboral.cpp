@@ -1,4 +1,6 @@
 #include "OfertaLaboral.h"
+#include "EstudianteController"
+#include "Estudiante"
 
 OfertaLaboral::OfertaLaboral()
 {
@@ -10,6 +12,9 @@ OfertaLaboral::OfertaLaboral()
     this->fechaComienzo = NULL;
     this->fechaFin = NULL;
     this->cantidadPuestosNecesarios = 0;
+    this->seccion = NULL;
+    this->inscripciones = NULL;
+    this->asignaturas = NULL;
 }
 
 OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas)
@@ -22,7 +27,7 @@ OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descrip
     this->fechaComienzo = fechaComienzo;
     this->fechaFin = fechaFin;
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
-    this->asignaturas = asignaturas;// está bien que sea asi directa la asociación?
+    this->asignaturas = asignaturas;// está bien que sea asi directa la asociación? que se hace con seccion e inscripciones?
 }
 
 OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
@@ -35,6 +40,9 @@ OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
     this->fechaComienzo = o.fechaComienzo;
     this->fechaFin = o.fechaFin;
     this->cantidadPuestosNecesarios = o.cantidadPuestosNecesarios;
+    this->seccion = o.seccion;// está bien?
+    this->inscripciones = o.inscripciones;
+    this->asignaturas = o.asignaturas;
 }
 
 string OfertaLaboral::getNumExpediente()
@@ -139,7 +147,7 @@ DataOfertaEmpresa* OfertaLaboral::getDataOfertaLaboralEmpresa()
 void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 {
     //Debo llamar al constructor de inscripcion y pasarle por parametro fechaInscripcion.
-    Estudiante* e = EstudianteController::getEstudiante();// esta bien getEstudiante??? // me parece que EstudianteController tiene que tener un puntero a el estudiante recordado en el seleccionar, porque la op getEstudiante no es del manejador
+    Estudiante* e = EstudianteController::getEstudiante();// esta bien getEstudiante???
     Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
     e->AsociarInscripcion(i);
     this->inscripciones->add(i);
@@ -148,8 +156,8 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 bool OfertaLaboral::EsOferta(string numExpediente)
 {
     //Debo corroborar que la oferta sea la oferta con numExpediente.
-    String(const numExpediente);// que hace?
-    return (compare(OrderedKey *k)== EQUAl);//No veo como pasar mis string numExpediente y this->numExpediente a un OrderedKey para pasarlo como parámetro
+    String(const numExpediente);
+    return (compare(OrderedKey *k)== EQUAl);//No veo como comparar numExpediente y this->numExpediente
 }
 
 bool OfertaLaboral::EsActiva()
@@ -163,5 +171,21 @@ bool OfertaLaboral::EsActiva()
 
 OfertaLaboral::~OfertaLaboral()
 {
-
+    this->seccion->~Seccion();
+    IIterator * it = this->inscripciones->getElemIterator();
+    while(it.hasCurrent())
+    {
+        aux = it.current();
+        it.next();
+        delete aux;// o llama a el destructor de inscripcion
+    }
+    delete it;
+    IIterator * it = this->asignaturas->getElemIterator();
+     while(it.hasCurrent())
+    {
+        aux = it.current();
+        it.next();
+        delete aux;// o llama a el destructor de asignatura
+    }
+    delete it;
 }
