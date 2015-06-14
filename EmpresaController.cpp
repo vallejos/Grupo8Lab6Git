@@ -2,12 +2,12 @@
 
 // constructor
 EmpresaController::EmpresaController() {
-	
+
 }
 
 // destructor
 EmpresaController::~EmpresaController() {
-	
+
 }
 
 EmpresaController *EmpresaController::getInstance() {
@@ -17,13 +17,13 @@ EmpresaController *EmpresaController::getInstance() {
 	return this->instance;
 }
 
-void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, 
-        	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, 
+void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
+        	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
         	DataAsignatura *asignaturas) {
 
 }
 
-DataEmpresa **EmpresaController::ListarEmpresas() {
+ICollection* EmpresaController::ListarEmpresas() {
 	return NULL;
 }
 
@@ -32,8 +32,23 @@ ICollection *EmpresaController::ListarSucursales()
 	return this->empresa->getDataSucursales();
 }
 
-DataSeccion **EmpresaController::ListarSecciones() {
+ICollection* EmpresaController::ListarSecciones() {
 	return NULL;
+}
+
+Empresa* EmpresaController::getEmpresa()
+{
+    return this->empresa;
+}
+
+Sucursal* EmpresaController::getSucursal()
+{
+    return this->sucursal;
+}
+
+Seccion* EmpresaController::getSeccion()
+{
+    return this->seccion;
 }
 
 void EmpresaController::SeleccionarEmpresa(string rut) {
