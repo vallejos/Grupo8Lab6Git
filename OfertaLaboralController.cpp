@@ -48,6 +48,12 @@ OfertaLaboral* OfertaLaboralController::getOfertaLaboral()
     return this->oferta;
 }
 
+void OfertaLaboralController::ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos)
+{
+    ManejadorOfertaLaboral *mol = ManejadorOfertaLaboral::getInstance();
+    mol->ModificarOferta(numExpediente, nuevosDatos);
+}
+
 void OfertaLaboralController::AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)
 {
 	ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();

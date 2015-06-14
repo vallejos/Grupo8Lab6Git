@@ -9,11 +9,12 @@
 class OfertaLaboralController {
     public:
         OfertaLaboralController *getInstance();
-        DataOfertaLaboral **ListarOfertas();
+        ICollection* ListarOfertas();
         void SeleccionarOferta(string numExpediente);
         void Inscribir(Date *fechaInscripcion);
         void Entrevistar(Date *fechaEntrevista);
         void AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo);
+        void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos);
         ICollection *MostrarOfertasActivas();
         void DarBajaLlamado();
         OfertaLaboral *getOfertaLaboral();
