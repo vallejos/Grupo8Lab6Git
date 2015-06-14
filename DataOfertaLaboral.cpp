@@ -78,5 +78,10 @@ int DataOfertaLaboral::getCantidadPuestosNecesarios()
 
 DataOfertaLaboral::~DataOfertaLaboral()
 {
-
+    if (this->rangoSalarial != NULL)
+        delete this->rangoSalarial;
+    if (this->fechaComienzo != NULL)
+        delete this->fechaComienzo;
+    if (this->fechaFin != NULL)
+        delete this->fechaFin;
 }

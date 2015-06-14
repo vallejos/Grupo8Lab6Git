@@ -15,10 +15,12 @@ class ManejadorEstudiante
 		ICollection *getEstNoInscriptos();
 		ICollection *getEstInscriptosEnOferta();
 		Estudiante *SeleccionarEstudiante(string cedula);
-        int CantidadPosiblesInscriptos(ICollection *dataAsignatura);
         ICollection *getEstudiante();
-        ~ManejadorEstudiante();
+        IDictionary *getEstudiantes();
+        destroyManejadorEstudiante();
+
     private:
+        ~ManejadorEstudiante();
         ManejadorEstudiante();
         static ManejadorEstudiante *instance;
         IDictionary * estudiantes;

@@ -18,7 +18,6 @@ DataSeccion::DataSeccion(const DataSeccion &ds)
 {
     this->nombre = ds.nombre;
     this->interno = ds.interno;
-    // No se si no debería ser una copia limpia
     this->encargado = ds.encargado;
 }
 
@@ -39,5 +38,5 @@ DataEncargado *DataSeccion::getEncargado()
 
 DataSeccion::~DataSeccion()
 {
-    delete this->encargado; //o llama a constructor de dataEncargado
+    delete this->encargado;
 }
