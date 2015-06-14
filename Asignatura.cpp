@@ -58,7 +58,7 @@ void Asignatura::setCreditos(int creditos)
 
 DataAsignatura *Asignatura::getDataAsignatura()
 {
-    //Llamar al constructor de DataAsignatura
+    //Llama al constructor de DataAsignatura
     //con los datos codigo, nombre y creditos de asignatura y lo retorna.
     return new DataAsignatura(this->codigo, this->nombre, this->creditos);
 }

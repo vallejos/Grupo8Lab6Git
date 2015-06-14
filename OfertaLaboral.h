@@ -1,18 +1,19 @@
 #ifndef OFERTALABORAL_H
 #define OFERTALABORAL_H
 
+#include <string>
 #include "Date.h"
 #include "Rango.h"
 #include "DataOfertaLaboral.h"
 #include "DataOfertaEmpresa.h"
 #include "Seccion.h"
 #include "ICollection.h"
+#include "ICollectible";
 #include "IDictionary.h"
-#include "EmpresaController.h"
 
 using namespace std;
 
-class OfertaLaboral
+class OfertaLaboral: public ICollectible
 {
     public:
 		OfertaLaboral();

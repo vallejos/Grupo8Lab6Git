@@ -2,12 +2,11 @@
 #define SECCION_H
 
 #include <string>
-#include "Rango.h"
-#include "Date.h"
+#include "Rango.h"//Debo pasarlos si los trae Oferta Laboral?
+#include "Date.h"//Debo pasarlos si los trae Oferta Laboral?
 #include "DataSeccion.h"
 #include "DataEmpresa.h"
 #include "OfertaLaboral.h"
-#include "DataAsignatura.h"
 #include "IObserver.h"
 #include "Sucursal.h"
 #include "Encargado.h"
@@ -39,7 +38,7 @@ class Seccion: public ICollectible
         string interno;
         Sucursal * sucursal;//Pseudoatributo para representar la asociación con una Sucursal
         Encargado * encargado;//Pseudoatributo para representar la asociación con un Encargado
-        IColeccion * observers;//Pseudoatributo para representar la asociación con una coleccion de IObserver
+        ICollection * observers;//Pseudoatributo para representar la asociación con una coleccion de IObserver
         IDictionary *ofertasLaborales;
 };
 

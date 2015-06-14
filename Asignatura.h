@@ -3,10 +3,11 @@
 
 #include <string>
 #include "DataAsignatura.h"
+#include "ICollectible";
 
 using namespace std;
 
-class Asignatura
+class Asignatura: public ICollectible
 {
     public:
 		Asignatura();
