@@ -5,9 +5,11 @@ DataEstudiante::DataEstudiante()
 
 }
 
-DataEstudiante::DataEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos)
+DataEstudiante::DataEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento,
+                                int creditos, string email, IDictionary* carreras, ICollection* aprobadas,
+                                ICollection* inscripciones, ICollection* entrevistas);
 {
-
+// FALTA HACER
 }
 
 DataEstudiante::DataEstudiante(const DataEstudiante &e)
@@ -45,14 +47,29 @@ int DataEstudiante::getCreditos()
 	return this->creditos;
 }
 
-DataCarrera ** DataEstudiante::getCarreras()
+string DataEstudiante::getEmail()
 {
-	return this->carreras;
+    return this->email;
 }
 
-DataAsignatura ** DataEstudiante::getAsignaturas()
+IDictionary* DataEstudiante::getCarreras()
 {
-	return this->asignaturas;
+    return this->carreras;
+}
+
+ICollection* DataEstudiante::getAprobadas()
+{
+    return this->aprobadas;
+}
+
+ICollection* DataEstudiante::getInscripciones()
+{
+    return this->inscripciones;
+}
+
+ICollection* DataEstudiante::getEntrevistas()
+{
+    return this->inscripciones;
 }
 
 DataEstudiante::~DataEstudiante()

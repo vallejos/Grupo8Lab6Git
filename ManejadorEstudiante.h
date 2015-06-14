@@ -15,6 +15,7 @@ class ManejadorEstudiante
 		ICollection *getEstNoInscriptos();
 		ICollection *getEstInscriptosEnOferta();
 		Estudiante *SeleccionarEstudiante(string cedula);
+        void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos);
         ICollection *getEstudiante();
         IDictionary *getEstudiantes();
         destroyManejadorEstudiante();

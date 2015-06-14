@@ -17,6 +17,7 @@ class ManejadorOfertaLaboral
 		OfertaLaboral *SeleccionarOferta(string numExpediente);
 		void addOfertaManejador(OfertaLaboral *ol);
 		void DarDeBajaLlamado(OfertaLaboral *ol);
+		void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos);
 		destroyManejadorOfertaLaboral();
 
     private:
