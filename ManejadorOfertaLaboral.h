@@ -4,7 +4,7 @@
 #include "OfertaLaboral.h"
 #include"ICollection.h"
 #include "IDictionary.h"
-#include "String.h"
+#include <string>
 
 using namespace std;
 
@@ -14,10 +14,10 @@ class ManejadorOfertaLaboral
 		static ManejadorOfertaLaboral *getInstance();
 		ICollection *getDataOfertaLaboral(); // Set DataOfertaLaboral
 		ICollection *getAllDataOfertaLaboral(); // Set DataOfertaLaboral
-		void SeleccionarOferta(String numExpediente); // Devuleve un DataOfertaLaboral o no devuelve nada?
+		OfertaLaboral *SeleccionarOferta(string numExpediente); // Devuleve un DataOfertaLaboral o no devuelve nada?
 		void addOfertaManejador(OfertaLaboral *ol);
 		void AltaAsignacionCargo();
-		void DarDeBajaLlamado();
+		void DarDeBajaLlamado(OfertaLaboral *ol);
         ~ManejadorOfertaLaboral();
     private:
     	ManejadorOfertaLaboral();

@@ -1,4 +1,5 @@
 #include "Seccion.h"
+#include "String.h";
 
 Seccion::Seccion()
 {
@@ -50,13 +51,14 @@ DataEmpresa *Seccion::getDataEmpresa()
 
 }
 
-OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, Set(DataAsignatura) asignaturas)
+OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionay *asignaturas)
 {
     //Debo llamar al constructor de OfertaLaboral
     //con los datos de la oferta pasados como parametros
     //y de alguna manera asociar esta nueva oferta a las asignaturas pasadas en el set.
-    OfertaLaboral * dataOferta = OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios);
-    this->ofertasLaborales->add(dataOferta);// creo que hay que pasarle la clave y un Icollectible
+    OfertaLaboral * dataOferta = OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
+    String(numExpediente);
+    this->ofertasLaborales->add(numExpediente,dataOferta);
     return dataOferta;
 }
 
@@ -72,5 +74,6 @@ void Seccion::removeObserver(IObserver *obs)
 
 Seccion::~Seccion()
 {
+    //Debo destruir la memoria de observers, ofertasLaborales, encargado y sucursal
 
 }

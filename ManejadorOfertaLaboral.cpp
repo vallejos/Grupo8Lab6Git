@@ -1,4 +1,5 @@
 #include "ManejadorOfertaLaboral.h"
+#include "String"
 
 ManejadorOfertaLaboral* ManejadorOfertaLaboral::instance = NULL;
 
@@ -47,16 +48,20 @@ ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
 }
 
 
-void ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
+OfertaLaboral *ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
 {
     //Va a buscar en la coleccion que tiene de ofertas como pseudoatributo la oferta con numero de expediente numExpediente.
-    return this->ofertasLaborales->find(numExpediente);// si es void no habria que retornar una oferta laboral //creo que lo que no va es el return
+    String(numExpediente);
+    return this->ofertasLaborales->find(numExpediente);
 }
 
-void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral ol)
+void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral *ol)
 {
-    //Se agrega a la coleccion de ofertas del manejador una oferta que fue dada de alta y que conoce seccion.
+    //Se agrega a la coleccion de ofertas del manejador una oferta que fue dada de alta por seccion.
     //obtener numexpediente y hacer add (ikey, objeto)
+    string numExp = ol->getNumExpediente();
+    String(numExp);
+    this->ofertasLaborales->add(numExp,ol);
 }
 
 void ManejadorOfertaLaboral::AltaAsignacionCargo()
@@ -66,17 +71,22 @@ void ManejadorOfertaLaboral::AltaAsignacionCargo()
     // no se con que fecha ni con que sueldo :/
 }
 
-
-void ManejadorOfertaLaboral::DarDeBajaLlamado()
+void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
 {
    //buscar oferta
    // recorrer inscripciones y borrar link con estudiantes
    //borrar coleccion inscripciones
    //borrar oferta de IDictionary
     //Va a dar de baja una oferta que el manejador recuerda de alguna manera.
+    string numExpediente = ol->getNumExpediente();
+    String(numExpediente);
+    OfertaLaboral *o = this->ofertasLaborales->find(numExpediente);
+    //Quiero moverme por la coleccion de inscripciones de esta oferta e ir borranco el link con estudiante
+    //luego borrar la coleccion de inscripciones, borrar el link con seccion, borrar la coleccion de asignaturas (con el destructor de oferta creo)
+    //luego dar de baja la oferta de la coleccion de ofertasLaborales
 }
 
 ManejadorOfertaLaboral::~ManejadorOfertaLaboral()
 {
-
+    // debo liberar la memoria de la coleccion de ofertasLaborales
 }
