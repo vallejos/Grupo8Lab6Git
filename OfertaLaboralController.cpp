@@ -32,10 +32,22 @@ void OfertaLaboralController::Inscribir(Date *fechaInscripcion) {
     //BORRAR MEMORIA ??
 }
 
+void OfertaLaboralController::Entrevistar(Date *fechaEntrevista) {
+    this->oferta->Entrevista(fechaEntrevista);
+    //BORRAR MEMORIA ??
+}
+
 ICollection *OfertaLaboralController::MostrarOfertasActivas()
 {
     ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
 	return mol->getDataOfertaLaboral();
+}
+
+void OfertaLaboralController::AltaAsignacionDelCargo()
+{
+	ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
+	this->oferta->AltaAsignacionCargo();
+    // BORRAR MEMORIA??
 }
 
 void OfertaLaboralController::DarBajaLlamado() {

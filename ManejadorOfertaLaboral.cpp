@@ -64,6 +64,13 @@ void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral *ol)
     this->ofertasLaborales->add(numExp,ol);
 }
 
+void ManejadorOfertaLaboral::AltaAsignacionCargo()
+{
+    // con el estudiante y la oferta recordadas en memoria
+    // accedo a la inscripcion y le setteo la efectivizacion (de la inscripcion)
+    // no se con que fecha ni con que sueldo :/
+}
+
 void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
 {
    //buscar oferta

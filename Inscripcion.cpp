@@ -6,6 +6,7 @@ Inscripcion::Inscripcion()
     this->fechaInscripcion = NULL;
     this->ofertaLab = NULL;
     this->estudiant = NULL;
+    this->efectivo = NULL;
 }
 
 Inscripcion::Inscripcion(Date* fechaInscripcion, OfertaLaboral* ofertaLab, Estudiante* estu)
@@ -13,6 +14,9 @@ Inscripcion::Inscripcion(Date* fechaInscripcion, OfertaLaboral* ofertaLab, Estud
     this->fechaInscripcion = fechaInscripcion;
     this->ofertaLab = ofertaLab;
     this->estudiant = estu;
+    this->efectivo = NULL;
+    // se hace NULL porque no necesariamente tiene efectivizacion la inscripcion
+    // cuando se le haga esa efectivizacion usamos el set y listo :D
 }
 
 Inscripcion::Inscripcion(const Inscripcion &i)
@@ -24,6 +28,12 @@ Inscripcion::Inscripcion(const Inscripcion &i)
     this->fechaInscripcion = fechaInsc;
     this->ofertaLab = oferta;
     this->estudiant = estu;
+
+    if (i.efectivo != NULL)
+    {
+        Efectivizacion* efe = new Efectivizacion(i.efectivo);
+        this->efectivo = efe;
+    }
 }
 
 Date* Inscripcion::getFechaInscripcion()
@@ -39,6 +49,11 @@ OfertaLaboral* Inscripcion::getOfertaLaboral()
 Estudiante* Inscripcion::getEstudiante()
 {
     return this->estudiant;
+}
+
+Efectivizacion* Inscripcion::getEfectivizacion()
+{
+    return this->efectivo;
 }
 
 DataOfertaLaboral* Inscripcion::getDataOfertaLaboral()
@@ -60,6 +75,11 @@ void Inscripcion::setOfertaLaboral(OfertaLaboral* ofertaLab)
 void Inscripcion::setEstudiante(Estudiante* estu)
 {
     this->estudiant = estu;
+}
+
+void Inscripcion::setEfectivizacion(Efectivizacion* efe)
+{
+    this->efectivo = efe;
 }
 
 bool Inscripcion::EstInscripto(int numExpediente)

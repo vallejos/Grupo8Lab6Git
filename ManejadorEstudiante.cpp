@@ -32,6 +32,13 @@ ICollection *ManejadorEstudiante::getEstNoInscriptos()
     return result;
 }
 
+ICollection* ManejadorEstudiante::getEstInscriptosEnOferta()
+{
+    //Se va a mover por la coleccion de estudiantes que el manejador conoce, pasando por las inscripciones de cada estudiante
+    //y ofertas, para corroborar si están inscriptos o no
+    //por cada estudiante inscripto se crea un DataEstudiante para luego retornar un set de DataEstudiante.
+}
+
 Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
 {
     //Va a buscar en la coleccion de estudiantes no inscriptos que de alguna manera recordó el manejador,

@@ -13,6 +13,7 @@ class ManejadorEstudiante
     public:
 		static ManejadorEstudiante *getInstance();
 		ICollection *getEstNoInscriptos();
+		ICollection *getEstInscriptosEnOferta();
 		Estudiante *SeleccionarEstudiante(string cedula);
         int CantidadPosiblesInscriptos(ICollection *dataAsignatura);
         ICollection *getEstudiante();

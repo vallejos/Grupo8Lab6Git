@@ -17,12 +17,14 @@ class Inscripcion : public ICollectible
         Date* getFechaInscripcion();
         OfertaLaboral* getOfertaLaboral();
         Estudiante* getEstudiante();
+        Efectivizacion* getEfectivizacion();
         DataOfertaLaboral* getDataOfertaLaboral();
 
         //setters
         void setFechaInscripcion(Date* fechaInscripcion);
         void setOfertaLaboral(OfertaLaboral* ofertaLab);
         void setEstudiante(Estudiante* estu);
+        void setEfectivizacion(Efectivizacion* efe);
 
         //operaciones
         bool EstInscripto(int numExpediente);
@@ -33,6 +35,7 @@ class Inscripcion : public ICollectible
         Date* fechaInscripcion;
         OfertaLaboral* ofertaLab;
         Estudiante* estudiant;
+        Efectivizacion* efectivo;
 };
 
 #endif // INSCRIPCION_H

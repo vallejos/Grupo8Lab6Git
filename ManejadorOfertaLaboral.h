@@ -16,6 +16,7 @@ class ManejadorOfertaLaboral
 		ICollection *getAllDataOfertaLaboral(); // Set DataOfertaLaboral
 		OfertaLaboral *SeleccionarOferta(string numExpediente); // Devuleve un DataOfertaLaboral o no devuelve nada?
 		void addOfertaManejador(OfertaLaboral *ol);
+		void AltaAsignacionCargo();
 		void DarDeBajaLlamado(OfertaLaboral *ol);
         ~ManejadorOfertaLaboral();
     private:

@@ -39,6 +39,7 @@ class OfertaLaboral: public ICollectible
         DataOfertaLaboral *getDataOfertaLaboral();
         DataOfertaEmpresa *getDataOfertaLaboralEmpresa();
         void Inscripcion(Date *fechaInscripcion);
+        void Entrevista(Date *fechaEntrevista);
         bool EsOferta(string numExpediente);
         bool EsActiva();
 
@@ -53,6 +54,7 @@ class OfertaLaboral: public ICollectible
         int cantidadPuestosNecesarios;
         Seccion * seccion; //Pseudoatributo para representar la asociación con una Seccion
         ICollection *inscripciones; //Pseudoatributo para representar la asociación con una colección de Incripcion
+        ICollection *entrevistas; //Pseudoatributo para representar la asociación con una colección de Entrevistas
         IDictionary *asignaturas;
 };
 

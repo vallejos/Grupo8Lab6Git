@@ -4,7 +4,7 @@
 #include <string>
 #include "Date.h"
 #include "DataOfertaLaboral.h"
-#include "lab6-colecciones/interfaces/ICollection.h"
+#include "ICollection.h"
 
 class OfertaLaboralController {
     public:
@@ -12,6 +12,8 @@ class OfertaLaboralController {
         DataOfertaLaboral **ListarOfertas();
         void SeleccionarOferta(string numExpediente);
         void Inscribir(Date *fechaInscripcion);
+        void Entrevistar(Date *fechaEntrevista);
+        void AltaAsignacionDelCargo();
         ICollection *MostrarOfertasActivas();
         void DarBajaLlamado();
     protected:
