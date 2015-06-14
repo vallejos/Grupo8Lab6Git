@@ -14,14 +14,9 @@ Criterio2::~Criterio2()
 }
 
 // Sugiere una materia de las asignaturas seleccionadas tal que algun Estudiante haya aprobada.
-// En caso que no exista se retorna NULL.
-ICollection *Criterio1::devolverListaAsignatura(ICollection *asignaturas)
+// En caso que no exista se retorna un ICollection vacio (List).
+ICollection *Criterio2::devolverListaAsignatura(ICollection *asignaturas)
 {
-	// pedimos los estudiantes al manejador y vamos recorriendo uno a uno hasta encontrar alguno que tenga materias
-	// aprobadas, en ese caso retornamos esa lista
-    ManejadorEstudiante *eMgr = ManejadorEstudiante::getInstance();
-    IDictionary *e = eMgr->getEstudiantes();
-
     bool found = false;
 
     List *result = new List();
