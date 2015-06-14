@@ -10,9 +10,15 @@ DataOfertaLaboral::DataOfertaLaboral()
     this->fechaComienzo = NULL;
     this->fechaFin = NULL;
     this->cantidadPuestosNecesarios = 0;
+    this->asignaturas = NULL;
+    this->seccion = NULL;
+    this->inscripciones = NULL;
+    this->entrevistas = NULL;
 }
 
-DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios)
+DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
+                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
+                        IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;
@@ -22,6 +28,10 @@ DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string
     this->fechaComienzo = fechaComienzo;
     this->fechaFin = fechaFin;
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
+    this->asignaturas = asignaturas;
+    this->seccion = seccion;
+    this->inscripciones = inscripciones;
+    this->entrevistas = entrevistas;
 }
 
 DataOfertaLaboral::DataOfertaLaboral(const DataOfertaLaboral &dol)
@@ -74,6 +84,26 @@ Date *DataOfertaLaboral::getFechaFin()
 int DataOfertaLaboral::getCantidadPuestosNecesarios()
 {
 	return this->cantidadPuestosNecesarios;
+}
+
+Seccion* DataOfertaLaboral::getSeccion()
+{
+    return this->seccion;
+}
+
+ICollection* DataOfertaLaboral::getInscripciones()
+{
+    return this->inscripciones;
+}
+
+ICollection* DataOfertaLaboral::getEntrevistas()
+{
+    return this->entrevistas;
+}
+
+IDictionary* DataOfertaLaboral::getAsignaturas()
+{
+    return this->asignaturas;
 }
 
 DataOfertaLaboral::~DataOfertaLaboral()

@@ -56,6 +56,12 @@ Estudiante* EstudianteController::getEstudiante()
     return this->estudiante;
 }
 
+void EstudianteController::ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos)
+{
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    me->ModificarEstudiante(cedula, nuevosDatos);
+}
+
 void EstudianteController::destroyEstudianteController()
 {
      if (instance != NULL)

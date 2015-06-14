@@ -19,6 +19,7 @@ class EstudianteController
         ICollection *ListarEstudiantesNoInscriptos();
         ICollection *ListarEstudiantesInscriptosEnOferta();
         void SeleccionarEstudiante(String cedula);
+        void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos);
         DataDatosEstudiante *ConsultarDatosEstudiante(String cedula);
         ICollection *ListarEstudiantesRegistrados();
         Estudiante* getEstudiante();

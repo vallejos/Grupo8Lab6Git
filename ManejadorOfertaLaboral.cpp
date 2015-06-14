@@ -86,6 +86,23 @@ void ManejadorOfertaLaboral::destroyManejadorOfertaLaboral()
      }
 }
 
+void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos)
+{
+//Pre: ningun dato del nuevosDatos es vacio.
+//p.e si el usuario no modifica el titulo, el DataOfertaLaboral debe contener el titulo de la oferta y no ser vacio
+    OfertaLaboral* ol = this->ofertasLaborales->find(numExpediente);
+    ol->setTitulo(nuevosDatos->getTitulo());
+    ol->setDescripcion(nuevosDatos->getDescripcion());
+    ol->setCantidadHorasSemanales(nuevosDatos->getCantidadHorasSemanales());
+    ol->setRangoSalarial(nuevosDatos->getRangoSalarial());
+    ol->setFechaComienzo(nuevosDatos->getFechaComienzo());
+    ol->setFechaFin(nuevosDatos->getFechaFin());
+    ol->setCantidadPuestosNecesarios(nuevosDatos->getCantidadPuestosNecesarios());
+    ol->setInscripciones(nuevosDatos->getInscripciones());
+    ol->setEntrevistas(nuevosDatos->getEntrevistas());
+    ol->setAsignaturas(nuevosDatos->getAsignaturas());
+}
+
 ManejadorOfertaLaboral::~ManejadorOfertaLaboral()
 {
     // debo liberar la memoria de la coleccion de ofertasLaborales

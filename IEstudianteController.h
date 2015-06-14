@@ -4,16 +4,18 @@
 #include <string>
 #include "DataEstudiante.h"
 #include "DataDatosEstudiante.h"
+#include "ICollection.h"
 
 class IEstudianteController {
     public:
-        IEstudianteController();
-        ~IEstudianteController();
-        DataEstudiante **ListarEstudiantesNoInscriptos();
-        void SeleccionarEstudiante(string cedula);
-        DataDatosEstudiante **ConsultarDatosEstudiante(string cedula);
-        DataEstudiante **ListarEstudiantesRegistrados();
-        DataEstudiante **ListarEstudiantesInscriptosEnOferta();
+        IEstudianteController() = 0;
+        ~IEstudianteController() = 0;
+        ICollection *ListarEstudiantesNoInscriptos() = 0;
+        void SeleccionarEstudiante(string cedula) = 0;
+        void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos) = 0;
+        DataDatosEstudiante **ConsultarDatosEstudiante(string cedula) = 0;
+        ICollection *ListarEstudiantesRegistrados() = 0;
+        ICollection *ListarEstudiantesInscriptosEnOferta() = 0;
     protected:
     private:
 };

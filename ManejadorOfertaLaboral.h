@@ -17,6 +17,7 @@ class ManejadorOfertaLaboral
 		OfertaLaboral *SeleccionarOferta(string numExpediente); // Devuleve un DataOfertaLaboral o no devuelve nada?
 		void addOfertaManejador(OfertaLaboral *ol);
 		void DarDeBajaLlamado(OfertaLaboral *ol);
+		void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos);
 		destroyManejadorOfertaLaboral();
 
     private:
