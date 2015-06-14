@@ -12,7 +12,9 @@ class DataEstudiante
 {
     public:
 		DataEstudiante();
-        DataEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos);
+        DataEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos,
+                    string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones,
+                    ICollection* entrevistas);
         DataEstudiante(const DataEstudiante &e);
         ~DataEstudiante();
         string getCedula();
@@ -21,8 +23,11 @@ class DataEstudiante
         string getTelefono();
         Date *getFechaNacimiento();
         int getCreditos();
-        DataAsignatura ** getAsignaturas();
-        DataCarrera ** getCarreras();
+        string getEmail();
+        IDictionary* getCarreras();
+        ICollection* getAprobadas();
+        ICollection* getInscripciones();
+        ICollection* getEntrevistas();
     private:
         string cedula;
         string nombre;
@@ -30,8 +35,11 @@ class DataEstudiante
         string telefono;
         Date *fechaNacimiento;
         int creditos;
-        DataAsignatura ** asignaturas;
-        DataCarrera ** carreras;
+        string email;
+        IDictionary* carreras;
+        ICollection* aprobadas;
+        ICollection* inscripciones;
+        ICollection* entrevistas;
 };
 
 #endif // DTESTUDIANTE_H

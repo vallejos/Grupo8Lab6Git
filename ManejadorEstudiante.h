@@ -16,6 +16,7 @@ class ManejadorEstudiante
 		ICollection *getEstInscriptosEnOferta();
 		Estudiante *SeleccionarEstudiante(string cedula);
         int CantidadPosiblesInscriptos(ICollection *dataAsignatura);
+        void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos);
         ICollection *getEstudiante();
         ~ManejadorEstudiante();
     private:
