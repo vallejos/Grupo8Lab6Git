@@ -146,8 +146,8 @@ DataOfertaEmpresa* OfertaLaboral::getDataOfertaLaboralEmpresa()
 
 void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 {
-    //Debo llamar al constructor de inscripcion y pasarle por parametro fechaInscripcion.
-    Estudiante* e = EstudianteController::getEstudiante();// esta bien getEstudiante???
+    EstudianteController* ec = EstudianteController::getInstance();
+    e = ec->getEstudiante();
     Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
     e->AsociarInscripcion(i);
     this->inscripciones->add(i);
@@ -155,7 +155,8 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 
 void OfertaLaboral::Entrevista(Date *fechaEntrevista)
 {
-    Estudiante* e = EstudianteController::getEstudiante();// esta bien getEstudiante??? // me parece que EstudianteController tiene que tener un puntero a el estudiante recordado en el seleccionar, porque la op getEstudiante no es del manejador
+    EstudianteController* ec = EstudianteController::getInstance();
+    e = ec->getEstudiante();
     Entrevista *ent = new Entrevista(fechaEntrevista, this, e);
     e->AsociarEntrevista(ent);
     this->entrevistas->add(ent);
@@ -163,9 +164,7 @@ void OfertaLaboral::Entrevista(Date *fechaEntrevista)
 
 bool OfertaLaboral::EsOferta(string numExpediente)
 {
-    //Debo corroborar que la oferta sea la oferta con numExpediente.
-    String(const numExpediente);
-    return (compare(OrderedKey *k)== EQUAl);//No veo como comparar numExpediente y this->numExpediente
+   return (this->numExpediente == numExpediente);
 }
 
 bool OfertaLaboral::EsActiva()
@@ -177,23 +176,32 @@ bool OfertaLaboral::EsActiva()
     return ((secondsInicio >= 0) && (secondsFin <= 0));
 }
 
+void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
+{
+    EstudianteController* ec = EstudianteController::getInstance();
+    Estudiante* e = ec->getEstudiante();
+    IIterator * it = e->inscripciones()->getIterator();
+    bool noEncontrada = true;
+    while((it.hasCurrent())&&(noEncontrada))
+    {
+        if(it.current()->EstInscripto(this->numExpediente))
+        {
+            Efectivizacion* efe = Efectivizacion(sueldo, fechaEfectivizacion);
+            it.current()->setEfectivizacion(efe);
+            noEncontrada = false;
+        }
+        it.next();
+    }
+    delete it;
+}
+
 OfertaLaboral::~OfertaLaboral()
 {
-    this->seccion->~Seccion();
-    IIterator * it = this->inscripciones->getElemIterator();
-    while(it.hasCurrent())
-    {
-        aux = it.current();
-        it.next();
-        delete aux;// o llama a el destructor de inscripcion
-    }
-    delete it;
-    IIterator * it = this->asignaturas->getElemIterator();
-     while(it.hasCurrent())
-    {
-        aux = it.current();
-        it.next();
-        delete aux;// o llama a el destructor de asignatura
-    }
-    delete it;
+    if (this->seccion != NULL)
+        delete this->seccion;
+    if (this->inscripciones != NULL)
+        delete this->inscripciones;
+    if (this->asignaturas != NULL)
+        delete this->asignaturas;
+
 }

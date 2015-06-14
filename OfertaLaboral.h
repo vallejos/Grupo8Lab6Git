@@ -38,6 +38,7 @@ class OfertaLaboral: public ICollectible
         void setCantidadPuestosNecesarios(int cantidadPuestosNecesarios);
         DataOfertaLaboral *getDataOfertaLaboral();
         DataOfertaEmpresa *getDataOfertaLaboralEmpresa();
+        void AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo);
         void Inscripcion(Date *fechaInscripcion);
         void Entrevista(Date *fechaEntrevista);
         bool EsOferta(string numExpediente);

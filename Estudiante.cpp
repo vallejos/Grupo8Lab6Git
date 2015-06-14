@@ -195,18 +195,23 @@ DataEstudiante* Estudiante::getDataEstudiante()
 
 }
 
-bool Estudiante::EstNoInscripto(int numExpediente)
+bool Estudiante::EstNoInscripto(string numExpediente)
 {
     try
     {
         bool res;
+        bool noEstaInscripto = true;
         ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt.hasCurrent())
+        while(lIt.hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
             {
                 res = insc->EstInscripto(numExpediente);
+                if (res)
+                {
+                    noEstaInscripto = false;
+                }
             } else
             {
                 throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
@@ -216,13 +221,48 @@ bool Estudiante::EstNoInscripto(int numExpediente)
         }
         delete lIt;
 
-        return res;
+        return noEstaInscripto;
     }
     catch(const std::invalid_argument &e)
     {
     	throw std::invalid_argument(e.what());
     }
 }
+
+bool Estudiante::EstInscripto(string numExpediente)
+{
+    try
+    {
+        bool res;
+        bool estaInscripto = true;
+        ListIterator * lIt = this->inscripciones->getIterator();
+        while(lIt.hasCurrent() && (noEstaInscripto))
+        {
+            Inscripcion *insc;
+            if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
+            {
+                res = insc->EstInscripto(numExpediente);
+                if (!res)
+                {
+                    estaInscripto = false;
+                }
+            } else
+            {
+                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
+            }
+
+            lIt.next();
+        }
+        delete lIt;
+
+        return estaInscripto;
+    }
+    catch(const std::invalid_argument &e)
+    {
+    	throw std::invalid_argument(e.what());
+    }
+}
+
 
 void AsociarInscripcion (Inscripcion *insc)
 {

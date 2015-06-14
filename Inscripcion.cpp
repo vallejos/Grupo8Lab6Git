@@ -82,11 +82,10 @@ void Inscripcion::setEfectivizacion(Efectivizacion* efe)
     this->efectivo = efe;
 }
 
-bool Inscripcion::EstInscripto(int numExpediente)
+bool Inscripcion::EstInscripto(string numExpediente)
 {
     return (this->ofertaLab->getNumExpediente() == numExpediente);
 }
-
 
 Inscripcion::~Inscripcion()
 {
