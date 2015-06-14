@@ -18,6 +18,8 @@ ManejadorOfertaLaboral *ManejadorOfertaLaboral::getInstance()
 
 ICollection *ManejadorOfertaLaboral::getDataOfertaLaboral()
 {
+    //Se rotorna un set de DataOfertaLaboral con las ofertas activas del sistema.
+    //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar una coleccion de las mismas.
     List* result = new List();
     IIterator * it = this->ofertasLaborales->getElemIterator();
     while(it.hasCurrent())
@@ -28,12 +30,13 @@ ICollection *ManejadorOfertaLaboral::getDataOfertaLaboral()
     }
     delete it;
     return result;
-    //Se rotorna un set de DataOfertaLaboral con las ofertas del sistema.
-    //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar un set de las mismas.
+
 }
 
 ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
 {
+    //Se rotorna un set de DataOfertaLaboral con las ofertas del sistema.
+    //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar un una coleccion de las mismas.
     List* result = new List();
     IIterator * it = this->ofertasLaborales->getElemIterator();
     while(it.hasCurrent())
@@ -43,24 +46,23 @@ ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
     }
     delete it;
     return result;
-    //Se rotorna un set de DataOfertaLaboral con las ofertas del sistema.
-    //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar un set de las mismas.
+
 }
 
 
 OfertaLaboral *ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
 {
     //Va a buscar en la coleccion que tiene de ofertas como pseudoatributo la oferta con numero de expediente numExpediente.
-    String(numExpediente);
-    return this->ofertasLaborales->find(numExpediente);
+    String *numExp = String(numExpediente);
+    return this->ofertasLaborales->find(numExp);
 }
 
 void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral *ol)
 {
     //Se agrega a la coleccion de ofertas del manejador una oferta que fue dada de alta por seccion.
     //obtener numexpediente y hacer add (ikey, objeto)
-    string numExp = ol->getNumExpediente();
-    String(numExp);
+    string numExpediente = ol->getNumExpediente();
+    String *numExp = String(numExpediente);
     this->ofertasLaborales->add(numExp,ol);
 }
 
@@ -70,10 +72,10 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
    // recorrer inscripciones y borrar link con estudiantes
    //borrar coleccion inscripciones
    //borrar oferta de IDictionary
-    //Va a dar de baja una oferta que el manejador recuerda de alguna manera.
     string numExpediente = ol->getNumExpediente();
-    String(numExpediente);
-    OfertaLaboral *o = this->ofertasLaborales->find(numExpediente);
+    String *numExp = String(numExpediente);
+    OfertaLaboral *o = this->ofertasLaborales->find(numExp);
+
     //Quiero moverme por la coleccion de inscripciones de esta oferta e ir borranco el link con estudiante
     //luego borrar la coleccion de inscripciones, borrar el link con seccion, borrar la coleccion de asignaturas (con el destructor de oferta creo)
     //luego dar de baja la oferta de la coleccion de ofertasLaborales
@@ -106,7 +108,8 @@ void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, DataOfertaLab
 ManejadorOfertaLaboral::~ManejadorOfertaLaboral()
 {
     // debo liberar la memoria de la coleccion de ofertasLaborales
-    delete this->ofertasLaborales;
+    if (this->ofertasLaborales != NULL)
+        delete this->ofertasLaborales;
     delete instance;
     instance = NULL;
 }

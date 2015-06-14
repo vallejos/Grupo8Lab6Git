@@ -64,7 +64,7 @@ class OfertaLaboral: public ICollectible
         Seccion * seccion; //Pseudoatributo para representar la asociación con una Seccion
         ICollection *inscripciones; //Pseudoatributo para representar la asociación con una colección de Incripcion
         ICollection *entrevistas; //Pseudoatributo para representar la asociación con una colección de Entrevistas
-        IDictionary *asignaturas;
+        IDictionary *asignaturas; //Pseudoatributo para representar la asociación con un diccionario de asignaturas
 };
 
 #endif // OFERTALABORAL_H

@@ -15,6 +15,8 @@ OfertaLaboral::OfertaLaboral()
     this->seccion = NULL;
     this->inscripciones = NULL;
     this->asignaturas = NULL;
+    this->entrevistas = NULL;
+
 }
 
 OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas)
@@ -27,7 +29,7 @@ OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descrip
     this->fechaComienzo = fechaComienzo;
     this->fechaFin = fechaFin;
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
-    this->asignaturas = asignaturas;// está bien que sea asi directa la asociación? que se hace con seccion e inscripciones?
+    this->asignaturas = asignaturas;
 }
 
 OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
@@ -40,9 +42,10 @@ OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
     this->fechaComienzo = o.fechaComienzo;
     this->fechaFin = o.fechaFin;
     this->cantidadPuestosNecesarios = o.cantidadPuestosNecesarios;
-    this->seccion = o.seccion;// está bien?
+    this->seccion = o.seccion;
     this->inscripciones = o.inscripciones;
     this->asignaturas = o.asignaturas;
+    this->entrevistas = o.entrevistas;
 }
 
 string OfertaLaboral::getNumExpediente()

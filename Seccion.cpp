@@ -5,6 +5,10 @@ Seccion::Seccion()
 {
     this->nombre = '\0';
     this->interno = '\0';
+    this->sucursal = NULL;
+    this->encargado = NULL;
+    this->observers = NULL;
+    this->ofertasLaborales = NULL;
 }
 
 Seccion::Seccion(string nombre, string interno)
@@ -17,6 +21,10 @@ Seccion::Seccion(const Seccion &s)
 {
     this->nombre = s.nombre;
     this->interno = s.interno;
+    this->sucursal = s.sucursal;
+    this->encargado = s.encargado;
+    this->observers = s.observers;
+    this->ofertasLaborales = s.ofertasLaborales;
 }
 
 string Seccion::getNombre()
@@ -57,8 +65,8 @@ OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string de
     //con los datos de la oferta pasados como parametros
     //y de alguna manera asociar esta nueva oferta a las asignaturas pasadas en el set.
     OfertaLaboral * dataOferta = OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
-    String(numExpediente);
-    this->ofertasLaborales->add(numExpediente,dataOferta);
+    String *numExp = new String(numExpediente);
+    this->ofertasLaborales->add(numExp,dataOferta);
     return dataOferta;
 }
 
@@ -75,5 +83,12 @@ void Seccion::removeObserver(IObserver *obs)
 Seccion::~Seccion()
 {
     //Debo destruir la memoria de observers, ofertasLaborales, encargado y sucursal
-
+    if (this->sucursal != NULL)
+        delete this->sucursal;
+    if (this->encargado != NULL)
+        delete this->encargado;
+    if (this->observers != NULL)
+        delete this->observers;
+    if (this->ofertasLaborales != NULL)
+        delete this->ofertasLaborales;
 }
