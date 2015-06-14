@@ -2,12 +2,14 @@
 #define CRITERIO1_H
 
 #include "DataAsignatura.h"
+#include "ICollection.h"
 
-class Criterio1 {
+class Criterio1
+{
     public:
         Criterio1();
         ~Criterio1();
-        DataAsignatura **devolverListaAsignatura();
+        ICollection *devolverListaAsignatura(ICollection *asignaturas);
     protected:
     private:
 };
