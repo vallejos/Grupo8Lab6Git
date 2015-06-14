@@ -75,7 +75,30 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     string numExpediente = ol->getNumExpediente();
     String *numExp = String(numExpediente);
     OfertaLaboral *o = this->ofertasLaborales->find(numExp);
+    ICollection *inscripciones = getInscripciones();
+    IIterator * it = inscripciones->getIterator();
+    while(it.hasCurrent())
+    {
+        Estudiante *e = it.current()->getEstudiante();
+        ICollection *insc = e->getInscripciones();
+        insc->remove(it.current());
+        it.next();
+    }
+    delete it;
+    ICollection *entrevistas = getEntrevistas();
+    IIterator * it = entrevistas->getIterator();
+    while(it.hasCurrent())
+    {
+        Estudiante *e = it.current()->getEstudiante();
+        ICollection *entr = e->getInscripciones();
+        insc->remove(it.current());
+        it.next();
+    }
+    delete it;
+    //Queda lo de seccion y terminar esto
 
+
+    delete o;
     //Quiero moverme por la coleccion de inscripciones de esta oferta e ir borranco el link con estudiante
     //luego borrar la coleccion de inscripciones, borrar el link con seccion, borrar la coleccion de asignaturas (con el destructor de oferta creo)
     //luego dar de baja la oferta de la coleccion de ofertasLaborales
