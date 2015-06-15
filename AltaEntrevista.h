@@ -8,8 +8,6 @@ class AltaEntrevista : public IComando
         AltaEntrevista();
         void ejecutarComando();
         ~AltaEntrevista();
-    protected:
-    private:
 };
 
 #endif // ALTAENTREVISTA_H
