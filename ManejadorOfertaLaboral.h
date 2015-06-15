@@ -16,6 +16,7 @@ class ManejadorOfertaLaboral
 		ICollection *getAllDataOfertaLaboral(); // Set DataOfertaLaboral
 		OfertaLaboral *SeleccionarOferta(string numExpediente);
 		void addOfertaManejador(OfertaLaboral *ol);
+		IDictionary* getOfertasLaborales();
 		void DarDeBajaLlamado(OfertaLaboral *ol);
 		void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos);
 		destroyManejadorOfertaLaboral();

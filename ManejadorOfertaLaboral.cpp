@@ -49,6 +49,10 @@ ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
 
 }
 
+IDictionary* ManejadorOfertaLaboral::getOfertasLaborales()
+{
+    return this->ofertasLaborales;
+}
 
 OfertaLaboral *ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
 {
