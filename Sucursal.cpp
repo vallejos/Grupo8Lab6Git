@@ -49,10 +49,7 @@ Seccion *Sucursal::getSeccion(string nombre)
             s = i->current();
             seccionEncontrada = true;
         }
-        else
-        {
-            i->next();
-        }
+        i->next();
     }
     delete i;
     return s;

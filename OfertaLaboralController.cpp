@@ -61,6 +61,6 @@ void OfertaLaboralController::AltaAsignacionDelCargo(Date* fechaEfectivizacion, 
     // BORRAR MEMORIA??
 }
 
-void OfertaLaboralController::DarBajaLlamado() {
+void OfertaLaboralController::DarBajaLlamado(OfertaLaboral *ol) {
 
 }

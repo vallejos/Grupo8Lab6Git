@@ -2,6 +2,9 @@
 #define FABRICA_H
 
 #include <string>
+#include "IOfertaLaboralController.h"
+#include "IEmpresaController.h"
+#include "IEstudianteController.h"
 
 using namespace std;
 
