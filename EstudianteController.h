@@ -3,6 +3,9 @@
 
 #include <string>
 #include "ICollection.h"
+#include "DataEstudiante.h"
+#include "DataDatosEstudiante.h"
+#include "Estudiante.h"
 
 using namespace std;
 
@@ -18,9 +21,9 @@ class EstudianteController
         static EstudianteController* getInstance();
         ICollection *ListarEstudiantesNoInscriptos();
         ICollection *ListarEstudiantesInscriptosEnOferta();
-        void SeleccionarEstudiante(String cedula);
+        void SeleccionarEstudiante(string cedula);
         void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos);
-        DataDatosEstudiante *ConsultarDatosEstudiante(String cedula);
+        DataDatosEstudiante *ConsultarDatosEstudiante(string cedula);
         ICollection *ListarEstudiantesRegistrados();
         Estudiante* getEstudiante();
         void destroyEstudianteController();
