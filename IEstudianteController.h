@@ -13,7 +13,7 @@ class IEstudianteController {
         ICollection *ListarEstudiantesNoInscriptos() = 0;
         void SeleccionarEstudiante(string cedula) = 0;
         void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos) = 0;
-        DataDatosEstudiante **ConsultarDatosEstudiante(string cedula) = 0;
+        DataDatosEstudiante *ConsultarDatosEstudiante(string cedula) = 0;
         ICollection *ListarEstudiantesRegistrados() = 0;
         ICollection *ListarEstudiantesInscriptosEnOferta() = 0;
     protected:
