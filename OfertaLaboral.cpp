@@ -1,6 +1,7 @@
 #include "OfertaLaboral.h"
 #include "EstudianteController"
 #include "Estudiante"
+#include "Tiempo.h"
 
 OfertaLaboral::OfertaLaboral()
 {
@@ -206,5 +207,7 @@ OfertaLaboral::~OfertaLaboral()
         delete this->inscripciones;
     if (this->asignaturas != NULL)
         delete this->asignaturas;
+    if (this->entrevistas != NULL)
+        delete this->entrevistas;
 
 }

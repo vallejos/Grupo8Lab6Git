@@ -1,5 +1,7 @@
 #include "ManejadorOfertaLaboral.h"
-#include "String"
+#include "String.h"
+#include "Estudiante.h"
+#include "Seccion.h"
 
 ManejadorOfertaLaboral* ManejadorOfertaLaboral::instance = NULL;
 
@@ -68,40 +70,40 @@ void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral *ol)
 
 void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
 {
-   //buscar oferta
-   // recorrer inscripciones y borrar link con estudiantes
-   //borrar coleccion inscripciones
-   //borrar oferta de IDictionary
+    //Quiero moverme por la coleccion de inscripciones de esta oferta e ir borrando el link con estudiante
+    //luego borrar la coleccion de inscripciones, borrar el link con seccion, borrar la coleccion de asignaturas (con el destructor de oferta creo)
+    //luego dar de baja la oferta de la coleccion de ofertasLaborales
     string numExpediente = ol->getNumExpediente();
     String *numExp = String(numExpediente);
-    OfertaLaboral *o = this->ofertasLaborales->find(numExp);
-    ICollection *inscripciones = getInscripciones();
+    OfertaLaboral *o = this->ofertasLaborales->find(numExp);// Es necesario buscarla si ya me pasan el puntero a la oferta que debo eliminar?
+    ICollection *inscripciones = o->getInscripciones();
     IIterator * it = inscripciones->getIterator();
     while(it.hasCurrent())
     {
         Estudiante *e = it.current()->getEstudiante();
         ICollection *insc = e->getInscripciones();
         insc->remove(it.current());
+        it.current()->estudiant = NULL;// para que al llamar al destructor de oferta al final no destruya al estudiante cuando destruye la inscripcion
         it.next();
     }
     delete it;
-    ICollection *entrevistas = getEntrevistas();
+    ICollection *entrevistas = o->getEntrevistas();
     IIterator * it = entrevistas->getIterator();
     while(it.hasCurrent())
     {
         Estudiante *e = it.current()->getEstudiante();
-        ICollection *entr = e->getInscripciones();
-        insc->remove(it.current());
+        ICollection *entre = e->getEntrevistas();
+        entre->remove(it.current());
+        it.current()->estudiant = NULL;// igual que arriba no se si esté bien
         it.next();
     }
     delete it;
-    //Queda lo de seccion y terminar esto
-
-
+    Seccion *seccion = o->getSeccion();
+    seccion->ofertasLaborales->remove(numExp);
+    o->seccion = NULL;// no se si sea asi, con aignaturas debería iterar e ir asignandole NULL antes de llamar al destructor de oferta?
+    this->ofertasLaborales->remove(numExp);
     delete o;
-    //Quiero moverme por la coleccion de inscripciones de esta oferta e ir borranco el link con estudiante
-    //luego borrar la coleccion de inscripciones, borrar el link con seccion, borrar la coleccion de asignaturas (con el destructor de oferta creo)
-    //luego dar de baja la oferta de la coleccion de ofertasLaborales
+
 }
 void ManejadorOfertaLaboral::destroyManejadorOfertaLaboral()
 {
