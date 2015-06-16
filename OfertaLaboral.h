@@ -20,6 +20,8 @@ class OfertaLaboral: public ICollectible
         OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas);
         OfertaLaboral(const OfertaLaboral &o);
         ~OfertaLaboral();
+
+        // getters
         string getNumExpediente();
         string getTitulo();
         string getDescripcion();
@@ -32,6 +34,10 @@ class OfertaLaboral: public ICollectible
         ICollection* getInscripciones();
         ICollection* getEntrevistas();
         IDictionary* getAsignaturas();
+        DataOfertaLaboral *getDataOfertaLaboral();
+        DataOfertaEmpresa *getDataOfertaLaboralEmpresa();
+
+        // setters
         void setNumExpediente(string numExpediente);
         void setTitulo(string titulo);
         void setDescripcion(string descripcion);
@@ -44,8 +50,8 @@ class OfertaLaboral: public ICollectible
         void setInscripciones(ICollection *inscripciones);
         void setEntrevistas(ICollection *entrevistas);
         void setAsignaturas(IDictionary *asignaturas);
-        DataOfertaLaboral *getDataOfertaLaboral();
-        DataOfertaEmpresa *getDataOfertaLaboralEmpresa();
+
+        // otros metodos
         void AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo);
         void Inscripcion(Date *fechaInscripcion);
         void Entrevista(Date *fechaEntrevista);
