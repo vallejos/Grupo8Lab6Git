@@ -1,6 +1,11 @@
 #include <iostream>
 #include <string>
+#incluce "Date.h"
 #include "InscripcionOfertaLaboral.h"
+#include "OfertaLaboralController.h"
+#include "EstudianteController.h"
+#include "DataOfertaLaboral.h"
+#include "DataEstudiante.h"
 #include "ICollection.h"
 
 InscripcionOfertaLaboral::InscripcionOfertaLaboral()
@@ -10,15 +15,14 @@ InscripcionOfertaLaboral::InscripcionOfertaLaboral()
 
 void InscripcionOfertaLaboral::ejecutarComando()
 {
-        //string rutaEmpresa, nomSucursal;
-    //ManejadorEmpresa* mEmpresa = ManejadorEmpresa::getInstance();
+    string numExpediente,cedula;
     OfertaLaboralController* cOfertaLab = OfertaLaboralController::getInstance();
 
     try
     {
-        ICollection* ofertasLaborales = cOfertaLab->ListarOfertas();
+        ICollection* ofertasLaborales = cOfertaLab->MostrarOfertasActivas()();
 
-        cout << "Lista de Ofertas Laborales:\n";
+        cout << "Lista de Ofertas Laborales Vigentes:\n";
 
         IIterator * it = ofertasLaborales->getIterator();
         while(it.hasCurrent())
@@ -26,7 +30,8 @@ void InscripcionOfertaLaboral::ejecutarComando()
             DataOfertaLaboral *dOfertaLab;
             if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
             {
-                cout << "Número de Expediente: " + dOfertaLab->getNumExpediente() + ", Título:" + dOfertaLab->getTitulo() + "\n";
+                //Tengo que cambiar las operaciones para traer los datos correctos
+                cout << "Nombre: " + dOfertaLab->getNumExpediente() + ", Empresa:" + dOfertaLab->getTitulo() + ", Ubicación:" + dOfertaLab->getTitulo() + ", Cantidad de Inscriptos:" + dOfertaLab->getTitulo() + ", Rango Salarial:" + dOfertaLab->getTitulo() + ", Cantidad de Plazas:" + dOfertaLab->getTitulo() + "\n";
             } else
             {
                 throw std::invalid_argument("InscripcionOfertaLaboral -> El objeto no es de la clase DataOfertaLaboral.");
@@ -34,42 +39,44 @@ void InscripcionOfertaLaboral::ejecutarComando()
         }
         delete it;
 
-        cout<< "Seleccione una Empresa indicando el RUT\n";
-        cin >> rutEmpresa;
+        cout<< "Seleccione una Oferta Laboral indicando el Nombre\n";
+        cin >> numExpediente;//O Nombre?
 
-        IDictionary* empresas = mEmpresa->getEmpresas();
-        String* rut = new String(rutaEmpresa);
+        cOfertaLab->SeleccionarOferta(numExpediente);
 
-        //Este tipo de control de errores se hacea este nivel ?????
-        if(empresas->member(rut))
-        {
-            cEmpresa->SeleccionarEmpresa(rutaEmpresa);
-        }
-        else
-        {
-            throw std::invalid_argument("La Empresa con RUT " + rutaEmpresa + " no existe en el sistema.");
-        }
+        EstudianteController *cEstudiante = EstudianteController::getInstance();
+        ICollection* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
+        cout << "Lista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
 
-        ICollection* dataSucursales = cEmpresa->ListarSucursales();
-        cout << "Lista de Sucursales:\n";
-
-        IIterator * it2 = dataEmpresas->getIterator();
+        IIterator * it2 = dataEstudiante->getIterator();
         while(it2.hasCurrent())
         {
-            DataSucursal *dSucursal;
-            if( (dSucursal = dynamic_cast<DataSucursal*> (it2.current())) != NULL )
+            DataEstudiante *dEstudiante;
+            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2.current())) != NULL )
             {
-                cout << "Nombre: " + dSucursal->getNombre() + "\n";
+                cout << "Cedula: " + dEstudiante->getCedula() + "\n";
             } else
             {
-                throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataSucursal.");
+                throw std::invalid_argument("InscripcionOfertaLaboral -> El objeto no es de la clase DataEstudiante.");
             }
         }
         delete it2;
 
-        cout<< "Seleccione una Sucursal indicando el nombre\n";
-        cin >> nomSucursal;
-        Empresa* empresa = cEmpresa->getEmpresa();
+        cout<< "Seleccione el Estudiante a inscribir indicando la Cedula\n";
+        cin >> cedula;
+
+        cEstudiante->SeleccionarEstudiante(string cedula);
+
+        cout<< "Ingrese la Fecha de Inscripción\n";
+        cout<< "Ingrese el Día\n";
+        cin >> dia;
+        cout<< "Ingrese el Mes\n";
+        cin >> mes;
+        cout<< "Ingrese el Año\n";
+        cin >> anio;
+        Date *fechaInsc = Date(dia,mes,anio);
+        cOfertaLab->Inscribir(fechaInsc);
+
     }
     catch(const std::invalid_argument &e)
     {

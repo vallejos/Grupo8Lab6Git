@@ -92,16 +92,16 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     }
     delete it;
     ICollection *entrevistas = o->getEntrevistas();
-    IIterator * it = entrevistas->getIterator();
-    while(it.hasCurrent())
+    IIterator * it2 = entrevistas->getIterator();
+    while(it2.hasCurrent())
     {
-        Estudiante *e = it.current()->getEstudiante();
+        Estudiante *e = it2.current()->getEstudiante();
         ICollection *entre = e->getEntrevistas();
-        entre->remove(it.current());
-        it.current()->estudiant = NULL;// igual que arriba no se si esté bien
-        it.next();
+        entre->remove(it2.current());
+        it2.current()->estudiant = NULL;// igual que arriba no se si esté bien
+        it2.next();
     }
-    delete it;
+    delete it2;
     Seccion *seccion = o->getSeccion();
     seccion->ofertasLaborales->remove(numExp);
     o->seccion = NULL;// no se si sea asi, con aignaturas debería iterar e ir asignandole NULL antes de llamar al destructor de oferta?
