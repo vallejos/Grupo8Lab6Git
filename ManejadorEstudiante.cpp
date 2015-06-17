@@ -67,7 +67,22 @@ Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
 {
     //Va a buscar en la coleccion de estudiantes del manejador,
     //y va a buscar el estudiante con cedula "cedula".
-    return this->estudiantes->find(cedula);
+    try
+    {
+        String* ci = new String(cedula);
+        if(this->estudiantes->member(ci))
+        {
+            return this->estudiantes->find(cedula);
+        }
+        else
+        {
+            throw std::invalid_argument("El Estudiante con C.I. " + cedula + " no existe en el Sistema.");
+        }
+    }
+    catch(const std::invalid_argument &e)
+    {
+    	throw std::invalid_argument(e.what());
+    }
 }
 
 ICollection *ManejadorEstudiante::getEstudiante()

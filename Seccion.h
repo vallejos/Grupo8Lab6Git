@@ -25,6 +25,8 @@ class Seccion: public ICollectible
         ~Seccion();
         string getNombre();
         string getInterno();
+        Sucursal* getSucursal();
+        Encargado* getEncargado();
         void setNombre(string nombre);
         void setInterno(string interno);
         DataSeccion *getDataSeccion();

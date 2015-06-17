@@ -40,9 +40,16 @@ void EstudianteController::SeleccionarEstudiante(string cedula)
 
 DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedula)
 {
-	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    Estudiante *e = me->SeleccionarEstudiante(cedula);
-    return (e->getDataDatosEstudiante());
+    try
+    {
+        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+        Estudiante *e = me->SeleccionarEstudiante(cedula);
+        return (e->getDataDatosEstudiante());
+    }
+    catch(const std::invalid_argument &e)
+    {
+    	throw std::invalid_argument(e.what());
+    }
 }
 
 ICollection* EstudianteController::ListarEstudiantesRegistrados()

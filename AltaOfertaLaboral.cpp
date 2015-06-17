@@ -34,7 +34,8 @@ void AltaOfertaLaboral::ejecutarComando()
             if( (dEmpresa = dynamic_cast<DataEmpresa*> (it.current())) != NULL )
             {
                 cout << "Nombre: " + dEmpresa->getNombre() + ", RUT:" + dEmpresa->getRut() + "\n";
-            } else
+            }
+            else
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataEmpresa.");
             }

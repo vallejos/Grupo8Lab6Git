@@ -14,11 +14,11 @@ class DataEmpresa
         ~DataEmpresa();
         string getRut();
         string getNombre();
-        DataSucursal **getSucursal();
+        ICollection* getSucursal();
     private:
         string rut;
         string nombre;
-        DataSucursal **sucursales;
+        ICollection* sucursales;
 };
 
 #endif // DTEMPRESA_H
