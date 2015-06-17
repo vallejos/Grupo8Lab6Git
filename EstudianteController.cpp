@@ -52,12 +52,15 @@ void EstudianteController::SeleccionarEstudiante(string cedula)
 
 DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedula)
 {
-    try {
-    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    try
+    {
+        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
         Estudiante *e = me->SeleccionarEstudiante(cedula);
         return (e->getDataDatosEstudiante());
-    } catch (e) {
-        throw e;
+    }
+    catch(const std::invalid_argument &e)
+    {
+    	throw std::invalid_argument(e.what());
     }
 }
 

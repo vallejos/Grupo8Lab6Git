@@ -37,6 +37,16 @@ string Seccion::getInterno()
 	return this->interno;
 }
 
+Sucursal* Seccion::getSucursal()
+{
+    return this->sucursal;
+}
+
+Encargado* Seccion::getEncargado()
+{
+    return this->encargado;
+}
+
 void Seccion::setNombre(string nombre)
 {
     this->nombre = nombre;

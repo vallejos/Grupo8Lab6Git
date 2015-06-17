@@ -25,7 +25,7 @@ string DataEmpresa::getNombre()
 	return this->nombre;
 }
 
-DataSucursal ** DataEmpresa::getSucursal()
+ICollection* DataEmpresa::getSucursal()
 {
 	return this->sucursales;
 }

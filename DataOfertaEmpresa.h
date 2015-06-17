@@ -8,6 +8,8 @@ class DataOfertaEmpresa {
     public:
         DataOfertaEmpresa();
         DataOfertaEmpresa(DataEmpresa *dataEmpresa, DataOfertaLaboral *dataOferta);
+        DataEmpresa* getDataEmpresa();
+        DataOfertaLaboral* getDataOfertaLaboral();
         ~DataOfertaEmpresa();
     protected:
     private:
