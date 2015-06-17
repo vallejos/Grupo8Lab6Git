@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
+#include "cmdAsignacionDeOfertaAEstudiante.h"
 #include "OfertaLaboralController.h"
 #include "ICollection.h"
 #include "DataOfertaLaboral.h"
-#include "dataEstudiante.h"
+#include "DataEstudiante.h"
 
 using namespace std;
 
@@ -70,15 +71,8 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
         ctrlE->SeleccionarEstudiante(cedula);
 
         // solicitar datos que faltan
-        cout<< "Ingrese la fecha de Efectivizacion \n";
-        cout<< "Ingrese el Dia: \n";
-        cin >> dd;
-
-        cout<< "Ingrese el Mes: \n";
-        cin >> mm;
-
-        cout<< "Ingrese el Anio: \n";
-        cin >> aa;
+        cout<< "\nFecha de Efectivizacion (dd mm aaaa): ";
+        cin >> dd >> mm >> aa;
 
         fechaEfectivizacion = new Date(dd, mm, aa);
 

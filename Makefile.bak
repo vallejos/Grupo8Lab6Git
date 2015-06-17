@@ -6,8 +6,8 @@ LFLAGS=-Wall
 
 all: lab6
 
-lab6:  AltaEntrevista.o AltaOfertaLaboral.o Aprobacion.o AsignacionDeOfertaAEstudiante.o Asignatura.o Carrera.o ConsultarDatosEstudiantes.o Criterio1.o Criterio2.o DarDeBajaLlamado.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o InscripcionOfertaLaboral.o IObserver.o IOfertaLaboralController.o ListarOfertasActivas.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o ModificarEstudiante.o ModificarLlamado.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o
-	$(CC) $(LFLAGS)  AltaEntrevista.o AltaOfertaLaboral.o Aprobacion.o AsignacionDeOfertaAEstudiante.o Asignatura.o Carrera.o ConsultarDatosEstudiantes.o Criterio1.o Criterio2.o DarDeBajaLlamado.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o InscripcionOfertaLaboral.o IObserver.o IOfertaLaboralController.o ListarOfertasActivas.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o ModificarEstudiante.o ModificarLlamado.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o -o lab6
+lab6:  AltaEntrevista.o AltaOfertaLaboral.o Aprobacion.o AsignacionDeOfertaAEstudiante.o Asignatura.o Carrera.o cmdAsignacionDeOfertaAEstudiante.o cmdDarDeBajaLlamado.o ConsultarDatosEstudiantes.o Criterio1.o Criterio2.o DarDeBajaLlamado.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o InscripcionOfertaLaboral.o IObserver.o IOfertaLaboralController.o ListarOfertasActivas.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o ModificarEstudiante.o ModificarLlamado.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o
+	$(CC) $(LFLAGS)  AltaEntrevista.o AltaOfertaLaboral.o Aprobacion.o AsignacionDeOfertaAEstudiante.o Asignatura.o Carrera.o cmdAsignacionDeOfertaAEstudiante.o cmdDarDeBajaLlamado.o ConsultarDatosEstudiantes.o Criterio1.o Criterio2.o DarDeBajaLlamado.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o InscripcionOfertaLaboral.o IObserver.o IOfertaLaboralController.o ListarOfertasActivas.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o ModificarEstudiante.o ModificarLlamado.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o -o lab6
 
 
 AltaEntrevista.o: AltaEntrevista.h AltaEntrevista.cpp
@@ -27,6 +27,12 @@ Asignatura.o: Asignatura.h Asignatura.cpp
 
 Carrera.o: Carrera.h Carrera.cpp
 	$(CC) $(CFLAGS) Carrera.cpp -o Carrera.o
+
+cmdAsignacionDeOfertaAEstudiante.o: cmdAsignacionDeOfertaAEstudiante.h cmdAsignacionDeOfertaAEstudiante.cpp
+	$(CC) $(CFLAGS) cmdAsignacionDeOfertaAEstudiante.cpp -o cmdAsignacionDeOfertaAEstudiante.o
+
+cmdDarDeBajaLlamado.o: cmdDarDeBajaLlamado.h cmdDarDeBajaLlamado.cpp
+	$(CC) $(CFLAGS) cmdDarDeBajaLlamado.cpp -o cmdDarDeBajaLlamado.o
 
 ConsultarDatosEstudiantes.o: ConsultarDatosEstudiantes.h ConsultarDatosEstudiantes.cpp
 	$(CC) $(CFLAGS) ConsultarDatosEstudiantes.cpp -o ConsultarDatosEstudiantes.o

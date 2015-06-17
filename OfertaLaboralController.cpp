@@ -18,29 +18,49 @@ OfertaLaboralController *OfertaLaboralController::getInstance() {
 }
 
 ICollection *OfertaLaboralController::ListarOfertas() {
-	ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
-	return mo->getAllDataOfertaLaboral();
+	try {
+		ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
+		return mo->getAllDataOfertaLaboral();
+	} catch (e) {
+    	throw e;
+	}
 }
 
 void OfertaLaboralController::SeleccionarOferta(string numExpediente) {
-	ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
-	this->oferta = mo->SeleccionarOferta(numExpediente);
+	try {
+		ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
+		this->oferta = mo->SeleccionarOferta(numExpediente);
+	} catch (e) {
+    	throw e;
+	}
 }
 
 void OfertaLaboralController::Inscribir(Date *fechaInscripcion) {
-    this->oferta->Inscripcion(fechaInscripcion);
-    //BORRAR MEMORIA ?? oferta y estudiante en memoria
+	try {
+	    this->oferta->Inscripcion(fechaInscripcion);
+	    //BORRAR MEMORIA ?? oferta y estudiante en memoria
+	} catch (e) {
+    	throw e;
+	}
 }
 
 void OfertaLaboralController::Entrevistar(Date *fechaEntrevista) {
-    this->oferta->Entrevista(fechaEntrevista);
-    //BORRAR MEMORIA ?? oferta y estudiante en memoria
+	try {
+	    this->oferta->Entrevista(fechaEntrevista);
+	    //BORRAR MEMORIA ?? oferta y estudiante en memoria
+	} catch (e) {
+    	throw e;
+	}
 }
 
 ICollection *OfertaLaboralController::MostrarOfertasActivas()
 {
-    ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
-	return mol->getDataOfertaLaboral();
+	try {
+	    ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
+		return mol->getDataOfertaLaboral();
+	} catch (e) {
+    	throw e;
+	}
 }
 
 OfertaLaboral* OfertaLaboralController::getOfertaLaboral()
@@ -50,17 +70,34 @@ OfertaLaboral* OfertaLaboralController::getOfertaLaboral()
 
 void OfertaLaboralController::ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos)
 {
-    ManejadorOfertaLaboral *mol = ManejadorOfertaLaboral::getInstance();
-    mol->ModificarOferta(numExpediente, nuevosDatos);
+	try {
+	    ManejadorOfertaLaboral *mol = ManejadorOfertaLaboral::getInstance();
+	    mol->ModificarOferta(numExpediente, nuevosDatos);
+	} catch (e) {
+    	throw e;
+	}
 }
 
 void OfertaLaboralController::AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)
 {
-	ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
-	this->oferta->AltaAsignacionCargo(fechaEfectivizacion, sueldo);
-    // BORRAR MEMORIA??
+	try {
+		ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
+		this->oferta->AltaAsignacionCargo(fechaEfectivizacion, sueldo);
+	    // BORRAR MEMORIA??
+	} catch (e) {
+    	throw e;
+	}
 }
 
-void OfertaLaboralController::DarBajaLlamado(OfertaLaboral *ol) {
+void OfertaLaboralController::DarBajaLlamado() {
+	try {
+		// TODO
 
+		// buscar llamado
+
+		// borrar
+
+	} catch (e) {
+    	throw e;
+	}
 }
