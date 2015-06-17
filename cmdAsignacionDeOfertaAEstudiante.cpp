@@ -71,15 +71,8 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
         ctrlE->SeleccionarEstudiante(cedula);
 
         // solicitar datos que faltan
-        cout<< "Ingrese la fecha de Efectivizacion: \n";
-        cout<< "Dia: \n";
-        cin >> dd;
-
-        cout<< "Mes: \n";
-        cin >> mm;
-
-        cout<< "Anio: \n";
-        cin >> aa;
+        cout<< "\nFecha de Efectivizacion (dd mm aaaa): ";
+        cin >> dd >> mm >> aa;
 
         fechaEfectivizacion = new Date(dd, mm, aa);
 
