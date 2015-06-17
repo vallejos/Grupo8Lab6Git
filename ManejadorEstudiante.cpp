@@ -46,10 +46,9 @@ ICollection* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
     return result;
 }
 
-void ManejadorEstudiante::ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos)
+void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar)
 {
-//Pre: ningun dato del nuevosDatos es vacio.
-//p.e si el usuario no modifica el apellido, el DataEstudiante debe contener el apellido del estudiante y no ser vacio
+    //Arreglar esta operacion
     Estudiante* e = this->estudiantes->find(cedula);
     e->setApellido(nuevosDatos->getApellido());
     e->setNombre(nuevosDatos->getNombre());
