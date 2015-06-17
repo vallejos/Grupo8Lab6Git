@@ -1,31 +1,29 @@
-#include "AltaEntrevista.h"
+#include "cmdAltaEntrevista.h"
 #include <string>
 #include <iostream>
-#include "OfertaLaboralController.h"
+#include "IOfertaLaboralController.h"
 #include "ICollection.h"
 #include "DataOfertaLaboral.h"
-#include "ManejadorOfertaLaboral.h"
+#include "Fabrica.h"
 #include "Date.h"
-#include "ManejadorEstudiante.h"
-#include "EstudianteController.h"
+#include "IIterator.h"
+#include "IEstudianteController.h"
 #include "DataEstudiante.h"
 
 using namespace std;
 
-AltaEntrevista::AltaEntrevista()
+cmdAltaEntrevista::cmdAltaEntrevista()
 {
     //ctor
 }
 
-void AltaEntrevista::ejecutarComando()
+void cmdAltaEntrevista::ejecutarComando()
 {
     string numExpe, cedEstudiante;
     int diaEnt, mesEnt, anioEnt;
-    ManejadorOfertaLaboral* mOferta = ManejadorOfertaLaboral::getInstance();
-    ManejadorEstudiante* mEstudiante = ManejadorEstudiante::getInstance();
-    OfertaLaboralController* cOferta = OfertaLaboralController::getInstance();
-    EstudianteController* cEstudiante = EstudianteController::getInstance();
-    Date* fechaEntrevista;
+    Fabrica* fab = Fabrica::getInstance();
+    IOfertaLaboralController* cOferta = fab->getIOfertaLaboralController();
+    IEstudianteController* cEstudiante = fab->getIEstudianteController();
 
     try
     {
@@ -41,23 +39,16 @@ void AltaEntrevista::ejecutarComando()
                 cout << "Numero de Expediente: " + dol->getNumExpediente() + ", Titulo:" + dol->getTitulo() + ", Descripcion:" + dol->getDescripcion() + "\n";
             } else
             {
-                throw std::invalid_argument("AltaEntrevista -> El objeto no es de la clase DataOfertaLaboral.");
+                throw std::invalid_argument("cmdAltaEntrevista -> El objeto no es de la clase DataOfertaLaboral.");
             }
         }
         delete it;
+
         //SELECCIONAR OFERTA LABORAL
         cout<< "Seleccione una Oferta Laboral indicando el numero de expediente\n";
         cin >> numExpe;
-        IDictionary* ofertas = mOferta->getOfertasLaborales();
-        String* nExpe = new String(numExpe);
-        if(ofertas->member(nExpe))
-        {
-            cOferta->SeleccionarOferta(numExpe);
-        }
-        else
-        {
-            throw std::invalid_argument("La Oferta Laboral con numero de expediente " + numExpe + " no existe en el sistema.");
-        }
+        cOferta->SeleccionarOferta(numExpe);
+
         //LISTAR ESTUDIANTES INSCRIPTOS EN ESA OFERTA LABORAL
         ICollection* dataEstudiantes= cEstudiante->ListarEstudiantesInscriptosEnOferta();
         cout << "Lista de Estudiantes inscriptos es la Oferta Laboral:\n";
@@ -70,33 +61,23 @@ void AltaEntrevista::ejecutarComando()
                 cout << "Cedula: " + dEstudiante->getCedula + ", Apellido: " + dEstudiante->getApellido() + "\n";
             } else
             {
-                throw std::invalid_argument("AltaEntrevista -> El objeto no es de la clase DataEstudiante.");
+                throw std::invalid_argument("cmdAltaEntrevista -> El objeto no es de la clase DataEstudiante.");
             }
         }
         delete it2;
+
         //SELECCIONA ESTUDIANTE
         cout<< "Seleccione un Estudiante indicando la cedula\n";
         cin >> cedEstudiante;
-        IDictionary* estudiantes = mEstudiante->getEstudiantes();
-        String* cEst = new String(cedEstudiante);
-        if(estudiantes->member(cEst))
-        {
-            cEstudiante->SeleccionarEstudiante(cedEstudiante);
-        }
-        else
-        {
-            throw std::invalid_argument("El estudiante con cedula " + cedEstudiante + " no existe en el sistema.");
-        }
+        cEstudiante->SeleccionarEstudiante(cedEstudiante);
+
         //INDICA FECHA ENTREVISTA
-        cout<< "Indique el dia de la entrevista: \n";
-        cin >> diaEnt;
-        cout<< "Ahora indique el mes: \n";
-        cin >> mesEnt;
-        cout<< "Y por ultimo el año: \n";
-        cin >> anioEnt;
-        fechaEntrevista = Date(diaEnt, mesEnt, anioEnt);
+        cout<< "Indique la fecha de la entrevista (dd mm aaaa): \n";
+        cin >> diaEnt >> mesEnt >> anioEnt;
+        Date* fechaEntrevista = new Date(diaEnt, mesEnt, anioEnt);
+
         //DA DE ALTA ENTREVISTA
-        cOferta->Entrevistar(fechaEntrevista);
+        cOferta->Entrevistar(Date(diaEnt, mesEnt, anioEnt);
     }
     catch(const std::invalid_argument &e)
     {
@@ -104,7 +85,7 @@ void AltaEntrevista::ejecutarComando()
     }
 }
 
-AltaEntrevista::~AltaEntrevista()
+cmdAltaEntrevista::~cmdAltaEntrevista()
 {
     //dtor
 }
