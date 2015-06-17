@@ -6,8 +6,8 @@ LFLAGS=-Wall
 
 all: lab6
 
-lab6:  AltaEntrevista.o AltaOfertaLaboral.o Aprobacion.o AsignacionDeOfertaAEstudiante.o Asignatura.o Carrera.o cmdAsignacionDeOfertaAEstudiante.o cmdDarDeBajaLlamado.o ConsultarDatosEstudiantes.o Criterio1.o Criterio2.o DarDeBajaLlamado.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o InscripcionOfertaLaboral.o IObserver.o IOfertaLaboralController.o ListarOfertasActivas.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o ModificarEstudiante.o ModificarLlamado.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o
-	$(CC) $(LFLAGS)  AltaEntrevista.o AltaOfertaLaboral.o Aprobacion.o AsignacionDeOfertaAEstudiante.o Asignatura.o Carrera.o cmdAsignacionDeOfertaAEstudiante.o cmdDarDeBajaLlamado.o ConsultarDatosEstudiantes.o Criterio1.o Criterio2.o DarDeBajaLlamado.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o InscripcionOfertaLaboral.o IObserver.o IOfertaLaboralController.o ListarOfertasActivas.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o ModificarEstudiante.o ModificarLlamado.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o -o lab6
+lab6:  AltaEntrevista.o AltaOfertaLaboral.o Aprobacion.o Asignatura.o Carrera.o cmdAsignacionDeOfertaAEstudiante.o cmdDarDeBajaLlamado.o cmdModificarLlamado.o ConsultarDatosEstudiantes.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o InscripcionOfertaLaboral.o IObserver.o IOfertaLaboralController.o ListarOfertasActivas.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o ModificarEstudiante.o ModificarLlamado.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o
+	$(CC) $(LFLAGS)  AltaEntrevista.o AltaOfertaLaboral.o Aprobacion.o Asignatura.o Carrera.o cmdAsignacionDeOfertaAEstudiante.o cmdDarDeBajaLlamado.o cmdModificarLlamado.o ConsultarDatosEstudiantes.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o InscripcionOfertaLaboral.o IObserver.o IOfertaLaboralController.o ListarOfertasActivas.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o ModificarEstudiante.o ModificarLlamado.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o -o lab6
 
 
 AltaEntrevista.o: AltaEntrevista.h AltaEntrevista.cpp
@@ -18,9 +18,6 @@ AltaOfertaLaboral.o: AltaOfertaLaboral.h AltaOfertaLaboral.cpp
 
 Aprobacion.o: Aprobacion.h Aprobacion.cpp
 	$(CC) $(CFLAGS) Aprobacion.cpp -o Aprobacion.o
-
-AsignacionDeOfertaAEstudiante.o: AsignacionDeOfertaAEstudiante.h AsignacionDeOfertaAEstudiante.cpp
-	$(CC) $(CFLAGS) AsignacionDeOfertaAEstudiante.cpp -o AsignacionDeOfertaAEstudiante.o
 
 Asignatura.o: Asignatura.h Asignatura.cpp
 	$(CC) $(CFLAGS) Asignatura.cpp -o Asignatura.o
@@ -34,6 +31,9 @@ cmdAsignacionDeOfertaAEstudiante.o: cmdAsignacionDeOfertaAEstudiante.h cmdAsigna
 cmdDarDeBajaLlamado.o: cmdDarDeBajaLlamado.h cmdDarDeBajaLlamado.cpp
 	$(CC) $(CFLAGS) cmdDarDeBajaLlamado.cpp -o cmdDarDeBajaLlamado.o
 
+cmdModificarLlamado.o: cmdModificarLlamado.h cmdModificarLlamado.cpp
+	$(CC) $(CFLAGS) cmdModificarLlamado.cpp -o cmdModificarLlamado.o
+
 ConsultarDatosEstudiantes.o: ConsultarDatosEstudiantes.h ConsultarDatosEstudiantes.cpp
 	$(CC) $(CFLAGS) ConsultarDatosEstudiantes.cpp -o ConsultarDatosEstudiantes.o
 
@@ -42,9 +42,6 @@ Criterio1.o: Criterio1.h Criterio1.cpp
 
 Criterio2.o: Criterio2.h Criterio2.cpp
 	$(CC) $(CFLAGS) Criterio2.cpp -o Criterio2.o
-
-DarDeBajaLlamado.o: DarDeBajaLlamado.h DarDeBajaLlamado.cpp
-	$(CC) $(CFLAGS) DarDeBajaLlamado.cpp -o DarDeBajaLlamado.o
 
 DataAprobada.o: DataAprobada.h DataAprobada.cpp
 	$(CC) $(CFLAGS) DataAprobada.cpp -o DataAprobada.o
