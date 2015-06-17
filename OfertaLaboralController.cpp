@@ -89,9 +89,13 @@ void OfertaLaboralController::AltaAsignacionDelCargo(Date* fechaEfectivizacion, 
 	}
 }
 
-void OfertaLaboralController::DarBajaLlamado(OfertaLaboral *ol) {
+void OfertaLaboralController::DarBajaLlamado() {
 	try {
 		// TODO
+
+		// buscar llamado
+
+		// borrar
 
 	} catch (e) {
     	throw e;
