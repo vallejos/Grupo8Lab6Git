@@ -88,7 +88,6 @@ void AltaEntrevista::ejecutarComando()
             throw std::invalid_argument("El estudiante con cedula " + cedEstudiante + " no existe en el sistema.");
         }
         //INDICA FECHA ENTREVISTA
-//me parece que esta parte no esta muy prolija o bien que digamos
         cout<< "Indique el dia de la entrevista: \n";
         cin >> diaEnt;
         cout<< "Ahora indique el mes: \n";
