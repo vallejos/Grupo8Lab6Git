@@ -9,7 +9,17 @@ DataEstudiante::DataEstudiante(string cedula, string nombre, string apellido, st
                                 int creditos, string email, IDictionary* carreras, ICollection* aprobadas,
                                 ICollection* inscripciones, ICollection* entrevistas);
 {
-// FALTA HACER
+    this->cedula = cedula;
+    this->nombre = nombre;
+    this->apellido = apellido;
+    this->telefono = telefono;
+    this->fechaNacimiento = fechaNacimiento;
+    this->creditos = creditos;
+    this->email = email;
+    this->carreras = carreras;
+    this->aprobadas = aprobadas;
+    this->inscripciones = inscripciones;
+    this->entrevistas = entrevistas;
 }
 
 DataEstudiante::DataEstudiante(const DataEstudiante &e)
