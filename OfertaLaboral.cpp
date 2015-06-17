@@ -133,7 +133,8 @@ DataOfertaLaboral *OfertaLaboral::getDataOfertaLaboral()
 {
     return new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
         this->cantidadHorasSemanales, this->rangoSalarial, this->fechaComienzo, this->fechaFin,
-        this->cantidadPuestosNecesarios);
+        this->cantidadPuestosNecesarios, this->asignaturas, this->seccion, this->inscripciones,
+        this->entrevistas);
 }
 
 DataOfertaEmpresa* OfertaLaboral::getDataOfertaLaboralEmpresa()
