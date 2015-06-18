@@ -12,7 +12,7 @@
 class IEmpresaController
 {
     public:
-        virtual void altaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango* rangoSalarial, Date* fechaComienzo, Date* fechaFin, int cantidadPuestosNecesarios, List* asignaturas) = 0;
+        virtual void altaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango* rangoSalarial, Date* fechaComienzo, Date* fechaFin, int cantidadPuestosNecesarios, ICollection* asignaturas) = 0;
         virtual ICollection* ListarEmpresas() = 0;
         virtual ICollection* ListarSucursales() = 0;
         virtual ICollection* ListarSecciones() = 0;

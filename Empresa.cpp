@@ -40,8 +40,16 @@ ICollection *Empresa::getDataSucursales()
 
 Sucursal *Empresa::getSucursal(string nombre) {
     String *keyNombre = new String(nombre);
-    Sucursal *sucursal = this->sucursales->find(keyNombre);
-    delete keyNombre;
 
-	return sucursal;
+    if (this->sucursales->member(keyNombre))
+    {
+        Sucursal *sucursal = this->sucursales->find(keyNombre);
+        delete keyNombre;
+        return sucursal;
+    }
+    else
+    {
+        throw std::invalid_argument("La Sucursal de nombre " + nombre + " no existe en el Sistema.");
+    }
+
 }

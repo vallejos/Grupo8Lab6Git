@@ -14,13 +14,13 @@ class Empresa: public ICollectible {
         ~Empresa();
         string getRut();
         string getNombre();
-        ICollection *getDataSucursales(); // DataSucursal
+        IDictionary *getDataSucursales(); // DataSucursal
         Sucursal *getSucursal(string nombre);
     protected:
     private:
         string rut;
         string nombre;
-        ICollection *sucursales;
+        IDictionary *sucursales;
 };
 
 #endif // EMPRESA_H
