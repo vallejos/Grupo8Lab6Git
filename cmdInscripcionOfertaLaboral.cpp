@@ -1,4 +1,4 @@
-#include "InscripcionOfertaLaboral.h"
+#include "cmdInscripcionOfertaLaboral.h"
 #include <iostream>
 #include <string>
 #incluce "Date.h"
@@ -9,12 +9,12 @@
 #include "DataEstudiante.h"
 #include "ICollection.h"
 
-InscripcionOfertaLaboral::InscripcionOfertaLaboral()
+cmdInscripcionOfertaLaboral::cmdInscripcionOfertaLaboral()
 {
     //ctor
 }
 
-void InscripcionOfertaLaboral::ejecutarComando()
+void cmdInscripcionOfertaLaboral::ejecutarComando()
 {
     string numExpediente, cedula;
     Fabrica* fab = Fabrica::getInstance();
@@ -93,7 +93,7 @@ void InscripcionOfertaLaboral::ejecutarComando()
 
 }
 
-InscripcionOfertaLaboral::~InscripcionOfertaLaboral()
+cmdInscripcionOfertaLaboral::~cmdInscripcionOfertaLaboral()
 {
     //dtor
 }

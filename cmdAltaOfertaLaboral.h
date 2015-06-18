@@ -1,15 +1,15 @@
-#ifndef ALTAOFERTALABORAL_H
-#define ALTAOFERTALABORAL_H
+#ifndef CMD_ALTAOFERTALABORAL_H
+#define CMD_ALTAOFERTALABORAL_H
 
 
-class AltaOfertaLaboral : public IComando
+class cmdAltaOfertaLaboral : public IComando
 {
     public:
-        AltaOfertaLaboral();
+        cmdAltaOfertaLaboral();
         void ejecutarComando();
-        ~AltaOfertaLaboral();
+        ~cmdAltaOfertaLaboral();
     protected:
     private:
 };
 
-#endif // ALTAOFERTALABORAL_H
+#endif // CMD_ALTAOFERTALABORAL_H

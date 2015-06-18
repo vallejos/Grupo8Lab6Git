@@ -1,15 +1,15 @@
-#ifndef INSCRIPCIONOFERTALABORAL_H
-#define INSCRIPCIONOFERTALABORAL_H
+#ifndef CMD_INSCRIPCIONOFERTALABORAL_H
+#define CMD_INSCRIPCIONOFERTALABORAL_H
 
 
-class InscripcionOfertaLaboral : public IComando
+class cmdInscripcionOfertaLaboral : public IComando
 {
     public:
-        InscripcionOfertaLaboral();
+        cmdInscripcionOfertaLaboral();
         void ejecutarComando();
-        ~InscripcionOfertaLaboral();
+        ~cmdInscripcionOfertaLaboral();
     protected:
     private:
 };
 
-#endif // INSCRIPCIONOFERTALABORAL_H
+#endif // CMD_INSCRIPCIONOFERTALABORAL_H
