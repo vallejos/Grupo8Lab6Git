@@ -10,7 +10,7 @@
 using namespace std;
 
 //Singleton
-class EstudianteController
+class EstudianteController : public IEstudianteController
 {
     private:
         EstudianteController();
@@ -26,6 +26,8 @@ class EstudianteController
         DataDatosEstudiante *ConsultarDatosEstudiante(string cedula);
         ICollection *ListarEstudiantesRegistrados();
         Estudiante* getEstudiante();
+        IDictionary* getAsignaturas();
+        IDictionary* getCarreras();
         void destroyEstudianteController();
 };
 
