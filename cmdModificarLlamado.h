@@ -1,6 +1,7 @@
 #ifndef CMD_MODIFICARLLAMADO_H
 #define CMD_MODIFICARLLAMADO_H
 
+#include "IComando.h"
 
 class cmdModificarLlamado: public IComando
 {

@@ -1,6 +1,8 @@
 #ifndef CMD_CARGARDATOSDEPRUEBA_H
 #define CMD_CARGARDATOSDEPRUEBA_H
 
+#include "IComando.h"
+
 class cmdCargarDatosDePrueba: public IComando
 {
     public:
