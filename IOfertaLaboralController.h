@@ -11,7 +11,7 @@ using namespace std;
 //Interfaz
 class IOfertaLaboralController {
     public:
-        IOfertaLaboralController() = 0;
+        IOfertaLaboralController();
         virtual ICollection* ListarOfertas() = 0;
         virtual DataOfertaLaboral* SeleccionarOferta(string numExpediente) = 0;
         virtual void Inscribir(Date* fechaInscripcion) = 0;
@@ -20,7 +20,7 @@ class IOfertaLaboralController {
         virtual void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos) = 0;
         virtual void AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)=0;
         virtual void DarBajaLlamado(OfertaLaboral *ol) = 0;
-        virtual ~IOfertaLaboralController(){}; //virtual y vacio
+        virtual ~IOfertaLaboralController() = 0; //virtual y vacio
 };
 
 #endif // IOFERTALABORALCONTROLLER_H

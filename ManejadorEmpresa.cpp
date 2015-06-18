@@ -24,7 +24,7 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
 {
     List* result = new List();
     IIterator * it = this->empresas->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         result->add(it.current()->getDatosEmpresa());
         it.next();

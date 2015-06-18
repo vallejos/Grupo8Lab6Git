@@ -193,7 +193,7 @@ void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
     Estudiante* e = ec->getEstudiante();
     IIterator * it = e->inscripciones()->getIterator();
     bool noEncontrada = true;
-    while((it.hasCurrent())&&(noEncontrada))
+    while((it->hasCurrent())&&(noEncontrada))
     {
         if(it.current()->EstInscripto(this->numExpediente))
         {

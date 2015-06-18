@@ -26,7 +26,7 @@ ICollection *Criterio1::devolverListaAsignatura(ICollection *asignaturas)
 
     ICollection result = NULL;
     IIterator * it = e->getElemIterator();
-    while(it.hasCurrent() && !found)
+    while(it->hasCurrent() && !found)
     {
         if(it.current()->getAprobadas() != NULL)
         {

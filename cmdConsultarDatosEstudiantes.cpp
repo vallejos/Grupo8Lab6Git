@@ -31,7 +31,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         cout<< "Estudiantes registrados:\n";
 
         IIterator * it = dataEstudiantes->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it.current())) != NULL )
@@ -52,7 +52,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         cout<< "\n\nAsignaturas aprobadas:\n";
         ICollection* dataAprobadas = datosEstudiantes->getDataAprobadas();
         IIterator * it = dataAprobadas->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataAprobada *dAprobada;
             if( (dAprobada = dynamic_cast<DataAprobada*> (it.current())) != NULL )
@@ -70,7 +70,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         cout<< "\n\nLlamados a los que se inscribio el Estudiante:\n";
         ICollection* dataOfertasEmpresas = datosEstudiantes->getDataOfertasEmpresas();
         IIterator * it = dataOfertasEmpresas->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataOfertaEmpresa *dOferEmp;
             if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it.current())) != NULL )

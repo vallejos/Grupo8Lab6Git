@@ -22,7 +22,7 @@ ICollection *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
     //por cada estudiante no inscripto se crea un DataEstudiante para luego retornar una coleccion de DataEstudiante.
     List* result = new List();
     IIterator * it = this->estudiantes->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         if (it.current()->EstNoInscripto(numExpediente))
             result->add(it.current()->getDataEstudiante());
@@ -36,7 +36,7 @@ ICollection* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
 {
     List* result = new List();
     IIterator * it = this->estudiantes->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         if (it.current()->EstInscripto(numExpediente))
             result->add(it.current()->getDataEstudiante());
@@ -90,7 +90,7 @@ ICollection *ManejadorEstudiante::getEstudiante()
     //Va a recorrer los estudiantes del sistema y por cada estudiante crea un DataEstudiante para luego retornar un set.
     List* result = new List();
     IIterator * it = this->estudiantes->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         result->add(it.current()->getDataEstudiante());
         it.next();

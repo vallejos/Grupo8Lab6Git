@@ -3,9 +3,10 @@
 
 #include <string>
 #include "DataSucursal.h"
-#include "Sucursal.h"
 #include "interfaces/ICollectible.h"
 #include "interfaces/ICollection.h"
+
+class Sucursal;
 
 class Empresa: public ICollectible {
     public:
@@ -23,4 +24,7 @@ class Empresa: public ICollectible {
         ICollection *sucursales;
 };
 
+#include "Sucursal.h"
+
 #endif // EMPRESA_H
+
