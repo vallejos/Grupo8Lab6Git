@@ -12,6 +12,8 @@
 class IEmpresaController
 {
     public:
+        IEmpresaController() = 0;
+        virtual ~IEmpresaController() = 0;
         virtual void altaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango* rangoSalarial, Date* fechaComienzo, Date* fechaFin, int cantidadPuestosNecesarios, List* asignaturas) = 0;
         virtual ICollection* ListarEmpresas() = 0;
         virtual ICollection* ListarSucursales() = 0;

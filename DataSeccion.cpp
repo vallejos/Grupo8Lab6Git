@@ -38,5 +38,6 @@ DataEncargado *DataSeccion::getEncargado()
 
 DataSeccion::~DataSeccion()
 {
-    delete this->encargado;
+    if (this->encargado != NULL)
+        delete this->encargado;
 }

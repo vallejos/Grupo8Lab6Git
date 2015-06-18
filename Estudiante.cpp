@@ -45,7 +45,11 @@ Estudiante::Estudiante(const Estudiante &e)
     this->fechaNacimiento = e.fechaNacimiento;
     this->creditos = e.creditos;
     this->email = e.email;
-    //falta carreras, aprobadas e inscripciones pero es al pedo xq no lo vamos a usar
+    this->carreras = e.carreras;
+    this->aprobadas = e.aprobadas;
+    this->inscripciones = e.inscripciones;
+    this->entrevistas = e.entrevistas;
+    this->notificaciones = e.notificaciones;
 }
 
 string Estudiante::getCedula()
@@ -333,4 +337,16 @@ void Estudiante::enviarMail(string numExpediente)
 Estudiante::~Estudiante()
 {
     //dtor
+    if (this->fechaNacimiento != NULL)
+        delete this->fechaNacimiento;
+    if (this->carreras != NULL)
+        delete this->carreras;
+    if (this->aprobadas!= NULL)
+        delete this->aprobadas;
+    if (this->inscripciones!= NULL)
+        delete this->inscripciones;
+    if (this->entrevistas!= NULL)
+        delete this->entrevistas;
+    if (this->notificaciones!= NULL)
+        delete this->notificaciones;
 }

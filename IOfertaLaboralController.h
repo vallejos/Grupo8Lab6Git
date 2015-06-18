@@ -11,6 +11,7 @@ using namespace std;
 //Interfaz
 class IOfertaLaboralController {
     public:
+        IOfertaLaboralController() = 0;
         virtual ICollection* ListarOfertas() = 0;
         virtual DataOfertaLaboral* SeleccionarOferta(string numExpediente) = 0;
         virtual void Inscribir(Date* fechaInscripcion) = 0;

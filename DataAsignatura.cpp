@@ -40,5 +40,6 @@ int DataAsignatura::getCreditos()
 
 DataAsignatura::~DataAsignatura()
 {
-
+    //dtor
+    //vacio
 }

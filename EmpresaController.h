@@ -25,7 +25,7 @@ class EmpresaController {
         void SeleccionarEmpresa(string rut);
         void SeleccionarSucursal(string nombre);
         void SeleccionarSeccion(string nombre);
-        ~EmpresaController();
+        void destroyEmpresaController();
     protected:
     private:
         EmpresaController();
@@ -33,6 +33,7 @@ class EmpresaController {
         Sucursal *sucursal; // la sucursal que se recuerda
         Seccion *seccion;
     	static EmpresaController *instance;
+        ~EmpresaController();
 };
 
 #endif // EMPRESACONTROLLER_H
