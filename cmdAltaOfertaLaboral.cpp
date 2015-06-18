@@ -11,12 +11,12 @@
 #include "IEmpresaController.h"
 
 using namespace std;
-AltaOfertaLaboral::AltaOfertaLaboral()
+cmdAltaOfertaLaboral::cmdAltaOfertaLaboral()
 {
     //ctor
 }
 
-void AltaOfertaLaboral::ejecutarComando()
+void cmdAltaOfertaLaboral::ejecutarComando()
 {
     string rutaEmpresa, nomSucursal, nomSeccion;
     Fabrica* fab = Fabrica::getInstance();
@@ -41,7 +41,7 @@ void AltaOfertaLaboral::ejecutarComando()
             }
         }
         delete it;
-
+cmdInscripcionOfertaLaboral
         cout<< "Seleccione una Empresa indicando el RUT\n";
         cin >> rutEmpresa;
         cEmpresa->SeleccionarEmpresa(rutaEmpresa);
@@ -81,7 +81,7 @@ void AltaOfertaLaboral::ejecutarComando()
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataSeccion.");
             }
-        }
+        }cmdInscripcionOfertaLaboral
         delete it3;
 
         cout<< "Seleccione una Sección indicando su nombre\n";
@@ -125,7 +125,7 @@ void AltaOfertaLaboral::ejecutarComando()
 
 }
 
-AltaOfertaLaboral::~AltaOfertaLaboral()
+cmdAltaOfertaLaboral::~cmdAltaOfertaLaboral()
 {
     //dtor
 }

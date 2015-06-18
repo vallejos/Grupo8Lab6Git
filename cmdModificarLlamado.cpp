@@ -1,16 +1,16 @@
 #include "ModificarLlamado.h"
 
-ModificarLlamado::ModificarLlamado()
+cmdModificarLlamado::cmdModificarLlamado()
 {
     //ctor
 }
 
-void ModificarLlamado::ejecutarComando()
+void cmdModificarLlamado::ejecutarComando()
 {
 
 }
 
-ModificarLlamado::~ModificarLlamado()
+cmdModificarLlamado::~cmdModificarLlamado()
 {
     //dtor
 }

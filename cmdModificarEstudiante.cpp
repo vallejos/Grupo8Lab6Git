@@ -1,16 +1,16 @@
-#include "ModificarEstudiante.h"
+#include "cmdModificarEstudiante.h"
 #include <iostream>
 #include <string>
-#incluce "Fabrica.h"
+#include "Fabrica.h"
 #include "IEstudianteController.h"
 #include "DataEstudiante.h"
 
-ModificarEstudiante::ModificarEstudiante()
+cmdModificarEstudiante::cmdModificarEstudiante()
 {
     //ctor
 }
 
-void ModificarEstudiante::ejecutarComando()
+void cmdModificarEstudiante::ejecutarComando()
 {
     string cedula;
     Fabrica* fab = Fabrica::getInstance();
@@ -112,7 +112,7 @@ void ModificarEstudiante::ejecutarComando()
 
 }
 
-ModificarEstudiante::~ModificarEstudiante()
+cmdModificarEstudiante::~cmdModificarEstudiante()
 {
     //dtor
 }

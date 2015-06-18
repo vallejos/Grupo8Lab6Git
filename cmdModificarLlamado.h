@@ -1,15 +1,15 @@
-#ifndef MODIFICARLLAMADO_H
-#define MODIFICARLLAMADO_H
+#ifndef CMD_MODIFICARLLAMADO_H
+#define CMD_MODIFICARLLAMADO_H
 
 
-class ModificarLlamado : public IComando
+class cmdModificarLlamado : public IComando
 {
     public:
-        ModificarLlamado();
+        cmdModificarLlamado();
         void ejecutarComando();
-        ~ModificarLlamado();
+        ~cmdModificarLlamado();
     protected:
     private:
 };
 
-#endif // MODIFICARLLAMADO_H
+#endif // CMD_MODIFICARLLAMADO_H

@@ -1,15 +1,15 @@
-#ifndef MODIFICARESTUDIANTE_H
-#define MODIFICARESTUDIANTE_H
+#ifndef CMD_MODIFICARESTUDIANTE_H
+#define CMD_MODIFICARESTUDIANTE_H
 
 
-class ModificarEstudiante : public IComando
+class cmdModificarEstudiante : public IComando
 {
     public:
-        ModificarEstudiante();
+        cmdModificarEstudiante();
         void ejecutarComando();
-        ~ModificarEstudiante();
+        ~cmdModificarEstudiante();
     protected:
     private:
 };
 
-#endif // MODIFICARESTUDIANTE_H
+#endif // CMD_MODIFICARESTUDIANTE_H

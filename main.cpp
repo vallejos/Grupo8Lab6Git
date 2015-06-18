@@ -1,23 +1,35 @@
 #include <iostream>
 #include <string>
-#include "Sistema.h"
-#include "Date.h"
-#include "Rango.h"
-#include "DataEstudiante.h"
-#include "DataOfertaLaboral.h"
-#include "DataSeccion.h"
-#include "DataSucursal.h"
-#include "DataEmpresa.h"
+#include "cmdAltaEntrevista.h"
+#include "cmdInscripcionOfertaLaboral.h"
+#include "cmdAltaOfertaLaboral.h"
+#include "cmdListarOfertasActivas.h"
+#include "cmdAsignacionDeOfertaAEstudiante.h"
+#include "cmdModificarEstudiante.h"
+#include "cmdConsultarDatosEstudiantes.h"
+#include "cmdModificarLlamado.h"
+#include "cmdDarDeBajaLlamado.h"
+
 
 using namespace std;
 
 // Imprime el Menu Principal
 void imprimirMenu() {
-	cout << "1. Alta Oferta Laboral \n";
-	cout << "2. Crear Entrevista \n";
-	cout << "3. Salir \n";
+	cout << "1. Alta Entrevista \n";
+	cout << "2. Alta Oferta Laboral \n";
+	cout << "3. Asignacion de Oferta a Estudiante \n";
+	cout << "4. Consultar Datos de Estudiante \n";
+	cout << "5. Dar de Baja Llamado \n";
+	cout << "6. Inscripcion Oferta Laboral \n";
+	cout << "7. Listar Ofertas Activas \n";
+	cout << "8. Modificar Estudiante \n";
+	cout << "9. Modificar Llamado \n";
+	cout << "-";
+	cout << "C. Cargar datos de prueba \n";
+	cout << "S. Salir \n";
+	cout << "-";
 	cout << "Elija una opcion:\n";
-	cout << ">";
+	cout << "> ";
 }
 
 
@@ -28,22 +40,6 @@ int main() {
 
 	Sistema *Sys;
 
-	string rutEmpresa, nombreSucursal, nombreSeccion;
-	DataEmpresa **listaEmpresas;
-	DataSucursal **listaSucursales;
-	DataSeccion **listaSecciones;
-
-	DataOfertaLaboral **listaOfertasPublicadas;
-	string numExpediente, cedula;
-	Date *fechaEntrevista;
-	DataEstudiante **listaEstudiantes;
-
-	string titulo, descripcion, asignaturas;
-	int sueldoMaximo, sueldoMinimo, cantidadHorasSemanales, cantidadPuestosNecesarios, dd, mm, aaaa;
-
-	Date *fechaComienzo, *fechaFin;
-	Rango *rangoSalarial;
-
 	// TODO: inicializar sistema
 	Sys = new Sistema();
 
@@ -53,116 +49,80 @@ int main() {
 
 		switch (opcion) {
 			//------------------------
-			// ALTA OFERTA LABORAL
+			// ALTA ENTREVISTA
 			//------------------------
 			case '1':
-				listaEmpresas = Sys->ListarEmpresas();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadEmpresas(); i++) {
-					cout << listaEmpresas[i]->getNombre();
-				}
-
-				cout << "Seleccionar Empresa (rut):\n";
-				cin >> rutEmpresa;
-				Sys->SeleccionarEmpresa(rutEmpresa);
-
-				listaSucursales = Sys->ListarSucursales();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadSucursales(); i++) {
-					cout << listaSucursales[i]->getNombre();
-				}
-
-				cout << "Seleccionar Sucursal (nombre):\n";
-				cin >> nombreSucursal;
-				Sys->SeleccionarSucursal(nombreSucursal);
-
-				listaSecciones = Sys->ListarSecciones();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadSecciones(); i++) {
-					cout << listaSecciones[i]->getNombre();
-				}
-
-				cout << "Seleccionar Seccion (nombre):\n";
-				cin >> nombreSeccion;
-				Sys->SeleccionarSeccion(nombreSeccion);
-
-				cout << "Ingrese Expediente";
-				cin >> numExpediente;
-
-				cout << "Ingrese Titulo";
-				cin >> titulo;
-
-				cout << "Ingrese Descripcion";
-				cin >> descripcion;
-
-				cout << "Ingrese Cantidad de Horas Semanales";
-				cin >> cantidadHorasSemanales;
-
-				cout << "Ingrese Codigos de Asignaturas separadas por coma";
-				cin >> asignaturas; // ej: 1122, 1023, 155
-
-				cout << "Ingrese Sueldo Minimo";
-				cin >> sueldoMinimo;
-
-				cout << "Ingrese Sueldo Maximo";
-				cin >> sueldoMaximo;
-
-				rangoSalarial = new Rango (sueldoMinimo, sueldoMaximo);
-
-				cout << "Ingrese Fecha Comienzo (DD MM AAAA)";
-				cin >> dd >> mm >> aaaa;
-
-				fechaComienzo = new Date(dd, mm, aaaa);
-
-				cout << "Ingrese Fecha Fin (DD MM AAAA)";
-				cin >> dd >> mm >> aaaa;
-
-				fechaFin = new Date(dd, mm, aaaa);
-
-				cout << "Ingrese Cantidad de Puestos";
-				cin >> cantidadPuestosNecesarios;
-
-				// TODO: ver parametros que faltan
-				Sys->AltaOfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
-
+				cmdAltaEntrevista::ejecutarComando();
 				break;
 
 			//------------------------
-			// CREAR ENTREVISTA
+			// ALTA OFERTA LABORAL
 			//------------------------
 			case '2':
-				listaOfertasPublicadas = Sys->ListarOfertasPublicadas();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadOfertasLaborales(); i++) {
-					cout << listaOfertasPublicadas[i]->getNumExpediente();
-				}
+				cmdAltaOfertaLaboral::ejecutarComando();
+				break;
 
-				cout << "Seleccionar Oferta (expediente):\n";
-				cin >> numExpediente;
-				Sys->SeleccionarOferta(numExpediente);
+			//------------------------
+			// ASIGNACION DE OFERTA A ESTUDIANTE
+			//------------------------
+			case '3':
+				cmdAsignacionDeOfertaAEstudiante::ejecutarComando();
+				break;
 
-				listaEstudiantes = Sys->ListarEstudiantes();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadEstudiantes(); i++) {
-					cout << listaEstudiantes[i]->getCedula();
-				}
+			//------------------------
+			// CONSULTAR DATOS DE ESTUDIANTE
+			//------------------------
+			case '4':
+				cmdConsultarDatosEstudiantes::ejecutarComando();
+				break;
 
-				cout << "Seleccionar Estudiante (cedula):\n";
-				cin >> cedula;
-				Sys->SeleccionarEstudiante(cedula);
+			//------------------------
+			// DAR DE BAJA LLAMADO
+			//------------------------
+			case '5':
+				cmdDarDeBajaLlamado::ejecutarComando();
+				break;
 
-				// TODO: que fecha usamos?
-				fechaEntrevista = new Date();
+			//------------------------
+			// INSCRIPCION DE OFERTA LABORAL
+			//------------------------
+			case '6':
+				cmdInscripcionOfertaLaboral::ejecutarComando();
+				break;
 
-				// TODO: ver parametros que faltan
-				Sys->AltaEntrevista(fechaEntrevista);
+			//------------------------
+			// LISTAR OFERTAS ACTIVAS
+			//------------------------
+			case '7':
+				cmdListarOfertasActivas::ejecutarComando();
+				break;
 
+			//------------------------
+			// MODIFICAR ESTUDIANTE
+			//------------------------
+			case '8':
+				cmdModificarEstudiante::ejecutarComando();
+				break;
+
+			//------------------------
+			// MODIFICAR LLAMADO
+			//------------------------
+			case '9':
+				cmdModificarLlamado::ejecutarComando();
+				break;
+
+			//------------------------
+			// CARGAR DATOS DE PRUEBA
+			//------------------------
+			case 'C':
+				// TODO: poner comandos para carga de pruebas
+			
 				break;
 
 			//------------------------
 			// SALIR
 			//------------------------
-			case '3':
+			case 'S':
 				salir = true;
 				break;
 		}

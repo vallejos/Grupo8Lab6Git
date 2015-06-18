@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "ConsultarDatosEstudiantes.h"
+#include "cmdConsultarDatosEstudiantes.h"
 #include "Fabrica.h"
 #include "IEstudianteController.h"
 #include "ICollection.h"
@@ -13,12 +13,12 @@
 #include "DataOfertaLaboral.h"
 
 using namespace std;
-ConsultarDatosEstudiantes::ConsultarDatosEstudiantes()
+cmdConsultarDatosEstudiantes::cmdConsultarDatosEstudiantes()
 {
     //ctor
 }
 
-void ConsultarDatosEstudiantes::ejecutarComando()
+void cmdConsultarDatosEstudiantes::ejecutarComando()
 {
     string ci;
     int ddC, mmC, aaaaC, ddF, mmF, aaaaF;
@@ -106,7 +106,7 @@ void ConsultarDatosEstudiantes::ejecutarComando()
     }
 }
 
-ConsultarDatosEstudiantes::~ConsultarDatosEstudiantes()
+cmdConsultarDatosEstudiantes::~cmdConsultarDatosEstudiantes()
 {
     //dtor
 }

@@ -1,15 +1,15 @@
-#ifndef CONSULTARDATOSESTUDIANTES_H
-#define CONSULTARDATOSESTUDIANTES_H
+#ifndef CMD_CONSULTARDATOSESTUDIANTES_H
+#define CMD_CONSULTARDATOSESTUDIANTES_H
 
 
-class ConsultarDatosEstudiantes : public IComando
+class cmdConsultarDatosEstudiantes : public IComando
 {
     public:
-        ConsultarDatosEstudiantes();
+        cmdConsultarDatosEstudiantes();
         void ejecutarComando();
-        ~ConsultarDatosEstudiantes();
+        ~cmdConsultarDatosEstudiantes();
     protected:
     private:
 };
 
-#endif // CONSULTARDATOSESTUDIANTES_H
+#endif // CMD_CONSULTARDATOSESTUDIANTES_H
