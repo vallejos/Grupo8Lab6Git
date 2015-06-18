@@ -2,7 +2,8 @@
 #define DATAOFERTAEMPRESA_H
 
 #include "DataEmpresa.h"
-#include "DataOfertaLaboral.h"
+
+class DataOfertaLaboral;
 
 class DataOfertaEmpresa {
     public:
@@ -16,5 +17,7 @@ class DataOfertaEmpresa {
         DataEmpresa *dataEmpresa;
         DataOfertaLaboral *dataOferta;
 };
+
+#include "DataOfertaLaboral.h"
 
 #endif // DATAOFERTAEMPRESA_H
