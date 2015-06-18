@@ -2,6 +2,7 @@
 #define CMD_ALTAOFERTALABORAL_H
 
 #include <exception>
+#include "IComando.h"
 
 class cmdAltaOfertaLaboral: public IComando
 {

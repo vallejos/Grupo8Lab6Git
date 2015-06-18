@@ -11,7 +11,7 @@ class DataOfertaEmpresa {
         DataEmpresa* getDataEmpresa();
         DataOfertaLaboral* getDataOfertaLaboral();
         ~DataOfertaEmpresa();
-    protected:
+
     private:
         DataEmpresa *dataEmpresa;
         DataOfertaLaboral *dataOferta;

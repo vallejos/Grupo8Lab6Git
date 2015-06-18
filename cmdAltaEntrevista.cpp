@@ -30,7 +30,7 @@ void cmdAltaEntrevista::ejecutarComando()
         //LISTAR OFERTAS LABORALES
         ICollection* dataOfertas = cOferta->ListarOfertas();
         cout << "Lista de Ofertas:\n";
-        IIterator * it = dataOfertas->getIterator();
+        IIterator* it = dataOfertas->getIterator();
         while(it.hasCurrent())
         {
             DataOfertaLaboral* dol;
@@ -41,6 +41,7 @@ void cmdAltaEntrevista::ejecutarComando()
             {
                 throw std::invalid_argument("cmdAltaEntrevista -> El objeto no es de la clase DataOfertaLaboral.");
             }
+            it.next();
         }
         delete it;
 
@@ -63,6 +64,7 @@ void cmdAltaEntrevista::ejecutarComando()
             {
                 throw std::invalid_argument("cmdAltaEntrevista -> El objeto no es de la clase DataEstudiante.");
             }
+            it2.next();
         }
         delete it2;
 

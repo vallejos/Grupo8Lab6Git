@@ -15,7 +15,7 @@ class DataAprobada
         DataAsignatura* getDataAsignatura();
 
         ~DataAprobada();
-    protected:
+
     private:
         int nota;
         Date* fecha;

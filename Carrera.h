@@ -23,7 +23,7 @@ class Carrera : public ICollectible
         void setNombreCarrera(string nombreCarrera);
 
         ~Carrera();
-    protected:
+
     private:
        int codigo;
        string nombreCarrera;

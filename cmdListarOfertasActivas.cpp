@@ -42,13 +42,14 @@ void cmdListarOfertasActivas::ejecutarComando()
                 }
                 delete it2;
             //IMPRIMO LOS DATOS QUE INDICA ELCASO DE USO
-                cout << "NOMBRE: " + dOferta->getTitulo() +
-                        ", EMPRESA:" + dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() +
-                        ", UBICACION:" + dOferta->getSeccion()->getSucursal()->getDireccion() +
-                        ", CANTIDAD DE INSCRIPTOS: " + cantInscriptos +
+                cout << "---------------------------" + "\n" +
+                        "NOMBRE: " + dOferta->getTitulo() + "\n" +
+                        ", EMPRESA:" + dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() + "\n" +
+                        ", UBICACION:" + dOferta->getSeccion()->getSucursal()->getDireccion() + "\n" +
+                        ", CANTIDAD DE INSCRIPTOS: " + cantInscriptos + "\n" +
                         ", RANGO SALARIAL:" + dOferta->getRangoSalarial()->getSueldoMinimo() +
-                                          " - " dOferta->getRangoSalarial()->getSueldoMaximo() +
-                        ", CANTIDAD DE PLAZAS:" + dOferta->cantidadPuestosNecesarios() +
+                                          " - " dOferta->getRangoSalarial()->getSueldoMaximo() + "\n" +
+                        ", CANTIDAD DE PLAZAS:" + dOferta->cantidadPuestosNecesarios() + "\n" +
                         "\n";
             } else
             {

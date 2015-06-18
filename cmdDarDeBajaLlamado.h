@@ -1,6 +1,9 @@
 #ifndef CMD_DARDEBAJALLAMADO_H
 #define CMD_DARDEBAJALLAMADO_H
 
+#include <exception>
+#include "IComando.h"
+
 class cmdDarDeBajaLlamado: public IComando
 {
     public:
