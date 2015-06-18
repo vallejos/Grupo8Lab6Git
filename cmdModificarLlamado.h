@@ -2,7 +2,7 @@
 #define CMD_MODIFICARLLAMADO_H
 
 
-class cmdModificarLlamado : public IComando
+class cmdModificarLlamado: public IComando
 {
     public:
         cmdModificarLlamado();
