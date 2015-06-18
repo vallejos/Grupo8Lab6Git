@@ -1,26 +1,24 @@
-#include "ListarOfertasActivas.h"
+#include "cmdListarOfertasActivas.h"
 #include <iostream>
 #include <string>
 #include "ICollection.h"
-#include "OfertaLaboralController.h"
+#include "IOfertaLaboralController.h"
 #include "IIterator.h"
 #include "DataOfertaLaboral.h"
-#include "Seccion.h"
-#include "Sucursal.h"
-#include "Empresa.h"
 #include "Rango.h"
 #include "Date.h"
 
 using namespace std;
 
-ListarOfertasActivas::ListarOfertasActivas()
+cmdListarOfertasActivas::cmdListarOfertasActivas()
 {
     //ctor
 }
 
-void ListarOfertasActivas::ejecutarComando()
+void cmdListarOfertasActivas::ejecutarComando()
 {
-    OfertaLaboralController* cOferta = OfertaLaboralController::getInstance();
+    Fabrica* fab = Fabrica::getInstance();
+    IOfertaLaboralController* cOferta = fab->getIOfertaLaboralController();
     int cantInscriptos;
 
     try
@@ -54,7 +52,7 @@ void ListarOfertasActivas::ejecutarComando()
                         "\n";
             } else
             {
-                throw std::invalid_argument("ListarOfertasActivas -> El objeto no es de la clase DataOfertaLaboral.");
+                throw std::invalid_argument("cmdListarOfertasActivas -> El objeto no es de la clase DataOfertaLaboral.");
             }
             it.next();
         }
@@ -66,7 +64,7 @@ void ListarOfertasActivas::ejecutarComando()
     }
 }
 
-ListarOfertasActivas::~ListarOfertasActivas()
+cmdListarOfertasActivas::~cmdListarOfertasActivas()
 {
     //dtor
 }
