@@ -18,6 +18,8 @@ class ManejadorEstudiante
         void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos);
         ICollection *getEstudiante();
         IDictionary *getEstudiantes();
+        IDictionary *getAsignaturas();
+        IDictionary *getCarreras();
         destroyManejadorEstudiante();
 
     private:
@@ -25,6 +27,8 @@ class ManejadorEstudiante
         ManejadorEstudiante();
         static ManejadorEstudiante *instance;
         IDictionary * estudiantes;
+        IDictionary* asignaturas:
+        IDictionary* carreras;
 };
 
 #endif // MANEJADORESTUDIANTE_H

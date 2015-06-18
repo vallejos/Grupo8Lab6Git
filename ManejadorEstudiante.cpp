@@ -104,6 +104,16 @@ IDictionary *ManejadorEstudiante::getEstudiantes()
     return this->estudiantes;
 }
 
+IDictionary* ManejadorEstudiante::getAsignaturas()
+{
+    return this->asignaturas;
+}
+
+IDictionary* ManejadorEstudiante::getCarreras()
+{
+    return this->carreras;
+}
+
 void ManejadorEstudiante::destroyManejadorEstudiante()
 {
      if (instance != NULL)

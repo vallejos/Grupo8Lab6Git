@@ -89,6 +89,18 @@ void EstudianteController::ModificarEstudiante(string cedula, DataEstudiante* nu
     }
 }
 
+IDictionary* EstudianteController::getAsignaturas()
+{
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    return me->getAsignaturas();
+}
+
+IDictionary* EstudianteController::getCarreras()
+{
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    return me->getCarreras();
+}
+
 void EstudianteController::destroyEstudianteController()
 {
      if (instance != NULL)
