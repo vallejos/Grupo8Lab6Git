@@ -32,8 +32,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
             DataOfertaLaboral *dOfertaLab;// Esto cambia si no traemos dataOfertas
             if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
             {
-                //Tengo que cambiar las operaciones para traer los datos correctos
-                cout << "Nombre: " + dOfertaLab->getNumExpediente() + ", Empresa:" + dOfertaLab->getTitulo() + ", Ubicación:" + dOfertaLab->getTitulo() + ", Cantidad de Inscriptos:" + dOfertaLab->getTitulo() + ", Rango Salarial:" + dOfertaLab->getTitulo() + ", Cantidad de Plazas:" + dOfertaLab->getTitulo() + "\n";
+                cout << "Número de Expediente: " + dOfertaLab->getNumExpediente() + ", Título:" + dOfertaLab->getTitulo() + "\n";
                 it.next();
 
             } else
@@ -45,7 +44,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         delete it;
 
         cout<< "Seleccione una Oferta Laboral indicando el Número de Expediente\n";
-        cin >> numExpediente;//O Nombre?
+        cin >> numExpediente;
 
         cOfertaLab->SeleccionarOferta(numExpediente);
 

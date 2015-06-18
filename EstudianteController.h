@@ -22,7 +22,7 @@ class EstudianteController : public IEstudianteController
         ICollection *ListarEstudiantesNoInscriptos();
         ICollection *ListarEstudiantesInscriptosEnOferta();
         void SeleccionarEstudiante(string cedula);
-        void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos);
+        void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar);
         DataDatosEstudiante *ConsultarDatosEstudiante(string cedula);
         ICollection *ListarEstudiantesRegistrados();
         Estudiante* getEstudiante();
