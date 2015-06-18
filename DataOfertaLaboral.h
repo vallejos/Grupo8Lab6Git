@@ -4,7 +4,7 @@
 #include "Date.h"
 #include "Rango.h"
 #include <string>
-#include "ICollectible.h"
+#include "interfaces/ICollectible.h"
 
 using namespace std;
 

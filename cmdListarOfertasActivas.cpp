@@ -1,9 +1,9 @@
 #include "cmdListarOfertasActivas.h"
 #include <iostream>
 #include <string>
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "IOfertaLaboralController.h"
-#include "IIterator.h"
+#include "interfaces/IIterator.h"
 #include "DataOfertaLaboral.h"
 #include "Rango.h"
 #include "Date.h"

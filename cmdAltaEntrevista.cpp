@@ -2,11 +2,11 @@
 #include <string>
 #include <iostream>
 #include "IOfertaLaboralController.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "DataOfertaLaboral.h"
 #include "Fabrica.h"
 #include "Date.h"
-#include "IIterator.h"
+#include "interfaces/IIterator.h"
 #include "IEstudianteController.h"
 #include "DataEstudiante.h"
 
@@ -79,9 +79,9 @@ void cmdAltaEntrevista::ejecutarComando()
         //DA DE ALTA ENTREVISTA
         cOferta->Entrevistar(Date(diaEnt, mesEnt, anioEnt);
     }
-    catch(const std::invalid_argument &e)
+    catch(exception &e)
     {
-    	throw std::invalid_argument(e.what());
+    	throw;
     }
 }
 

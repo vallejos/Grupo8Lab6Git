@@ -10,9 +10,9 @@
 #include "IObserver.h"
 #include "Sucursal.h"
 #include "Encargado.h"
-#include "ICollection.h"
-#include "ICollectible.h"
-#include "IDictionary.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/ICollectible.h"
+#include "interfaces/IDictionary.h"
 
 using namespace std;
 

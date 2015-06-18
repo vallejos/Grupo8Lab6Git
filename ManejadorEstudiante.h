@@ -1,8 +1,8 @@
 #ifndef MANEJADORESTUDIANTE_H
 #define MANEJADORESTUDIANTE_H
 
-#include "ICollection.h"
-#include "IDictionary.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 #include "Estudiante.h";
 #include <string>
 

@@ -5,7 +5,7 @@
 #include "DataAsignatura.h"
 #include "DataAprobada.h"
 #include "Asignatura.h"
-#include "ICollectible.h"
+#include "interfaces/ICollectible.h"
 
 class Aprobacion : public ICollectible
 {

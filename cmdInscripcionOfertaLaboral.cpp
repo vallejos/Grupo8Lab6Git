@@ -7,7 +7,7 @@
 #include "IEstudianteController.h"
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 
 cmdInscripcionOfertaLaboral::cmdInscripcionOfertaLaboral()
 {

@@ -3,7 +3,7 @@
 #include "AltaOfertaLaboral.h"
 #include "ManejadorEmpresa.h"
 #include "EmpresaController.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "DataEmpresa.h"
 #include "DataSucursal.h"
 #include "DataSeccion.h"

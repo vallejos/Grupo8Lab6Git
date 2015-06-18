@@ -4,7 +4,7 @@
 #include <string>
 #include "DataEstudiante.h"
 #include "DataDatosEstudiante.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 
 class IEstudianteController {
     public:

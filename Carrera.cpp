@@ -26,13 +26,17 @@ int Carrera::getCodigo()
 
 string Carrera::getNombreCarrera()
 {
-    return this->nombreCarrera:
+    return this->nombreCarrera;
 }
 
 DataCarrera* Carrera::getDataCarrera()
 {
-    DataCarrera* dataC = new DataCarrera(this->codigo, this->nombreCarrera);
-    return dataC;
+    try {
+        DataCarrera* dataC = new DataCarrera(this->codigo, this->nombreCarrera);
+        return dataC;
+    } catch (exception &e) {
+        throw;
+    }
 }
 
 void Carrera::setCodigo(int codigo)

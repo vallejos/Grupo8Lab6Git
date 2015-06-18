@@ -2,7 +2,7 @@
 #define CRITERIO2_H
 
 #include "DataAsignatura.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 
 class Criterio2
 {

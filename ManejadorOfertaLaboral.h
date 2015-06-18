@@ -2,8 +2,8 @@
 #define MANEJADOROFERTALABORAL_H
 
 #include "OfertaLaboral.h"
-#include"ICollection.h"
-#include "IDictionary.h"
+#include"interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 #include <string>
 
 using namespace std;

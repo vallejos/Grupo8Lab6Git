@@ -2,7 +2,7 @@
 #include <string>
 #include "cmdAsignacionDeOfertaAEstudiante.h"
 #include "OfertaLaboralController.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
 

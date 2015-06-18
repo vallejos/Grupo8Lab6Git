@@ -1,5 +1,5 @@
 #include "Criterio2.h"
-#include "IDictionary.h"
+#include "interfaces/IDictionary.h"
 
 // constructor
 Criterio2::Criterio2()

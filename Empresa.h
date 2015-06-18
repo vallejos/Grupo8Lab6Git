@@ -4,8 +4,8 @@
 #include <string>
 #include "DataSucursal.h"
 #include "Sucursal.h"
-#include "lab6-colecciones/interfaces/ICollectible.h"
-#include "lab6-colecciones/interfaces/ICollection.h"
+#include "interfaces/ICollectible.h"
+#include "interfaces/ICollection.h"
 
 class Empresa: public ICollectible {
     public:
