@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "AltaOfertaLaboral.h"
+#include "cmdAltaOfertaLaboral.h"
 #include "ManejadorEmpresa.h"
 #include "EmpresaController.h"
 #include "interfaces/ICollection.h"
@@ -11,6 +11,7 @@
 #include "IEmpresaController.h"
 
 using namespace std;
+
 cmdAltaOfertaLaboral::cmdAltaOfertaLaboral()
 {
     //ctor

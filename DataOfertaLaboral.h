@@ -3,8 +3,12 @@
 
 #include "Date.h"
 #include "Rango.h"
+#include "Seccion.h"
 #include <string>
+#include <exception>
 #include "interfaces/ICollectible.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 
 using namespace std;
 

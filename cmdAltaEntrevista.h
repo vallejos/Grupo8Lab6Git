@@ -9,6 +9,8 @@ class cmdAltaEntrevista : public IComando
         cmdAltaEntrevista();
         void ejecutarComando();
         ~cmdAltaEntrevista();
+    private:
+    protected:
 };
 
 #endif // CMD_ALTAENTREVISTA_H
