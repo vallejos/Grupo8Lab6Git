@@ -1,9 +1,10 @@
+#include "InscripcionOfertaLaboral.h"
 #include <iostream>
 #include <string>
 #incluce "Date.h"
-#include "InscripcionOfertaLaboral.h"
-#include "OfertaLaboralController.h"
-#include "EstudianteController.h"
+#incluce "Fabrica.h"
+#include "IOfertaLaboralController.h"
+#include "IEstudianteController.h"
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
 #include "ICollection.h"
@@ -15,37 +16,42 @@ InscripcionOfertaLaboral::InscripcionOfertaLaboral()
 
 void InscripcionOfertaLaboral::ejecutarComando()
 {
-    string numExpediente,cedula;
-    OfertaLaboralController* cOfertaLab = OfertaLaboralController::getInstance();
+    string numExpediente, cedula;
+    Fabrica* fab = Fabrica::getInstance();
+    IOfertaLaboralController *cOfertaLab = fab->getIOfertaLaboralController();
 
     try
     {
-        ICollection* ofertasLaborales = cOfertaLab->MostrarOfertasActivas()();
+        ICollection* ofertasLaborales = cOfertaLab->MostrarOfertasActivas();
 
         cout << "Lista de Ofertas Laborales Vigentes:\n";
 
         IIterator * it = ofertasLaborales->getIterator();
         while(it.hasCurrent())
         {
-            DataOfertaLaboral *dOfertaLab;
+            DataOfertaLaboral *dOfertaLab;// Esto cambia si no traemos dataOfertas
             if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
             {
                 //Tengo que cambiar las operaciones para traer los datos correctos
                 cout << "Nombre: " + dOfertaLab->getNumExpediente() + ", Empresa:" + dOfertaLab->getTitulo() + ", Ubicación:" + dOfertaLab->getTitulo() + ", Cantidad de Inscriptos:" + dOfertaLab->getTitulo() + ", Rango Salarial:" + dOfertaLab->getTitulo() + ", Cantidad de Plazas:" + dOfertaLab->getTitulo() + "\n";
+                it.next();
+
             } else
             {
                 throw std::invalid_argument("InscripcionOfertaLaboral -> El objeto no es de la clase DataOfertaLaboral.");
             }
+
         }
         delete it;
 
-        cout<< "Seleccione una Oferta Laboral indicando el Nombre\n";
+        cout<< "Seleccione una Oferta Laboral indicando el Número de Expediente\n";
         cin >> numExpediente;//O Nombre?
 
         cOfertaLab->SeleccionarOferta(numExpediente);
 
-        EstudianteController *cEstudiante = EstudianteController::getInstance();
+        IEstudianteController *cEstudiante = fab->getIEstudianteController();
         ICollection* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
+
         cout << "Lista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
 
         IIterator * it2 = dataEstudiante->getIterator();
@@ -54,7 +60,9 @@ void InscripcionOfertaLaboral::ejecutarComando()
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2.current())) != NULL )
             {
-                cout << "Cedula: " + dEstudiante->getCedula() + "\n";
+                cout << "Cédula: " + dEstudiante->getCedula() + "Nombre: " + dEstudiante->getNombre() + "Apellido: " + dEstudiante->getApellido() + "\n";
+                it2.next();
+
             } else
             {
                 throw std::invalid_argument("InscripcionOfertaLaboral -> El objeto no es de la clase DataEstudiante.");
@@ -62,10 +70,10 @@ void InscripcionOfertaLaboral::ejecutarComando()
         }
         delete it2;
 
-        cout<< "Seleccione el Estudiante a inscribir indicando la Cedula\n";
+        cout<< "Seleccione el Estudiante a inscribir indicando la Cédula\n";
         cin >> cedula;
 
-        cEstudiante->SeleccionarEstudiante(string cedula);
+        cEstudiante->SeleccionarEstudiante(cedula);
 
         cout<< "Ingrese la Fecha de Inscripción\n";
         cout<< "Ingrese el Día\n";

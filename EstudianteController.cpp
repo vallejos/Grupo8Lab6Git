@@ -18,24 +18,36 @@ EstudianteController* EstudianteController::getInstance()
 
 ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
 {
-    OfertaLaboralController *olc = OfertaLaboralController::getInstance();
-    string numExpe = olc->getOfertaLaboral()->getNumExpediente();
-	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-	return (me->getEstNoInscriptos(numExpe));
+    try {
+        OfertaLaboralController *olc = OfertaLaboralController::getInstance();
+        string numExpe = olc->getOfertaLaboral()->getNumExpediente();
+    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    	return (me->getEstNoInscriptos(numExpe));
+    } catch (e) {
+        throw e;
+    }
 }
 
 ICollection* EstudianteController::ListarEstudiantesInscriptosEnOferta()
 {
-    OfertaLaboralController *olc = OfertaLaboralController::getInstance();
-    string numExpe = olc->getOfertaLaboral()->getNumExpediente();
-	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-	return (me->getEstInscriptosEnOferta(numExpe));
+    try {
+        OfertaLaboralController *olc = OfertaLaboralController::getInstance();
+        string numExpe = olc->getOfertaLaboral()->getNumExpediente();
+    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    	return (me->getEstInscriptosEnOferta(numExpe));
+    } catch (e) {
+        throw e;
+    }
 }
 
 void EstudianteController::SeleccionarEstudiante(string cedula)
 {
-	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-	this->estudiante = me->SeleccionarEstudiante(cedula);
+    try {
+    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    	this->estudiante = me->SeleccionarEstudiante(cedula);
+    } catch (e) {
+        throw e;
+    }
 }
 
 DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedula)
@@ -54,8 +66,12 @@ DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedul
 
 ICollection* EstudianteController::ListarEstudiantesRegistrados()
 {
-	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-	return (me->getEstudiante);
+    try {
+    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    	return (me->getEstudiante);
+    } catch (e) {
+        throw e;
+    }
 }
 
 Estudiante* EstudianteController::getEstudiante()
@@ -65,8 +81,12 @@ Estudiante* EstudianteController::getEstudiante()
 
 void EstudianteController::ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos)
 {
-    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    me->ModificarEstudiante(cedula, nuevosDatos);
+    try {
+        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+        me->ModificarEstudiante(cedula, nuevosDatos);
+    } catch (e) {
+        throw e;
+    }
 }
 
 IDictionary* EstudianteController::getAsignaturas()

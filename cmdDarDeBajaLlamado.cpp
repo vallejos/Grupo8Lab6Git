@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "cmdDarDeBajaLlamado.h"
 #include "OfertaLaboralController.h"
 #include "ICollection.h"
 #include "DataOfertaLaboral.h"

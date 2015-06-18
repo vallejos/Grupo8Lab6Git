@@ -7,7 +7,8 @@ DataEmpresa::DataEmpresa()
 
 DataEmpresa::DataEmpresa(string rut, string nombre)
 {
-
+    this->rut=rut;
+    this->nombre=nombre;
 }
 
 DataEmpresa::DataEmpresa(const DataEmpresa &e)

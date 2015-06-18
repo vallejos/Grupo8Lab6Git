@@ -6,7 +6,8 @@ Efectivizacion::Efectivizacion()
     this->fechaEfectivizacion = NULL;
 }
 
-Efectivizacion::Efectivizacion(int sueldo, Date* fechaEfectivizacion){
+Efectivizacion::Efectivizacion(int sueldo, Date* fechaEfectivizacion)
+{
     this->sueldo = sueldo;
     this->fechaEfectivizacion = fechaEfectivizacion;
 }

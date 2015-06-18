@@ -7,12 +7,13 @@ Rango::Rango()
 
 Rango::Rango(int sueldoMinimo, int sueldoMaximo)
 {
-
+    this->sueldoMinimo = sueldoMinimo;
+    this->sueldoMaximo = sueldoMaximo;
 }
 
 Rango::Rango(const Rango &r)
 {
-
+//-------------------------
 }
 
 int Rango::getSueldoMinimo()

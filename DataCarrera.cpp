@@ -7,7 +7,8 @@ DataCarrera::DataCarrera()
 
 DataCarrera::DataCarrera(int codigo, string nombre)
 {
-
+    this->codigo=codigo;
+    this->nombre=nombre;
 }
 
 DataCarrera::DataCarrera(const DataCarrera &a)
