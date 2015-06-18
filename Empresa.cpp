@@ -29,8 +29,8 @@ ICollection *Empresa::getDataSucursales()
     IIterator * it = this->sucursales->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it.current()->getDataSucursal());
-        it.next();
+        result->add(it->current()->getDataSucursal());
+        it->next();
 
     }
     delete it;

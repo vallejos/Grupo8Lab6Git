@@ -34,7 +34,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         while(it->hasCurrent())
         {
             DataEstudiante *dEstudiante;
-            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it.current())) != NULL )
+            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it->current())) != NULL )
             {
                 cout << "Nombre: " + dEstudiante->getNombre() + ", C.I.:" + dEstudiante->getCedula() + "\n";
             }
@@ -55,7 +55,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         while(it->hasCurrent())
         {
             DataAprobada *dAprobada;
-            if( (dAprobada = dynamic_cast<DataAprobada*> (it.current())) != NULL )
+            if( (dAprobada = dynamic_cast<DataAprobada*> (it->current())) != NULL )
             {
                 DataAsignatura* dAsignatura = dAprobada->getDataAsignatura();
                 cout << "Nombre: " + dAsignatura->getNombre() + ", Creditos: " + dAsignatura->getCreditos() + ", Nota: " + dAprobada->getNota() + ", Fecha de aprobacion: " + dAprobada->getFecha()->getDia() + "/" + dAprobada->getFecha()->getMes() + "/" + dAprobada->getFecha()->getAnio() + "\n";
@@ -73,7 +73,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         while(it->hasCurrent())
         {
             DataOfertaEmpresa *dOferEmp;
-            if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it.current())) != NULL )
+            if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it->current())) != NULL )
             {
                 DataOfertaLaboral* dataOfertaLab = dOferEmp->getDataOfertaLaboral();
                 DataEmpresa* dataEmpre = dOferEmp->getDataEmpresa();

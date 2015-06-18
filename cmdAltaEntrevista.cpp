@@ -41,7 +41,7 @@ void cmdAltaEntrevista::ejecutarComando()
             {
                 throw std::invalid_argument("cmdAltaEntrevista -> El objeto no es de la clase DataOfertaLaboral.");
             }
-            it.next();
+            it->next();
         }
         delete it;
 
@@ -64,7 +64,7 @@ void cmdAltaEntrevista::ejecutarComando()
             {
                 throw std::invalid_argument("cmdAltaEntrevista -> El objeto no es de la clase DataEstudiante.");
             }
-            it2.next();
+            it2->next();
         }
         delete it2;
 

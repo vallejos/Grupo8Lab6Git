@@ -29,8 +29,8 @@ ICollection *Sucursal::getDataSecciones()
     IIterator * it = this->secciones->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it.current()->getDataSeccion());
-        it.next();
+        result->add(it->current()->getDataSeccion());
+        it->next();
     }
     delete it;
 

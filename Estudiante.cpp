@@ -157,7 +157,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
         while(lIt->hasCurrent())
         {
             Aprobacion *apro;
-            if( (apro = dynamic_cast<Aprobacion*> (lIt.current())) != NULL )
+            if( (apro = dynamic_cast<Aprobacion*> (lIt->current())) != NULL )
             {
                 dataAsignaturas->add(apro->getDataAsignatura());
             } else
@@ -165,7 +165,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
                 throw std::invalid_argument("Estudiante -> El objeto no es de la clase Aprobacion.");
             }
 
-            lIt.next();
+            lIt->next();
         }
         delete lIt;
 
@@ -175,7 +175,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
         while(It->hasCurrent())
         {
             Carrera *carr;
-            if( (carr = dynamic_cast<Carrera*> (It.current())) != NULL )
+            if( (carr = dynamic_cast<Carrera*> (It->current())) != NULL )
             {
                 dataCarreras->add(carr->getDataCarrera());
             } else
@@ -183,7 +183,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
                 throw std::invalid_argument("Estudiante -> El objeto no es de la clase Carrera.");
             }
 
-            It.next();
+            It->next();
         }
         delete It;
 
@@ -209,7 +209,7 @@ bool Estudiante::EstNoInscripto(string numExpediente)
         while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
-            if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
+            if( (insc = dynamic_cast<Inscripcion*> (lIt->current())) != NULL )
             {
                 res = insc->EstInscripto(numExpediente);
                 if (res)
@@ -221,7 +221,7 @@ bool Estudiante::EstNoInscripto(string numExpediente)
                 throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
             }
 
-            lIt.next();
+            lIt->next();
         }
         delete lIt;
 
@@ -243,7 +243,7 @@ bool Estudiante::EstInscripto(string numExpediente)
         while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
-            if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
+            if( (insc = dynamic_cast<Inscripcion*> (lIt->current())) != NULL )
             {
                 res = insc->EstInscripto(numExpediente);
                 if (!res)
@@ -255,7 +255,7 @@ bool Estudiante::EstInscripto(string numExpediente)
                 throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
             }
 
-            lIt.next();
+            lIt->next();
         }
         delete lIt;
 
@@ -288,7 +288,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
         while(lIt->hasCurrent())
         {
             Aprobacion *apro;
-            if( (apro = dynamic_cast<Aprobacion*> (lIt.current())) != NULL )
+            if( (apro = dynamic_cast<Aprobacion*> (lIt->current())) != NULL )
             {
                 dataAprobadas->add(apro->getDataAprobada());
             } else
@@ -296,7 +296,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
                 throw std::invalid_argument("Estudiante -> El objeto no es de la clase Aprobacion.");
             }
 
-            lIt.next();
+            lIt->next();
         }
         delete lIt;
 
@@ -305,7 +305,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
         while(lIt->hasCurrent())
         {
             Inscripcion *insc;
-            if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
+            if( (insc = dynamic_cast<Inscripcion*> (lIt->current())) != NULL )
             {
                 dataOfertasEmpresas->add(insc->getDataOfertaLaboral());
             } else
@@ -313,7 +313,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
                 throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
             }
 
-            lIt.next();
+            lIt->next();
         }
 
         delete lIt;
