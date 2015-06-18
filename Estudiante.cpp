@@ -154,7 +154,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
         //Se obtiene la coleccion de DataAsignatura
         List* dataAsignaturas = new List();
         ListIterator * lIt = this->aprobadas->getIterator();
-        while(lIt.hasCurrent())
+        while(lIt->hasCurrent())
         {
             Aprobacion *apro;
             if( (apro = dynamic_cast<Aprobacion*> (lIt.current())) != NULL )
@@ -172,7 +172,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
         //Se obtiene la coleccion de DataCarrera
         List* dataCarreras = new List();
         IIterator * It = this->carreras->getElemIterator();
-        while(It.hasCurrent())
+        while(It->hasCurrent())
         {
             Carrera *carr;
             if( (carr = dynamic_cast<Carrera*> (It.current())) != NULL )
@@ -206,7 +206,7 @@ bool Estudiante::EstNoInscripto(string numExpediente)
         bool res;
         bool noEstaInscripto = true;
         ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt.hasCurrent() && (noEstaInscripto))
+        while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
@@ -240,7 +240,7 @@ bool Estudiante::EstInscripto(string numExpediente)
         bool res;
         bool estaInscripto = true;
         ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt.hasCurrent() && (noEstaInscripto))
+        while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
@@ -285,7 +285,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
         //Se obtiene la coleccion de DataAprobada
         List* dataAprobadas = new List();
         ListIterator * lIt = this->aprobadas->getIterator();
-        while(lIt.hasCurrent())
+        while(lIt->hasCurrent())
         {
             Aprobacion *apro;
             if( (apro = dynamic_cast<Aprobacion*> (lIt.current())) != NULL )
@@ -302,7 +302,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
 
         List* dataOfertasEmpresas = new List();
         ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt.hasCurrent())
+        while(lIt->hasCurrent())
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )

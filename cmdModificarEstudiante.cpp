@@ -23,7 +23,7 @@ void cmdModificarEstudiante::ejecutarComando()
         cout << "Lista de Estudiantes del Sistema:\n";
 
         IIterator * it = estudiantes->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it.current())) != NULL )
@@ -33,7 +33,7 @@ void cmdModificarEstudiante::ejecutarComando()
                 cout << "Asignaturas Aprobadas:\n";
                 ICollection *aprobadas = dEstudiante->getAprobadas();
                 IIterator * it2 = aprobadas->getIterator();
-                while(it2.hasCurrent())
+                while(it2->hasCurrent())
                 {
                     Aprobacion *aprobacion;
                     if( (aprobacion = dynamic_cast<Aprobacion*> (it2.current())) != NULL )
@@ -52,7 +52,7 @@ void cmdModificarEstudiante::ejecutarComando()
                 cout << "Carreras del Estudiante:\n";
                 IDictionary *carreras = dEstudiante->getCarreras();
                 IIterator * it3 = carreras->getIterator();
-                while(it3.hasCurrent())
+                while(it3->hasCurrent())
                 {
                     Carrera *carrera;
                     if( (carrera = dynamic_cast<Carrera*> (it3.current())) != NULL )

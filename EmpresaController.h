@@ -26,7 +26,7 @@ class EmpresaController {
         void SeleccionarSucursal(string nombre);
         void SeleccionarSeccion(string nombre);
         void destroyEmpresaController();
-    protected:
+
     private:
         EmpresaController();
         Empresa *empresa; // la empresa que se recuerda

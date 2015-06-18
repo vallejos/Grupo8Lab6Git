@@ -28,6 +28,7 @@ class DataEstudiante
         ICollection* getAprobadas();
         ICollection* getInscripciones();
         ICollection* getEntrevistas();
+
     private:
         string cedula;
         string nombre;

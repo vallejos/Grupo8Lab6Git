@@ -17,7 +17,7 @@ class Empresa: public ICollectible {
         string getNombre();
         ICollection *getDataSucursales(); // DataSucursal
         Sucursal *getSucursal(string nombre);
-    protected:
+
     private:
         string rut;
         string nombre;
@@ -27,3 +27,4 @@ class Empresa: public ICollectible {
 #include "Sucursal.h"
 
 #endif // EMPRESA_H
+

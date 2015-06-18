@@ -10,7 +10,7 @@ class Tiempo
         Date* now();
         void setTiempo(int dd, int mm, int aaaa);
         ~Tiempo();
-    protected:
+
     private:
         Tiempo();
         static Tiempo* instance;
