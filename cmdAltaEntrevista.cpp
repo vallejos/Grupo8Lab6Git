@@ -30,11 +30,11 @@ void cmdAltaEntrevista::ejecutarComando()
         //LISTAR OFERTAS LABORALES
         ICollection* dataOfertas = cOferta->ListarOfertas();
         cout << "Lista de Ofertas:\n";
-        IIterator* it = dataOfertas->getIterator();
-        while(it.hasCurrent())
+        IIterator *it = dataOfertas->getIterator();
+        while(it->hasCurrent())
         {
             DataOfertaLaboral* dol;
-            if( (dol = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
+            if( (dol = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
             {
                 cout << "Numero de Expediente: " + dol->getNumExpediente() + ", Titulo:" + dol->getTitulo() + ", Descripcion:" + dol->getDescripcion() + "\n";
             } else
@@ -54,10 +54,10 @@ void cmdAltaEntrevista::ejecutarComando()
         ICollection* dataEstudiantes= cEstudiante->ListarEstudiantesInscriptosEnOferta();
         cout << "Lista de Estudiantes inscriptos es la Oferta Laboral:\n";
         IIterator* it2 = dataEstudiantes->getIterator();
-        while(it2.hasCurrent())
+        while(it2->hasCurrent())
         {
             DataEstudiante* dEstudiante;
-            if ((dEstudiante = dynamic_cast<DataEstudiante*> (it2.current())) != NULL)
+            if ((dEstudiante = dynamic_cast<DataEstudiante*> (it2->current())) != NULL)
             {
                 cout << "Cedula: " + dEstudiante->getCedula + ", Apellido: " + dEstudiante->getApellido() + "\n";
             } else

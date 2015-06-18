@@ -21,7 +21,7 @@ void cmdDarDeBajaLlamado::ejecutarComando()
         cout << "Lista de Ofertas Laborales:\n";
 
         IIterator *it = dataOfertas->getIterator();
-        while (it.hasCurrent())
+        while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )

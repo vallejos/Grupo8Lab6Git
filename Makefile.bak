@@ -6,8 +6,8 @@ LFLAGS=-Wall
 
 all: lab6
 
-lab6:  Aprobacion.o Asignatura.o Carrera.o cmdAltaEntrevista.o cmdAltaOfertaLaboral.o cmdAsignacionDeOfertaAEstudiante.o cmdConsultarDatosEstudiantes.o cmdDarDeBajaLlamado.o cmdInscripcionOfertaLaboral.o cmdListarOfertasActivas.o cmdModificarEstudiante.o cmdModificarLlamado.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o IObserver.o IOfertaLaboralController.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o
-	$(CC) $(LFLAGS)  Aprobacion.o Asignatura.o Carrera.o cmdAltaEntrevista.o cmdAltaOfertaLaboral.o cmdAsignacionDeOfertaAEstudiante.o cmdConsultarDatosEstudiantes.o cmdDarDeBajaLlamado.o cmdInscripcionOfertaLaboral.o cmdListarOfertasActivas.o cmdModificarEstudiante.o cmdModificarLlamado.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o IObserver.o IOfertaLaboralController.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o Sucursal.o Tiempo.o -o lab6
+lab6:  Aprobacion.o Asignatura.o Carrera.o cmdAltaEntrevista.o cmdAltaOfertaLaboral.o cmdAsignacionDeOfertaAEstudiante.o cmdConsultarDatosEstudiantes.o cmdDarDeBajaLlamado.o cmdInscripcionOfertaLaboral.o cmdListarOfertasActivas.o cmdModificarEstudiante.o cmdModificarLlamado.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o Integer.o IObserver.o IOfertaLaboralController.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o String.o Sucursal.o Tiempo.o
+	$(CC) $(LFLAGS)  Aprobacion.o Asignatura.o Carrera.o cmdAltaEntrevista.o cmdAltaOfertaLaboral.o cmdAsignacionDeOfertaAEstudiante.o cmdConsultarDatosEstudiantes.o cmdDarDeBajaLlamado.o cmdInscripcionOfertaLaboral.o cmdListarOfertasActivas.o cmdModificarEstudiante.o cmdModificarLlamado.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IEmpresaController.o IEstudianteController.o Inscripcion.o Integer.o IObserver.o IOfertaLaboralController.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o String.o Sucursal.o Tiempo.o -o lab6
 
 
 Aprobacion.o: Aprobacion.h Aprobacion.cpp
@@ -130,6 +130,9 @@ IEstudianteController.o: IEstudianteController.h IEstudianteController.cpp
 Inscripcion.o: Inscripcion.h Inscripcion.cpp
 	$(CC) $(CFLAGS) Inscripcion.cpp -o Inscripcion.o
 
+Integer.o: Integer.h Integer.cpp
+	$(CC) $(CFLAGS) Integer.cpp -o Integer.o
+
 IObserver.o: IObserver.h IObserver.cpp
 	$(CC) $(CFLAGS) IObserver.cpp -o IObserver.o
 
@@ -159,6 +162,9 @@ Seccion.o: Seccion.h Seccion.cpp
 
 Sistema.o: Sistema.h Sistema.cpp
 	$(CC) $(CFLAGS) Sistema.cpp -o Sistema.o
+
+String.o: String.h String.cpp
+	$(CC) $(CFLAGS) String.cpp -o String.o
 
 Sucursal.o: Sucursal.h Sucursal.cpp
 	$(CC) $(CFLAGS) Sucursal.cpp -o Sucursal.o

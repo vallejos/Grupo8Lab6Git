@@ -22,7 +22,6 @@ IComando* FabricaComando::obtenerComando(string cmd)
 			case 'AltaOfertaLaboral':
                 return new cmdAltaOfertaLaboral();
 				break;
-
 			case 'AltaEntrevista':
                 return new cmdAltaEntrevista();
 				break;
@@ -47,6 +46,9 @@ IComando* FabricaComando::obtenerComando(string cmd)
             case 'InscripcionOfertaLaboral':
                 return new cmdInscripcionOfertaLaboral();
 				break;
+            case 'CargarDatosDePrueba':
+                return new cmdCargarDatosDePrueba();
+                break;
     }
 }
 

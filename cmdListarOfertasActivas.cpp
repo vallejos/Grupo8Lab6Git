@@ -27,7 +27,7 @@ void cmdListarOfertasActivas::ejecutarComando()
         ICollection* dataOfertasActivas = cOferta->MostrarOfertasActivas();
         cout << "Lista de Ofertas Laborales Activas:\n";
         IIterator *it = dataOfertasActivas->getIterator();
-        while (it.hasCurrent())
+        while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
@@ -35,7 +35,7 @@ void cmdListarOfertasActivas::ejecutarComando()
             //calculo la cantidad de inscriptos
                 IIterator *it2 = dOferta->getInscripciones()->getIterator();
                 cantInscriptos = 0;
-                while (it2.hasCurrent())
+                while (it2->hasCurrent())
                 {
                     cantInscriptos ++;
                     it2.next();

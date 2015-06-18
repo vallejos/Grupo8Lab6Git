@@ -8,9 +8,9 @@
 
 class IEstudianteController {
     public:
-        IEstudianteController() = 0;
+        IEstudianteController();
         virtual ~IEstudianteController() = 0;
-        void ModificarEstudiante(
+        void ModificarEstudiante();
         virtual ICollection *ListarEstudiantesNoInscriptos() = 0;
         virtual void SeleccionarEstudiante(string cedula) = 0;
         virtual void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono,
