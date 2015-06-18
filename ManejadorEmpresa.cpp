@@ -39,12 +39,22 @@ Empresa* ManejadorEmpresa::getEmpresa(string rut)
     return this->empresas->find(sRut);
 }
 
-IDictionary* Estudiante::getEmpresas()
+IDictionary* Estudiante::getEmpresas() // ???
 {
     return this->empresas;
+}
+
+void ManejadorEmpresa::destroyManejadorEmpresa()
+{
+     if (instance != NULL)
+     {
+        delete ManejadorEmpresa;
+     }
 }
 
 ManejadorEmpresa::~ManejadorEmpresa()
 {
     //dtor
+    delete instance;
+    instance = NULL;
 }

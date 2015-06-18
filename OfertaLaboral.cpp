@@ -20,7 +20,9 @@ OfertaLaboral::OfertaLaboral()
 
 }
 
-OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas)
+OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
+                            Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
+                            IDictionary *asignaturas)
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;

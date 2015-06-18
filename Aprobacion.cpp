@@ -70,4 +70,8 @@ void Aprobacion::setAsignatura(Asignatura* a)
 Aprobacion::~Aprobacion()
 {
     //dtor
+    if (this->asig != NULL)
+        delete this->asig;
+    if (this->fecha != NULL)
+        delete this->fecha;
 }

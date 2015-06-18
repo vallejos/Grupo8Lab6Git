@@ -50,7 +50,17 @@ IComando* FabricaComando::obtenerComando(string cmd)
     }
 }
 
+void FabricaComando::destroyFabricaComando()
+{
+    if (instance != NULL)
+    {
+        delete FabricaComando;
+    }
+}
+
 FabricaComando::~FabricaComando()
 {
-    //dtor
+    //destructor
+    delete instance;
+    instance = NULL;
 }

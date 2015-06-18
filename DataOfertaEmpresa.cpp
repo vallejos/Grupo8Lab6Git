@@ -25,6 +25,10 @@ DataOfertaLaboral* DataOfertaEmpresa::getDataOfertaLaboral()
 }
 
 // destructor
-DataOfertaEmpresa::~DataOfertaEmpresa() {
-
+DataOfertaEmpresa::~DataOfertaEmpresa()
+{
+    if (this->dataEmpresa !=NULL)
+        delete this->dataEmpresa;
+    if (this->dataOferta !=NULL)
+        delete this->dataOferta;
 }
