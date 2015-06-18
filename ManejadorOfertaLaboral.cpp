@@ -31,6 +31,7 @@ ICollection *ManejadorOfertaLaboral::getDataOfertaLaboral()
         it.next();
     }
     delete it;
+
     return result;
 
 }

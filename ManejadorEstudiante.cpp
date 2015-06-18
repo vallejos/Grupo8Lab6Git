@@ -75,6 +75,7 @@ Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
         }
         else
         {
+            //Me parece que ademas tenemos que hacer es ver si la cedula pertenece a alguno de los estudiantes no inscriptos
             throw std::invalid_argument("El Estudiante con C.I. " + cedula + " no existe en el Sistema.");
         }
     }

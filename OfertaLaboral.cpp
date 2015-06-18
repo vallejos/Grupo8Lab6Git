@@ -153,9 +153,13 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 {
     EstudianteController* ec = EstudianteController::getInstance();
     e = ec->getEstudiante();
+    if (e == NULL)// no se si puedo hacer esto, no es necesario el try catch?
+        throw std::invalid_argument("El sistema no recuerda a ningun estudiante Seleccionado");
     Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
     e->AsociarInscripcion(i);
     this->inscripciones->add(i);
+    //Creo que el estudiante se elimina acá
+    delete e;
 }
 
 void OfertaLaboral::Entrevista(Date *fechaEntrevista)
