@@ -30,6 +30,8 @@ void OfertaLaboralController::SeleccionarOferta(string numExpediente) {
 	try {
 		ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
 		this->oferta = mo->SeleccionarOferta(numExpediente);
+		if (this->oferta == NULL)
+            throw std::invalid_argument("No existe una Oferta Activa con el número de expediente ingresado");
 	} catch (e) {
     	throw e;
 	}
@@ -37,7 +39,10 @@ void OfertaLaboralController::SeleccionarOferta(string numExpediente) {
 
 void OfertaLaboralController::Inscribir(Date *fechaInscripcion) {
 	try {
+	    if (this->oferta == NULL)
+            throw std::invalid_argument("El sistema no recuerda a ninguna Oferta Laboral Seleccionada");
 	    this->oferta->Inscripcion(fechaInscripcion);
+	    delete this->oferta;
 	    //BORRAR MEMORIA ?? oferta y estudiante en memoria
 	} catch (e) {
     	throw e;
@@ -57,7 +62,11 @@ ICollection *OfertaLaboralController::MostrarOfertasActivas()
 {
 	try {
 	    ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
-		return mol->getDataOfertaLaboral();
+	    ofertasActivas = mol->getDataOfertaLaboral();
+	    if (!ofertasActivas.hasCurrent())
+	         throw std::invalid_argument("No existe una Oferta Activa");
+        return ofertasActivas;
+
 	} catch (e) {
     	throw e;
 	}

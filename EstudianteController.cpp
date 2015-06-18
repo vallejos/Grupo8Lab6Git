@@ -22,7 +22,10 @@ ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
         OfertaLaboralController *olc = OfertaLaboralController::getInstance();
         string numExpe = olc->getOfertaLaboral()->getNumExpediente();
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	return (me->getEstNoInscriptos(numExpe));
+    	ICollection *estNoInsc = me->getEstNoInscriptos(numExpe);
+    	if (!estudiantesNoInsc.hasCurrent())
+            throw std::invalid_argument("No existe un Estudiante no Inscripto a la Oferta Seleccionada");
+    	return estNoInsc;
     } catch (e) {
         throw e;
     }
