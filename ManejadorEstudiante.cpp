@@ -24,9 +24,9 @@ ICollection *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
     IIterator * it = this->estudiantes->getElemIterator();
     while(it->hasCurrent())
     {
-        if (it.current()->EstNoInscripto(numExpediente))
-            result->add(it.current()->getDataEstudiante());
-        it.next();
+        if (it->current()->EstNoInscripto(numExpediente))
+            result->add(it->current()->getDataEstudiante());
+        it->next();
     }
     delete it;
     return result;
@@ -38,9 +38,9 @@ ICollection* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
     IIterator * it = this->estudiantes->getElemIterator();
     while(it->hasCurrent())
     {
-        if (it.current()->EstInscripto(numExpediente))
-            result->add(it.current()->getDataEstudiante());
-        it.next();
+        if (it->current()->EstInscripto(numExpediente))
+            result->add(it->current()->getDataEstudiante());
+        it->next();
     }
     delete it;
     return result;
@@ -92,8 +92,8 @@ ICollection *ManejadorEstudiante::getEstudiante()
     IIterator * it = this->estudiantes->getElemIterator();
     while(it->hasCurrent())
     {
-        result->add(it.current()->getDataEstudiante());
-        it.next();
+        result->add(it->current()->getDataEstudiante());
+        it->next();
     }
     delete it;
     return result;

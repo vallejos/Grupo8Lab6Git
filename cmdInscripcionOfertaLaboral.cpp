@@ -30,10 +30,10 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         while(it->hasCurrent())
         {
             DataOfertaLaboral *dOfertaLab;// Esto cambia si no traemos dataOfertas
-            if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
+            if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
             {
                 cout << "Número de Expediente: " + dOfertaLab->getNumExpediente() + ", Título:" + dOfertaLab->getTitulo() + "\n";
-                it.next();
+                it->next();
 
             } else
             {
@@ -57,10 +57,10 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         while(it2->hasCurrent())
         {
             DataEstudiante *dEstudiante;
-            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2.current())) != NULL )
+            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2->current())) != NULL )
             {
                 cout << "Cédula: " + dEstudiante->getCedula() + "Nombre: " + dEstudiante->getNombre() + "Apellido: " + dEstudiante->getApellido() + "\n";
-                it2.next();
+                it2->next();
 
             } else
             {

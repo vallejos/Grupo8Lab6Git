@@ -32,7 +32,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         while(it->hasCurrent())
         {
             DataEmpresa *dEmpresa;
-            if( (dEmpresa = dynamic_cast<DataEmpresa*> (it.current())) != NULL )
+            if( (dEmpresa = dynamic_cast<DataEmpresa*> (it->current())) != NULL )
             {
                 cout << "Nombre: " + dEmpresa->getNombre() + ", RUT:" + dEmpresa->getRut() + "\n";
             }
@@ -55,7 +55,7 @@ cmdInscripcionOfertaLaboral
         while(it2->hasCurrent())
         {
             DataSucursal *dSucursal;
-            if( (dSucursal = dynamic_cast<DataSucursal*> (it2.current())) != NULL )
+            if( (dSucursal = dynamic_cast<DataSucursal*> (it2->current())) != NULL )
             {
                 cout << "Nombre: " + dSucursal->getNombre() + "\n";
             } else
@@ -75,7 +75,7 @@ cmdInscripcionOfertaLaboral
         while(it3->hasCurrent())
         {
             DataSeccion *dSeccion;
-            if( (dSeccion = dynamic_cast<DataSeccion*> (it3.current())) != NULL )
+            if( (dSeccion = dynamic_cast<DataSeccion*> (it3->current())) != NULL )
             {
                 cout << "Nombre: " + dSeccion->getNombre() + "\n";
             } else

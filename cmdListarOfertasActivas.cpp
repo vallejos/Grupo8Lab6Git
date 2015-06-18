@@ -30,7 +30,7 @@ void cmdListarOfertasActivas::ejecutarComando()
         while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
-            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
+            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
             {
             //calculo la cantidad de inscriptos
                 IIterator *it2 = dOferta->getInscripciones()->getIterator();
@@ -38,7 +38,7 @@ void cmdListarOfertasActivas::ejecutarComando()
                 while (it2->hasCurrent())
                 {
                     cantInscriptos ++;
-                    it2.next();
+                    it2->next();
                 }
                 delete it2;
             //IMPRIMO LOS DATOS QUE INDICA ELCASO DE USO
@@ -55,7 +55,7 @@ void cmdListarOfertasActivas::ejecutarComando()
             {
                 throw std::invalid_argument("cmdListarOfertasActivas -> El objeto no es de la clase DataOfertaLaboral.");
             }
-            it.next();
+            it->next();
         }
         delete it;
     }

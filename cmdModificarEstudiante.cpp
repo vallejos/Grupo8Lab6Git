@@ -26,7 +26,7 @@ void cmdModificarEstudiante::ejecutarComando()
         while(it->hasCurrent())
         {
             DataEstudiante *dEstudiante;
-            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it.current())) != NULL )
+            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it->current())) != NULL )
             {
                 cout << "Cédula: " + dEstudiante->getCedula() + "Nombre: " + dEstudiante->getNombre() + "Apellido: " + dEstudiante->getApellido() + "\n";
                 cout << "Fecha de Nacimiento: " + dEstudiante->getFechaNacimiento()->getDia() + "/" + dEstudiante->getFechaNacimiento()->getMes() + "/" + dEstudiante->getFechaNacimiento()->getAnio() + "Teléfono: " + dEstudiante->getTelefono() + "Email: " + dEstudiante-> getEmail() + "Créditos: " + dEstudiante->getCreditos() + "\n";
@@ -36,11 +36,11 @@ void cmdModificarEstudiante::ejecutarComando()
                 while(it2->hasCurrent())
                 {
                     Aprobacion *aprobacion;
-                    if( (aprobacion = dynamic_cast<Aprobacion*> (it2.current())) != NULL )
+                    if( (aprobacion = dynamic_cast<Aprobacion*> (it2->current())) != NULL )
                     {
                         DataAsignatura* dasignatura = aprobacion->getDataAsignatura();
                         cout << "Código: " + dasignatura->getCedula() + "Nombre: " + dasignatura->getNombre() + "Créditos: " + dasignatura->getCreditos() + "\n";
-                        it2.next();
+                        it2->next();
                     }else
                     {
                        throw std::invalid_argument("ModificarEstudiante -> El objeto no es de la clase Aprobacion.");
@@ -55,17 +55,17 @@ void cmdModificarEstudiante::ejecutarComando()
                 while(it3->hasCurrent())
                 {
                     Carrera *carrera;
-                    if( (carrera = dynamic_cast<Carrera*> (it3.current())) != NULL )
+                    if( (carrera = dynamic_cast<Carrera*> (it3->current())) != NULL )
                     {
                         cout << "Código: " + carrera->getCodigo() + "Nombre: " + carrera->getNombreCarrera() + "\n";
-                        it3.next();
+                        it3->next();
                     }else
                     {
                        throw std::invalid_argument("ModificarEstudiante -> El objeto no es de la clase Carrera.");
                     }
                 }
                 delete it3;
-                it.next();
+                it->next();
             } else
             {
                 throw std::invalid_argument("ModificarEstudiante -> El objeto no es de la clase DataEstudiante.");
