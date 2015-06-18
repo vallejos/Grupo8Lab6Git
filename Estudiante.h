@@ -1,10 +1,10 @@
 #ifndef ESTUDIANTE_H
 #define ESTUDIANTE_H
 
-#include "ICollectible.h"
-#include "ICollection.h"
-#include "IDictionary.h"
-#include "List.h"
+#include "interfaces/ICollectible.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
+#include "collections/List.h"
 #include "OrderedDictionary.h"
 #include "IObserver.h"
 #include "Date.h"

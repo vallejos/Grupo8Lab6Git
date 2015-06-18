@@ -3,7 +3,7 @@
 #include "cmdConsultarDatosEstudiantes.h"
 #include "Fabrica.h"
 #include "IEstudianteController.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "DataEstudiante.h"
 #include "DataDatosEstudiante.h"
 #include "DataAprobada.h"

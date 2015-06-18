@@ -2,7 +2,7 @@
 #include <string>
 #include "cmdDarDeBajaLlamado.h"
 #include "OfertaLaboralController.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "DataOfertaLaboral.h"
 
 using namespace std;

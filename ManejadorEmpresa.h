@@ -1,8 +1,8 @@
 #ifndef MANEJADOREMPRESA_H
 #define MANEJADOREMPRESA_H
 
-#include "lab6-colecciones/interfaces/ICollection.h"
-#include "lab6-colecciones/interfaces/IDictionary.h"
+#include "lab6-colecciones/interfaces/interfaces/ICollection.h"
+#include "lab6-colecciones/interfaces/interfaces/IDictionary.h"
 #include "Empresa.h"
 
 class ManejadorEmpresa

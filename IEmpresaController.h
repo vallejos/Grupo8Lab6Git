@@ -1,8 +1,8 @@
 #ifndef IEMPRESACONTROLLER_H
 #define IEMPRESACONTROLLER_H
 
-#include "ICollection.h"
-#include "List.h"
+#include "interfaces/ICollection.h"
+#include "collections/List.h"
 #include "Empresa.h"
 #include "Sucursal.h"
 #include "Seccion.h"

@@ -7,9 +7,9 @@
 #include "DataOfertaLaboral.h"
 #include "DataOfertaEmpresa.h"
 #include "Seccion.h"
-#include "ICollection.h"
-#include "ICollectible";
-#include "IDictionary.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/ICollectible.h"
+#include "interfaces/IDictionary.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 #define DATASUCURSAL_H
 
 #include <string>
-#include "ICollection.h";
+#include "interfaces/ICollection.h"
 
 using namespace std;
 

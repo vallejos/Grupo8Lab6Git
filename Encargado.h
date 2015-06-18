@@ -2,7 +2,7 @@
 #define ENCARGADO_H
 
 #include <string>
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "Date.h"
 #include "DataEncargado.h"
 
