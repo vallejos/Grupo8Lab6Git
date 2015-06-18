@@ -1,7 +1,6 @@
 #ifndef CMD_DARDEBAJALLAMADO_H
 #define CMD_DARDEBAJALLAMADO_H
 
-
 class cmdDarDeBajaLlamado: public IComando
 {
     public:
