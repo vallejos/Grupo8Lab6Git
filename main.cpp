@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "FabricaComando.h"
 #include "cmdAltaEntrevista.h"
 #include "cmdInscripcionOfertaLaboral.h"
 #include "cmdAltaOfertaLaboral.h"
@@ -9,9 +10,11 @@
 #include "cmdConsultarDatosEstudiantes.h"
 #include "cmdModificarLlamado.h"
 #include "cmdDarDeBajaLlamado.h"
+#include "cmdCargarDatosDePrueba.h"
 
 
 using namespace std;
+
 
 // Imprime el Menu Principal
 void imprimirMenu() {
@@ -38,93 +41,94 @@ int main() {
 	char opcion;
 	bool salir = false;
 
-	Sistema *Sys;
-
-	// TODO: inicializar sistema
-	Sys = new Sistema();
+	FabricaComando *cmd = FabricaComando::getInstance();
 
 	while (!salir) {
-		imprimirMenu();
-		cin >> opcion;
+		try {
+			imprimirMenu();
+			cin >> opcion;
 
-		switch (opcion) {
-			//------------------------
-			// ALTA ENTREVISTA
-			//------------------------
-			case '1':
-				cmdAltaEntrevista::ejecutarComando();
-				break;
+			switch (opcion) {
+				//------------------------
+				// ALTA ENTREVISTA
+				//------------------------
+				case '1':
+					cmd->ejecutarComando('cmdAltaEntrevista');
+					break;
 
-			//------------------------
-			// ALTA OFERTA LABORAL
-			//------------------------
-			case '2':
-				cmdAltaOfertaLaboral::ejecutarComando();
-				break;
+				//------------------------
+				// ALTA OFERTA LABORAL
+				//------------------------
+				case '2':
+					cmd->ejecutarComando('cmdAltaOfertaLaboral');
+					break;
 
-			//------------------------
-			// ASIGNACION DE OFERTA A ESTUDIANTE
-			//------------------------
-			case '3':
-				cmdAsignacionDeOfertaAEstudiante::ejecutarComando();
-				break;
+				//------------------------
+				// ASIGNACION DE OFERTA A ESTUDIANTE
+				//------------------------
+				case '3':
+					cmd->ejecutarComando('cmdAsignacionDeOfertaAEstudiante');
+					break;
 
-			//------------------------
-			// CONSULTAR DATOS DE ESTUDIANTE
-			//------------------------
-			case '4':
-				cmdConsultarDatosEstudiantes::ejecutarComando();
-				break;
+				//------------------------
+				// CONSULTAR DATOS DE ESTUDIANTE
+				//------------------------
+				case '4':
+					cmd->ejecutarComando('cmdConsultarDatosEstudiantes');
+					break;
 
-			//------------------------
-			// DAR DE BAJA LLAMADO
-			//------------------------
-			case '5':
-				cmdDarDeBajaLlamado::ejecutarComando();
-				break;
+				//------------------------
+				// DAR DE BAJA LLAMADO
+				//------------------------
+				case '5':
+					cmd->ejecutarComando('cmdDarDeBajaLlamado');
+					break;
 
-			//------------------------
-			// INSCRIPCION DE OFERTA LABORAL
-			//------------------------
-			case '6':
-				cmdInscripcionOfertaLaboral::ejecutarComando();
-				break;
+				//------------------------
+				// INSCRIPCION DE OFERTA LABORAL
+				//------------------------
+				case '6':
+					cmd->ejecutarComando('cmdInscripcionOfertaLaboral');
+					break;
 
-			//------------------------
-			// LISTAR OFERTAS ACTIVAS
-			//------------------------
-			case '7':
-				cmdListarOfertasActivas::ejecutarComando();
-				break;
+				//------------------------
+				// LISTAR OFERTAS ACTIVAS
+				//------------------------
+				case '7':
+					cmd->ejecutarComando('cmdListarOfertasActivas');
+					break;
 
-			//------------------------
-			// MODIFICAR ESTUDIANTE
-			//------------------------
-			case '8':
-				cmdModificarEstudiante::ejecutarComando();
-				break;
+				//------------------------
+				// MODIFICAR ESTUDIANTE
+				//------------------------
+				case '8':
+					cmd->ejecutarComando('cmdModificarEstudiante');
+					break;
 
-			//------------------------
-			// MODIFICAR LLAMADO
-			//------------------------
-			case '9':
-				cmdModificarLlamado::ejecutarComando();
-				break;
+				//------------------------
+				// MODIFICAR LLAMADO
+				//------------------------
+				case '9':
+					cmd->ejecutarComando('cmdModificarLlamado');
+					break;
 
-			//------------------------
-			// CARGAR DATOS DE PRUEBA
-			//------------------------
-			case 'C':
-				// TODO: poner comandos para carga de pruebas
-			
-				break;
+				//------------------------
+				// CARGAR DATOS DE PRUEBA
+				//------------------------
+				case 'C':
+					// TODO: poner comandos para carga de pruebas
+					cmd->ejecutarComando('cmdCargarDatosDePrueba');
+					break;
 
-			//------------------------
-			// SALIR
-			//------------------------
-			case 'S':
-				salir = true;
-				break;
+				//------------------------
+				// SALIR
+				//------------------------
+				case 'S':
+					salir = true;
+					break;
+			}
+		} catch (exception &e) {
+			cout << e.what();
 		}
 	}
 
