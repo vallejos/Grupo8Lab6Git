@@ -12,6 +12,12 @@ Efectivizacion::Efectivizacion(int sueldo, Date* fechaEfectivizacion)
     this->fechaEfectivizacion = fechaEfectivizacion;
 }
 
+Efectivizacion::Efectivizacion(const Efectivizacion &e)
+{
+    this->sueldo= e.sueldo;
+    this->fechaEfectivizacion=e.fechaEfectivizacion;
+}
+
 int Efectivizacion::getSueldo()
 {
     return this->sueldo;

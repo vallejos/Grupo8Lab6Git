@@ -10,9 +10,21 @@ Empresa::Empresa(string rut, string nombre) {
 	this->nombre = nombre;
 }
 
+Empresa::Empresa(const Empresa &e)
+{
+    this->rut=e.rut;
+    this->nombre=e.nombre;
+}
+
 // destructor
 Empresa::~Empresa() {
 
+}
+
+Empresa::DataEmpresa *getDataEmpresa()
+{
+    DataEmpresa* dataEmpresa= new DataEmpresa(this->rut, this->nombre);
+    return dataEmpresa;
 }
 
 string Empresa::getRut() {

@@ -20,6 +20,8 @@ class Encargado : public ICollectible
         //operaciones
         Encargado();
         Encargado(string cedula, string nombre, string apellido, Date* fechaNacimiento);
+        Encargado(const Encargado &e);
+
         DataEncargado *getDataEncargado();
         //getters
         string getCedula();
