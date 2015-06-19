@@ -109,12 +109,8 @@ void OfertaLaboralController::AltaAsignacionDelCargo(Date* fechaEfectivizacion, 
 
 void OfertaLaboralController::DarBajaLlamado() {
 	try {
-		// TODO
-
-		// buscar llamado
-
-		// borrar
-
+   		ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
+		mo->DarDeBajaLlamado(this->oferta);
 	} catch (e) {
     	throw e;
 	}

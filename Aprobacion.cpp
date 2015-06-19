@@ -48,7 +48,6 @@ DataAprobada* Aprobacion::getDataAprobada()
 DataAsignatura* Aprobacion::getDataAsignatura()
 {
     DataAsignatura* dAs = new DataAsignatura(this->asig->getCodigo(), this->asig->getNombre(), this->asig->getCreditos());
-
     return dAs;
 }
 

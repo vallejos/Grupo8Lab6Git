@@ -54,7 +54,6 @@ void Encargado::setNombre(string nombre)
     this->nombre = nombre;
 }
 
-
 void Encargado::setApellido(string apellido)
 {
     this->apellido = apellido;

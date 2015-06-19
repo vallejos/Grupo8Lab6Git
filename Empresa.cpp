@@ -1,11 +1,13 @@
 #include "Empresa.h"
 
 // default constructor
-Empresa::Empresa() {
+Empresa::Empresa()
+{
 
 }
 
-Empresa::Empresa(string rut, string nombre) {
+Empresa::Empresa(string rut, string nombre)
+{
 	this->rut = rut;
 	this->nombre = nombre;
 }
@@ -17,7 +19,8 @@ Empresa::Empresa(const Empresa &e)
 }
 
 // destructor
-Empresa::~Empresa() {
+Empresa::~Empresa()
+{
 
 }
 
@@ -27,15 +30,18 @@ Empresa::DataEmpresa *getDataEmpresa()
     return dataEmpresa;
 }
 
-string Empresa::getRut() {
+string Empresa::getRut()
+{
 	return this->rut;
 }
 
-string Empresa::getNombre() {
+string Empresa::getNombre()
+{
 	return this->nombre;
 }
 
-IDictionary *Empresa::getSucursales() {
+IDictionary *Empresa::getSucursales()
+{
     return this->sucursales;
 }
 
@@ -60,7 +66,8 @@ ICollection *Empresa::getDataSucursales()
     return result;
 }
 
-Sucursal *Empresa::getSucursal(string nombre) {
+Sucursal *Empresa::getSucursal(string nombre)
+{
     String *keyNombre = new String(nombre);
 
     if (this->sucursales->member(keyNombre))

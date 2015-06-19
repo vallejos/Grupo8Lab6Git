@@ -19,7 +19,7 @@ class IOfertaLaboralController {
         virtual IDictionary* MostrarOfertasActivas() = 0;
         virtual void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos) = 0;
         virtual void AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)=0;
-        virtual void DarBajaLlamado(OfertaLaboral *ol) = 0;
+        virtual void DarBajaLlamado() = 0;
         virtual ~IOfertaLaboralController() = 0; //virtual y vacio
 };
 
