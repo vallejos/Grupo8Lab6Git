@@ -1,0 +1,8 @@
+ref,nombre,telefono,ubicacion,ref. empresa
+SU1,Casa central,24598765,Ciudad Vieja,E1
+SU2,Sucursal comercial,25225323,Malvin,E2
+SU3,Sucursal San Carlos,42668350,San Carlos,E2
+SU4,Sede Montevideo,25468932,Buceo,E3
+SU5,Sede Ciudad de la Costa,43764232,Solymar,E3
+SU6,Oficina central,25495878,Centro,E4
+SU7,Academia,24594565,Parque Rodo,E5

@@ -155,13 +155,48 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 {
     EstudianteController* ec = EstudianteController::getInstance();
     e = ec->getEstudiante();
-    if (e == NULL)// no se si puedo hacer esto, no es necesario el try catch?
+    if (e == NULL)
         throw std::invalid_argument("El sistema no recuerda a ningun estudiante Seleccionado");
+    OfertaLaboralController *oc = OfertaLaboralController::getInstance();
+    IDictionary *asigDeOL = oc->getOfertaLaboral()->getAsignaturas();
+    ICollection *aprobadas = e->getAprobadas();
+    IIterator * it = asigDeOL->getElemIterator();
+    while(it->hasCurrent())
+    {
+        Asignatura *asig;
+        if( (asig = dynamic_cast<Asignatura*> (it->getCurrent())) != NULL )
+        {
+            int cod = asig->getCodigo();
+            IIterator * it2 = aprobadas->getIterator();
+            bool encontro = false;
+            while (it2->hasCurrent() && !encontro)
+            {
+                Aprobacion *aprobada;
+                if( (aprobada = dynamic_cast<Aprobacion*> (it2->getCurrent())) != NULL )
+                {
+                    int codAsigEst = aprobada->getAsignatura()->getCodigo();
+                    if (codAsigEst == cod)
+                        encontro = true;
+                }else
+                {
+                    throw std::invalid_argument("OfertaLaboral -> El objeto no es de la clase Aprobacion.");
+                }
+                it2->next();
+            }
+            delete it2;
+            if (!encontro)
+                 throw std::invalid_argument("OfertaLaboral -> El Estudiante no cumple con los requisitos para Inscribirse a la Oferta Laboral.");
+        }else
+        {
+            throw std::invalid_argument("OfertaLaboral -> El objeto no es de la clase Asignatura.");
+        }
+        it->next();
+    }
+    delete it;
+
     Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
     e->AsociarInscripcion(i);
     this->inscripciones->add(i);
-    //Creo que el estudiante se elimina acá
-    delete e;
 }
 
 void OfertaLaboral::Entrevista(Date *fechaEntrevista)
@@ -195,13 +230,13 @@ void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
     bool noEncontrada = true;
     while((it->hasCurrent())&&(noEncontrada))
     {
-        if(it.current()->EstInscripto(this->numExpediente))
+        if(it->getCurrent()->EstInscripto(this->numExpediente))
         {
             Efectivizacion* efe = Efectivizacion(sueldo, fechaEfectivizacion);
-            it.current()->setEfectivizacion(efe);
+            it->getCurrent()->setEfectivizacion(efe);
             noEncontrada = false;
         }
-        it.next();
+        it->next();
     }
     delete it;
 }

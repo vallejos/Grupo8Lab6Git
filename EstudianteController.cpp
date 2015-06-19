@@ -16,14 +16,14 @@ EstudianteController* EstudianteController::getInstance()
     return instance;
 }
 
-ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
+IDictionary* EstudianteController::ListarEstudiantesNoInscriptos()
 {
     try {
         OfertaLaboralController *olc = OfertaLaboralController::getInstance();
         string numExpe = olc->getOfertaLaboral()->getNumExpediente();
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	ICollection *estNoInsc = me->getEstNoInscriptos(numExpe);
-    	if (!estudiantesNoInsc->hasCurrent())
+    	IDictionary *estNoInsc = me->getEstNoInscriptos(numExpe);
+    	if (estudiantesNoInsc == NULL)
             throw std::invalid_argument("No existe un Estudiante no Inscripto a la Oferta Seleccionada");
     	return estNoInsc;
     } catch (e) {
@@ -31,7 +31,7 @@ ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
     }
 }
 
-ICollection* EstudianteController::ListarEstudiantesInscriptosEnOferta()
+IDictionary* EstudianteController::ListarEstudiantesInscriptosEnOferta()
 {
     try {
         OfertaLaboralController *olc = OfertaLaboralController::getInstance();
@@ -43,11 +43,21 @@ ICollection* EstudianteController::ListarEstudiantesInscriptosEnOferta()
     }
 }
 
-void EstudianteController::SeleccionarEstudiante(string cedula)
+void EstudianteController::SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos)
 {
     try {
-    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	this->estudiante = me->SeleccionarEstudiante(cedula);
+        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+        String* ci = new String(cedula);
+        if(this->estudiantesValidos->member(ci))
+        {
+            this->estudiante = me->SeleccionarEstudiante(cedula);
+        }
+        else
+        {
+            throw std::invalid_argument("La cédula " + cedula + " es inválida.");
+        }
+
+
     } catch (e) {
         throw e;
     }
@@ -67,7 +77,7 @@ DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedul
     }
 }
 
-ICollection* EstudianteController::ListarEstudiantesRegistrados()
+IDictionary* EstudianteController::ListarEstudiantesRegistrados()
 {
     try {
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();

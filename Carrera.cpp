@@ -39,6 +39,16 @@ DataCarrera* Carrera::getDataCarrera()
     }
 }
 
+IDictionary* Carrera::getAsignaturas()
+{
+    return this->asignaturas;
+}
+
+void Carrera::setAsignaturas(IDictionary* asignaturas)
+{
+    this->asignaturas = asignaturas;
+}
+
 void Carrera::setCodigo(int codigo)
 {
     this->codigo = codigo;

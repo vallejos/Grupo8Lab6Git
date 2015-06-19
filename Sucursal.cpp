@@ -29,8 +29,8 @@ ICollection *Sucursal::getDataSecciones()
     IIterator * it = this->secciones->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it.current()->getDataSeccion());
-        it.next();
+        result->add(it->getCurrent()->getDataSeccion());
+        it->next();
     }
     delete it;
 
@@ -77,7 +77,7 @@ string Sucursal::getTelefono()
     return this->telefono;
 }
 
-ICollection* Sucursal::getSecciones()
+IDictionary* Sucursal::getSecciones()
 {
     return this->secciones;
 }
