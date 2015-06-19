@@ -5,7 +5,7 @@
 #include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
 #include "collections/List.h"
-#include "OrderedDictionary.h"
+#include "collections/OrderedDictionary.h"
 #include "IObserver.h"
 #include "Date.h"
 #include "DataEstudiante.h"
@@ -13,7 +13,12 @@
 #include "String.h"
 #include "Integer.h"
 
-class Estudiante : public ICollectible, public IObserver
+class Inscripcion;
+class Entrevista;
+
+//class Estudiante : public ICollectible, public IObserver
+// IObserver ya es ICollectible
+class Estudiante : public IObserver
 {
     public:
 
@@ -74,5 +79,8 @@ class Estudiante : public ICollectible, public IObserver
         ICollection *entrevistas;
         ICollection *notificaciones;
 };
+
+#include "Inscripcion.h"
+#include "Entrevista.h"
 
 #endif // ESTUDIANTE_H

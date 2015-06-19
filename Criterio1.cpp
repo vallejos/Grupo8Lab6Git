@@ -28,12 +28,12 @@ ICollection *Criterio1::devolverListaAsignatura(ICollection *asignaturas)
     IIterator * it = e->getElemIterator();
     while(it->hasCurrent() && !found)
     {
-        if(it.current()->getAprobadas() != NULL)
+        if(it->getCurrent()->getAprobadas() != NULL)
         {
-            result = it.current()->getAprobadas();
+            result = it->getCurrent()->getAprobadas();
             found = true;
         }
-        it.next();
+        it->next();
     }
     delete it;
 

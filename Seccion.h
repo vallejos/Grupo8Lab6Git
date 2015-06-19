@@ -27,8 +27,10 @@ class Seccion: public ICollectible
         string getInterno();
         Sucursal* getSucursal();
         Encargado* getEncargado();
+        IDictionary *getOfertasLaborales();
         void setNombre(string nombre);
         void setInterno(string interno);
+        void setEncargado(Encargado* encargado);
         DataSeccion *getDataSeccion();
         DataEmpresa *getDataEmpresa();
         OfertaLaboral *addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas);

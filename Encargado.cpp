@@ -16,6 +16,14 @@ Encargado::Encargado(string cedula, string nombre, string apellido, Date* fechaN
     this->fechaNacimiento = fechaNacimiento;
 }
 
+Encargado::Encargado(const Encargado &e)
+{
+    this->cedula = e.cedula;
+    this->nombre= e.nombre;
+    this->apellido= e.apellido;
+    this->fechaNacimiento= e.fechaNacimiento;
+}
+
 DataEncargado *Encargado::getDataEncargado()
 {
     return new DataEncargado(this->cedula, this->nombre, this->apellido, this->fechaNacimiento);

@@ -1,0 +1,24 @@
+ref,nombre,interno,ref. sucursal
+SE1,Contaduria,101,SU1
+SE2,Recursos humanos,102,SU1
+SE3,Recepcion,103,SU1
+SE4,Desarrollo,104,SU1
+SE5,Pentesting,105,SU1
+SE6,Marketing,1201,SU2
+SE7,Atencion al cliente,1202,SU2
+SE8,Tesoreria,1203,SU2
+SE9,Ventas,1204,SU2
+SE10,Seccion tecnica,1205,SU2
+SE11,Seccion tecnica,1009,SU3
+SE12,I+D,1008,SU3
+SE13,Recepcion,1000,SU3
+SE14,Secretaria,100,SU4
+SE15,Desarrollo,1001,SU4
+SE16,Testing,1002,SU4
+SE17,Secretaria,100,SU5
+SE18,Desarrollo,1001,SU5
+SE19,Testing,1002,SU5
+SE20,Laboratorio,10,SU6
+SE21,Atencion comercial,11,SU6
+SE22,Direccion,101,SU7
+SE23,Inscripciones,102,SU7

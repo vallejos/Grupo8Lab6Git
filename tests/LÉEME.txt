@@ -1,0 +1,24 @@
+Programación 4 - Edición 2015 - Juego de Datos de Prueba
+========================================================
+
+Se proveen los datos de prueba en formato csv. Para más información sobre el tipo de archivos csv, ir a: https://tools.ietf.org/html/rfc4180
+
+Cada archivo corresponde con una de las tablas del archivo pfd de datos de prueba. De esta forma es posible cargarlos dinámicamente.
+
+Las fechas están representadas en formato dd mm aaaa
+
+Los datos multivualuados (presentan más de un valor, por ejemplo lista de carreras que cursa un estudiante) están separados por espacio. El caracter "," siempre separa columnas, y no se encuentra en ninguno de los valores de los datos de prueba.
+
+Los archivos de datos son:
+
+- aprobaciones.csv			Lista qué asignaturas aprobó cada estudiante, junto a los datos correspondientes
+- asignaturas.csv			Asignaturas del sistema
+- asignaturas_requeridas_oferta.csv	Asignaturas que requiere cada oferta laboral listada en ofertas.csv
+- carreras.csv				Carreras del sistema
+- carreras_estudiantes.csv		Carreras que cursa cada estudiante
+- empresas.csv				Empresas del sistema
+- ofertas.csv				Ofertas laborales del sistema
+- encargados.csv			Encargados de cada sección. Estos datos pueden cargarse de manera opcional
+- secciones.csv				Secciones de cada sucursal
+- estudiantes.csv			Estudiantes del sistema
+- sucursales.csv			Sucursales de cada empresa

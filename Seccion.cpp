@@ -47,6 +47,11 @@ Encargado* Seccion::getEncargado()
     return this->encargado;
 }
 
+IDictionay *Seccion::getOfertasLaborales()
+{
+    return this->ofertasLaborales;
+}
+
 void Seccion::setNombre(string nombre)
 {
     this->nombre = nombre;
@@ -55,6 +60,11 @@ void Seccion::setNombre(string nombre)
 void Seccion::setInterno(string interno)
 {
     this->interno = interno;
+}
+
+void Seccion::setEncargado(Encargado* encargado)
+{
+    this->encargado = encargado;
 }
 
 DataSeccion *Seccion::getDataSeccion()
@@ -74,7 +84,7 @@ OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string de
     //Debo llamar al constructor de OfertaLaboral
     //con los datos de la oferta pasados como parametros
     //y de alguna manera asociar esta nueva oferta a las asignaturas pasadas en el set.
-    OfertaLaboral * dataOferta = OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
+    OfertaLaboral * dataOferta = new OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
     String *numExp = new String(numExpediente);
     this->ofertasLaborales->add(numExp,dataOferta);
     return dataOferta;

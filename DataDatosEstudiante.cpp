@@ -12,6 +12,12 @@ DataDatosEstudiante::DataDatosEstudiante(ICollection* dataAprobadas, ICollection
     this->dataOfertasEmpresas = dataOfertasEmpresas;
 }
 
+DataDatosEstudiante::DataDatosEstudiante(const DataDatosEstudiante &dde)
+{
+    this->dataAprobadas = dde.dataAprobadas;
+    this->dataOfertasEmpresas = dde.dataOfertasEmpresas;
+}
+
 ICollection* DataDatosEstudiante::getDataAprobadas()
 {
     return this->dataAprobadas:
