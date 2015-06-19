@@ -7,6 +7,7 @@
 #include "DataOfertaLaboral.h"
 #include "Rango.h"
 #include "Date.h"
+#include "IDictionary.h"
 
 using namespace std;
 
@@ -24,13 +25,13 @@ void cmdListarOfertasActivas::ejecutarComando()
     try
     {
         //MOSTRAR OFERTAS LABORALES ACTIVAS
-        ICollection* dataOfertasActivas = cOferta->MostrarOfertasActivas();
+        IDictionary* dataOfertasActivas = cOferta->MostrarOfertasActivas();
         cout << "Lista de Ofertas Laborales Activas:\n";
         IIterator *it = dataOfertasActivas->getIterator();
         while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
-            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
+            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
             //calculo la cantidad de inscriptos
                 IIterator *it2 = dOferta->getInscripciones()->getIterator();

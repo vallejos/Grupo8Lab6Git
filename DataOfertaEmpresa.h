@@ -12,7 +12,7 @@ class DataOfertaEmpresa {
         DataEmpresa* getDataEmpresa();
         DataOfertaLaboral* getDataOfertaLaboral();
         ~DataOfertaEmpresa();
-        DataOfertaEmpresa(const DataOfertaEmpresa &doe)
+        DataOfertaEmpresa(const DataOfertaEmpresa &doe);
 
     private:
         DataEmpresa *dataEmpresa;

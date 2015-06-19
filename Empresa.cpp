@@ -51,9 +51,15 @@ ICollection *Empresa::getDataSucursales()
     IIterator * it = this->sucursales->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it->current()->getDataSucursal());
-        it->next();
-
+        Sucursal *suc;
+        if( (suc = dynamic_cast<Sucursal*> (it.current())) != NULL )
+        {
+            result->add(suc->getDataSucursal());
+        } else
+        {
+            throw std::invalid_argument("Empresa -> El objeto no es de la clase Sucursal.");
+        }
+        it.next();
     }
     delete it;
 
@@ -66,9 +72,15 @@ Sucursal *Empresa::getSucursal(string nombre)
 
     if (this->sucursales->member(keyNombre))
     {
-        Sucursal *sucursal = this->sucursales->find(keyNombre);
+        Sucursal *sucursal;
+        if( (sucursal = dynamic_cast<Sucursal*> (this->sucursales->find(keyNombre))) != NULL )
+        {
+            return sucursal;
+        } else
+        {
+            throw std::invalid_argument("Empresa -> El objeto no es de la clase Sucursal.");
+        }
         delete keyNombre;
-        return sucursal;
     }
     else
     {

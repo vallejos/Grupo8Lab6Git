@@ -8,6 +8,7 @@
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
 #include "interfaces/ICollection.h"
+#include "IDictionary.h"
 
 cmdInscripcionOfertaLaboral::cmdInscripcionOfertaLaboral()
 {
@@ -23,7 +24,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
     try
     {
         //Debe ser diccionario
-        ICollection* ofertasLaborales = cOfertaLab->MostrarOfertasActivas();
+        IDictionary* ofertasLaborales = cOfertaLab->MostrarOfertasActivas();
 
         cout << "Lista de Ofertas Laborales Vigentes:\n";
 
@@ -31,7 +32,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         while(it->hasCurrent())
         {
             DataOfertaLaboral *dOfertaLab;// Esto cambia si no traemos dataOfertas
-            if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
+            if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
                 cout << "Número de Expediente: " + dOfertaLab->getNumExpediente() + ", Título:" + dOfertaLab->getTitulo() + "\n";
                 it->next();
@@ -51,7 +52,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
 
         IEstudianteController *cEstudiante = fab->getIEstudianteController();
         //Debe ser diccionario
-        ICollection* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
+        IDictionary* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
 
         cout << "Lista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
 
@@ -59,7 +60,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         while(it2->hasCurrent())
         {
             DataEstudiante *dEstudiante;
-            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2->current())) != NULL )
+            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2->getCurrent())) != NULL )
             {
                 cout << "Cédula: " + dEstudiante->getCedula() + "Nombre: " + dEstudiante->getNombre() + "Apellido: " + dEstudiante->getApellido() + "\n";
                 it2->next();

@@ -18,7 +18,7 @@ ManejadorOfertaLaboral *ManejadorOfertaLaboral::getInstance()
     return instance;
 }
 
-ICollection *ManejadorOfertaLaboral::getDataOfertaLaboral()
+IDictionary *ManejadorOfertaLaboral::getDataOfertaLaboral()
 {
     //Se rotorna un set de DataOfertaLaboral con las ofertas activas del sistema.
     //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar una coleccion de las mismas.
@@ -36,12 +36,12 @@ ICollection *ManejadorOfertaLaboral::getDataOfertaLaboral()
 
 }
 
-ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
+IDictionary *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
 {
     //Se rotorna un set de DataOfertaLaboral con las ofertas del sistema.
     //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar un una coleccion de las mismas.
     List* result = new List();
-    IIterator * it = this->ofertasLaborales->getElemIterator();
+    IIterator * it = this->ofertasLaborales->getIterator();
     while(it->hasCurrent())
     {
         result->add(it->getCurrent()->getDataOfertaLaboral());

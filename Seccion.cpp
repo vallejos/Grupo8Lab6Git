@@ -47,6 +47,11 @@ Encargado* Seccion::getEncargado()
     return this->encargado;
 }
 
+IDictionay *Seccion::getOfertasLaborales()
+{
+    return this->ofertasLaborales;
+}
+
 void Seccion::setNombre(string nombre)
 {
     this->nombre = nombre;

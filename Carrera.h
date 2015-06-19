@@ -4,6 +4,7 @@
 #include <exception>
 #include "DataCarrera.h"
 #include "interfaces/ICollectible.h"
+#include "interfaces/IDictionary.h"
 
 
 class Carrera : public ICollectible
@@ -15,8 +16,13 @@ class Carrera : public ICollectible
         //getters
         int getCodigo();
         string getNombreCarrera();
+<<<<<<< HEAD
+        //DataCarrera* getDataCarrera();
+
+=======
         DataCarrera* getDataCarrera();
         IDictionary* getAsignaturas();
+>>>>>>> origin/CambiandoAlgunasCosas
         //setters
         void setCodigo(int codigo);
         void setNombreCarrera(string nombreCarrera);
