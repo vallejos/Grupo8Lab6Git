@@ -11,7 +11,7 @@ class DataDatosEstudiante: public ICollectible {
         ICollection* getDataAprobadas();
         ICollection* getDataOfertasEmpresas();
         ~DataDatosEstudiante();
-        DataDatosEstudiante(const DataDatosEstudiante &dde)
+        DataDatosEstudiante(const DataDatosEstudiante &dde);
 
     private:
         ICollection* dataAprobadas;

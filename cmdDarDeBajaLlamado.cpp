@@ -4,6 +4,7 @@
 #include "OfertaLaboralController.h"
 #include "interfaces/ICollection.h"
 #include "DataOfertaLaboral.h"
+#inclide "IDictionary.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ void cmdDarDeBajaLlamado::ejecutarComando()
     try
     {
         // muestro las ofertas
-        ICollection* dataOfertas = ctrlOL->ListarOfertas();
+        IDictionary* dataOfertas = ctrlOL->ListarOfertas();
 
         cout << "Lista de Ofertas Laborales:\n";
 
@@ -24,7 +25,7 @@ void cmdDarDeBajaLlamado::ejecutarComando()
         while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
-            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
+            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
                 cout << "NRO. EXPEDIENTE: " + dOferta->getNumExpediente() + ", TITULO:" + dOferta->getTitulo() + "\n";
             } else
@@ -38,7 +39,7 @@ void cmdDarDeBajaLlamado::ejecutarComando()
         cout<< "Seleccione una Oferta Laboral indicando el Nro. Expediente: \n";
         cin >> numExpediente;
 
-        ctrlOL->SeleccionarOferta(numExpediente);
+        ctrlOL->SeleccionarOferta(numExpediente, dataOfertas);
 
         // borro el llamado
         ctrlOL->DarBajaLlamado();

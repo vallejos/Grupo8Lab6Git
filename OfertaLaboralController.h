@@ -10,13 +10,13 @@
 class OfertaLaboralController {
     public:
         OfertaLaboralController *getInstance();
-        ICollection* ListarOfertas();
+        IDictionary *ListarOfertas();
         void SeleccionarOferta(string numExpediente, IDictionary *ofertasLabVigentes);
         void Inscribir(Date *fechaInscripcion);
         void Entrevistar(Date *fechaEntrevista);
         void AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo);
         void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos);
-        ICollection *MostrarOfertasActivas();
+        IDictionary *MostrarOfertasActivas();
         void DarBajaLlamado();
         OfertaLaboral *getOfertaLaboral();
 

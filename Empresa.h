@@ -5,6 +5,7 @@
 #include "DataSucursal.h"
 #include "interfaces/ICollectible.h"
 #include "interfaces/ICollection.h"
+#include "DataEmpresa.h"
 
 class Sucursal;
 

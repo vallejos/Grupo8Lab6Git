@@ -4,6 +4,7 @@
 #include <string>
 #include "DataAsignatura.h"
 #include "interfaces/ICollectible.h"
+#include "interfaces/IDictionary.h"
 
 using namespace std;
 

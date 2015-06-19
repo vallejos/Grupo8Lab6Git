@@ -164,7 +164,7 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
     while(it->hasCurrent())
     {
         Asignatura *asig;
-        if( (asig = dynamic_cast<Asignatura*> (it->current())) != NULL )
+        if( (asig = dynamic_cast<Asignatura*> (it->getCurrent())) != NULL )
         {
             int cod = asig->getCodigo();
             IIterator * it2 = aprobadas->getIterator();
@@ -172,7 +172,7 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
             while (it2->hasCurrent() && !encontro)
             {
                 Aprobacion *aprobada;
-                if( (aprobada = dynamic_cast<Aprobacion*> (it2->current())) != NULL )
+                if( (aprobada = dynamic_cast<Aprobacion*> (it2->getCurrent())) != NULL )
                 {
                     int codAsigEst = aprobada->getAsignatura()->getCodigo();
                     if (codAsigEst == cod)
@@ -230,10 +230,10 @@ void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
     bool noEncontrada = true;
     while((it->hasCurrent())&&(noEncontrada))
     {
-        if(it->current()->EstInscripto(this->numExpediente))
+        if(it->getCurrent()->EstInscripto(this->numExpediente))
         {
             Efectivizacion* efe = Efectivizacion(sueldo, fechaEfectivizacion);
-            it->current()->setEfectivizacion(efe);
+            it->getCurrent()->setEfectivizacion(efe);
             noEncontrada = false;
         }
         it->next();
