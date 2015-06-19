@@ -16,7 +16,7 @@ class Carrera : public ICollectible
         //getters
         int getCodigo();
         string getNombreCarrera();
-        DataCarrera* getDataCarrera();
+        //DataCarrera* getDataCarrera();
 
         //setters
         void setCodigo(int codigo);

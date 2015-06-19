@@ -27,7 +27,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
 
     try
     {
-        ICollection* dataEstudiantes = cEstudiante->ListarEstudiantesRegistrados();
+        IDictionary* dataEstudiantes = cEstudiante->ListarEstudiantesRegistrados();
         cout<< "Estudiantes registrados:\n";
 
         IIterator * it = dataEstudiantes->getIterator();

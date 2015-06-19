@@ -4,6 +4,7 @@
 #include "Fabrica.h"
 #include "IEstudianteController.h"
 #include "DataEstudiante.h"
+#inclide "IDictionary.h"
 
 cmdModificarEstudiante::cmdModificarEstudiante()
 {
@@ -18,7 +19,7 @@ void cmdModificarEstudiante::ejecutarComando()
 
     try
     {
-        ICollection* estudiantes = cEstudiante->ListarEstudiantesRegistrados();
+        IDictionary* estudiantes = cEstudiante->ListarEstudiantesRegistrados();
 
         cout << "Lista de Estudiantes del Sistema:\n";
 
@@ -77,7 +78,7 @@ void cmdModificarEstudiante::ejecutarComando()
         cout<< "Seleccione el Estudiante a modificar indicando la Cédula\n";
         cin >> cedula;
 
-        cEstudiante->SeleccionarEstudiante(cedula);
+        cEstudiante->SeleccionarEstudiante(cedula, estudiantes);
 
         cout<< "Desea Modificar el Nombre SI o NO?\n";
         cin >> auxNombre;
