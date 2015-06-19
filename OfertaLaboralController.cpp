@@ -17,7 +17,7 @@ OfertaLaboralController *OfertaLaboralController::getInstance() {
 	return this->instance;
 }
 
-ICollection *OfertaLaboralController::ListarOfertas() {
+IDictionary *OfertaLaboralController::ListarOfertas() {
 	try {
 		ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
 		return mo->getAllDataOfertaLaboral();
@@ -67,7 +67,7 @@ void OfertaLaboralController::Entrevistar(Date *fechaEntrevista) {
 	}
 }
 
-ICollection *OfertaLaboralController::MostrarOfertasActivas()
+IDictionary *OfertaLaboralController::MostrarOfertasActivas()
 {
 	try {
 	    ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();

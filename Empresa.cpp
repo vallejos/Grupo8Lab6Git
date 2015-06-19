@@ -33,7 +33,7 @@ ICollection *Empresa::getDataSucursales()
     IIterator * it = this->sucursales->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it->current()->getDataSucursal());
+        result->add(it->getCurrent()->getDataSucursal());
         it->next();
 
     }

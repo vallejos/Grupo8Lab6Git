@@ -3,6 +3,7 @@
 #include "cmdAltaEntrevista.h"
 #include "IOfertaLaboralController.h"
 #include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 #include "DataOfertaLaboral.h"
 #include "Fabrica.h"
 #include "Date.h"
@@ -28,18 +29,19 @@ void cmdAltaEntrevista::ejecutarComando()
     try
     {
         //LISTAR OFERTAS LABORALES
-        ICollection* dataOfertas = cOferta->ListarOfertas();
+        IDictionary *dataOfertas = cOferta->ListarOfertas();
         cout << "Lista de Ofertas:\n";
         IIterator *it = dataOfertas->getIterator();
         while(it->hasCurrent())
         {
             DataOfertaLaboral* dol;
-            if( (dol = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
+            if( (dol = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
                 cout << "Numero de Expediente: " + dol->getNumExpediente() + ", Titulo:" + dol->getTitulo() + ", Descripcion:" + dol->getDescripcion() + "\n";
             } else
             {
-                throw std::invalid_argument("cmdAltaEntrevista -> El objeto no es de la clase DataOfertaLaboral.");
+                //throw std::bad_cast("cmdAltaEntrevista -> El objeto no es de la clase DataOfertaLaboral.")
+                throw "cmdAltaEntrevista -> El objeto no es de la clase DataOfertaLaboral.";
             }
             it->next();
         }
@@ -51,18 +53,18 @@ void cmdAltaEntrevista::ejecutarComando()
         cOferta->SeleccionarOferta(numExpe);
 
         //LISTAR ESTUDIANTES INSCRIPTOS EN ESA OFERTA LABORAL
-        ICollection* dataEstudiantes= cEstudiante->ListarEstudiantesInscriptosEnOferta();
+        IDictionary *dataEstudiantes = cEstudiante->ListarEstudiantesInscriptosEnOferta();
         cout << "Lista de Estudiantes inscriptos es la Oferta Laboral:\n";
-        IIterator* it2 = dataEstudiantes->getIterator();
+        IIterator *it2 = dataEstudiantes->getIterator();
         while(it2->hasCurrent())
         {
             DataEstudiante* dEstudiante;
-            if ((dEstudiante = dynamic_cast<DataEstudiante*> (it2->current())) != NULL)
+            if ((dEstudiante = dynamic_cast<DataEstudiante*> (it2->getCurrent())) != NULL)
             {
-                cout << "Cedula: " + dEstudiante->getCedula + ", Apellido: " + dEstudiante->getApellido() + "\n";
+                cout << "Cedula: " + dEstudiante->getCedula() + ", Apellido: " + dEstudiante->getApellido() + "\n";
             } else
             {
-                throw std::invalid_argument("cmdAltaEntrevista -> El objeto no es de la clase DataEstudiante.");
+                throw "cmdAltaEntrevista -> El objeto no es de la clase DataEstudiante.";
             }
             it2->next();
         }
@@ -71,15 +73,15 @@ void cmdAltaEntrevista::ejecutarComando()
         //SELECCIONA ESTUDIANTE
         cout<< "Seleccione un Estudiante indicando la cedula\n";
         cin >> cedEstudiante;
-        cEstudiante->SeleccionarEstudiante(cedEstudiante);
+        cEstudiante->SeleccionarEstudiante(cedEstudiante, dataEstudiantes);
 
         //INDICA FECHA ENTREVISTA
         cout<< "Indique la fecha de la entrevista (dd mm aaaa): \n";
         cin >> diaEnt >> mesEnt >> anioEnt;
-        Date* fechaEntrevista = new Date(diaEnt, mesEnt, anioEnt);
+        Date *fechaEntrevista = new Date(diaEnt, mesEnt, anioEnt);
 
         //DA DE ALTA ENTREVISTA
-        cOferta->Entrevistar(Date(diaEnt, mesEnt, anioEnt);
+        cOferta->Entrevistar(fechaEntrevista);
     }
     catch(exception &e)
     {

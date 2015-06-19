@@ -26,7 +26,7 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
     IIterator * it = this->empresas->getElemIterator();
     while(it->hasCurrent())
     {
-        result->add(it->current()->getDatosEmpresa());
+        result->add(it->getCurrent()->getDatosEmpresa());
         it->next();
     }
     delete it;

@@ -8,7 +8,7 @@
 #ifndef PROG4_STRING_H
 #define	PROG4_STRING_H
 
-#include "interfaces/interfaces/ICollectible.h"
+#include "interfaces/ICollectible.h"
 #include "interfaces/OrderedKey.h"
 
 /**
