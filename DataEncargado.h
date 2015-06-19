@@ -17,6 +17,7 @@ class DataEncargado
         string getNombre();
         string getApellido();
         Date *getFechaNacimiento();
+
     private:
         string cedula;
         string nombre;

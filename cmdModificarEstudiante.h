@@ -1,6 +1,7 @@
 #ifndef CMD_MODIFICARESTUDIANTE_H
 #define CMD_MODIFICARESTUDIANTE_H
 
+#include <exception>
 #include "IComando.h"
 
 class cmdModificarEstudiante : public IComando

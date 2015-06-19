@@ -63,7 +63,7 @@ ICollection *OfertaLaboralController::MostrarOfertasActivas()
 	try {
 	    ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
 	    ofertasActivas = mol->getDataOfertaLaboral();
-	    if (!ofertasActivas.hasCurrent())
+	    if (!ofertasActivas->hasCurrent())
 	         throw std::invalid_argument("No existe una Oferta Activa");
         return ofertasActivas;
 

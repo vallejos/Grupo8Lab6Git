@@ -21,8 +21,6 @@ class IEstudianteController {
         virtual ICollection *ListarEstudiantesInscriptosEnOferta() = 0;
         virtual IDictionary* getAsignaturas() = 0;
         virtual IDictionary* getCarreras() = 0;
-    protected:
-    private:
 };
 
 #endif // IESTUDIANTECONTROLLER_H

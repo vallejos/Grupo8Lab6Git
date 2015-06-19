@@ -17,6 +17,7 @@ class EstudianteController : public IEstudianteController
         Estudiante *estudiante; // el estudiante que se recuerda
         static EstudianteController* instance;
         ~EstudianteController();
+
     public:
         static EstudianteController* getInstance();
         ICollection *ListarEstudiantesNoInscriptos();

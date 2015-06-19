@@ -16,9 +16,44 @@ EmpresaController *EmpresaController::getInstance()
 
 void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
         	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
-        	DataAsignatura *asignaturas)
+        	ICollection *codAsignaturas)
 {
+    ManejadorEstudiante* mEstudiante = ManejadorEstudiante::getInstance();
+    IDictionary* asignaturas = mEstudiante->getAsignaturas()
+    IDictionary* asignaturasAdd;
+    IIterator * it = codAsignaturas->getIterator();
+    while(it.hasCurrent())
+    {
+        if(asignaturas->member(it.current()))
+        {
 
+            Asignatura* asig;
+            if( (asig = dynamic_cast<Asignatura*> (this->asignaturas->find(it.current()))) != NULL )
+            {
+                asignaturasAdd->add(asig);
+            }
+            else
+            {
+                throw std::invalid_argument("EmpresaController -> El objeto no es de la clase Asignatura.");
+            }
+        }
+        else
+        {
+            Integer* codigo;
+            if( (codigo = dynamic_cast<Integer*> (it->current()))) != NULL )
+            {
+                throw std::invalid_argument("La Asignatura de codigo " + codigo->getValue() + " no existe en el Sistema.");
+            }
+            else
+            {
+                throw std::invalid_argument("EmpresaController -> El objeto no es de la clase Integer.");
+            }
+        }
+        it.next();
+    }
+    delete it;
+
+    this->seccion->addOferta(numExpediente,titulo,descripcion,cantidadHorasSemanales,rangoSalarial,fechaComienzo,fechaFin,cantidadPuestosNecesarios,asignaturasAdd);
 }
 
 ICollection* EmpresaController::ListarEmpresas()
@@ -66,7 +101,7 @@ void EmpresaController::SeleccionarSucursal(string nombre)
 
 void EmpresaController::SeleccionarSeccion(string nombre)
 {
-
+    this->seccion = this->sucursal->getSeccion(nombre);
 }
 
 void EmpresaController::destroyEmpresaController()
