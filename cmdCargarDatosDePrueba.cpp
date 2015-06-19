@@ -138,42 +138,42 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	su7se->add(se23);
 
 // CARGA: ENCARGADOS
-	se1->setEncargado(new Encargado("3156454","Alberto","Garcia",new Date(10, 02, 1980)));
-	se2->setEncargado(new Encargado("1975324","Florencia","Estevez",new Date(05,03, 1968)));
-	se3->setEncargado(new Encargado("4568983","Joaquin","Torres",new Date(08, 09, 1985)));
+	se1->setEncargado(new Encargado("3156454","Alberto","Garcia",new Date(10, 2, 1980)));
+	se2->setEncargado(new Encargado("1975324","Florencia","Estevez",new Date(5, 3, 1968)));
+	se3->setEncargado(new Encargado("4568983","Joaquin","Torres",new Date(8, 9, 1985)));
 	se4->setEncargado(new Encargado("2654998","Jenifer","Normendi",new Date(10, 12, 1974)));
-	se5->setEncargado(new Encargado("3598756","Esteban","Sanchez",new Date(01, 01, 1980)));
-	se6->setEncargado(new Encargado("2987656","Luis","Souza",new Date(03, 02, 1972)));
-	se7->setEncargado(new Encargado("4864321","Maria","Alonso",new Date(04, 04, 1987)));
-	se8->setEncargado(new Encargado("3246898","Camila","Ferrer",new Date(08, 01, 1980)));
-	se9->setEncargado(new Encargado("2165489","Nicolas","Soler",new Date(09, 12, 1977)));
+	se5->setEncargado(new Encargado("3598756","Esteban","Sanchez",new Date(1, 1, 1980)));
+	se6->setEncargado(new Encargado("2987656","Luis","Souza",new Date(3, 2, 1972)));
+	se7->setEncargado(new Encargado("4864321","Maria","Alonso",new Date(4, 4, 1987)));
+	se8->setEncargado(new Encargado("3246898","Camila","Ferrer",new Date(8, 1, 1980)));
+	se9->setEncargado(new Encargado("2165489","Nicolas","Soler",new Date(9, 12, 1977)));
 	se10->setEncargado(new Encargado("3216549","Guadalupe","Vila",new Date(10, 10, 1980)));
 	se11->setEncargado(new Encargado("2165498","Bruno","Luna",new Date(12, 12, 1974)));
-	se12->setEncargado(new Encargado("2315649","Daniel","Castro",new Date(18, 06, 1974)));
-	se13->setEncargado(new Encargado("1924568","Natalia","Martinez",new Date(15, 07, 1966)));
-	se14->setEncargado(new Encargado("2216578","Emilia","Ruiz",new Date(10, 03, 1971)));
-	se15->setEncargado(new Encargado("2165498","Ivana","Herrera",new Date(04, 12, 1970)));
+	se12->setEncargado(new Encargado("2315649","Daniel","Castro",new Date(18, 6, 1974)));
+	se13->setEncargado(new Encargado("1924568","Natalia","Martinez",new Date(15, 7, 1966)));
+	se14->setEncargado(new Encargado("2216578","Emilia","Ruiz",new Date(10, 3, 1971)));
+	se15->setEncargado(new Encargado("2165498","Ivana","Herrera",new Date(4, 12, 1970)));
 	se16->setEncargado(new Encargado("1895432","Lucas","Pereira",new Date(16, 10, 1963)));
-	se17->setEncargado(new Encargado("3216548","Adrian","Moreno",new Date(05, 05, 1980)));
-	se18->setEncargado(new Encargado("1489623","Laura","Pereira",new Date(01, 12, 1964)));
-	se19->setEncargado(new Encargado("4231568","Benjamin","Gomez",new Date(20, 03, 1984)));
+	se17->setEncargado(new Encargado("3216548","Adrian","Moreno",new Date(5, 5, 1980)));
+	se18->setEncargado(new Encargado("1489623","Laura","Pereira",new Date(0, 12, 1964)));
+	se19->setEncargado(new Encargado("4231568","Benjamin","Gomez",new Date(20, 3, 1984)));
 	se20->setEncargado(new Encargado("4123465","Mia","Costa",new Date(31, 12, 1988)));
-	se21->setEncargado(new Encargado("3216585","Alejandro","Roche",new Date(30, 08, 1976)));
-	se22->setEncargado(new Encargado("3333112","Paula","Guelbenzu",new Date(16, 06, 1975)));
-	se23->setEncargado(new Encargado("1999532","Antonia","Stroustrup",new Date(20, 02, 1969)));
+	se21->setEncargado(new Encargado("3216585","Alejandro","Roche",new Date(30, 8, 1976)));
+	se22->setEncargado(new Encargado("3333112","Paula","Guelbenzu",new Date(16, 6, 1975)));
+	se23->setEncargado(new Encargado("1999532","Antonia","Stroustrup",new Date(20, 2, 1969)));
 
 //CARGA: OFERTAS LABORALES
     IDictionary *ofertas = mol->getOfertasLaborales();
     OfertaLaboral *o1, *o2, *o3, *o4;
 
     o1 = se2->addOferta("45896", "Auditor de seguridad part-time junior", "Segurol S.A. busca estudiantes de Ingenieria en Computacion para unirse a su equipo. Se requiere un nivel minimo de conocimiento en seguridad informatica y programacion. Interesados enviar cv a oportunidades@segurol.com.uy",
-                        20, new Rango(2000, 3000), new Date(01, 06, 2015), new Date(20, 07, 2015), 5, NULL);
+                        20, new Rango(2000, 3000), new Date(1, 6, 2015), new Date(20, 7, 2015), 5, NULL);
     o2 = se10->addOferta("12356", "Ayudante de Ingeniero", "Estamos buscando estudiantes avanzados de Ingenieria Electrica con perfil potencia. Es imprescindible tener disponibilidad para viajar al interior del pais una vez por mes. Se pagan viaticos ademas de sueldo. Llamar al 25225323 int 1205 para mas detalles.",
-                        30, new Rango(4000, 5000), new Date(20, 05, 2015), new Date(30, 06, 2015), 2, NULL);
+                        30, new Rango(4000, 5000), new Date(20, 5, 2015), new Date(30, 6, 2015), 2, NULL);
     o3 = se15->addOferta("88890", "Desarrollador C++", "Buscamos desarrollador C++ para importante proyecto internacional. Llenar formulario con datos personales y cv en minisoft.uy/careers.",
-                        40, new Rango(5000, 6000), new Date(05, 06, 2015), new Date(06, 08, 2015), 4, NULL);
+                        40, new Rango(5000, 6000), new Date(5, 6, 2015), new Date(6, 8, 2015), 4, NULL);
     o4 = se22->addOferta("49563", "Estudiantes para dictar clases de Calculo I y II", "Buscamos estudiantes de Ingenieria con Calculo 1 y 2 aprobadas. Deben tener disponibilidad horaria y gusto por enseñar. Enviar mail a academiayotexplico@gmail.com.",
-                        5, new Rango(500, 2000), new Date(10, 09, 2015), new Date(20, 12, 2015), 10, NULL);
+                        5, new Rango(500, 2000), new Date(10, 9, 2015), new Date(20, 12, 2015), 10, NULL);
 
     ofertas->add("45896", o1);
     ofertas->add("12356", o2);
@@ -184,18 +184,18 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	IDictionary *estudiantes = mest->getEstudiantes ();
 	Estudiante *es1, *es2, *es3, *es4, *es5, *es6, *es7, *es8, *es9, *es10, *es11, *es12;
 
-	es1 = new Estudiante('4516231', 'Esteban', 'Perez', '099111222', new Date(10, 02, 1990), 56, '\0', NULL, NULL, NULL, NULL);
-	es2 = new Estudiante('5111235', 'Felipe', 'Garcia', '24035612', new Date(20, 08, 1992), 47, '\0', NULL, NULL, NULL, NULL);
-	es3 = new Estudiante('3594561', 'Juan', 'Wolf', '091222223', new Date(30, 01, 1980), 146, '\0', NULL, NULL, NULL, NULL);
-	es4 = new Estudiante('2784531', 'Alfonsina', 'Ramirez', '43712345', new Date(05, 06, 1975), 22, '\0', NULL, NULL, NULL, NULL);
+	es1 = new Estudiante('4516231', 'Esteban', 'Perez', '099111222', new Date(10, 2, 1990), 56, '\0', NULL, NULL, NULL, NULL);
+	es2 = new Estudiante('5111235', 'Felipe', 'Garcia', '24035612', new Date(20, 8, 1992), 47, '\0', NULL, NULL, NULL, NULL);
+	es3 = new Estudiante('3594561', 'Juan', 'Wolf', '091222223', new Date(30, 1, 1980), 146, '\0', NULL, NULL, NULL, NULL);
+	es4 = new Estudiante('2784531', 'Alfonsina', 'Ramirez', '43712345', new Date(5, 6, 1975), 22, '\0', NULL, NULL, NULL, NULL);
 	es5 = new Estudiante('1956234', 'Hector', 'Otonello', '098334456', new Date(10, 10, 1969), 52, '\0', NULL, NULL, NULL, NULL);
-	es6 = new Estudiante('5005684', 'Lorena', 'Nuñez', '092659878', new Date(03, 01, 1994), 0, '\0', NULL, NULL, NULL, NULL);
-	es7 = new Estudiante('4686231', 'Hector', 'Lorenzo', '21656498', new Date(09, 03, 1993), 26, '\0', NULL, NULL, NULL, NULL);
-	es8 = new Estudiante('4987623', 'Julio', 'Lee', '26984899', new Date(05, 08, 1992), 110, '\0', NULL, NULL, NULL, NULL);
-	es9 = new Estudiante('4986313', 'Rodrigo', 'Fernandez', '22233346', new Date(07, 09, 1990), 16, '\0', NULL, NULL, NULL, NULL);
-	es10 = new Estudiante('3659532', 'Noelia', 'Pereira', '099112233', new Date(02, 09, 1990), 38, '\0', NULL, NULL, NULL, NULL);
-	es11 = new Estudiante('3665492', 'Cecilia', 'Garrido', '094698568', new Date(30, 03, 1984), 112, '\0', NULL, NULL, NULL, NULL);
-	es12 = new Estudiante('3335689', 'Roman', 'Gul', '096677889', new Date(09, 12, 1983), 32, '\0', NULL, NULL, NULL, NULL);
+	es6 = new Estudiante('5005684', 'Lorena', 'Nuñez', '092659878', new Date(3, 1, 1994), 0, '\0', NULL, NULL, NULL, NULL);
+	es7 = new Estudiante('4686231', 'Hector', 'Lorenzo', '21656498', new Date(9, 3, 1993), 26, '\0', NULL, NULL, NULL, NULL);
+	es8 = new Estudiante('4987623', 'Julio', 'Lee', '26984899', new Date(5, 8, 1992), 110, '\0', NULL, NULL, NULL, NULL);
+	es9 = new Estudiante('4986313', 'Rodrigo', 'Fernandez', '22233346', new Date(7, 9, 1990), 16, '\0', NULL, NULL, NULL, NULL);
+	es10 = new Estudiante('3659532', 'Noelia', 'Pereira', '099112233', new Date(2, 9, 1990), 38, '\0', NULL, NULL, NULL, NULL);
+	es11 = new Estudiante('3665492', 'Cecilia', 'Garrido', '094698568', new Date(30, 3, 1984), 112, '\0', NULL, NULL, NULL, NULL);
+	es12 = new Estudiante('3335689', 'Roman', 'Gul', '096677889', new Date(9, 12, 1983), 32, '\0', NULL, NULL, NULL, NULL);
 
     //las carreras y las aprobadas son cargadas más abajo (al final)
     //los creditos se calcularon y se ingresaron en base a las aprobadas que se cargan despues
@@ -363,51 +363,51 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     ap12 = es12->getAprobadas();
 
     ap1->add(new Aprobacion(new Date(10, 11, 2013), 8, a1));
-    ap1->add(new Aprobacion(new Date(20, 08, 2014), 5, a5));
+    ap1->add(new Aprobacion(new Date(20, 8, 2014), 5, a5));
     ap1->add(new Aprobacion(new Date(12, 11, 2014), 10, a6));
     ap1->add(new Aprobacion(new Date(10, 12, 2014), 11, a9));
-    ap2->add(new Aprobacion(new Date(10, 06, 2014), 9, a2));
-    ap2->add(new Aprobacion(new Date(15, 06, 2014), 12, a3));
-    ap2->add(new Aprobacion(new Date(02, 02, 2015), 7, a4));
-    ap2->add(new Aprobacion(new Date(11, 08, 2014), 6, a12));
-    ap3->add(new Aprobacion(new Date(20, 07, 2005), 3, a1));
+    ap2->add(new Aprobacion(new Date(10, 6, 2014), 9, a2));
+    ap2->add(new Aprobacion(new Date(15, 6, 2014), 12, a3));
+    ap2->add(new Aprobacion(new Date(2, 2, 2015), 7, a4));
+    ap2->add(new Aprobacion(new Date(11, 8, 2014), 6, a12));
+    ap3->add(new Aprobacion(new Date(20, 7, 2005), 3, a1));
     ap3->add(new Aprobacion(new Date(12, 12, 2005), 10, a2));
-    ap3->add(new Aprobacion(new Date(30, 07, 2006), 9, a3));
-    ap3->add(new Aprobacion(new Date(02, 02, 2007), 7, a4));
+    ap3->add(new Aprobacion(new Date(30, 7, 2006), 9, a3));
+    ap3->add(new Aprobacion(new Date(2, 2, 2007), 7, a4));
     ap3->add(new Aprobacion(new Date(10, 12, 2007), 8, a5));
-    ap3->add(new Aprobacion(new Date(05, 12, 2008), 10, a7));
+    ap3->add(new Aprobacion(new Date(5, 12, 2008), 10, a7));
     ap3->add(new Aprobacion(new Date(15, 12, 2008), 11, a8));
-    ap3->add(new Aprobacion(new Date(12, 02, 2009), 8, a12));
+    ap3->add(new Aprobacion(new Date(12, 2, 2009), 8, a12));
     ap3->add(new Aprobacion(new Date(20, 11, 2010), 10, a13));
     ap3->add(new Aprobacion(new Date(15, 11, 2007), 6, a14));
     ap3->add(new Aprobacion(new Date(25, 11, 2009), 10, a15));
-    ap4->add(new Aprobacion(new Date(10, 06, 2010), 8, a2));
-    ap4->add(new Aprobacion(new Date(30, 07, 2010), 6, a3));
+    ap4->add(new Aprobacion(new Date(10, 6, 2010), 8, a2));
+    ap4->add(new Aprobacion(new Date(30, 7, 2010), 6, a3));
     ap5->add(new Aprobacion(new Date(10, 11, 1993), 3, a1));
-    ap5->add(new Aprobacion(new Date(20, 08, 1994), 3, a5));
+    ap5->add(new Aprobacion(new Date(20, 8, 1994), 3, a5));
     ap5->add(new Aprobacion(new Date(10, 12, 1994), 10, a9));
-    ap5->add(new Aprobacion(new Date(11, 08, 1995), 12, a12));
+    ap5->add(new Aprobacion(new Date(11, 8, 1995), 12, a12));
     ap7->add(new Aprobacion(new Date(10, 11, 2013), 10, a1));
-    ap7->add(new Aprobacion(new Date(10, 06, 2014), 8, a2));
-    ap8->add(new Aprobacion(new Date(10, 07, 2011), 8, a1));
+    ap7->add(new Aprobacion(new Date(10, 6, 2014), 8, a2));
+    ap8->add(new Aprobacion(new Date(10, 7, 2011), 8, a1));
     ap8->add(new Aprobacion(new Date(10, 11, 2011), 7, a2));
-    ap8->add(new Aprobacion(new Date(30, 07, 2012), 10, a3));
+    ap8->add(new Aprobacion(new Date(30, 7, 2012), 10, a3));
     ap8->add(new Aprobacion(new Date(25, 11, 2012), 9, a4));
-    ap8->add(new Aprobacion(new Date(05, 12, 2013), 10, a7));
+    ap8->add(new Aprobacion(new Date(5, 12, 2013), 10, a7));
     ap8->add(new Aprobacion(new Date(15, 12, 2013), 12, a8));
     ap8->add(new Aprobacion(new Date(15, 11, 2014), 12, a11));
     ap8->add(new Aprobacion(new Date(25, 11, 2013), 10, a15));
     ap9->add(new Aprobacion(new Date(10, 11, 2014), 5, a1));
     ap10->add(new Aprobacion(new Date(10, 11, 2007), 8, a1));
-    ap10->add(new Aprobacion(new Date(10, 06, 2008), 9, a2));
-    ap10->add(new Aprobacion(new Date(30, 07, 2009), 3, a3));
+    ap10->add(new Aprobacion(new Date(10, 6, 2008), 9, a2));
+    ap10->add(new Aprobacion(new Date(30, 7, 2009), 3, a3));
     ap11->add(new Aprobacion(new Date(10, 11, 2003), 4, a1));
-    ap11->add(new Aprobacion(new Date(10, 06, 2004), 5, a2));
-    ap11->add(new Aprobacion(new Date(30, 07, 2004), 10, a3));
-    ap11->add(new Aprobacion(new Date(02, 02, 2005), 8, a4));
-    ap11->add(new Aprobacion(new Date(20, 08, 2004), 7, a5));
+    ap11->add(new Aprobacion(new Date(10, 6, 2004), 5, a2));
+    ap11->add(new Aprobacion(new Date(30, 7, 2004), 10, a3));
+    ap11->add(new Aprobacion(new Date(2, 2, 2005), 8, a4));
+    ap11->add(new Aprobacion(new Date(20, 8, 2004), 7, a5));
     ap11->add(new Aprobacion(new Date(12, 11, 2005), 10, a6));
-    ap11->add(new Aprobacion(new Date(04, 12, 2005), 9, a7));
+    ap11->add(new Aprobacion(new Date(4, 12, 2005), 9, a7));
     ap12->add(new Aprobacion(new Date(10, 11, 2003), 7, a1));
     ap12->add(new Aprobacion(new Date(10, 12, 2003), 8, a5));
 
