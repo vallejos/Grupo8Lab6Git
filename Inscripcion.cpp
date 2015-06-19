@@ -90,4 +90,12 @@ bool Inscripcion::EstInscripto(string numExpediente)
 Inscripcion::~Inscripcion()
 {
     //dtor
+    if (this->fechaInscripcion != NULL)
+        delete (this->fechaInscripcion);
+    if (this->ofertaLab!= NULL)
+        delete (this->ofertaLab);
+    if (this->estudiant!= NULL)
+        delete (this->estudiant);
+    if (this->efectivo!= NULL)
+        delete (this->efectivo);
 }

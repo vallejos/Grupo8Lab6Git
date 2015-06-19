@@ -11,7 +11,7 @@ class DataDatosEstudiante: public ICollectible {
         ICollection* getDataAprobadas();
         ICollection* getDataOfertasEmpresas();
         ~DataDatosEstudiante();
-    protected:
+
     private:
         ICollection* dataAprobadas;
         ICollection* dataOfertasEmpresas;

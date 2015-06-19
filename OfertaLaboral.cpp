@@ -20,7 +20,9 @@ OfertaLaboral::OfertaLaboral()
 
 }
 
-OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas)
+OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
+                            Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
+                            IDictionary *asignaturas)
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;
@@ -226,15 +228,15 @@ void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
     Estudiante* e = ec->getEstudiante();
     IIterator * it = e->inscripciones()->getIterator();
     bool noEncontrada = true;
-    while((it.hasCurrent())&&(noEncontrada))
+    while((it->hasCurrent())&&(noEncontrada))
     {
-        if(it.current()->EstInscripto(this->numExpediente))
+        if(it->current()->EstInscripto(this->numExpediente))
         {
             Efectivizacion* efe = Efectivizacion(sueldo, fechaEfectivizacion);
-            it.current()->setEfectivizacion(efe);
+            it->current()->setEfectivizacion(efe);
             noEncontrada = false;
         }
-        it.next();
+        it->next();
     }
     delete it;
 }

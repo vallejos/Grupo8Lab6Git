@@ -19,7 +19,7 @@ class OfertaLaboralController {
         ICollection *MostrarOfertasActivas();
         void DarBajaLlamado();
         OfertaLaboral *getOfertaLaboral();
-    protected:
+
     private:
         OfertaLaboralController();
         ~OfertaLaboralController();

@@ -25,10 +25,10 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
         cout << "Lista de Ofertas Laborales Activas:\n";
 
         IIterator *it = dataOfertas->getIterator();
-        while (it.hasCurrent())
+        while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
-            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
+            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
             {
                 cout << "NRO. EXPEDIENTE: " + dOferta->getNumExpediente() + ", TITULO:" + dOferta->getTitulo() + "\n";
             } else
@@ -50,10 +50,10 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
         cout << "Lista de Estudiantes inscriptos en la Oferta Laboral seleccionada:\n";
 
         IIterator *itE = dataEstudiante->getIterator();
-        while (itE.hasCurrent())
+        while (itE->hasCurrent())
         {
             dataEstudiante *dEstudiante;
-            if ( (dEstudiante = dynamic_cast<dataEstudiante*> (itE.current())) != NULL )
+            if ( (dEstudiante = dynamic_cast<dataEstudiante*> (itE->current())) != NULL )
             {
                 cout << "CEDULA: " + dEstudiante->getCedula() + ", NOMBRE:" + dEstudiante->getNombre() + 
                     ", APELLIDO:" + dEstudiante->getApellido() + ", EMAIL:" + dEstudiante->getEmail() + "\n";

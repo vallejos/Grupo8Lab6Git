@@ -24,7 +24,17 @@ DataEstudiante::DataEstudiante(string cedula, string nombre, string apellido, st
 
 DataEstudiante::DataEstudiante(const DataEstudiante &e)
 {
-
+    this->cedula = e.cedula;
+    this->nombre = e.nombre;
+    this->apellido = e.apellido;
+    this->telefono = e.telefono;
+    this->fechaNacimiento = e.fechaNacimiento;
+    this->creditos = e.creditos;
+    this->email = e.email;
+    this->carreras = e.carreras;
+    this->aprobadas = e.aprobadas;
+    this->inscripciones = e.inscripciones;
+    this->entrevistas = e.entrevistas;
 }
 
 string DataEstudiante::getCedula()
@@ -84,5 +94,14 @@ ICollection* DataEstudiante::getEntrevistas()
 
 DataEstudiante::~DataEstudiante()
 {
-
+    if (this->fechaNacimiento !=NULL)
+        delete this->fechaNacimiento;
+    if (this->carreras !=NULL)
+        delete this->carreras;
+    if (this->aprobadas!=NULL)
+        delete this->aprobadas;
+    if (this->inscripciones !=NULL)
+        delete this->inscripciones;
+    if (this->entrevistas!=NULL)
+        delete this->entrevistas;
 }

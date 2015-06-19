@@ -27,7 +27,7 @@ class Aprobacion : public ICollectible
         void setAsignatura(Asignatura* a);
 
         ~Aprobacion();
-    protected:
+
     private:
         Date* fecha;
         int nota;

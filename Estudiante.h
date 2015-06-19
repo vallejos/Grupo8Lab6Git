@@ -59,7 +59,7 @@ class Estudiante : public ICollectible, public IObserver
         void enviarMail(string numExpediente);
 
         ~Estudiante();
-    protected:
+
     private:
         string cedula;
         string nombre;

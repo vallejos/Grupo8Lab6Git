@@ -9,9 +9,9 @@
 
 class IEstudianteController {
     public:
-        IEstudianteController() = 0;
-        ~IEstudianteController() = 0;
-        void ModificarEstudiante(
+        IEstudianteController();
+        virtual ~IEstudianteController() = 0;
+        void ModificarEstudiante();
         virtual ICollection *ListarEstudiantesNoInscriptos() = 0;
         virtual void SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos) = 0;
         virtual void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono,
@@ -22,8 +22,6 @@ class IEstudianteController {
         virtual ICollection *ListarEstudiantesInscriptosEnOferta() = 0;
         virtual IDictionary* getAsignaturas() = 0;
         virtual IDictionary* getCarreras() = 0;
-    protected:
-    private:
 };
 
 #endif // IESTUDIANTECONTROLLER_H

@@ -9,6 +9,7 @@
 #include "DataSeccion.h"
 #include "Fabrica.h"
 #include "IEmpresaController.h"
+#include "Integer.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
     string rutaEmpresa, nomSucursal, nomSeccion;
     Fabrica* fab = Fabrica::getInstance();
     IEmpresaController* cEmpresa = fab->getIEmpresaController();
+    IEstudianteController* cEstudiante = fab->getIEstudianteController();
 
     try
     {
@@ -29,10 +31,10 @@ void cmdAltaOfertaLaboral::ejecutarComando()
 
         cout << "Lista de Empresas:\n";
         IIterator * it = dataEmpresas->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataEmpresa *dEmpresa;
-            if( (dEmpresa = dynamic_cast<DataEmpresa*> (it.current())) != NULL )
+            if( (dEmpresa = dynamic_cast<DataEmpresa*> (it->current())) != NULL )
             {
                 cout << "Nombre: " + dEmpresa->getNombre() + ", RUT:" + dEmpresa->getRut() + "\n";
             }
@@ -40,28 +42,29 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataEmpresa.");
             }
+            it.next();
         }
         delete it;
-cmdInscripcionOfertaLaboral
         cout<< "Seleccione una Empresa indicando el RUT\n";
         cin >> rutEmpresa;
-        cEmpresa->SeleccionarEmpresa(rutaEmpresa);
+        cEmpresa->SeleccionarEmpresa(rutEmpresa);
 
 
         ICollection* dataSucursales = cEmpresa->ListarSucursales();
         cout << "Lista de Sucursales:\n";
 
         IIterator * it2 = dataEmpresas->getIterator();
-        while(it2.hasCurrent())
+        while(it2->hasCurrent())
         {
             DataSucursal *dSucursal;
-            if( (dSucursal = dynamic_cast<DataSucursal*> (it2.current())) != NULL )
+            if( (dSucursal = dynamic_cast<DataSucursal*> (it2->current())) != NULL )
             {
                 cout << "Nombre: " + dSucursal->getNombre() + "\n";
             } else
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataSucursal.");
             }
+            it2.next();
         }
         delete it2;
 
@@ -72,17 +75,18 @@ cmdInscripcionOfertaLaboral
         ICollection* dataSecciones = cEmpresa->ListarSecciones();
         cout<< "Lista de Secciones:\n";
         IIterator * it3 = dataSecciones->getIterator();
-        while(it3.hasCurrent())
+        while(it3->hasCurrent())
         {
             DataSeccion *dSeccion;
-            if( (dSeccion = dynamic_cast<DataSeccion*> (it3.current())) != NULL )
+            if( (dSeccion = dynamic_cast<DataSeccion*> (it3->current())) != NULL )
             {
                 cout << "Nombre: " + dSeccion->getNombre() + "\n";
             } else
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataSeccion.");
             }
-        }cmdInscripcionOfertaLaboral
+            it3->next();
+        }
         delete it3;
 
         cout<< "Seleccione una Sección indicando su nombre\n";
@@ -113,9 +117,24 @@ cmdInscripcionOfertaLaboral
         cout<< "\nCantidad de puestos necesarios: ";
         cin >> cantPuestos;
         //Solicitar Asignaturas
+        cout<< "\nAsignaturas:";
+        bool desea = true;
+        ICollection* codAsignaturas;
+        while (desea)
+        {
+            cout<< "\n  Ingrese el codigo: ";
+            cin >> codAsig;
+            Integer* codigo = new Integer(codAsig);
+            codAsignaturas->add(codigo);
+            cout<< "\n  Desea ingresar otra asignatura?(s/n): ";
+            cin >> respuesta;
+            if(respuesta == "n")
+            {
+                desea = false;
+            }
+        }
 
-
-        cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, "AGREGAR ASIGNATURAS")
+        cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, codAsignaturas);
 
     }
     catch(const std::invalid_argument &e)

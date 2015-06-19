@@ -14,6 +14,7 @@ class DataCarrera
         ~DataCarrera();
         int getCodigo();
         string getNombre();
+
     private:
         int codigo;
         string nombre;

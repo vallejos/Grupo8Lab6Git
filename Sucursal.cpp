@@ -27,10 +27,10 @@ ICollection *Sucursal::getDataSecciones()
 {
     List* result = new List();
     IIterator * it = this->secciones->getIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
-        result->add(it.current()->getDataSeccion());
-        it.next();
+        result->add(it->current()->getDataSeccion());
+        it->next();
     }
     delete it;
 
@@ -39,20 +39,22 @@ ICollection *Sucursal::getDataSecciones()
 
 Seccion *Sucursal::getSeccion(string nombre)
 {
-    Iterator* i = this->seccion->getIterator();
-    bool seccionEncontrada = false;
-    Seccion s = NULL; // para retornar null si la seccion no pertenece a la sucursal
-    while((i->hasCurrent())&&(!seccionEncontrada))
+    String* nomSeccion = new String(nombre);
+    if(this->secciones->member(nomSeccion))
     {
-        if((i->current()->get_nombre) == nombre))
+        Seccion *sec;
+        if( (sec = dynamic_cast<Seccion*> (this->secciones->find(nomSeccion))) != NULL )
         {
-            s = i->current();
-            seccionEncontrada = true;
+            return sec;
+        } else
+        {
+            throw std::invalid_argument("Sucursal -> El objeto no es de la clase Seccion.");
         }
-        i->next();
     }
-    delete i;
-    return s;
+    else
+    {
+        throw std::invalid_argument("La Seccion de nombre " + nombre + " no existe en el Sistema.");
+    }
 }
 
 DataEmpresa *Sucursal::getDataEmpresa()

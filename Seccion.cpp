@@ -57,6 +57,11 @@ void Seccion::setInterno(string interno)
     this->interno = interno;
 }
 
+void Seccion::setEncargado(Encargado* encargado)
+{
+    this->encargado = encargado;
+}
+
 DataSeccion *Seccion::getDataSeccion()
 {
     DataEncargado *de = this->encargado->getDataEncargado();

@@ -15,6 +15,7 @@ class Encargado : public ICollectible
         string nombre;
         string apellido;
         Date* fechaNacimiento;
+
     public:
         //operaciones
         Encargado();

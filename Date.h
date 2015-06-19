@@ -13,6 +13,7 @@ class Date
         int getDia();
         int getMes();
         int getAnio();
+
     private:
         int dia;
         int mes;

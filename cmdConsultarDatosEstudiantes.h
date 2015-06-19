@@ -1,6 +1,8 @@
 #ifndef CMD_CONSULTARDATOSESTUDIANTES_H
 #define CMD_CONSULTARDATOSESTUDIANTES_H
 
+#include <exception>
+#include "IComando.h"
 
 class cmdConsultarDatosEstudiantes : public IComando
 {

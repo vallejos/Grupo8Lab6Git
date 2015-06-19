@@ -1,0 +1,16 @@
+ref,codigo,nombre,creditos,ref. carreras
+A1,1686,Calculo I,16,C1 C2
+A2,6598,Programacion 1,10,C1 C2
+A3,5698,Programacion 2,12,C2
+A4,4875,Programacion 3,15,C2
+A5,1689,Calculo II,16,C1 C2
+A6,8683,Electromagnetismo,12,C1
+A7,6943,Bases de datos,15,C2
+A8,6879,Redes de computadoras,12,C2
+A9,3216,Ecuaciones diferenciales,12,C1
+A10,9171,Fundamentos de seguridad informatica,12,C2
+A11,1698,Robotica basada en comportamientos,15,C1 C2
+A12,6416,Ciencia tecnologia y sociedad,8,C1 C2
+A13,6587,Proyecto de Ingenieria de software,15,C2
+A14,5498,Arquitectura de computadoras,12,C2
+A15,1889,Taller de programacion,15,C2

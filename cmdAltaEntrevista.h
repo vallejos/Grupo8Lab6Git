@@ -2,6 +2,7 @@
 #define CMD_ALTAENTREVISTA_H
 
 #include <exception>
+#include "IComando.h"
 
 class cmdAltaEntrevista : public IComando
 {
