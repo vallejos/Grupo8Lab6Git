@@ -38,6 +38,16 @@ int Asignatura::getCreditos()
 	return this->creditos;
 }
 
+IDictionary* Asignatura::getCarreras()
+{
+    return this->carreras;
+}
+
+void Asignatura::setCarreras(IDictionary* carreras)
+{
+    this->carreras = carreras;
+}
+
 void Asignatura::setCodigo(int codigo)
 {
 

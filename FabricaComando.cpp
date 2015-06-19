@@ -19,34 +19,34 @@ IComando* FabricaComando::obtenerComando(string cmd)
 {
     switch (cmd)
     {
-			case 'AltaOfertaLaboral':
+			case 'cmdAltaOfertaLaboral':
                 return new cmdAltaOfertaLaboral();
 				break;
-			case 'AltaEntrevista':
+			case 'cmdAltaEntrevista':
                 return new cmdAltaEntrevista();
 				break;
-			case 'AsignacionDeOfertaAEstudiante':
+			case 'cmdAsignacionDeOfertaAEstudiante':
                 return new cmdAsignacionDeOfertaAEstudiante();
 				break;
-			case 'ConsultarDatosEstudiantes':
+			case 'cmdConsultarDatosEstudiantes':
                 return new cmdConsultarDatosEstudiantes();
 				break;
-			case 'ListarOfertasActivas':
+			case 'cmdListarOfertasActivas':
                 return new cmdListarOfertasActivas();
 				break;
-			case 'ModificarEstudiante':
+			case 'cmdModificarEstudiante':
                 return new cmdModificarEstudiante();
 				break;
-			case 'ModificarLlamado':
+			case 'cmdModificarLlamado':
                 return new cmdModificarLlamado();
 				break;
-			case 'DarDeBajaLlamado':
+			case 'cmdDarDeBajaLlamado':
                 return new cmdDarDeBajaLlamado();
 				break;
-            case 'InscripcionOfertaLaboral':
+            case 'cmdInscripcionOfertaLaboral':
                 return new cmdInscripcionOfertaLaboral();
 				break;
-            case 'CargarDatosDePrueba':
+            case 'cmdCargarDatosDePrueba':
                 return new cmdCargarDatosDePrueba();
                 break;
     }

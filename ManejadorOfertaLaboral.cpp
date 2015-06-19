@@ -26,8 +26,8 @@ IDictionary *ManejadorOfertaLaboral::getDataOfertaLaboral()
     IIterator * it = this->ofertasLaborales->getIterator();
     while(it->hasCurrent())
     {
-        if(it->current()->EsActiva())
-            result->add(it->current()->getDataOfertaLaboral());
+        if(it->getCurrent()->EsActiva())
+            result->add(it->getCurrent()->getDataOfertaLaboral());
         it->next();
     }
     delete it;
@@ -44,7 +44,7 @@ IDictionary *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
     IIterator * it = this->ofertasLaborales->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it->current()->getDataOfertaLaboral());
+        result->add(it->getCurrent()->getDataOfertaLaboral());
         it->next();
     }
     delete it;
@@ -85,10 +85,10 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     IIterator * it = inscripciones->getIterator();
     while(it->hasCurrent())
     {
-        Estudiante *e = it->current()->getEstudiante();
+        Estudiante *e = it->getCurrent()->getEstudiante();
         ICollection *insc = e->getInscripciones();
-        insc->remove(it->current());
-        it->current()->estudiant = NULL;// para que al llamar al destructor de oferta al final no destruya al estudiante cuando destruye la inscripcion
+        insc->remove(it->getCurrent());
+        it->getCurrent()->estudiant = NULL;// para que al llamar al destructor de oferta al final no destruya al estudiante cuando destruye la inscripcion
         it->next();
     }
     delete it;
@@ -96,10 +96,10 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     IIterator * it2 = entrevistas->getIterator();
     while(it2->hasCurrent())
     {
-        Estudiante *e = it2->current()->getEstudiante();
+        Estudiante *e = it2->getCurrent()->getEstudiante();
         ICollection *entre = e->getEntrevistas();
-        entre->remove(it2->current());
-        it2->current()->estudiant = NULL;// igual que arriba no se si esté bien
+        entre->remove(it2->getCurrent());
+        it2->getCurrent()->estudiant = NULL;// igual que arriba no se si esté bien
         it2->next();
     }
     delete it2;
