@@ -4,7 +4,8 @@
 #include "OfertaLaboralController.h"
 #include "interfaces/ICollection.h"
 #include "DataOfertaLaboral.h"
-#inclide "IDictionary.h"
+#include "interfaces/IDictionary.h"
+#include "Fabrica.h"
 
 using namespace std;
 
@@ -12,7 +13,8 @@ using namespace std;
 void cmdDarDeBajaLlamado::ejecutarComando()
 {
     string numExpediente;
-    OfertaLaboralController *ctrlOL = OfertaLaboralController::getInstance();
+    Fabrica* fab = Fabrica::getInstance();
+    IOfertaLaboralController *ctrlOL = fab->getIOfertaLaboralController();
 
     try
     {
@@ -27,10 +29,10 @@ void cmdDarDeBajaLlamado::ejecutarComando()
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-                cout << "NRO. EXPEDIENTE: " + dOferta->getNumExpediente() + ", TITULO:" + dOferta->getTitulo() + "\n";
+                cout << "NRO. EXPEDIENTE: " << dOferta->getNumExpediente() << ", TITULO:" << dOferta->getTitulo() << "\n";
             } else
             {
-                throw std::invalid_argument("cmdDarDeBajaLlamado -> El objeto no es de la clase DataOfertaLaboral.");
+                throw "cmdDarDeBajaLlamado -> El objeto no es de la clase DataOfertaLaboral.";
             }
         }
         delete it;
@@ -44,9 +46,9 @@ void cmdDarDeBajaLlamado::ejecutarComando()
         // borro el llamado
         ctrlOL->DarBajaLlamado();
     }
-    catch(const std::invalid_argument &e)
+    catch(exception &e)
     {
-    	cout << e.what();
+        throw;
     }
 }
 

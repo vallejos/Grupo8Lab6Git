@@ -29,8 +29,8 @@ void cmdModificarEstudiante::ejecutarComando()
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it->getCurrent())) != NULL )
             {
-                cout << "Cédula: " + dEstudiante->getCedula() + "Nombre: " + dEstudiante->getNombre() + "Apellido: " + dEstudiante->getApellido() + "\n";
-                cout << "Fecha de Nacimiento: " + dEstudiante->getFechaNacimiento()->getDia() + "/" + dEstudiante->getFechaNacimiento()->getMes() + "/" + dEstudiante->getFechaNacimiento()->getAnio() + "Teléfono: " + dEstudiante->getTelefono() + "Email: " + dEstudiante-> getEmail() + "Créditos: " + dEstudiante->getCreditos() + "\n";
+                cout << "Cédula: " << dEstudiante->getCedula() << "Nombre: " << dEstudiante->getNombre() << "Apellido: " << dEstudiante->getApellido() << "\n";
+                cout << "Fecha de Nacimiento: " << dEstudiante->getFechaNacimiento()->getDia() << "/" << dEstudiante->getFechaNacimiento()->getMes() << "/" << dEstudiante->getFechaNacimiento()->getAnio() << "Teléfono: " << dEstudiante->getTelefono() << "Email: " << dEstudiante-> getEmail() << "Créditos: " << dEstudiante->getCreditos() << "\n";
                 cout << "Asignaturas Aprobadas:\n";
                 ICollection *aprobadas = dEstudiante->getAprobadas();
                 IIterator * it2 = aprobadas->getIterator();
@@ -40,7 +40,7 @@ void cmdModificarEstudiante::ejecutarComando()
                     if( (aprobacion = dynamic_cast<Aprobacion*> (it2->getCurrent())) != NULL )
                     {
                         DataAsignatura* dasignatura = aprobacion->getDataAsignatura();
-                        cout << "Código: " + dasignatura->getCedula() + "Nombre: " + dasignatura->getNombre() + "Créditos: " + dasignatura->getCreditos() + "\n";
+                        cout << "Código: " << dasignatura->getCedula() << "Nombre: " << dasignatura->getNombre() << "Créditos: " << dasignatura->getCreditos() << "\n";
                         it2->next();
                     }else
                     {
@@ -58,7 +58,7 @@ void cmdModificarEstudiante::ejecutarComando()
                     Carrera *carrera;
                     if( (carrera = dynamic_cast<Carrera*> (it3->getCurrent())) != NULL )
                     {
-                        cout << "Código: " + carrera->getCodigo() + "Nombre: " + carrera->getNombreCarrera() + "\n";
+                        cout << "Código: " << carrera->getCodigo() << "Nombre: " << carrera->getNombreCarrera() << "\n";
                         it3->next();
                     }else
                     {
@@ -225,9 +225,9 @@ void cmdModificarEstudiante::ejecutarComando()
         cEstudiante->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, asignaturasAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
 
     }
-    catch(const std::invalid_argument &e)
+    catch(exception &e)
     {
-    	throw std::invalid_argument(e.what());
+        throw;
     }
 
 }

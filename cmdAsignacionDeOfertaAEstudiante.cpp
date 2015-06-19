@@ -33,7 +33,7 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-                cout << "NRO. EXPEDIENTE: " + dOferta->getNumExpediente() + ", TITULO:" + dOferta->getTitulo() + "\n";
+                cout << "NRO. EXPEDIENTE: " << dOferta->getNumExpediente() << ", TITULO:" << dOferta->getTitulo() << "\n";
             } else
             {
                 throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase DataOfertaLaboral.";
@@ -58,8 +58,8 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
             DataEstudiante *dEstudiante;
             if ( (dEstudiante = dynamic_cast<DataEstudiante*> (itE->getCurrent())) != NULL )
             {
-                cout << "CEDULA: " + dEstudiante->getCedula() + ", NOMBRE:" + dEstudiante->getNombre() +
-                    ", APELLIDO:" + dEstudiante->getApellido() + ", EMAIL:" + dEstudiante->getEmail() + "\n";
+                cout << "CEDULA: " << dEstudiante->getCedula() << ", NOMBRE:" << dEstudiante->getNombre() <<
+                    ", APELLIDO:" << dEstudiante->getApellido() << ", EMAIL:" << dEstudiante->getEmail() << "\n";
             } else
             {
                 throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase dataEstudiante.";

@@ -30,10 +30,10 @@ void cmdModificarLlamado::ejecutarComando()
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-                cout << "NRO. EXPEDIENTE: " + dOferta->getNumExpediente() + ", TITULO:" + dOferta->getTitulo() + "\n";
+                cout << "NRO. EXPEDIENTE: " << dOferta->getNumExpediente() << ", TITULO:" << dOferta->getTitulo() << "\n";
             } else
             {
-                throw std::invalid_argument("cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase DataOfertaLaboral.");
+                throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase DataOfertaLaboral.";
             }
         }
         delete it;
@@ -81,9 +81,9 @@ void cmdModificarLlamado::ejecutarComando()
         // alta asignacion del cargo
         ctrlOL->ModificarOferta(numExpediente, DataOfertaLaboral *nuevosDatos);
     }
-    catch(const std::invalid_argument &e)
+    catch(exception &e)
     {
-        cout << e.what();
+        throw;
     }
 }
 
