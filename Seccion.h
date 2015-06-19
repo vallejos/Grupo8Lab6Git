@@ -27,6 +27,7 @@ class Seccion: public ICollectible
         string getInterno();
         Sucursal* getSucursal();
         Encargado* getEncargado();
+        IDictionary *getOfertasLaborales();
         void setNombre(string nombre);
         void setInterno(string interno);
         void setEncargado(Encargado* encargado);

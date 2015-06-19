@@ -157,7 +157,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
         while(lIt->hasCurrent())
         {
             Aprobacion *apro;
-            if( (apro = dynamic_cast<Aprobacion*> (lIt->current())) != NULL )
+            if( (apro = dynamic_cast<Aprobacion*> (lIt->getCurrent())) != NULL )
             {
                 dataAsignaturas->add(apro->getDataAsignatura());
             } else
@@ -175,7 +175,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
         while(It->hasCurrent())
         {
             Carrera *carr;
-            if( (carr = dynamic_cast<Carrera*> (It->current())) != NULL )
+            if( (carr = dynamic_cast<Carrera*> (It->getCurrent())) != NULL )
             {
                 dataCarreras->add(carr->getDataCarrera());
             } else
@@ -209,7 +209,7 @@ bool Estudiante::EstNoInscripto(string numExpediente)
         while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
-            if( (insc = dynamic_cast<Inscripcion*> (lIt->current())) != NULL )
+            if( (insc = dynamic_cast<Inscripcion*> (lIt->getCurrent())) != NULL )
             {
                 res = insc->EstInscripto(numExpediente);
                 if (res)
@@ -243,7 +243,7 @@ bool Estudiante::EstInscripto(string numExpediente)
         while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
-            if( (insc = dynamic_cast<Inscripcion*> (lIt->current())) != NULL )
+            if( (insc = dynamic_cast<Inscripcion*> (lIt->getCurrent())) != NULL )
             {
                 res = insc->EstInscripto(numExpediente);
                 if (!res)
@@ -288,7 +288,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
         while(lIt->hasCurrent())
         {
             Aprobacion *apro;
-            if( (apro = dynamic_cast<Aprobacion*> (lIt->current())) != NULL )
+            if( (apro = dynamic_cast<Aprobacion*> (lIt->getCurrent())) != NULL )
             {
                 dataAprobadas->add(apro->getDataAprobada());
             } else
@@ -305,7 +305,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
         while(lIt->hasCurrent())
         {
             Inscripcion *insc;
-            if( (insc = dynamic_cast<Inscripcion*> (lIt->current())) != NULL )
+            if( (insc = dynamic_cast<Inscripcion*> (lIt->getCurrent())) != NULL )
             {
                 dataOfertasEmpresas->add(insc->getDataOfertaLaboral());
             } else

@@ -12,9 +12,12 @@ class Empresa: public ICollectible {
     public:
         Empresa();
         Empresa(string rut, string nombre);
+        Empresa(const Empresa &e);
+
         ~Empresa();
         string getRut();
         string getNombre();
+        DataEmpresa *getDataEmpresa();
         ICollection *getDataSucursales(); // DataSucursal
         Sucursal *getSucursal(string nombre);
         IDictionary *getSucursales();

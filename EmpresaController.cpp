@@ -16,7 +16,7 @@ EmpresaController *EmpresaController::getInstance()
 
 void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
         	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
-        	ICollection *codAsignaturas)
+        	IDictionary *codAsignaturas)
 {
     ManejadorEstudiante* mEstudiante = ManejadorEstudiante::getInstance();
     IDictionary* asignaturas = mEstudiante->getAsignaturas()
@@ -34,22 +34,22 @@ void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, s
             }
             else
             {
-                throw std::invalid_argument("EmpresaController -> El objeto no es de la clase Asignatura.");
+                throw "EmpresaController -> El objeto no es de la clase Asignatura.";
             }
         }
         else
         {
             Integer* codigo;
-            if( (codigo = dynamic_cast<Integer*> (it->current()))) != NULL )
+            if( (codigo = dynamic_cast<Integer*> (it->getCurrent()))) != NULL )
             {
-                throw std::invalid_argument("La Asignatura de codigo " + codigo->getValue() + " no existe en el Sistema.");
+                throw "La Asignatura de codigo " + codigo->getValue() + " no existe en el Sistema.";
             }
             else
             {
-                throw std::invalid_argument("EmpresaController -> El objeto no es de la clase Integer.");
+                throw "EmpresaController -> El objeto no es de la clase Integer.";
             }
         }
-        it.next();
+        it->next();
     }
     delete it;
 

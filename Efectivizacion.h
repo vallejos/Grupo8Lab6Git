@@ -11,6 +11,7 @@ class Efectivizacion
     public:
         Efectivizacion();
         Efectivizacion(int sueldo, Date* fechaEfectivizacion);
+        Efectivizacion(const Efectivizacion &e);
 
         //getters
         int getSueldo();

@@ -3,7 +3,7 @@
 
 #include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
-#include "Estudiante.h";
+#include "Estudiante.h"
 #include <string>
 
 using namespace std;
@@ -20,15 +20,15 @@ class ManejadorEstudiante
         IDictionary *getEstudiantes();
         IDictionary *getAsignaturas();
         IDictionary *getCarreras();
-        destroyManejadorEstudiante();
+        void destroyManejadorEstudiante();
 
     private:
         ~ManejadorEstudiante();
         ManejadorEstudiante();
         static ManejadorEstudiante *instance;
-        IDictionary * estudiantes;
-        IDictionary* asignaturas:
-        IDictionary* carreras;
+        IDictionary *estudiantes;
+        IDictionary *asignaturas;
+        IDictionary *carreras;
 };
 
 #endif // MANEJADORESTUDIANTE_H

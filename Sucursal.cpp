@@ -29,7 +29,7 @@ ICollection *Sucursal::getDataSecciones()
     IIterator * it = this->secciones->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it->current()->getDataSeccion());
+        result->add(it->getCurrent()->getDataSeccion());
         it->next();
     }
     delete it;
