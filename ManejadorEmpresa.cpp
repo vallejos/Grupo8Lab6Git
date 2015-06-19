@@ -36,10 +36,24 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
 Empresa* ManejadorEmpresa::getEmpresa(string rut)
 {
     String* sRut = new String(rut);
-    return this->empresas->find(sRut);
+    if (this->empresas->member(sRut))
+    {
+        Empresa *emp;
+        if( (emp = dynamic_cast<Empresa*> (this->empresas->find(sRut))) != NULL )
+        {
+            return emp;
+        } else
+        {
+            throw std::invalid_argument("ManejadorEmpresa -> El objeto no es de la clase Empresa.");
+        }
+    }
+    else
+    {
+        throw std::invalid_argument("La Empresa con RUT " + rut + " no existe en el Sistema.");
+    }
 }
 
-IDictionary* Estudiante::getEmpresas() // ???
+IDictionary* ManejadorEmpresa::getEmpresas()
 {
     return this->empresas;
 }

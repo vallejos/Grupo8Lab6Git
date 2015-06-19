@@ -15,16 +15,15 @@ class Empresa: public ICollectible {
         ~Empresa();
         string getRut();
         string getNombre();
-        ICollection *getDataSucursales(); // DataSucursal
+        IDictionary *getDataSucursales(); // DataSucursal
         Sucursal *getSucursal(string nombre);
 
     private:
         string rut;
         string nombre;
-        ICollection *sucursales;
+        IDictionary *sucursales;
 };
 
 #include "Sucursal.h"
 
 #endif // EMPRESA_H
-
