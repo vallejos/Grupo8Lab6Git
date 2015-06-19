@@ -16,18 +16,14 @@ EstudianteController* EstudianteController::getInstance()
     return instance;
 }
 
-ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
+IDictionary* EstudianteController::ListarEstudiantesNoInscriptos()
 {
     try {
         OfertaLaboralController *olc = OfertaLaboralController::getInstance();
         string numExpe = olc->getOfertaLaboral()->getNumExpediente();
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	ICollection *estNoInsc = me->getEstNoInscriptos(numExpe);
-<<<<<<< HEAD
+    	IDictionary *estNoInsc = me->getEstNoInscriptos(numExpe);
     	if (estudiantesNoInsc == NULL)
-=======
-    	if (!estudiantesNoInsc->hasCurrent())
->>>>>>> master
             throw std::invalid_argument("No existe un Estudiante no Inscripto a la Oferta Seleccionada");
     	return estNoInsc;
     } catch (e) {
@@ -35,7 +31,7 @@ ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
     }
 }
 
-ICollection* EstudianteController::ListarEstudiantesInscriptosEnOferta()
+IDictionary* EstudianteController::ListarEstudiantesInscriptosEnOferta()
 {
     try {
         OfertaLaboralController *olc = OfertaLaboralController::getInstance();
@@ -58,7 +54,7 @@ void EstudianteController::SeleccionarEstudiante(string cedula, IDictionary *est
         }
         else
         {
-            throw std::invalid_argument("El Estudiante con C.I. " + cedula + " es inválido.");
+            throw std::invalid_argument("La cédula " + cedula + " es inválida.");
         }
 
 
@@ -81,7 +77,7 @@ DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedul
     }
 }
 
-ICollection* EstudianteController::ListarEstudiantesRegistrados()
+IDictionary* EstudianteController::ListarEstudiantesRegistrados()
 {
     try {
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
