@@ -85,7 +85,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataSeccion.");
             }
-            it3.next();
+            it3->next();
         }
         delete it3;
 
