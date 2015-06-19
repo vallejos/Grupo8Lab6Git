@@ -160,7 +160,7 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
     OfertaLaboralController *oc = OfertaLaboralController::getInstance();
     IDictionary *asigDeOL = oc->getOfertaLaboral()->getAsignaturas();
     ICollection *aprobadas = e->getAprobadas();
-    IIterator * it = asigDeOL->getElemIterator();
+    IIterator * it = asigDeOL->getIterator();
     while(it->hasCurrent())
     {
         Asignatura *asig;

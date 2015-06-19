@@ -105,7 +105,7 @@ Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
 IDictionary *ManejadorEstudiante::getEstudiante()
 //Va a recorrer los estudiantes del sistema y por cada estudiante crea un DataEstudiante para luego retornar un set.
     List* result = new List();
-    IIterator * it = this->estudiantes->getElemIterator();
+    IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
         result->add(it->getCurrent()->getDataEstudiante());

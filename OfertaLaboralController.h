@@ -5,7 +5,7 @@
 #include "Date.h"
 #include "DataOfertaLaboral.h"
 #include "interfaces/ICollection.h"
-#include "IDictionary.h"
+#include "interfaces/IDictionary.h"
 
 class OfertaLaboralController {
     public:

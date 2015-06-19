@@ -15,12 +15,12 @@ Criterio2::~Criterio2()
 
 // Sugiere una materia de las asignaturas seleccionadas tal que algun Estudiante haya aprobada.
 // En caso que no exista se retorna un ICollection vacio (List).
-ICollection *Criterio2::devolverListaAsignatura(ICollection *asignaturas)
+IDictionary *Criterio2::devolverListaAsignatura(IDictionary *asignaturas)
 {
     bool found = false;
 
     List *result = new List();
-    IIterator *it = asignaturas->getIterator();
+    IDictionary *it = asignaturas->getIterator();
     while(it->hasCurrent() && !found)
     {
         if(it->getCurrent()->getAprobadas() != NULL)
