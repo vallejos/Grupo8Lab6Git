@@ -12,8 +12,8 @@ class ManejadorOfertaLaboral
 {
     public:
 		static ManejadorOfertaLaboral *getInstance();
-		ICollection *getDataOfertaLaboral(); // Set DataOfertaLaboral
-		ICollection *getAllDataOfertaLaboral(); // Set DataOfertaLaboral
+		IDictionary *getDataOfertaLaboral(); // Set DataOfertaLaboral
+		IDictionary *getAllDataOfertaLaboral(); // Set DataOfertaLaboral
 		OfertaLaboral *SeleccionarOferta(string numExpediente);
 		void addOfertaManejador(OfertaLaboral *ol);
 		IDictionary* getOfertasLaborales();

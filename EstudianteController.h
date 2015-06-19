@@ -22,12 +22,12 @@ class EstudianteController : public IEstudianteController
 
     public:
         static EstudianteController* getInstance();
-        ICollection *ListarEstudiantesNoInscriptos();
-        ICollection *ListarEstudiantesInscriptosEnOferta();
+        IDictionary *ListarEstudiantesNoInscriptos();
+        IDictionary *ListarEstudiantesInscriptosEnOferta();
         void SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos);
         void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar);
         DataDatosEstudiante *ConsultarDatosEstudiante(string cedula);
-        ICollection *ListarEstudiantesRegistrados();
+        IDictionary *ListarEstudiantesRegistrados();
         Estudiante* getEstudiante();
         IDictionary* getAsignaturas();
         IDictionary* getCarreras();

@@ -17,7 +17,7 @@ OfertaLaboralController *OfertaLaboralController::getInstance() {
 	return this->instance;
 }
 
-ICollection *OfertaLaboralController::ListarOfertas() {
+IDictionary *OfertaLaboralController::ListarOfertas() {
 	try {
 		ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
 		return mo->getAllDataOfertaLaboral();
@@ -34,12 +34,12 @@ void OfertaLaboralController::SeleccionarOferta(string numExpediente, IDictionar
         if(this->ofertasLabVigentes->member(numExp))
         {
             this->oferta = mo->SeleccionarOferta(numExpediente);
-            if (this->oferta == NULL)
-                throw std::invalid_argument("No existe una Oferta Laboral con el número de expediente ingresado");
         }
         else
         {
-            throw std::invalid_argument("La Oferta Laboral con Número de Expediente" + numExpediente + " no es vigente.");
+            //Significa que la oferta no es válida en caso que el usuario tuviera que elegir una oferta válida
+            //ó no existe en el sistema en caso que tuviera que elegir una oferta del sistema
+            throw "El Número de Expediente" + numExpediente + " no es válido.";
         }
 
 	} catch (e) {
@@ -50,7 +50,7 @@ void OfertaLaboralController::SeleccionarOferta(string numExpediente, IDictionar
 void OfertaLaboralController::Inscribir(Date *fechaInscripcion) {
 	try {
 	    if (this->oferta == NULL)
-            throw std::invalid_argument("El sistema no recuerda a ninguna Oferta Laboral Seleccionada");
+            throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
 	    this->oferta->Inscripcion(fechaInscripcion);
 	    //BORRAR MEMORIA ?? oferta y estudiante en memoria
 	} catch (e) {
@@ -67,13 +67,13 @@ void OfertaLaboralController::Entrevistar(Date *fechaEntrevista) {
 	}
 }
 
-ICollection *OfertaLaboralController::MostrarOfertasActivas()
+IDictionary *OfertaLaboralController::MostrarOfertasActivas()
 {
 	try {
 	    ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
 	    ofertasActivas = mol->getDataOfertaLaboral();
 	    if (ofertasActivas == NULL)
-	         throw std::invalid_argument("No existe una Oferta Activa");
+	         throw "No existe una Oferta Activa";
         return ofertasActivas;
 
 	} catch (e) {

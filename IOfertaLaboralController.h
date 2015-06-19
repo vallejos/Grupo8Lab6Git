@@ -12,11 +12,11 @@ using namespace std;
 class IOfertaLaboralController {
     public:
         IOfertaLaboralController();
-        virtual ICollection* ListarOfertas() = 0;
+        virtual IDictionary* ListarOfertas() = 0;
         virtual DataOfertaLaboral* SeleccionarOferta(string numExpediente) = 0;
         virtual void Inscribir(Date* fechaInscripcion) = 0;
         virtual void Entrevistar(Date* fechaEntrevista) = 0;
-        virtual ICollection* MostrarOfertasActivas() = 0;
+        virtual IDictionary* MostrarOfertasActivas() = 0;
         virtual void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos) = 0;
         virtual void AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)=0;
         virtual void DarBajaLlamado(OfertaLaboral *ol) = 0;
