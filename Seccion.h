@@ -29,6 +29,7 @@ class Seccion: public ICollectible
         Encargado* getEncargado();
         void setNombre(string nombre);
         void setInterno(string interno);
+        void setEncargado(Encargado* encargado);
         DataSeccion *getDataSeccion();
         DataEmpresa *getDataEmpresa();
         OfertaLaboral *addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas);
