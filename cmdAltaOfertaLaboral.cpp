@@ -39,7 +39,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             DataEmpresa *dEmpresa;
             if( (dEmpresa = dynamic_cast<DataEmpresa*> (it->getCurrent())) != NULL )
             {
-                cout << "Nombre: " + dEmpresa->getNombre() + ", RUT:" + dEmpresa->getRut() + "\n";
+                cout << "Nombre: " << dEmpresa->getNombre() << ", RUT:" << dEmpresa->getRut() << "\n";
             }
             else
             {
@@ -62,7 +62,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             DataSucursal *dSucursal;
             if( (dSucursal = dynamic_cast<DataSucursal*> (it2->getCurrent())) != NULL )
             {
-                cout << "Nombre: " + dSucursal->getNombre() + "\n";
+                cout << "Nombre: " << dSucursal->getNombre() << "\n";
             } else
             {
                 throw "AltaOfertaLaboral -> El objeto no es de la clase DataSucursal.";
@@ -83,7 +83,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             DataSeccion *dSeccion;
             if( (dSeccion = dynamic_cast<DataSeccion*> (it3->getCurrent())) != NULL )
             {
-                cout << "Nombre: " + dSeccion->getNombre() + "\n";
+                cout << "Nombre: " << dSeccion->getNombre() << "\n";
             } else
             {
                 throw "AltaOfertaLaboral -> El objeto no es de la clase DataSeccion.";
