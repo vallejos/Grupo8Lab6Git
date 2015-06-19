@@ -4,6 +4,7 @@
 #include <exception>
 #include "DataCarrera.h"
 #include "interfaces/ICollectible.h"
+#include "interfaces/IDictionary.h"
 
 
 class Carrera : public ICollectible
