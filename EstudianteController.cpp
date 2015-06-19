@@ -23,7 +23,11 @@ ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
         string numExpe = olc->getOfertaLaboral()->getNumExpediente();
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     	ICollection *estNoInsc = me->getEstNoInscriptos(numExpe);
+<<<<<<< HEAD
+    	if (estudiantesNoInsc == NULL)
+=======
     	if (!estudiantesNoInsc->hasCurrent())
+>>>>>>> master
             throw std::invalid_argument("No existe un Estudiante no Inscripto a la Oferta Seleccionada");
     	return estNoInsc;
     } catch (e) {
@@ -43,11 +47,21 @@ ICollection* EstudianteController::ListarEstudiantesInscriptosEnOferta()
     }
 }
 
-void EstudianteController::SeleccionarEstudiante(string cedula)
+void EstudianteController::SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos)
 {
     try {
-    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	this->estudiante = me->SeleccionarEstudiante(cedula);
+        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+        String* ci = new String(cedula);
+        if(this->estudiantesValidos->member(ci))
+        {
+            this->estudiante = me->SeleccionarEstudiante(cedula);
+        }
+        else
+        {
+            throw std::invalid_argument("El Estudiante con C.I. " + cedula + " es inválido.");
+        }
+
+
     } catch (e) {
         throw e;
     }

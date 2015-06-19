@@ -5,12 +5,13 @@
 #include "Date.h"
 #include "DataOfertaLaboral.h"
 #include "interfaces/ICollection.h"
+#include "IDictionary.h"
 
 class OfertaLaboralController {
     public:
         OfertaLaboralController *getInstance();
         ICollection* ListarOfertas();
-        void SeleccionarOferta(string numExpediente);
+        void SeleccionarOferta(string numExpediente, IDictionary *ofertasLabVigentes);
         void Inscribir(Date *fechaInscripcion);
         void Entrevistar(Date *fechaEntrevista);
         void AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo);
