@@ -11,6 +11,7 @@
 #include "IEmpresaController.h"
 #include "Integer.h"
 #include "ManejadorEstudiante.h"
+#include "String.h"
 
 using namespace std;
 
@@ -21,9 +22,8 @@ cmdAltaOfertaLaboral::cmdAltaOfertaLaboral()
 
 void cmdAltaOfertaLaboral::ejecutarComando()
 {
-    string rutEmpresa, nomSucursal, nomSeccion, descripcion, numExpe, titulo;
+    string rutEmpresa, nomSucursal, nomSeccion, descripcion, numExpe, titulo, respuesta;
     int cantHorasSema, cantPuestos, salMinimo, salMaximo, ddCom, ddFin, mmCom, mmFin, aaaaCom, aaaaFin, codAsig;
-    string respuesta;
     Fabrica* fab = Fabrica::getInstance();
     IEmpresaController* cEmpresa = fab->getIEmpresaController();
 //    IEstudianteController* cEstudiante = fab->getIEstudianteController();
@@ -127,7 +127,8 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         IDictionary *ofertasDadasDeAlta = cEmpresa->getSeccion()->getOfertasLaborales();
 
         // busco la oferta en el dictionary
-        OfertaLaboral *ol = ofertasDadasDeAlta->find(numExpe);
+        String *expe = new String(numExpe.c_str());
+        OfertaLaboral *ol = dynamic_cast<OfertaLaboral> (ofertasDadasDeAlta->find(expe));
 
         // obtengo el dictionary de asignaturas de esa oferta
         IDictionary *asignaturasEnOferta = ol->getAsignaturas();
