@@ -7,6 +7,7 @@ class Efectivizacion
     private:
         int sueldo;
         Date* fechaEfectivizacion;
+
     public:
         Efectivizacion();
         Efectivizacion(int sueldo, Date* fechaEfectivizacion);

@@ -12,7 +12,6 @@ DataAsignatura::DataAsignatura(int codigo, string nombre, int creditos)
     this->codigo = codigo;
     this->nombre = nombre;
     this->creditos = creditos;
-
 }
 
 DataAsignatura::DataAsignatura(const DataAsignatura &da)
@@ -20,7 +19,6 @@ DataAsignatura::DataAsignatura(const DataAsignatura &da)
     this->codigo = da.codigo;
     this->nombre = da.nombre;
     this->creditos = da.creditos;
-
 }
 
 int DataAsignatura::getCodigo()
@@ -40,5 +38,6 @@ int DataAsignatura::getCreditos()
 
 DataAsignatura::~DataAsignatura()
 {
-
+    //dtor
+    //vacio
 }

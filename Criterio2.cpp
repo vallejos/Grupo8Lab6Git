@@ -21,14 +21,14 @@ ICollection *Criterio2::devolverListaAsignatura(ICollection *asignaturas)
 
     List *result = new List();
     IIterator *it = asignaturas->getIterator();
-    while(it.hasCurrent() && !found)
+    while(it->hasCurrent() && !found)
     {
-        if(it.current()->getAprobadas() != NULL)
+        if(it->current()->getAprobadas() != NULL)
         {
-	        result->add(it.current()->getAprobadas());
+	        result->add(it->current()->getAprobadas());
 	        found = true;
         }
-        it.next();
+        it->next();
     }
     delete it;
 

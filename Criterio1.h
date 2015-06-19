@@ -10,8 +10,6 @@ class Criterio1
         Criterio1();
         ~Criterio1();
         ICollection *devolverListaAsignatura(ICollection *asignaturas);
-    protected:
-    private:
 };
 
 #endif // CRITERIO1_H

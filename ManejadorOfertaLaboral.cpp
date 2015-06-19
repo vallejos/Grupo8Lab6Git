@@ -24,11 +24,11 @@ ICollection *ManejadorOfertaLaboral::getDataOfertaLaboral()
     //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar una coleccion de las mismas.
     List* result = new List();
     IIterator * it = this->ofertasLaborales->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
-        if(it.current()->EsActiva())
-            result->add(it.current()->getDataOfertaLaboral());
-        it.next();
+        if(it->current()->EsActiva())
+            result->add(it->current()->getDataOfertaLaboral());
+        it->next();
     }
     delete it;
 
@@ -42,10 +42,10 @@ ICollection *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
     //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar un una coleccion de las mismas.
     List* result = new List();
     IIterator * it = this->ofertasLaborales->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
-        result->add(it.current()->getDataOfertaLaboral());
-        it.next();
+        result->add(it->current()->getDataOfertaLaboral());
+        it->next();
     }
     delete it;
     return result;
@@ -83,24 +83,24 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     OfertaLaboral *o = this->ofertasLaborales->find(numExp);// Es necesario buscarla si ya me pasan el puntero a la oferta que debo eliminar?
     ICollection *inscripciones = o->getInscripciones();
     IIterator * it = inscripciones->getIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
-        Estudiante *e = it.current()->getEstudiante();
+        Estudiante *e = it->current()->getEstudiante();
         ICollection *insc = e->getInscripciones();
-        insc->remove(it.current());
-        it.current()->estudiant = NULL;// para que al llamar al destructor de oferta al final no destruya al estudiante cuando destruye la inscripcion
-        it.next();
+        insc->remove(it->current());
+        it->current()->estudiant = NULL;// para que al llamar al destructor de oferta al final no destruya al estudiante cuando destruye la inscripcion
+        it->next();
     }
     delete it;
     ICollection *entrevistas = o->getEntrevistas();
     IIterator * it2 = entrevistas->getIterator();
-    while(it2.hasCurrent())
+    while(it2->hasCurrent())
     {
-        Estudiante *e = it2.current()->getEstudiante();
+        Estudiante *e = it2->current()->getEstudiante();
         ICollection *entre = e->getEntrevistas();
-        entre->remove(it2.current());
-        it2.current()->estudiant = NULL;// igual que arriba no se si esté bien
-        it2.next();
+        entre->remove(it2->current());
+        it2->current()->estudiant = NULL;// igual que arriba no se si esté bien
+        it2->next();
     }
     delete it2;
     Seccion *seccion = o->getSeccion();

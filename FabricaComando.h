@@ -7,9 +7,10 @@ class FabricaComando
     public:
         static FabricaComando *getInstance();
         IComando* obtenerComando(string cmd);
-        ~FabricaComando();
+        void destroyFabricaComando();
     protected:
     private:
+        ~FabricaComando();
         FabricaComando();
         static FabricaComando* instance;
 };

@@ -17,6 +17,7 @@ class DataSucursal
         string getDireccion();
         string getTelefono();
         ICollection *getSecciones();
+
     private:
         string nombre;
         string direccion;

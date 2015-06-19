@@ -15,6 +15,7 @@ class DataEmpresa
         string getRut();
         string getNombre();
         ICollection* getSucursal();
+
     private:
         string rut;
         string nombre;

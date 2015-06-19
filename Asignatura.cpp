@@ -65,5 +65,6 @@ DataAsignatura *Asignatura::getDataAsignatura()
 
 Asignatura::~Asignatura()
 {
-
+    //dtor
+    //vacio
 }

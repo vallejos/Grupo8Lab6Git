@@ -31,10 +31,10 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         cout<< "Estudiantes registrados:\n";
 
         IIterator * it = dataEstudiantes->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataEstudiante *dEstudiante;
-            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it.current())) != NULL )
+            if( (dEstudiante = dynamic_cast<DataEstudiante*> (it->current())) != NULL )
             {
                 cout << "Nombre: " + dEstudiante->getNombre() + ", C.I.:" + dEstudiante->getCedula() + "\n";
             }
@@ -42,6 +42,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
             {
                 throw std::invalid_argument("ConsultarDatosEstudiantes -> El objeto no es de la clase DataEstudiante.");
             }
+            it.next();
         }
         delete it;
 
@@ -52,10 +53,10 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         cout<< "\n\nAsignaturas aprobadas:\n";
         ICollection* dataAprobadas = datosEstudiantes->getDataAprobadas();
         IIterator * it = dataAprobadas->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataAprobada *dAprobada;
-            if( (dAprobada = dynamic_cast<DataAprobada*> (it.current())) != NULL )
+            if( (dAprobada = dynamic_cast<DataAprobada*> (it->current())) != NULL )
             {
                 DataAsignatura* dAsignatura = dAprobada->getDataAsignatura();
                 cout << "Nombre: " + dAsignatura->getNombre() + ", Creditos: " + dAsignatura->getCreditos() + ", Nota: " + dAprobada->getNota() + ", Fecha de aprobacion: " + dAprobada->getFecha()->getDia() + "/" + dAprobada->getFecha()->getMes() + "/" + dAprobada->getFecha()->getAnio() + "\n";
@@ -64,16 +65,17 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
             {
                 throw std::invalid_argument("ConsultarDatosEstudiantes -> El objeto no es de la clase DataAprobada.");
             }
+            it.next();
         }
         delete it;
 
         cout<< "\n\nLlamados a los que se inscribio el Estudiante:\n";
         ICollection* dataOfertasEmpresas = datosEstudiantes->getDataOfertasEmpresas();
         IIterator * it = dataOfertasEmpresas->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataOfertaEmpresa *dOferEmp;
-            if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it.current())) != NULL )
+            if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it->current())) != NULL )
             {
                 DataOfertaLaboral* dataOfertaLab = dOferEmp->getDataOfertaLaboral();
                 DataEmpresa* dataEmpre = dOferEmp->getDataEmpresa();
@@ -97,6 +99,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
             {
                 throw std::invalid_argument("ConsultarDatosEstudiantes -> El objeto no es de la clase DataOfertaEmpresa.");
             }
+            it.next();
         }
         delete it;
     }

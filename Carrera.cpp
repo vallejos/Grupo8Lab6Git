@@ -4,7 +4,7 @@ Carrera::Carrera()
 {
     //ctor
     this->codigo = 0;
-    this->nombreCarrera = "";
+    this->nombreCarrera = '\0';
 }
 
 Carrera::Carrera(const Carrera &c)
@@ -52,4 +52,5 @@ void Carrera::setNombreCarrera(string nombreCarrera)
 Carrera::~Carrera()
 {
     //dtor
+    //vacio
 }

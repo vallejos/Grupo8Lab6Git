@@ -33,6 +33,7 @@ class DataOfertaLaboral: public ICollectible
         ICollection *getInscripciones();
         ICollection *getEntrevistas();
         IDictionary *getAsignaturas();
+
     private:
         string numExpediente;
         string titulo;
