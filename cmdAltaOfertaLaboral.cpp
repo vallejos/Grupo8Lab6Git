@@ -42,7 +42,6 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             }
         }
         delete it;
-cmdInscripcionOfertaLaboral
         cout<< "Seleccione una Empresa indicando el RUT\n";
         cin >> rutEmpresa;
         cEmpresa->SeleccionarEmpresa(rutaEmpresa);
@@ -82,7 +81,7 @@ cmdInscripcionOfertaLaboral
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataSeccion.");
             }
-        }cmdInscripcionOfertaLaboral
+        }
         delete it3;
 
         cout<< "Seleccione una Sección indicando su nombre\n";
