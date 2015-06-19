@@ -2,7 +2,7 @@
 #define CRITERIO2_H
 
 #include "DataAsignatura.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 
 class Criterio2
 {
@@ -10,8 +10,6 @@ class Criterio2
         Criterio2();
         ~Criterio2();
         ICollection *devolverListaAsignatura(ICollection *asignaturas);
-    protected:
-    private:
 };
 
 #endif // CRITERIO2_H

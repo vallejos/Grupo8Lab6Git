@@ -24,5 +24,8 @@ ICollection* DataDatosEstudiante::getDataOfertasEmpresas()
 
 // destructor
 DataDatosEstudiante::~DataDatosEstudiante() {
-
+    if (this->dataAprobadas != NULL)
+        delete this->dataAprobadas;
+    if (this->dataOfertasEmpresas !=NULL)
+        delete this->dataOfertasEmpresas;
 }

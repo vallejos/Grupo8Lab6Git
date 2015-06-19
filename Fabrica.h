@@ -15,6 +15,7 @@ class Fabrica
         Fabrica();
         static Fabrica* instance;
         ~Fabrica();
+
     public:
         static Fabrica* getInstance();
         IOfertaLaboralController *getIOfertaLaboralController();

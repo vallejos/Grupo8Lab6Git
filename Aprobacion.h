@@ -5,7 +5,7 @@
 #include "DataAsignatura.h"
 #include "DataAprobada.h"
 #include "Asignatura.h"
-#include "ICollectible.h"
+#include "interfaces/ICollectible.h"
 
 class Aprobacion : public ICollectible
 {
@@ -27,7 +27,7 @@ class Aprobacion : public ICollectible
         void setAsignatura(Asignatura* a);
 
         ~Aprobacion();
-    protected:
+
     private:
         Date* fecha;
         int nota;

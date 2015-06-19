@@ -1,8 +1,8 @@
 #ifndef MANEJADORESTUDIANTE_H
 #define MANEJADORESTUDIANTE_H
 
-#include "ICollection.h"
-#include "IDictionary.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 #include "Estudiante.h";
 #include <string>
 
@@ -12,10 +12,10 @@ class ManejadorEstudiante
 {
     public:
 		static ManejadorEstudiante *getInstance();
-		ICollection *getEstNoInscriptos();
+		ICollection *getEstNoInscriptos(string numExpediente);
 		ICollection *getEstInscriptosEnOferta();
 		Estudiante *SeleccionarEstudiante(string cedula);
-        void ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos);
+        void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar);
         ICollection *getEstudiante();
         IDictionary *getEstudiantes();
         IDictionary *getAsignaturas();

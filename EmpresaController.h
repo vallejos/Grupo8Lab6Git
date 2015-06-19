@@ -25,14 +25,15 @@ class EmpresaController {
         void SeleccionarEmpresa(string rut);
         void SeleccionarSucursal(string nombre);
         void SeleccionarSeccion(string nombre);
-        ~EmpresaController();
-    protected:
+        void destroyEmpresaController();
+
     private:
         EmpresaController();
         Empresa *empresa; // la empresa que se recuerda
         Sucursal *sucursal; // la sucursal que se recuerda
         Seccion *seccion;
     	static EmpresaController *instance;
+        ~EmpresaController();
 };
 
 #endif // EMPRESACONTROLLER_H

@@ -1,8 +1,8 @@
 #ifndef IEMPRESACONTROLLER_H
 #define IEMPRESACONTROLLER_H
 
-#include "ICollection.h"
-#include "List.h"
+#include "interfaces/ICollection.h"
+#include "collections/List.h"
 #include "Empresa.h"
 #include "Sucursal.h"
 #include "Seccion.h"
@@ -12,7 +12,9 @@
 class IEmpresaController
 {
     public:
-        virtual void altaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango* rangoSalarial, Date* fechaComienzo, Date* fechaFin, int cantidadPuestosNecesarios, List* asignaturas) = 0;
+        IEmpresaController();
+        virtual ~IEmpresaController() = 0;
+        virtual void altaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango* rangoSalarial, Date* fechaComienzo, Date* fechaFin, int cantidadPuestosNecesarios, ICollection* asignaturas) = 0;
         virtual ICollection* ListarEmpresas() = 0;
         virtual ICollection* ListarSucursales() = 0;
         virtual ICollection* ListarSecciones() = 0;

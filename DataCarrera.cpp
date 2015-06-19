@@ -2,7 +2,7 @@
 
 DataCarrera::DataCarrera()
 {
-//HOLADS
+
 }
 
 DataCarrera::DataCarrera(int codigo, string nombre)
@@ -13,7 +13,8 @@ DataCarrera::DataCarrera(int codigo, string nombre)
 
 DataCarrera::DataCarrera(const DataCarrera &a)
 {
-
+    this->codigo = a.codigo;
+    this->nombre = a.nombre;
 }
 
 int DataCarrera::getCodigo()

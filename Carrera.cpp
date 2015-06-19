@@ -4,7 +4,7 @@ Carrera::Carrera()
 {
     //ctor
     this->codigo = 0;
-    this->nombreCarrera = "";
+    this->nombreCarrera = '\0';
 }
 
 Carrera::Carrera(const Carrera &c)
@@ -26,13 +26,17 @@ int Carrera::getCodigo()
 
 string Carrera::getNombreCarrera()
 {
-    return this->nombreCarrera:
+    return this->nombreCarrera;
 }
 
 DataCarrera* Carrera::getDataCarrera()
 {
-    DataCarrera* dataC = new DataCarrera(this->codigo, this->nombreCarrera);
-    return dataC;
+    try {
+        DataCarrera* dataC = new DataCarrera(this->codigo, this->nombreCarrera);
+        return dataC;
+    } catch (exception &e) {
+        throw;
+    }
 }
 
 void Carrera::setCodigo(int codigo)
@@ -48,4 +52,5 @@ void Carrera::setNombreCarrera(string nombreCarrera)
 Carrera::~Carrera()
 {
     //dtor
+    //vacio
 }

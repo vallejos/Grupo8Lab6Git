@@ -45,7 +45,11 @@ Estudiante::Estudiante(const Estudiante &e)
     this->fechaNacimiento = e.fechaNacimiento;
     this->creditos = e.creditos;
     this->email = e.email;
-    //falta carreras, aprobadas e inscripciones pero es al pedo xq no lo vamos a usar
+    this->carreras = e.carreras;
+    this->aprobadas = e.aprobadas;
+    this->inscripciones = e.inscripciones;
+    this->entrevistas = e.entrevistas;
+    this->notificaciones = e.notificaciones;
 }
 
 string Estudiante::getCedula()
@@ -150,7 +154,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
         //Se obtiene la coleccion de DataAsignatura
         List* dataAsignaturas = new List();
         ListIterator * lIt = this->aprobadas->getIterator();
-        while(lIt.hasCurrent())
+        while(lIt->hasCurrent())
         {
             Aprobacion *apro;
             if( (apro = dynamic_cast<Aprobacion*> (lIt.current())) != NULL )
@@ -168,7 +172,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
         //Se obtiene la coleccion de DataCarrera
         List* dataCarreras = new List();
         IIterator * It = this->carreras->getElemIterator();
-        while(It.hasCurrent())
+        while(It->hasCurrent())
         {
             Carrera *carr;
             if( (carr = dynamic_cast<Carrera*> (It.current())) != NULL )
@@ -202,7 +206,7 @@ bool Estudiante::EstNoInscripto(string numExpediente)
         bool res;
         bool noEstaInscripto = true;
         ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt.hasCurrent() && (noEstaInscripto))
+        while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
@@ -236,7 +240,7 @@ bool Estudiante::EstInscripto(string numExpediente)
         bool res;
         bool estaInscripto = true;
         ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt.hasCurrent() && (noEstaInscripto))
+        while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
@@ -281,7 +285,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
         //Se obtiene la coleccion de DataAprobada
         List* dataAprobadas = new List();
         ListIterator * lIt = this->aprobadas->getIterator();
-        while(lIt.hasCurrent())
+        while(lIt->hasCurrent())
         {
             Aprobacion *apro;
             if( (apro = dynamic_cast<Aprobacion*> (lIt.current())) != NULL )
@@ -298,7 +302,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
 
         List* dataOfertasEmpresas = new List();
         ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt.hasCurrent())
+        while(lIt->hasCurrent())
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt.current())) != NULL )
@@ -333,4 +337,16 @@ void Estudiante::enviarMail(string numExpediente)
 Estudiante::~Estudiante()
 {
     //dtor
+    if (this->fechaNacimiento != NULL)
+        delete this->fechaNacimiento;
+    if (this->carreras != NULL)
+        delete this->carreras;
+    if (this->aprobadas!= NULL)
+        delete this->aprobadas;
+    if (this->inscripciones!= NULL)
+        delete this->inscripciones;
+    if (this->entrevistas!= NULL)
+        delete this->entrevistas;
+    if (this->notificaciones!= NULL)
+        delete this->notificaciones;
 }

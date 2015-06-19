@@ -1,8 +1,8 @@
 #ifndef MANEJADOREMPRESA_H
 #define MANEJADOREMPRESA_H
 
-#include "lab6-colecciones/interfaces/ICollection.h"
-#include "lab6-colecciones/interfaces/IDictionary.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 #include "Empresa.h"
 
 class ManejadorEmpresa
@@ -13,13 +13,14 @@ class ManejadorEmpresa
         Empresa *getEmpresa(string rut);
         IDictionary* getEmpresas();
         //Se debe crear un getter y un setter para la coleccion???
-        ~ManejadorEmpresa();
+        void destroyManejadorEmpresa();
     protected:
     private:
         ManejadorEmpresa();//Se puede crear un constructor con parametros para un singleton???
         ManejadorEmpresa(IDictionary* empresas);
         static ManejadorEmpresa* instance;
         IDictionary* empresas;
+        ~ManejadorEmpresa();
 };
 
 #endif // MANEJADOREMPRESA_H

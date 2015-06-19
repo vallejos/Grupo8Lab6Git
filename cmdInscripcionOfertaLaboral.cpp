@@ -1,4 +1,4 @@
-#include "InscripcionOfertaLaboral.h"
+#include "cmdInscripcionOfertaLaboral.h"
 #include <iostream>
 #include <string>
 #incluce "Date.h"
@@ -7,14 +7,14 @@
 #include "IEstudianteController.h"
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 
-InscripcionOfertaLaboral::InscripcionOfertaLaboral()
+cmdInscripcionOfertaLaboral::cmdInscripcionOfertaLaboral()
 {
     //ctor
 }
 
-void InscripcionOfertaLaboral::ejecutarComando()
+void cmdInscripcionOfertaLaboral::ejecutarComando()
 {
     string numExpediente, cedula;
     Fabrica* fab = Fabrica::getInstance();
@@ -27,13 +27,12 @@ void InscripcionOfertaLaboral::ejecutarComando()
         cout << "Lista de Ofertas Laborales Vigentes:\n";
 
         IIterator * it = ofertasLaborales->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataOfertaLaboral *dOfertaLab;// Esto cambia si no traemos dataOfertas
             if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
             {
-                //Tengo que cambiar las operaciones para traer los datos correctos
-                cout << "Nombre: " + dOfertaLab->getNumExpediente() + ", Empresa:" + dOfertaLab->getTitulo() + ", Ubicación:" + dOfertaLab->getTitulo() + ", Cantidad de Inscriptos:" + dOfertaLab->getTitulo() + ", Rango Salarial:" + dOfertaLab->getTitulo() + ", Cantidad de Plazas:" + dOfertaLab->getTitulo() + "\n";
+                cout << "Número de Expediente: " + dOfertaLab->getNumExpediente() + ", Título:" + dOfertaLab->getTitulo() + "\n";
                 it.next();
 
             } else
@@ -45,7 +44,7 @@ void InscripcionOfertaLaboral::ejecutarComando()
         delete it;
 
         cout<< "Seleccione una Oferta Laboral indicando el Número de Expediente\n";
-        cin >> numExpediente;//O Nombre?
+        cin >> numExpediente;
 
         cOfertaLab->SeleccionarOferta(numExpediente);
 
@@ -55,7 +54,7 @@ void InscripcionOfertaLaboral::ejecutarComando()
         cout << "Lista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
 
         IIterator * it2 = dataEstudiante->getIterator();
-        while(it2.hasCurrent())
+        while(it2->hasCurrent())
         {
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2.current())) != NULL )
@@ -93,7 +92,7 @@ void InscripcionOfertaLaboral::ejecutarComando()
 
 }
 
-InscripcionOfertaLaboral::~InscripcionOfertaLaboral()
+cmdInscripcionOfertaLaboral::~cmdInscripcionOfertaLaboral()
 {
     //dtor
 }

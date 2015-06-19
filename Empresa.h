@@ -3,9 +3,10 @@
 
 #include <string>
 #include "DataSucursal.h"
-#include "Sucursal.h"
-#include "lab6-colecciones/interfaces/ICollectible.h"
-#include "lab6-colecciones/interfaces/ICollection.h"
+#include "interfaces/ICollectible.h"
+#include "interfaces/ICollection.h"
+
+class Sucursal;
 
 class Empresa: public ICollectible {
     public:
@@ -14,13 +15,15 @@ class Empresa: public ICollectible {
         ~Empresa();
         string getRut();
         string getNombre();
-        ICollection *getDataSucursales(); // DataSucursal
+        IDictionary *getDataSucursales(); // DataSucursal
         Sucursal *getSucursal(string nombre);
-    protected:
+
     private:
         string rut;
         string nombre;
-        ICollection *sucursales;
+        IDictionary *sucursales;
 };
+
+#include "Sucursal.h"
 
 #endif // EMPRESA_H

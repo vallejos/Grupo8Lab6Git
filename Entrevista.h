@@ -12,6 +12,7 @@ class Entrevista : public ICollectible
         Date* fechaEntrevista;
         OfertaLaboral* ofertaLab;
         Estudiante* estudiant;
+
     public:
         Entrevista();
         Entrevista(Date* fechaEntrevista, OfertaLaboral* ofertaLab, Estudiante* estu);

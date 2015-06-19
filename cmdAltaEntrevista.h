@@ -1,6 +1,8 @@
 #ifndef CMD_ALTAENTREVISTA_H
 #define CMD_ALTAENTREVISTA_H
 
+#include <exception>
+#include "IComando.h"
 
 class cmdAltaEntrevista : public IComando
 {
@@ -8,6 +10,8 @@ class cmdAltaEntrevista : public IComando
         cmdAltaEntrevista();
         void ejecutarComando();
         ~cmdAltaEntrevista();
+    private:
+    protected:
 };
 
 #endif // CMD_ALTAENTREVISTA_H

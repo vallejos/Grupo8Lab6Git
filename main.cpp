@@ -1,23 +1,38 @@
 #include <iostream>
 #include <string>
-#include "Sistema.h"
-#include "Date.h"
-#include "Rango.h"
-#include "DataEstudiante.h"
-#include "DataOfertaLaboral.h"
-#include "DataSeccion.h"
-#include "DataSucursal.h"
-#include "DataEmpresa.h"
+#include "FabricaComando.h"
+#include "cmdAltaEntrevista.h"
+#include "cmdInscripcionOfertaLaboral.h"
+#include "cmdAltaOfertaLaboral.h"
+#include "cmdListarOfertasActivas.h"
+#include "cmdAsignacionDeOfertaAEstudiante.h"
+#include "cmdModificarEstudiante.h"
+#include "cmdConsultarDatosEstudiantes.h"
+#include "cmdModificarLlamado.h"
+#include "cmdDarDeBajaLlamado.h"
+#include "cmdCargarDatosDePrueba.h"
+
 
 using namespace std;
 
+
 // Imprime el Menu Principal
 void imprimirMenu() {
-	cout << "1. Alta Oferta Laboral \n";
-	cout << "2. Crear Entrevista \n";
-	cout << "3. Salir \n";
+	cout << "1. Alta Entrevista \n";
+	cout << "2. Alta Oferta Laboral \n";
+	cout << "3. Asignacion de Oferta a Estudiante \n";
+	cout << "4. Consultar Datos de Estudiante \n";
+	cout << "5. Dar de Baja Llamado \n";
+	cout << "6. Inscripcion Oferta Laboral \n";
+	cout << "7. Listar Ofertas Activas \n";
+	cout << "8. Modificar Estudiante \n";
+	cout << "9. Modificar Llamado \n";
+	cout << "-";
+	cout << "C. Cargar datos de prueba \n";
+	cout << "S. Salir \n";
+	cout << "-";
 	cout << "Elija una opcion:\n";
-	cout << ">";
+	cout << "> ";
 }
 
 
@@ -26,145 +41,94 @@ int main() {
 	char opcion;
 	bool salir = false;
 
-	Sistema *Sys;
-
-	string rutEmpresa, nombreSucursal, nombreSeccion;
-	DataEmpresa **listaEmpresas;
-	DataSucursal **listaSucursales;
-	DataSeccion **listaSecciones;
-
-	DataOfertaLaboral **listaOfertasPublicadas;
-	string numExpediente, cedula;
-	Date *fechaEntrevista;
-	DataEstudiante **listaEstudiantes;
-
-	string titulo, descripcion, asignaturas;
-	int sueldoMaximo, sueldoMinimo, cantidadHorasSemanales, cantidadPuestosNecesarios, dd, mm, aaaa;
-
-	Date *fechaComienzo, *fechaFin;
-	Rango *rangoSalarial;
-
-	// TODO: inicializar sistema
-	Sys = new Sistema();
+	FabricaComando *cmd = FabricaComando::getInstance();
 
 	while (!salir) {
-		imprimirMenu();
-		cin >> opcion;
+		try {
+			imprimirMenu();
+			cin >> opcion;
 
-		switch (opcion) {
-			//------------------------
-			// ALTA OFERTA LABORAL
-			//------------------------
-			case '1':
-				listaEmpresas = Sys->ListarEmpresas();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadEmpresas(); i++) {
-					cout << listaEmpresas[i]->getNombre();
-				}
+			switch (opcion) {
+				//------------------------
+				// ALTA ENTREVISTA
+				//------------------------
+				case '1':
+					cmd->ejecutarComando('cmdAltaEntrevista');
+					break;
 
-				cout << "Seleccionar Empresa (rut):\n";
-				cin >> rutEmpresa;
-				Sys->SeleccionarEmpresa(rutEmpresa);
+				//------------------------
+				// ALTA OFERTA LABORAL
+				//------------------------
+				case '2':
+					cmd->ejecutarComando('cmdAltaOfertaLaboral');
+					break;
 
-				listaSucursales = Sys->ListarSucursales();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadSucursales(); i++) {
-					cout << listaSucursales[i]->getNombre();
-				}
+				//------------------------
+				// ASIGNACION DE OFERTA A ESTUDIANTE
+				//------------------------
+				case '3':
+					cmd->ejecutarComando('cmdAsignacionDeOfertaAEstudiante');
+					break;
 
-				cout << "Seleccionar Sucursal (nombre):\n";
-				cin >> nombreSucursal;
-				Sys->SeleccionarSucursal(nombreSucursal);
+				//------------------------
+				// CONSULTAR DATOS DE ESTUDIANTE
+				//------------------------
+				case '4':
+					cmd->ejecutarComando('cmdConsultarDatosEstudiantes');
+					break;
 
-				listaSecciones = Sys->ListarSecciones();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadSecciones(); i++) {
-					cout << listaSecciones[i]->getNombre();
-				}
+				//------------------------
+				// DAR DE BAJA LLAMADO
+				//------------------------
+				case '5':
+					cmd->ejecutarComando('cmdDarDeBajaLlamado');
+					break;
 
-				cout << "Seleccionar Seccion (nombre):\n";
-				cin >> nombreSeccion;
-				Sys->SeleccionarSeccion(nombreSeccion);
+				//------------------------
+				// INSCRIPCION DE OFERTA LABORAL
+				//------------------------
+				case '6':
+					cmd->ejecutarComando('cmdInscripcionOfertaLaboral');
+					break;
 
-				cout << "Ingrese Expediente";
-				cin >> numExpediente;
+				//------------------------
+				// LISTAR OFERTAS ACTIVAS
+				//------------------------
+				case '7':
+					cmd->ejecutarComando('cmdListarOfertasActivas');
+					break;
 
-				cout << "Ingrese Titulo";
-				cin >> titulo;
+				//------------------------
+				// MODIFICAR ESTUDIANTE
+				//------------------------
+				case '8':
+					cmd->ejecutarComando('cmdModificarEstudiante');
+					break;
 
-				cout << "Ingrese Descripcion";
-				cin >> descripcion;
+				//------------------------
+				// MODIFICAR LLAMADO
+				//------------------------
+				case '9':
+					cmd->ejecutarComando('cmdModificarLlamado');
+					break;
 
-				cout << "Ingrese Cantidad de Horas Semanales";
-				cin >> cantidadHorasSemanales;
+				//------------------------
+				// CARGAR DATOS DE PRUEBA
+				//------------------------
+				case 'C':
+					// TODO: poner comandos para carga de pruebas
+					cmd->ejecutarComando('cmdCargarDatosDePrueba');
+					break;
 
-				cout << "Ingrese Codigos de Asignaturas separadas por coma";
-				cin >> asignaturas; // ej: 1122, 1023, 155
-
-				cout << "Ingrese Sueldo Minimo";
-				cin >> sueldoMinimo;
-
-				cout << "Ingrese Sueldo Maximo";
-				cin >> sueldoMaximo;
-
-				rangoSalarial = new Rango (sueldoMinimo, sueldoMaximo);
-
-				cout << "Ingrese Fecha Comienzo (DD MM AAAA)";
-				cin >> dd >> mm >> aaaa;
-
-				fechaComienzo = new Date(dd, mm, aaaa);
-
-				cout << "Ingrese Fecha Fin (DD MM AAAA)";
-				cin >> dd >> mm >> aaaa;
-
-				fechaFin = new Date(dd, mm, aaaa);
-
-				cout << "Ingrese Cantidad de Puestos";
-				cin >> cantidadPuestosNecesarios;
-
-				// TODO: ver parametros que faltan
-				Sys->AltaOfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
-
-				break;
-
-			//------------------------
-			// CREAR ENTREVISTA
-			//------------------------
-			case '2':
-				listaOfertasPublicadas = Sys->ListarOfertasPublicadas();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadOfertasLaborales(); i++) {
-					cout << listaOfertasPublicadas[i]->getNumExpediente();
-				}
-
-				cout << "Seleccionar Oferta (expediente):\n";
-				cin >> numExpediente;
-				Sys->SeleccionarOferta(numExpediente);
-
-				listaEstudiantes = Sys->ListarEstudiantes();
-				// mostrar en pantalla
-				for (int i=0; i<Sys->getCantidadEstudiantes(); i++) {
-					cout << listaEstudiantes[i]->getCedula();
-				}
-
-				cout << "Seleccionar Estudiante (cedula):\n";
-				cin >> cedula;
-				Sys->SeleccionarEstudiante(cedula);
-
-				// TODO: que fecha usamos?
-				fechaEntrevista = new Date();
-
-				// TODO: ver parametros que faltan
-				Sys->AltaEntrevista(fechaEntrevista);
-
-				break;
-
-			//------------------------
-			// SALIR
-			//------------------------
-			case '3':
-				salir = true;
-				break;
+				//------------------------
+				// SALIR
+				//------------------------
+				case 'S':
+					salir = true;
+					break;
+			}
+		} catch (exception &e) {
+			cout << e.what();
 		}
 	}
 

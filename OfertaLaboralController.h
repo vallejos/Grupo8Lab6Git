@@ -4,7 +4,7 @@
 #include <string>
 #include "Date.h"
 #include "DataOfertaLaboral.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 
 class OfertaLaboralController {
     public:
@@ -18,7 +18,7 @@ class OfertaLaboralController {
         ICollection *MostrarOfertasActivas();
         void DarBajaLlamado();
         OfertaLaboral *getOfertaLaboral();
-    protected:
+
     private:
         OfertaLaboralController();
         ~OfertaLaboralController();

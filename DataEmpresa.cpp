@@ -13,7 +13,8 @@ DataEmpresa::DataEmpresa(string rut, string nombre)
 
 DataEmpresa::DataEmpresa(const DataEmpresa &e)
 {
-
+    this->rut = e.rut;
+    this->nombre = e.nombre;
 }
 
 string DataEmpresa::getRut()

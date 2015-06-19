@@ -22,7 +22,7 @@ ICollection *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
     //por cada estudiante no inscripto se crea un DataEstudiante para luego retornar una coleccion de DataEstudiante.
     List* result = new List();
     IIterator * it = this->estudiantes->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         if (it.current()->EstNoInscripto(numExpediente))
             result->add(it.current()->getDataEstudiante());
@@ -36,7 +36,7 @@ ICollection* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
 {
     List* result = new List();
     IIterator * it = this->estudiantes->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         if (it.current()->EstInscripto(numExpediente))
             result->add(it.current()->getDataEstudiante());
@@ -46,10 +46,9 @@ ICollection* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
     return result;
 }
 
-void ManejadorEstudiante::ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos)
+void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar)
 {
-//Pre: ningun dato del nuevosDatos es vacio.
-//p.e si el usuario no modifica el apellido, el DataEstudiante debe contener el apellido del estudiante y no ser vacio
+    //Arreglar esta operacion
     Estudiante* e = this->estudiantes->find(cedula);
     e->setApellido(nuevosDatos->getApellido());
     e->setNombre(nuevosDatos->getNombre());
@@ -76,6 +75,7 @@ Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
         }
         else
         {
+            //Me parece que ademas tenemos que hacer es ver si la cedula pertenece a alguno de los estudiantes no inscriptos
             throw std::invalid_argument("El Estudiante con C.I. " + cedula + " no existe en el Sistema.");
         }
     }
@@ -90,7 +90,7 @@ ICollection *ManejadorEstudiante::getEstudiante()
     //Va a recorrer los estudiantes del sistema y por cada estudiante crea un DataEstudiante para luego retornar un set.
     List* result = new List();
     IIterator * it = this->estudiantes->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         result->add(it.current()->getDataEstudiante());
         it.next();

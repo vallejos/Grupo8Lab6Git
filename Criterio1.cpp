@@ -1,5 +1,5 @@
 #include "Criterio1.h"
-#include "IDictionary.h"
+#include "interfaces/IDictionary.h"
 
 // constructor
 Criterio1::Criterio1()
@@ -26,7 +26,7 @@ ICollection *Criterio1::devolverListaAsignatura(ICollection *asignaturas)
 
     ICollection result = NULL;
     IIterator * it = e->getElemIterator();
-    while(it.hasCurrent() && !found)
+    while(it->hasCurrent() && !found)
     {
         if(it.current()->getAprobadas() != NULL)
         {

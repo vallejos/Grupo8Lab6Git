@@ -44,6 +44,10 @@ DataOfertaLaboral::DataOfertaLaboral(const DataOfertaLaboral &dol)
     this->fechaComienzo = dol.fechaComienzo;
     this->fechaFin = dol.fechaFin;
     this->cantidadPuestosNecesarios = dol.cantidadPuestosNecesarios;
+    this->asignaturas = dol.asignaturas;
+    this->seccion = dol.seccion;
+    this->inscripciones = dol.inscripciones;
+    this->entrevistas = dol.entrevistas;
 }
 
 string DataOfertaLaboral::getNumExpediente()
@@ -114,4 +118,12 @@ DataOfertaLaboral::~DataOfertaLaboral()
         delete this->fechaComienzo;
     if (this->fechaFin != NULL)
         delete this->fechaFin;
+    if (this->asignaturas != NULL)
+        delete this->asignaturas;
+    if (this->seccion != NULL)
+        delete this->seccion;
+    if (this->inscripciones!= NULL)
+        delete this->inscripciones;
+    if (this->entrevistas!= NULL)
+        delete this->entrevistas;
 }

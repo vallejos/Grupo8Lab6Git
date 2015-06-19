@@ -8,8 +8,8 @@
 #include "DataSucursal.h"
 #include "DataEmpresa.h"
 #include "Empresa.h"
-#include "IIterator.h"
-#include "ICollection.h"
+#include "interfaces/IIterator.h"
+#include "interfaces/ICollection.h"
 
 using namespace std;
 
@@ -19,7 +19,7 @@ class Sucursal : public ICollectible
         string nombre;
         string direccion;
         string telefono;
-        ICollection *secciones; //pseudoatributo;
+        IDictionary *secciones; //pseudoatributo;
         Empresa *empresa; //pseudoatributo;
     public:
         //operaciones

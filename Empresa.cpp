@@ -27,7 +27,7 @@ ICollection *Empresa::getDataSucursales()
 {
     List* result = new List();
     IIterator * it = this->sucursales->getIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         result->add(it.current()->getDataSucursal());
         it.next();
@@ -40,8 +40,16 @@ ICollection *Empresa::getDataSucursales()
 
 Sucursal *Empresa::getSucursal(string nombre) {
     String *keyNombre = new String(nombre);
-    Sucursal *sucursal = this->sucursales->find(keyNombre);
-    delete keyNombre;
 
-	return sucursal;
+    if (this->sucursales->member(keyNombre))
+    {
+        Sucursal *sucursal = this->sucursales->find(keyNombre);
+        delete keyNombre;
+        return sucursal;
+    }
+    else
+    {
+        throw std::invalid_argument("La Sucursal de nombre " + nombre + " no existe en el Sistema.");
+    }
+
 }

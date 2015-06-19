@@ -20,7 +20,9 @@ OfertaLaboral::OfertaLaboral()
 
 }
 
-OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas)
+OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
+                            Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
+                            IDictionary *asignaturas)
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;
@@ -153,9 +155,13 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
 {
     EstudianteController* ec = EstudianteController::getInstance();
     e = ec->getEstudiante();
+    if (e == NULL)// no se si puedo hacer esto, no es necesario el try catch?
+        throw std::invalid_argument("El sistema no recuerda a ningun estudiante Seleccionado");
     Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
     e->AsociarInscripcion(i);
     this->inscripciones->add(i);
+    //Creo que el estudiante se elimina acá
+    delete e;
 }
 
 void OfertaLaboral::Entrevista(Date *fechaEntrevista)
@@ -187,7 +193,7 @@ void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
     Estudiante* e = ec->getEstudiante();
     IIterator * it = e->inscripciones()->getIterator();
     bool noEncontrada = true;
-    while((it.hasCurrent())&&(noEncontrada))
+    while((it->hasCurrent())&&(noEncontrada))
     {
         if(it.current()->EstInscripto(this->numExpediente))
         {
