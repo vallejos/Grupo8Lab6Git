@@ -14,6 +14,12 @@ DataOfertaEmpresa::DataOfertaEmpresa(DataEmpresa *dataEmpresa, DataOfertaLaboral
     this->dataOferta = dataOferta;
 }
 
+DataOfertaEmpresa::DataOfertaEmpresa(const DataOfertaEmpresa &doe)
+{
+    this->dataEmpresa= doe.dataEmpresa;
+    this->dataOferta= doe.dataOferta;
+}
+
 DataEmpresa* DataOfertaEmpresa::getDataEmpresa()
 {
     return this->dataEmpresa;
