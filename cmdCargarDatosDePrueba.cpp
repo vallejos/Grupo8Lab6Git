@@ -36,11 +36,11 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	e4 = new Empresa("5464897986","Ingenieros Electricos Unidos");
 	e5 = new Empresa("1326548654","Academia Yotexplico");
 
-	empresas->add("1112335684", e1);// ESTOS SON IKEY LOS DEJAMOS ASI O COMO LOS CAMBIAMOS?? ES EN TODOS LOS ADD DE ESTE CPP
-	empresas->add("1298865497", e2);
-	empresas->add("1265498765", e3);
-	empresas->add("5464897986", e4);
-	empresas->add("1326548654", e5);
+	empresas->add(new String("1112335684"), e1);
+	empresas->add(new String("1298865497"), e2);
+	empresas->add(new String("1265498765"), e3);
+	empresas->add(new String("5464897986"), e4);
+	empresas->add(new String("1326548654"), e5);
 
 // CARGA: SUCURSALES
 	IDictionary *sue1, *sue2, *sue3, *sue4, *sue5;
@@ -61,13 +61,13 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	su6 = new Sucursal("Oficina central","25495878","Centro");
 	su7 = new Sucursal("Academia","24594565","Parque Rodo");
 
-	sue1->add(su1);
-	sue2->add(su2);
-	sue2->add(su3);
-	sue3->add(su4);
-	sue3->add(su5);
-	sue4->add(su6);
-	sue5->add(su7);
+	sue1->add(new String("Casa central"), su1);
+	sue2->add(new String("Sucursal comercial"), su2);
+	sue2->add(new String("Sucursal San Carlos"), su3);
+	sue3->add(new String("Sede Montevideo"), su4);
+	sue3->add(new String("Sede Ciudad de la Costa"), su5);
+	sue4->add(new String("Oficina central"), su6);
+	sue5->add(new String("Academia"), su7);
 
 // CARGA: SECCIONES
 	Seccion *se1, *se2, *se3, *se4, *se5, *se6, *se7, *se8, *se9, *se10, *se11, *se12, *se13, *se14, *se15,
@@ -107,35 +107,35 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	su6se = su6->getSecciones();
 	su7se = su7->getSecciones();
 
-	su1se->add(se1);
-	su1se->add(se2);
-	su1se->add(se3);
-	su1se->add(se4);
-	su1se->add(se5);
+	su1se->add(new String("Contaduria"), se1);
+	su1se->add(new String("Recursos humanos"), se2);
+	su1se->add(new String("Recepcion"), se3);
+	su1se->add(new String("Desarrollo"), se4);
+	su1se->add(new String("Pentesting"), se5);
 
-	su2se->add(se6);
-	su2se->add(se7);
-	su2se->add(se8);
-	su2se->add(se9);
-	su2se->add(se10);
+	su2se->add(new String("Marketing"), se6);
+	su2se->add(new String("Atencion al cliente"), se7);
+	su2se->add(new String("Tesoreria"), se8);
+	su2se->add(new String("Ventas"), se9);
+	su2se->add(new String("Seccion tecnica"), se10);
 
-	su3se->add(se11);
-	su3se->add(se12);
-	su3se->add(se13);
+	su3se->add(new String("Seccion tecnica"), se11);
+	su3se->add(new String("I+D"), se12);
+	su3se->add(new String("Recepcion"), se13);
 
-	su4se->add(se14);
-	su4se->add(se15);
-	su4se->add(se16);
+	su4se->add(new String("Secretaria"), se14);
+	su4se->add(new String("Desarrollo"), se15);
+	su4se->add(new String("Testing"), se16);
 
-	su5se->add(se17);
-	su5se->add(se18);
-	su5se->add(se19);
+	su5se->add(new String("Secretaria"), se17);
+	su5se->add(new String("Desarrollo"), se18);
+	su5se->add(new String("Testing"), se19);
 
-	su6se->add(se20);
-	su6se->add(se21);
+	su6se->add(new String("Laboratorio"), se20);
+	su6se->add(new String("Atencion comercial"), se21);
 
-	su7se->add(se22);
-	su7se->add(se23);
+	su7se->add(new String("Direccion"), se22);
+	su7se->add(new String("Inscripciones"), se23);
 
 // CARGA: ENCARGADOS
 	se1->setEncargado(new Encargado("3156454","Alberto","Garcia",new Date(10, 2, 1980)));
@@ -175,10 +175,10 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     o4 = se22->addOferta("49563", "Estudiantes para dictar clases de Calculo I y II", "Buscamos estudiantes de Ingenieria con Calculo 1 y 2 aprobadas. Deben tener disponibilidad horaria y gusto por enseñar. Enviar mail a academiayotexplico@gmail.com.",
                         5, new Rango(500, 2000), new Date(10, 9, 2015), new Date(20, 12, 2015), 10, NULL);
 
-    ofertas->add("45896", o1);
-    ofertas->add("12356", o2);
-    ofertas->add("88890", o3);
-    ofertas->add("49563", o4);
+    ofertas->add(new String("45896"), o1);
+    ofertas->add(new String("12356"), o2);
+    ofertas->add(new String("88890"), o3);
+    ofertas->add(new String("49563"), o4);
 
 //CARGA: ESTUDIANTES
 	IDictionary *estudiantes = mest->getEstudiantes ();
@@ -199,18 +199,18 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 
     //las carreras y las aprobadas son cargadas más abajo (al final)
     //los creditos se calcularon y se ingresaron en base a las aprobadas que se cargan despues
-	estudiantes->add("4516231", es1);
-	estudiantes->add("5111235", es2);
-	estudiantes->add("3594561", es3);
-	estudiantes->add("2784531", es4);
-	estudiantes->add("1956234", es5);
-	estudiantes->add("5005684", es6);
-	estudiantes->add("4686231", es7);
-	estudiantes->add("4987623", es8);
-	estudiantes->add("4986313", es9);
-	estudiantes->add("3659532", es10);
-	estudiantes->add("3665492", es11);
-	estudiantes->add("3335689", es12);
+	estudiantes->add(new String("4516231"), es1);
+	estudiantes->add(new String("5111235"), es2);
+	estudiantes->add(new String("3594561"), es3);
+	estudiantes->add(new String("2784531"), es4);
+	estudiantes->add(new String("1956234"), es5);
+	estudiantes->add(new String("5005684"), es6);
+	estudiantes->add(new String("4686231"), es7);
+	estudiantes->add(new String("4987623"), es8);
+	estudiantes->add(new String("4986313"), es9);
+	estudiantes->add(new String("3659532"), es10);
+	estudiantes->add(new String("3665492"), es11);
+	estudiantes->add(new String("3335689"), es12);
 
 // CARGA: CARRERAS
 	IDictionary *carreras = mest->getCarreras();
@@ -219,8 +219,8 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	c1= new Carrera(1010, "Ingenieria Electrica");
 	c2= new Carrera(1011, "Ingenieria en Computacion");
 
-	carreras->add(1010, c1);
-	carreras->add(1011, c2);
+	carreras->add(new Integer(1010), c1);
+	carreras->add(new Integer(1011), c2);
 
 // CARGA: ASIGNATURAS
     IDictionary *asignaturas = mest->getAsignaturas();
@@ -242,21 +242,21 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     a14 = new Asignatura(5498, "Arquitectura de computadoras",12);
     a15 = new Asignatura(1889, "Taller de programacion",15);
 
-    asignaturas->add(1686, a1);
-    asignaturas->add(6598, a2);
-    asignaturas->add(5698, a3);
-    asignaturas->add(4875, a4);
-    asignaturas->add(1689, a5);
-    asignaturas->add(8683, a6);
-    asignaturas->add(6943, a7);
-    asignaturas->add(6879, a8);
-    asignaturas->add(3216, a9);
-    asignaturas->add(9171, a10);
-    asignaturas->add(1698, a11);
-    asignaturas->add(6416, a12);
-    asignaturas->add(6587, a13);
-    asignaturas->add(5498, a14);
-    asignaturas->add(1889, a15);
+    asignaturas->add(new Integer(1686), a1);
+    asignaturas->add(new Integer(6598), a2);
+    asignaturas->add(new Integer(5698), a3);
+    asignaturas->add(new Integer(4875), a4);
+    asignaturas->add(new Integer(1689), a5);
+    asignaturas->add(new Integer(8683), a6);
+    asignaturas->add(new Integer(6943), a7);
+    asignaturas->add(new Integer(6879), a8);
+    asignaturas->add(new Integer(3216), a9);
+    asignaturas->add(new Integer(9171), a10);
+    asignaturas->add(new Integer(1698), a11);
+    asignaturas->add(new Integer(6416), a12);
+    asignaturas->add(new Integer(6587), a13);
+    asignaturas->add(new Integer(5498), a14);
+    asignaturas->add(new Integer(1889), a15);
 
     IDictionary *a1c, *a2c, *a3c, *a4c, *a5c, *a6c, *a7c, *a8c, *a9c, *a10c, *a11c, *a12c, *a13c, *a14c, *a15c;
 
@@ -276,52 +276,52 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     a14c = a14->getCarreras();
     a15c = a15->getCarreras();
 
-    a1c->add(c1);
-    a1c->add(c2);
-    a2c->add(c1);
-    a2c->add(c2);
-    a3c->add(c2);
-    a4c->add(c2);
-    a5c->add(c1);
-    a5c->add(c2);
-    a6c->add(c1);
-    a7c->add(c2);
-    a8c->add(c2);
-    a9c->add(c1);
-    a10c->add(c2);
-    a11c->add(c1);
-    a11c->add(c2);
-    a12c->add(c1);
-    a12c->add(c2);
-    a13c->add(c2);
-    a14c->add(c2);
-    a15c->add(c2);
+    a1c->add(new Integer(1010), c1);
+    a1c->add(new Integer(1011), c2);
+    a2c->add(new Integer(1010), c1);
+    a2c->add(new Integer(1011), c2);
+    a3c->add(new Integer(1011), c2);
+    a4c->add(new Integer(1011), c2);
+    a5c->add(new Integer(1010), c1);
+    a5c->add(new Integer(1011), c2);
+    a6c->add(new Integer(1010), c1);
+    a7c->add(new Integer(1011), c2);
+    a8c->add(new Integer(1011), c2);
+    a9c->add(new Integer(1010), c1);
+    a10c->add(new Integer(1011), c2);
+    a11c->add(new Integer(1010), c1);
+    a11c->add(new Integer(1011), c2);
+    a12c->add(new Integer(1010), c1);
+    a12c->add(new Integer(1011), c2);
+    a13c->add(new Integer(1011), c2);
+    a14c->add(new Integer(1011), c2);
+    a15c->add(new Integer(1011), c2);
 
     IDictionary *c1a, *c2a;
 
     c1a = c1->getAsignaturas();
     c2a = c2->getAsignaturas();
 
-    c1a->add(a1);
-    c1a->add(a2);
-    c1a->add(a5);
-    c1a->add(a6);
-    c1a->add(a9);
-    c1a->add(a11);
-    c1a->add(a12);
-    c2a->add(a1);
-    c2a->add(a2);
-    c2a->add(a3);
-    c2a->add(a4);
-    c2a->add(a5);
-    c2a->add(a7);
-    c2a->add(a8);
-    c2a->add(a10);
-    c2a->add(a11);
-    c2a->add(a12);
-    c2a->add(a13);
-    c2a->add(a14);
-    c2a->add(a15);
+    c1a->add(new Integer(1686), a1);
+    c1a->add(new Integer(6598), a2);
+    c1a->add(new Integer(1689), a5);
+    c1a->add(new Integer(8683), a6);
+    c1a->add(new Integer(3216), a9);
+    c1a->add(new Integer(1698), a11);
+    c1a->add(new Integer(6416), a12);
+    c2a->add(new Integer(1686), a1);
+    c2a->add(new Integer(6598), a2);
+    c2a->add(new Integer(5698), a3);
+    c2a->add(new Integer(4875), a4);
+    c2a->add(new Integer(1689), a5);
+    c2a->add(new Integer(6943), a7);
+    c2a->add(new Integer(6879), a8);
+    c2a->add(new Integer(9171), a10);
+    c2a->add(new Integer(1698), a11);
+    c2a->add(new Integer(6416), a12);
+    c2a->add(new Integer(6587), a13);
+    c2a->add(new Integer(5498), a14);
+    c2a->add(new Integer(1889), a15);
 
 // CARGA: ASIGNATURAS REQUERIDAS POR OFERTAS
     IDictionary *o1a, *o2a, *o3a, *o4a;
@@ -331,20 +331,20 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     o3a = o3->getAsignaturas();
     o4a = o4->getAsignaturas();
 
-    o1a->add(a2);
-    o1a->add(a3);
-    o1a->add(a4);
-    o1a->add(a10);
-    o2a->add(a6);
-    o2a->add(a9);
-    o3a->add(a2);
-    o3a->add(a3);
-    o3a->add(a4);
-    o3a->add(a7);
-    o3a->add(a13);
-    o3a->add(a15);
-    o4a->add(a1);
-    o4a->add(a5);
+    o1a->add(new Integer(6598), a2);
+    o1a->add(new Integer(5698), a3);
+    o1a->add(new Integer(4875), a4);
+    o1a->add(new Integer(9171), a10);
+    o2a->add(new Integer(8683), a6);
+    o2a->add(new Integer(3216), a9);
+    o3a->add(new Integer(6598), a2);
+    o3a->add(new Integer(5698), a3);
+    o3a->add(new Integer(4875), a4);
+    o3a->add(new Integer(6943), a7);
+    o3a->add(new Integer(6587), a13);
+    o3a->add(new Integer(1889), a15);
+    o4a->add(new Integer(1686), a1);
+    o4a->add(new Integer(1689), a5);
 
 // CARGA: APROBACIONES
     ICollection *ap1,*ap2, *ap3, *ap4, *ap5, *ap6, *ap7, *ap8, *ap9, *ap10, *ap11, *ap12;
@@ -427,21 +427,20 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     car11 = es11->getCarreras();
     car12 = es12->getCarreras();
 
-    car1->add(c1);
-    car2->add(c2);
-    car3->add(c2);
-    car4->add(c2);
-    car5->add(c1);
-    car6->add(c1);
-    car7->add(c1);
-    car8->add(c2);
-    car9->add(c1);
-    car9->add(c2);
-    car10->add(c2);
-    car11->add(c1);
-    car11->add(c2);
-    car12->add(c1);
-
+    car1->add(new Integer(1010), c1);
+    car2->add(new Integer(1011), c2);
+    car3->add(new Integer(1011), c2);
+    car4->add(new Integer(1011), c2);
+    car5->add(new Integer(1010), c1);
+    car6->add(new Integer(1010), c1);
+    car7->add(new Integer(1010), c1);
+    car8->add(new Integer(1011), c2);
+    car9->add(new Integer(1010), c1);
+    car9->add(new Integer(1011), c2);
+    car10->add(new Integer(1011), c2);
+    car11->add(new Integer(1010), c1);
+    car11->add(new Integer(1011), c2);
+    car12->add(new Integer(1010), c1);
 }
 
 // constructor
