@@ -15,7 +15,7 @@ Criterio1::~Criterio1()
 
 // Sugiere las materias aprobadas de algun estudiante o NULL en caso de no encontrar estudiantes con materias aprobadas
 // Nota: Para el Criterio1, no se necesita la lista de asignaturas
-ICollection *Criterio1::devolverListaAsignatura(ICollection *asignaturas)
+IDictionary *Criterio1::devolverListaAsignatura(IDictionary *asignaturas)
 {
 	// pedimos los estudiantes al manejador y vamos recorriendo uno a uno hasta encontrar alguno que tenga materias
 	// aprobadas, en ese caso retornamos esa lista
@@ -24,8 +24,8 @@ ICollection *Criterio1::devolverListaAsignatura(ICollection *asignaturas)
 
     bool found = false;
 
-    ICollection result = NULL;
-    IIterator * it = e->getElemIterator();
+    IDictionary result = NULL;
+    IIterator * it = e->getIterator();
     while(it->hasCurrent() && !found)
     {
         if(it->getCurrent()->getAprobadas() != NULL)

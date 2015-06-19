@@ -171,7 +171,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
 
         //Se obtiene la coleccion de DataCarrera
         List* dataCarreras = new List();
-        IIterator * It = this->carreras->getElemIterator();
+        IIterator * It = this->carreras->getIterator();
         while(It->hasCurrent())
         {
             Carrera *carr;

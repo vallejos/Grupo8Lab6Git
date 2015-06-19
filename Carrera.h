@@ -16,13 +16,8 @@ class Carrera : public ICollectible
         //getters
         int getCodigo();
         string getNombreCarrera();
-<<<<<<< HEAD
-        //DataCarrera* getDataCarrera();
-
-=======
         DataCarrera* getDataCarrera();
         IDictionary* getAsignaturas();
->>>>>>> origin/CambiandoAlgunasCosas
         //setters
         void setCodigo(int codigo);
         void setNombreCarrera(string nombreCarrera);
