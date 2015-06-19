@@ -2,7 +2,7 @@
 #define DATASUCURSAL_H
 
 #include <string>
-#include "ICollection.h";
+#include "interfaces/ICollection.h"
 
 using namespace std;
 
@@ -17,6 +17,7 @@ class DataSucursal
         string getDireccion();
         string getTelefono();
         ICollection *getSecciones();
+
     private:
         string nombre;
         string direccion;

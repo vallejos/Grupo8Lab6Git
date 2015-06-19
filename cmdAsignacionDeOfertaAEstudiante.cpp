@@ -2,7 +2,7 @@
 #include <string>
 #include "cmdAsignacionDeOfertaAEstudiante.h"
 #include "OfertaLaboralController.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
 
@@ -25,7 +25,7 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
         cout << "Lista de Ofertas Laborales Activas:\n";
 
         IIterator *it = dataOfertas->getIterator();
-        while (it.hasCurrent())
+        while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
@@ -50,7 +50,7 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
         cout << "Lista de Estudiantes inscriptos en la Oferta Laboral seleccionada:\n";
 
         IIterator *itE = dataEstudiante->getIterator();
-        while (itE.hasCurrent())
+        while (itE->hasCurrent())
         {
             dataEstudiante *dEstudiante;
             if ( (dEstudiante = dynamic_cast<dataEstudiante*> (itE.current())) != NULL )

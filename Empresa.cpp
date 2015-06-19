@@ -27,7 +27,7 @@ ICollection *Empresa::getDataSucursales()
 {
     List* result = new List();
     IIterator * it = this->sucursales->getIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         result->add(it.current()->getDataSucursal());
         it.next();

@@ -27,7 +27,7 @@ ICollection *Sucursal::getDataSecciones()
 {
     List* result = new List();
     IIterator * it = this->secciones->getIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         result->add(it.current()->getDataSeccion());
         it.next();

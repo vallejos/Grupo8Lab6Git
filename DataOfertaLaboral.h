@@ -3,8 +3,12 @@
 
 #include "Date.h"
 #include "Rango.h"
+#include "Seccion.h"
 #include <string>
-#include "ICollectible.h"
+#include <exception>
+#include "interfaces/ICollectible.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 
 using namespace std;
 
@@ -29,6 +33,7 @@ class DataOfertaLaboral: public ICollectible
         ICollection *getInscripciones();
         ICollection *getEntrevistas();
         IDictionary *getAsignaturas();
+
     private:
         string numExpediente;
         string titulo;

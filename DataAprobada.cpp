@@ -40,4 +40,8 @@ DataAsignatura* DataAprobada::getDataAsignatura()
 DataAprobada::~DataAprobada()
 {
     //dtor
+    if (this->asig != NULL)
+        delete this->asig;
+    if (this->fecha !=NULL)
+        delete this->fecha;
 }

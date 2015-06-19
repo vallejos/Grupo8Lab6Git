@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
-#include "AltaOfertaLaboral.h"
+#include "cmdAltaOfertaLaboral.h"
 #include "ManejadorEmpresa.h"
 #include "EmpresaController.h"
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "DataEmpresa.h"
 #include "DataSucursal.h"
 #include "DataSeccion.h"
@@ -12,12 +12,13 @@
 #include "Integer.h"
 
 using namespace std;
-AltaOfertaLaboral::AltaOfertaLaboral()
+
+cmdAltaOfertaLaboral::cmdAltaOfertaLaboral()
 {
     //ctor
 }
 
-void AltaOfertaLaboral::ejecutarComando()
+void cmdAltaOfertaLaboral::ejecutarComando()
 {
     string rutaEmpresa, nomSucursal, nomSeccion;
     Fabrica* fab = Fabrica::getInstance();
@@ -30,7 +31,7 @@ void AltaOfertaLaboral::ejecutarComando()
 
         cout << "Lista de Empresas:\n";
         IIterator * it = dataEmpresas->getIterator();
-        while(it.hasCurrent())
+        while(it->hasCurrent())
         {
             DataEmpresa *dEmpresa;
             if( (dEmpresa = dynamic_cast<DataEmpresa*> (it.current())) != NULL )
@@ -44,7 +45,6 @@ void AltaOfertaLaboral::ejecutarComando()
             it.next();
         }
         delete it;
-
         cout<< "Seleccione una Empresa indicando el RUT\n";
         cin >> rutEmpresa;
         cEmpresa->SeleccionarEmpresa(rutEmpresa);
@@ -54,7 +54,7 @@ void AltaOfertaLaboral::ejecutarComando()
         cout << "Lista de Sucursales:\n";
 
         IIterator * it2 = dataEmpresas->getIterator();
-        while(it2.hasCurrent())
+        while(it2->hasCurrent())
         {
             DataSucursal *dSucursal;
             if( (dSucursal = dynamic_cast<DataSucursal*> (it2.current())) != NULL )
@@ -75,7 +75,7 @@ void AltaOfertaLaboral::ejecutarComando()
         ICollection* dataSecciones = cEmpresa->ListarSecciones();
         cout<< "Lista de Secciones:\n";
         IIterator * it3 = dataSecciones->getIterator();
-        while(it3.hasCurrent())
+        while(it3->hasCurrent())
         {
             DataSeccion *dSeccion;
             if( (dSeccion = dynamic_cast<DataSeccion*> (it3.current())) != NULL )
@@ -145,7 +145,7 @@ void AltaOfertaLaboral::ejecutarComando()
 
 }
 
-AltaOfertaLaboral::~AltaOfertaLaboral()
+cmdAltaOfertaLaboral::~cmdAltaOfertaLaboral()
 {
     //dtor
 }

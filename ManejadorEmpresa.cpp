@@ -24,7 +24,7 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
 {
     List* result = new List();
     IIterator * it = this->empresas->getElemIterator();
-    while(it.hasCurrent())
+    while(it->hasCurrent())
     {
         result->add(it.current()->getDatosEmpresa());
         it.next();
@@ -58,7 +58,17 @@ IDictionary* ManejadorEmpresa::getEmpresas()
     return this->empresas;
 }
 
+void ManejadorEmpresa::destroyManejadorEmpresa()
+{
+     if (instance != NULL)
+     {
+        delete ManejadorEmpresa;
+     }
+}
+
 ManejadorEmpresa::~ManejadorEmpresa()
 {
     //dtor
+    delete instance;
+    instance = NULL;
 }

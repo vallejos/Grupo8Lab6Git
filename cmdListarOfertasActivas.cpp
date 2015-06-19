@@ -1,9 +1,9 @@
 #include "cmdListarOfertasActivas.h"
 #include <iostream>
 #include <string>
-#include "ICollection.h"
+#include "interfaces/ICollection.h"
 #include "IOfertaLaboralController.h"
-#include "IIterator.h"
+#include "interfaces/IIterator.h"
 #include "DataOfertaLaboral.h"
 #include "Rango.h"
 #include "Date.h"
@@ -27,7 +27,7 @@ void cmdListarOfertasActivas::ejecutarComando()
         ICollection* dataOfertasActivas = cOferta->MostrarOfertasActivas();
         cout << "Lista de Ofertas Laborales Activas:\n";
         IIterator *it = dataOfertasActivas->getIterator();
-        while (it.hasCurrent())
+        while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it.current())) != NULL )
@@ -35,20 +35,21 @@ void cmdListarOfertasActivas::ejecutarComando()
             //calculo la cantidad de inscriptos
                 IIterator *it2 = dOferta->getInscripciones()->getIterator();
                 cantInscriptos = 0;
-                while (it2.hasCurrent())
+                while (it2->hasCurrent())
                 {
                     cantInscriptos ++;
                     it2.next();
                 }
                 delete it2;
             //IMPRIMO LOS DATOS QUE INDICA ELCASO DE USO
-                cout << "NOMBRE: " + dOferta->getTitulo() +
-                        ", EMPRESA:" + dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() +
-                        ", UBICACION:" + dOferta->getSeccion()->getSucursal()->getDireccion() +
-                        ", CANTIDAD DE INSCRIPTOS: " + cantInscriptos +
+                cout << "---------------------------" + "\n" +
+                        "NOMBRE: " + dOferta->getTitulo() + "\n" +
+                        ", EMPRESA:" + dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() + "\n" +
+                        ", UBICACION:" + dOferta->getSeccion()->getSucursal()->getDireccion() + "\n" +
+                        ", CANTIDAD DE INSCRIPTOS: " + cantInscriptos + "\n" +
                         ", RANGO SALARIAL:" + dOferta->getRangoSalarial()->getSueldoMinimo() +
-                                          " - " dOferta->getRangoSalarial()->getSueldoMaximo() +
-                        ", CANTIDAD DE PLAZAS:" + dOferta->cantidadPuestosNecesarios() +
+                                          " - " dOferta->getRangoSalarial()->getSueldoMaximo() + "\n" +
+                        ", CANTIDAD DE PLAZAS:" + dOferta->cantidadPuestosNecesarios() + "\n" +
                         "\n";
             } else
             {

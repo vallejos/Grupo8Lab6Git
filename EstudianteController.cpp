@@ -22,7 +22,10 @@ ICollection* EstudianteController::ListarEstudiantesNoInscriptos()
         OfertaLaboralController *olc = OfertaLaboralController::getInstance();
         string numExpe = olc->getOfertaLaboral()->getNumExpediente();
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	return (me->getEstNoInscriptos(numExpe));
+    	ICollection *estNoInsc = me->getEstNoInscriptos(numExpe);
+    	if (!estudiantesNoInsc->hasCurrent())
+            throw std::invalid_argument("No existe un Estudiante no Inscripto a la Oferta Seleccionada");
+    	return estNoInsc;
     } catch (e) {
         throw e;
     }
@@ -79,11 +82,11 @@ Estudiante* EstudianteController::getEstudiante()
     return this->estudiante;
 }
 
-void EstudianteController::ModificarEstudiante(string cedula, DataEstudiante* nuevosDatos)
+void EstudianteController::ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar)
 {
     try {
         ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-        me->ModificarEstudiante(cedula, nuevosDatos);
+        me->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, asignaturasAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
     } catch (e) {
         throw e;
     }

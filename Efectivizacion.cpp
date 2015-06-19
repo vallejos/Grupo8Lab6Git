@@ -36,7 +36,5 @@ Efectivizacion::~Efectivizacion()
 {
     //dtor
     if (this->fechaEfectivizacion != NULL)
-    {
         delete this->fechaEfectivizacion;
-    }
 }

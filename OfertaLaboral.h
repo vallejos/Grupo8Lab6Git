@@ -6,10 +6,11 @@
 #include "Rango.h"
 #include "DataOfertaLaboral.h"
 #include "DataOfertaEmpresa.h"
-#include "Seccion.h"
-#include "ICollection.h"
-#include "ICollectible";
-#include "IDictionary.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/ICollectible.h"
+#include "interfaces/IDictionary.h"
+
+class Seccion;
 
 using namespace std;
 
@@ -72,5 +73,7 @@ class OfertaLaboral: public ICollectible
         ICollection *entrevistas; //Pseudoatributo para representar la asociación con una colección de Entrevistas
         IDictionary *asignaturas; //Pseudoatributo para representar la asociación con un diccionario de asignaturas
 };
+
+#include "Seccion.h"
 
 #endif // OFERTALABORAL_H

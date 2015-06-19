@@ -3,7 +3,7 @@
 
 #include <string>
 #include "DataAsignatura.h"
-#include "ICollectible";
+#include "interfaces/ICollectible.h"
 
 using namespace std;
 

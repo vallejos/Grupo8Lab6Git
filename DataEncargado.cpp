@@ -15,7 +15,10 @@ DataEncargado::DataEncargado(string cedula, string nombre, string apellido, Date
 
 DataEncargado::DataEncargado(const DataEncargado &e)
 {
-
+    this->cedula=e.cedula;
+    this->nombre=e.nombre;
+    this->apellido=e.apellido;
+    this->fechaNacimiento=e.fechaNacimiento;
 }
 
 string DataEncargado::getCedula()
@@ -40,5 +43,6 @@ Date *DataEncargado::getFechaNacimiento()
 
 DataEncargado::~DataEncargado()
 {
-
+    if (this->fechaNacimiento != NULL)
+        delete this->fechaNacimiento;
 }
