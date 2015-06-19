@@ -10,7 +10,7 @@
 class OfertaLaboralController {
     public:
         OfertaLaboralController *getInstance();
-        IDictionary* ListarOfertas();
+        IDictionary *ListarOfertas();
         void SeleccionarOferta(string numExpediente, IDictionary *ofertasLabVigentes);
         void Inscribir(Date *fechaInscripcion);
         void Entrevistar(Date *fechaEntrevista);

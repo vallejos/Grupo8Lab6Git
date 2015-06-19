@@ -24,8 +24,8 @@ IDictionary *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
     IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
-        if (it->current()->EstNoInscripto(numExpediente))
-            result->add(it->current()->getDataEstudiante());
+        if (it->getCurrent()->EstNoInscripto(numExpediente))
+            result->add(it->getCurrent()->getDataEstudiante());
         it->next();
     }
     delete it;
@@ -38,8 +38,8 @@ IDictionary* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
     IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
-        if (it->current()->EstInscripto(numExpediente))
-            result->add(it->current()->getDataEstudiante());
+        if (it->getCurrent()->EstInscripto(numExpediente))
+            result->add(it->getCurrent()->getDataEstudiante());
         it->next();
     }
     delete it;
@@ -108,7 +108,7 @@ IDictionary *ManejadorEstudiante::getEstudiante()
     IIterator * it = this->estudiantes->getElemIterator();
     while(it->hasCurrent())
     {
-        result->add(it->current()->getDataEstudiante());
+        result->add(it->getCurrent()->getDataEstudiante());
         it->next();
     }
     delete it;

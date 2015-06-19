@@ -12,21 +12,26 @@ class Carrera : public ICollectible
         Carrera();
         Carrera(int codigo, string nombreCarrera);
         Carrera(const Carrera &c);
-
         //getters
         int getCodigo();
         string getNombreCarrera();
+<<<<<<< HEAD
         //DataCarrera* getDataCarrera();
 
+=======
+        DataCarrera* getDataCarrera();
+        IDictionary* getAsignaturas();
+>>>>>>> origin/CambiandoAlgunasCosas
         //setters
         void setCodigo(int codigo);
         void setNombreCarrera(string nombreCarrera);
-
+        void setAsignaturas(IDictionary* asignaturas);
         ~Carrera();
 
     private:
        int codigo;
        string nombreCarrera;
+       IDictionary* asignaturas;
 };
 
 #endif // CARRERA_H

@@ -4,7 +4,7 @@
 #include <string>
 #include "Date.h"
 #include "DataOfertaLaboral.h"
-#include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 
 using namespace std;
 

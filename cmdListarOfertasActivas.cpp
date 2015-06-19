@@ -31,7 +31,7 @@ void cmdListarOfertasActivas::ejecutarComando()
         while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
-            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->current())) != NULL )
+            if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
             //calculo la cantidad de inscriptos
                 IIterator *it2 = dOferta->getInscripciones()->getIterator();
@@ -43,15 +43,7 @@ void cmdListarOfertasActivas::ejecutarComando()
                 }
                 delete it2;
             //IMPRIMO LOS DATOS QUE INDICA ELCASO DE USO
-                cout << "---------------------------" + "\n" +
-                        "NOMBRE: " + dOferta->getTitulo() + "\n" +
-                        ", EMPRESA:" + dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() + "\n" +
-                        ", UBICACION:" + dOferta->getSeccion()->getSucursal()->getDireccion() + "\n" +
-                        ", CANTIDAD DE INSCRIPTOS: " + cantInscriptos + "\n" +
-                        ", RANGO SALARIAL:" + dOferta->getRangoSalarial()->getSueldoMinimo() +
-                                          " - " dOferta->getRangoSalarial()->getSueldoMaximo() + "\n" +
-                        ", CANTIDAD DE PLAZAS:" + dOferta->cantidadPuestosNecesarios() + "\n" +
-                        "\n";
+                cout << "---------------" + "\n" + "NOMBRE: " + dOferta->getTitulo() + "\n" + ", EMPRESA:" + dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() + "\n" + ", UBICACION:" + dOferta->getSeccion()->getSucursal()->getDireccion() + "\n" + ", CANTIDAD DE INSCRIPTOS: " + cantInscriptos + "\n" + ", RANGO SALARIAL:" + dOferta->getRangoSalarial()->getSueldoMinimo() + " - " + dOferta->getRangoSalarial()->getSueldoMaximo() + "\n" + ", CANTIDAD DE PLAZAS:" + dOferta->cantidadPuestosNecesarios() + "\n";
             } else
             {
                 throw std::invalid_argument("cmdListarOfertasActivas -> El objeto no es de la clase DataOfertaLaboral.");
