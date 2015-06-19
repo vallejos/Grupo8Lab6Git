@@ -19,7 +19,7 @@ class Sucursal : public ICollectible
         string nombre;
         string direccion;
         string telefono;
-        ICollection *secciones; //pseudoatributo;
+        IDictionary *secciones; //pseudoatributo;
         Empresa *empresa; //pseudoatributo;
     public:
         //operaciones

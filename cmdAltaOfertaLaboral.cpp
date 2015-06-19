@@ -9,6 +9,7 @@
 #include "DataSeccion.h"
 #include "Fabrica.h"
 #include "IEmpresaController.h"
+#include "Integer.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
     string rutaEmpresa, nomSucursal, nomSeccion;
     Fabrica* fab = Fabrica::getInstance();
     IEmpresaController* cEmpresa = fab->getIEmpresaController();
+    IEstudianteController* cEstudiante = fab->getIEstudianteController();
 
     try
     {
@@ -40,11 +42,12 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataEmpresa.");
             }
+            it.next();
         }
         delete it;
         cout<< "Seleccione una Empresa indicando el RUT\n";
         cin >> rutEmpresa;
-        cEmpresa->SeleccionarEmpresa(rutaEmpresa);
+        cEmpresa->SeleccionarEmpresa(rutEmpresa);
 
 
         ICollection* dataSucursales = cEmpresa->ListarSucursales();
@@ -61,6 +64,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataSucursal.");
             }
+            it2.next();
         }
         delete it2;
 
@@ -81,6 +85,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             {
                 throw std::invalid_argument("AltaOfertaLaboral -> El objeto no es de la clase DataSeccion.");
             }
+            it3->next();
         }
         delete it3;
 
@@ -112,9 +117,24 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         cout<< "\nCantidad de puestos necesarios: ";
         cin >> cantPuestos;
         //Solicitar Asignaturas
+        cout<< "\nAsignaturas:";
+        bool desea = true;
+        ICollection* codAsignaturas;
+        while (desea)
+        {
+            cout<< "\n  Ingrese el codigo: ";
+            cin >> codAsig;
+            Integer* codigo = new Integer(codAsig);
+            codAsignaturas->add(codigo);
+            cout<< "\n  Desea ingresar otra asignatura?(s/n): ";
+            cin >> respuesta;
+            if(respuesta == "n")
+            {
+                desea = false;
+            }
+        }
 
-
-        cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, "AGREGAR ASIGNATURAS")
+        cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, codAsignaturas);
 
     }
     catch(const std::invalid_argument &e)

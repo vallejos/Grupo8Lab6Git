@@ -42,6 +42,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
             {
                 throw std::invalid_argument("ConsultarDatosEstudiantes -> El objeto no es de la clase DataEstudiante.");
             }
+            it.next();
         }
         delete it;
 
@@ -64,6 +65,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
             {
                 throw std::invalid_argument("ConsultarDatosEstudiantes -> El objeto no es de la clase DataAprobada.");
             }
+            it.next();
         }
         delete it;
 
@@ -97,6 +99,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
             {
                 throw std::invalid_argument("ConsultarDatosEstudiantes -> El objeto no es de la clase DataOfertaEmpresa.");
             }
+            it.next();
         }
         delete it;
     }
