@@ -15,7 +15,7 @@ class EmpresaController {
         EmpresaController *getInstance();
         void AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
         	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
-        	DataAsignatura *asignaturas);
+        	IDictionary *asignaturas);
         ICollection* ListarEmpresas();
         ICollection* ListarSucursales();
         ICollection* ListarSecciones();

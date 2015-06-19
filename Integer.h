@@ -5,7 +5,7 @@
  * Created on 28 de mayo de 2011, 08:55 PM
  */
 
-#include "interfaces/interfaces/ICollectible.h"
+#include "interfaces/ICollectible.h"
 #include "interfaces/OrderedKey.h"
 
 
