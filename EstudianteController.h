@@ -6,6 +6,8 @@
 #include "DataEstudiante.h"
 #include "DataDatosEstudiante.h"
 #include "Estudiante.h"
+#include "IEstudianteController.h"
+#include "IDictionary.h"
 
 using namespace std;
 
@@ -21,7 +23,7 @@ class EstudianteController : public IEstudianteController
         static EstudianteController* getInstance();
         ICollection *ListarEstudiantesNoInscriptos();
         ICollection *ListarEstudiantesInscriptosEnOferta();
-        void SeleccionarEstudiante(string cedula);
+        void SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos);
         void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar);
         DataDatosEstudiante *ConsultarDatosEstudiante(string cedula);
         ICollection *ListarEstudiantesRegistrados();

@@ -22,6 +22,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
 
     try
     {
+        //Debe ser diccionario
         ICollection* ofertasLaborales = cOfertaLab->MostrarOfertasActivas();
 
         cout << "Lista de Ofertas Laborales Vigentes:\n";
@@ -46,9 +47,10 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         cout<< "Seleccione una Oferta Laboral indicando el Número de Expediente\n";
         cin >> numExpediente;
 
-        cOfertaLab->SeleccionarOferta(numExpediente);
+        cOfertaLab->SeleccionarOferta(numExpediente,ofertasLaborales);
 
         IEstudianteController *cEstudiante = fab->getIEstudianteController();
+        //Debe ser diccionario
         ICollection* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
 
         cout << "Lista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
@@ -72,7 +74,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         cout<< "Seleccione el Estudiante a inscribir indicando la Cédula\n";
         cin >> cedula;
 
-        cEstudiante->SeleccionarEstudiante(cedula);
+        cEstudiante->SeleccionarEstudiante(cedula,dataEstudiante);
 
         cout<< "Ingrese la Fecha de Inscripción\n";
         cout<< "Ingrese el Día\n";

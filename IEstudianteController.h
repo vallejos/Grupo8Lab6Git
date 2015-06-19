@@ -5,6 +5,7 @@
 #include "DataEstudiante.h"
 #include "DataDatosEstudiante.h"
 #include "interfaces/ICollection.h"
+#include "IDictionary.h"
 
 class IEstudianteController {
     public:
@@ -12,7 +13,7 @@ class IEstudianteController {
         ~IEstudianteController() = 0;
         void ModificarEstudiante(
         virtual ICollection *ListarEstudiantesNoInscriptos() = 0;
-        virtual void SeleccionarEstudiante(string cedula) = 0;
+        virtual void SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos) = 0;
         virtual void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono,
                                         Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar,
                                         IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar) = 0;
