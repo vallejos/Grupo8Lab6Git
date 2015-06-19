@@ -15,13 +15,13 @@ ManejadorEstudiante *ManejadorEstudiante::getInstance()
     return instance;
 }
 
-ICollection *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
+IDictionary *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
 {
     //Se va a mover por la coleccion de estudiantes que el manejador conoce
     //se invoca a EstNoInscripto para corroborar si el estudiante está inscripto a la oferta con numExpediente
     //por cada estudiante no inscripto se crea un DataEstudiante para luego retornar una coleccion de DataEstudiante.
     List* result = new List();
-    IIterator * it = this->estudiantes->getElemIterator();
+    IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
         if (it->getCurrent()->EstNoInscripto(numExpediente))
@@ -32,10 +32,10 @@ ICollection *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
     return result;
 }
 
-ICollection* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
+IDictionary* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
 {
     List* result = new List();
-    IIterator * it = this->estudiantes->getElemIterator();
+    IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
         if (it->getCurrent()->EstInscripto(numExpediente))
@@ -50,16 +50,34 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
 {
     //Arreglar esta operacion
     Estudiante* e = this->estudiantes->find(cedula);
-    e->setApellido(nuevosDatos->getApellido());
-    e->setNombre(nuevosDatos->getNombre());
-    e->setAprobadas(nuevosDatos->getAprobadas());
-    e->setCarreras(nuevosDatos->getCarreras());
-    e->setCreditos(nuevosDatos->getCreditos());
-    e->setEmail(nuevosDatos->getEmail());
-    e->setEntrevistas(nuevosDatos->getEntrevistas());
-    e->setFechaNacimiento(nuevosDatos->getFechaNacimiento());
-    e->setInscripciones(nuevosDatos->getInscripciones());
-    e->setTelefono(nuevosDatos->getTelefono());
+    e->setNombre(nombre);
+    e->setApellido(apellido);
+    e->setTelefono(telefono);
+    e->setFechaNacimiento(fechaNacimiento);
+    e->setCreditos(creditos);
+    e->setEmail(email);
+    IDictionary *carreras = e->getCarreras();
+    IIterator * it = this->carrerasAEliminar->getIterator();
+    while(it->hasCurrent())
+    {
+        Carrera *carrera;
+        if( (carrera = dynamic_cast<Carrera*> (it->current())) != NULL )
+        {
+            int cod = it->current()->getCodigo();
+        }else
+        {
+            throw "ManejadorEstudiante -> El objeto no es de la clase Carrera.";
+        }
+
+
+
+
+        if (it->current()->EstInscripto(numExpediente))
+            result->add(it->current()->getDataEstudiante());
+        it->next();
+    }
+    delete it;
+
 }
 
 Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
@@ -84,9 +102,8 @@ Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
     }
 }
 
-ICollection *ManejadorEstudiante::getEstudiante()
-{
-    //Va a recorrer los estudiantes del sistema y por cada estudiante crea un DataEstudiante para luego retornar un set.
+IDictionary *ManejadorEstudiante::getEstudiante()
+//Va a recorrer los estudiantes del sistema y por cada estudiante crea un DataEstudiante para luego retornar un set.
     List* result = new List();
     IIterator * it = this->estudiantes->getElemIterator();
     while(it->hasCurrent())

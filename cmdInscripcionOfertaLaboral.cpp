@@ -8,6 +8,7 @@
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
 #include "interfaces/ICollection.h"
+#include "IDictionary.h"
 
 cmdInscripcionOfertaLaboral::cmdInscripcionOfertaLaboral()
 {
@@ -23,7 +24,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
     try
     {
         //Debe ser diccionario
-        ICollection* ofertasLaborales = cOfertaLab->MostrarOfertasActivas();
+        IDictionary* ofertasLaborales = cOfertaLab->MostrarOfertasActivas();
 
         cout << "Lista de Ofertas Laborales Vigentes:\n";
 
@@ -51,7 +52,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
 
         IEstudianteController *cEstudiante = fab->getIEstudianteController();
         //Debe ser diccionario
-        ICollection* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
+        IDictionary* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
 
         cout << "Lista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
 

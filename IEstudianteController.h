@@ -18,7 +18,11 @@ class IEstudianteController {
                                         Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar,
                                         IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar) = 0;
         virtual DataDatosEstudiante *ConsultarDatosEstudiante(string cedula) = 0;
+<<<<<<< HEAD
+        virtual IDictionary *ListarEstudiantesRegistrados() = 0;
+=======
         virtual ICollection *ListarEstudiantesRegistrados() = 0;
+>>>>>>> origin/CambiandoAlgunasCosas
         virtual IDictionary *ListarEstudiantesInscriptosEnOferta() = 0;
         virtual IDictionary* getAsignaturas() = 0;
         virtual IDictionary* getCarreras() = 0;
