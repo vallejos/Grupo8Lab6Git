@@ -77,7 +77,7 @@ string Sucursal::getTelefono()
     return this->telefono;
 }
 
-ICollection* Sucursal::getSecciones()
+IDictionary* Sucursal::getSecciones()
 {
     return this->secciones;
 }

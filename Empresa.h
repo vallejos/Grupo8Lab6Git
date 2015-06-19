@@ -15,8 +15,9 @@ class Empresa: public ICollectible {
         ~Empresa();
         string getRut();
         string getNombre();
-        IDictionary *getDataSucursales(); // DataSucursal
+        ICollection *getDataSucursales(); // DataSucursal
         Sucursal *getSucursal(string nombre);
+        IDictionary *getSucursales();
 
     private:
         string rut;

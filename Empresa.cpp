@@ -23,6 +23,10 @@ string Empresa::getNombre() {
 	return this->nombre;
 }
 
+IDictionary *Empresa::getSucursales() {
+    return this->sucursales;
+}
+
 ICollection *Empresa::getDataSucursales()
 {
     List* result = new List();
