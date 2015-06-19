@@ -33,7 +33,7 @@ class Sucursal : public ICollectible
         string getNombre();
         string getDireccion();
         string getTelefono();
-        ICollection *getSecciones();
+        IDictionary *getSecciones();
         Empresa *getEmpresa();
         //setters
         void setNombre(string nombre);
