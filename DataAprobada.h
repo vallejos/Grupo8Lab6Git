@@ -3,8 +3,9 @@
 
 #include "Date.h"
 #include "DataAsignatura.h"
+#include "interfaces/ICollectible.h"
 
-class DataAprobada
+class DataAprobada : public ICollectible
 {
     public:
         DataAprobada();
