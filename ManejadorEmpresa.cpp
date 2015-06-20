@@ -26,8 +26,14 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
     IIterator * it = this->empresas->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it->getCurrent()->getDatosEmpresa());
-        it->next();
+        Empresa *emp;
+        if ((emp = dynamic_cast<Empresa*> (it->hasCurrent())) != NULL){
+            result->add(emp->getDataEmpresa());
+            it->next();
+        }else
+        {
+            throw "ManejadorEmpresa -> El objeto no es de la clase Empresa.";
+        }
     }
     delete it;
     return result;

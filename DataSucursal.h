@@ -4,10 +4,11 @@
 #include <string>
 #include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
+#include "interfaces/ICollectible.h"
 
 using namespace std;
 
-class DataSucursal
+class DataSucursal: public ICollectible
 {
     public:
 		DataSucursal();
