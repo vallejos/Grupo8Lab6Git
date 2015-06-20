@@ -14,7 +14,7 @@ class IEstudianteController {
         virtual IDictionary *ListarEstudiantesNoInscriptos() = 0;
         virtual void SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos) = 0;
         virtual void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono,
-                                        Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar,
+                                        Date *fechaNacimiento, int creditos, string email, ICollection *aprobacionesAAgregar,
                                         IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar) = 0;
         virtual DataDatosEstudiante *ConsultarDatosEstudiante(string cedula) = 0;
         virtual IDictionary *ListarEstudiantesRegistrados() = 0;

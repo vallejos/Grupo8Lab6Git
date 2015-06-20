@@ -19,7 +19,7 @@ class ManejadorOfertaLaboral
 		IDictionary* getOfertasLaborales();
 		void DarDeBajaLlamado(OfertaLaboral *ol);
 		void ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos);
-		destroyManejadorOfertaLaboral();
+		void destroyManejadorOfertaLaboral();
 
     private:
         ~ManejadorOfertaLaboral();
