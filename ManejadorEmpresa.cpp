@@ -27,7 +27,7 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
     while(it->hasCurrent())
     {
         Empresa *emp;
-        if ((emp = dynamic_cast<Empresa*> (it->hasCurrent())) != NULL){
+        if ((emp = dynamic_cast<Empresa*> (it->getCurrent())) != NULL){
             result->add(emp->getDataEmpresa());
             it->next();
         }else
@@ -41,7 +41,7 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
 
 Empresa* ManejadorEmpresa::getEmpresa(string rut)
 {
-    String* sRut = new String(rut);
+    String* sRut = new String(rut.c_str());
     if (this->empresas->member(sRut))
     {
         Empresa *emp;
@@ -50,12 +50,12 @@ Empresa* ManejadorEmpresa::getEmpresa(string rut)
             return emp;
         } else
         {
-            throw std::invalid_argument("ManejadorEmpresa -> El objeto no es de la clase Empresa.");
+            throw "ManejadorEmpresa -> El objeto no es de la clase Empresa.";
         }
     }
     else
     {
-        throw std::invalid_argument("La Empresa con RUT " + rut + " no existe en el Sistema.");
+        throw "La Empresa con RUT " + rut + " no existe en el Sistema.";
     }
 }
 
@@ -67,9 +67,8 @@ IDictionary* ManejadorEmpresa::getEmpresas()
 void ManejadorEmpresa::destroyManejadorEmpresa()
 {
      if (instance != NULL)
-     {
-        delete ManejadorEmpresa;
-     }
+        delete instance;
+
 }
 
 ManejadorEmpresa::~ManejadorEmpresa()

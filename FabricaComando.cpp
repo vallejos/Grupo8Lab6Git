@@ -1,4 +1,18 @@
 #include "FabricaComando.h"
+#include "cmdAltaOfertaLaboral.h"
+#include "cmdAltaEntrevista.h"
+#include"cmdAsignacionDeOfertaAEstudiante.h"
+#include "cmdConsultarDatosEstudiantes.h"
+#include "cmdListarOfertasActivas.h"
+#include "cmdModificarEstudiante.h"
+#include "cmdModificarLlamado.h"
+#include "cmdDarDeBajaLlamado.h"
+#include "cmdInscripcionOfertaLaboral.h"
+#include "cmdCargarDatosDePrueba.h"
+#include "cmdListarNotificacionesEstudiante.h"
+#include "cmdCargarDatosDePrueba.h"
+#include "cmdEstablecerHoraSistema.h"
+#include "cmdAnotarBorrarNotificaciones.h"
 
 FabricaComando* FabricaComando::instance = NULL;
 
@@ -15,45 +29,62 @@ FabricaComando *FabricaComando::getInstance()
     return instance;
 }
 
-IComando* FabricaComando::obtenerComando(string cmd)
+IComando* FabricaComando::obtenerComando(char cmd)
 {
+    IComando *c;
     switch (cmd)
     {
-			case 'cmdAltaOfertaLaboral':
-                return new cmdAltaOfertaLaboral();
+			case 'A':
+                c = new cmdAltaOfertaLaboral();
+                return c;
 				break;
-			case 'cmdAltaEntrevista':
-                return new cmdAltaEntrevista();
+			case 'B':
+                c = new cmdAltaEntrevista();
+                return c;
 				break;
-			case 'cmdAsignacionDeOfertaAEstudiante':
-                return new cmdAsignacionDeOfertaAEstudiante();
+			case 'C':
+                c = new cmdAsignacionDeOfertaAEstudiante();
+                return c;
 				break;
-			case 'cmdConsultarDatosEstudiantes':
-                return new cmdConsultarDatosEstudiantes();
+			case 'D':
+                c = new cmdConsultarDatosEstudiantes();
+                return c;
 				break;
-			case 'cmdListarOfertasActivas':
-                return new cmdListarOfertasActivas();
+			case 'E':
+                c = new cmdListarOfertasActivas();
+                return c;
 				break;
-			case 'cmdModificarEstudiante':
-                return new cmdModificarEstudiante();
+			case 'F':
+                c = new cmdModificarEstudiante();
+                return c;
 				break;
-			case 'cmdModificarLlamado':
-                return new cmdModificarLlamado();
+			case 'G':
+                c = new cmdModificarLlamado();
+                return c;
 				break;
-			case 'cmdDarDeBajaLlamado':
-                return new cmdDarDeBajaLlamado();
+			case 'H':
+                c = new cmdDarDeBajaLlamado();
+                return c;
 				break;
-            case 'cmdInscripcionOfertaLaboral':
-                return new cmdInscripcionOfertaLaboral();
+            case 'I':
+                c = new cmdInscripcionOfertaLaboral();
+                return c;
 				break;
-            case 'cmdCargarDatosDePrueba':
-                return new cmdCargarDatosDePrueba();
+            case 'J':
+                c = new cmdCargarDatosDePrueba();
+                return c;
                 break;
-            case 'cmdListarNotificacionesEstudiante':
-                return new cmdListarNotificacionesEstudiante();
+            case 'K':
+                c = new cmdListarNotificacionesEstudiante();
+                return c;
                 break;
-            case 'cmdEstablecerHoraSistema':
-                return new cmdEstablecerHoraSistema();
+            case 'L':
+                c = new cmdEstablecerHoraSistema();
+                return c;
+                break;
+            case 'M':
+                c = new cmdAnotarBorrarNotificaciones();
+                return c;
                 break;
     }
 }
@@ -62,7 +93,7 @@ void FabricaComando::destroyFabricaComando()
 {
     if (instance != NULL)
     {
-        delete FabricaComando;
+        this->~FabricaComando();
     }
 }
 
