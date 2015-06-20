@@ -2,10 +2,11 @@
 #define DTEMPRESA_H
 #include "DataSucursal.h"
 #include <string>
+#include "interfaces/ICollectible.h"
 
 using namespace std;
 
-class DataEmpresa
+class DataEmpresa: public ICollectible
 {
     public:
 		DataEmpresa();

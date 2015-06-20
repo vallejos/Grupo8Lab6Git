@@ -24,7 +24,7 @@ Empresa::~Empresa()
 
 }
 
-Empresa::DataEmpresa *getDataEmpresa()
+DataEmpresa *Empresa::getDataEmpresa()
 {
     DataEmpresa* dataEmpresa= new DataEmpresa(this->rut, this->nombre);
     return dataEmpresa;
@@ -52,14 +52,14 @@ ICollection *Empresa::getDataSucursales()
     while(it->hasCurrent())
     {
         Sucursal *suc;
-        if( (suc = dynamic_cast<Sucursal*> (it.current())) != NULL )
+        if ((suc = dynamic_cast<Sucursal*> (it->getCurrent())) != NULL )
         {
             result->add(suc->getDataSucursal());
         } else
         {
-            throw std::invalid_argument("Empresa -> El objeto no es de la clase Sucursal.");
+            throw "Empresa -> El objeto no es de la clase Sucursal.";
         }
-        it.next();
+        it->next();
     }
     delete it;
 
@@ -68,7 +68,7 @@ ICollection *Empresa::getDataSucursales()
 
 Sucursal *Empresa::getSucursal(string nombre)
 {
-    String *keyNombre = new String(nombre);
+    String *keyNombre = new String(nombre.c_str());
 
     if (this->sucursales->member(keyNombre))
     {
@@ -78,13 +78,13 @@ Sucursal *Empresa::getSucursal(string nombre)
             return sucursal;
         } else
         {
-            throw std::invalid_argument("Empresa -> El objeto no es de la clase Sucursal.");
+            throw "Empresa -> El objeto no es de la clase Sucursal.";
         }
         delete keyNombre;
     }
     else
     {
-        throw std::invalid_argument("La Sucursal de nombre " + nombre + " no existe en el Sistema.");
+        throw "La Sucursal de nombre " + nombre + " no existe en el Sistema.";
     }
 
 }
