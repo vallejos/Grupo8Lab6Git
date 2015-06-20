@@ -2,14 +2,14 @@
 #define CRITERIO2_H
 
 #include "DataAsignatura.h"
-#include "interfaces/IDictionary.h"
+#include "interfaces/ICollection.h"
 
 class Criterio2
 {
     public:
         Criterio2();
         ~Criterio2();
-        IDictionary *devolverListaAsignatura(IDictionary *asignaturas);
+        ICollection *devolverListaAsignatura();
 };
 
 #endif // CRITERIO2_H

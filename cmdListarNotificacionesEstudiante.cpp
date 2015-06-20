@@ -9,6 +9,7 @@
 #include "interfaces/IIterator.h"
 #include "DataEstudiante.h"
 #include "Estudiante.h"
+#include "String.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ cmdListarNotificacionesEstudiante::cmdListarNotificacionesEstudiante()
 void cmdListarNotificacionesEstudiante::ejecutarComando()
 {
     Fabrica* fab = Fabrica::getInstance();
+    string cedEstudiante;
     IEstudianteController* cEstudiante = fab->getIEstudianteController();
 
     try
@@ -50,11 +52,11 @@ void cmdListarNotificacionesEstudiante::ejecutarComando()
         //LISTAR NOTIFICACIONES DEL ESTUDIANTE SELECCIONADO
         Estudiante* estRecordado =cEstudiante->getEstudiante();
         ICollection* notificaciones= estRecordado->getNotificaciones();
-        IIterator *it = notificaciones->getIterator();
+        IIterator *it2 = notificaciones->getIterator();
         while(it2->hasCurrent())
         {
             String* notif;
-            if ((notif = dynamic_cast<String*> (it->getCurrent())) != NULL)
+            if ((notif = dynamic_cast<String*> (it2->getCurrent())) != NULL)
             {
                 cout << (notif->getValue());
             } else

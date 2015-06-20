@@ -18,6 +18,8 @@ cmdAnotarBorrarNotificaciones::cmdAnotarBorrarNotificaciones()
 
 void cmdAnotarBorrarNotificaciones::ejecutarComando()
 {
+    string cedEstudiante;
+
     Fabrica* fab = Fabrica::getInstance();
     IEstudianteController* cEstudiante = fab->getIEstudianteController();
     IEmpresaController* cEmpresa = fab->getIEmpresaController();
@@ -57,14 +59,14 @@ void cmdAnotarBorrarNotificaciones::ejecutarComando()
         while (it2->hasCurrent())
         {
             Empresa* emp;
-            if ((emp = dynamic_cast<Empresa> (it2->getCurrent())) != NULL)
+            if ((emp = dynamic_cast<Empresa*> (it2->getCurrent())) != NULL)
             {
                 IDictionary* sucursales = emp->getSucursales();
                 IIterator *it3 = sucursales->getIterator();
                 while(it3->hasCurrent())
                 {
                     Sucursal* suc;
-                    if ((suc = dynamic_cast<Sucursal> (it3->getCurrent())) != NULL)
+                    if ((suc = dynamic_cast<Sucursal*> (it3->getCurrent())) != NULL)
                     {
                         IDictionary* secciones = suc->getSecciones();
                         IIterator *it4 = secciones->getIterator();
@@ -73,13 +75,14 @@ void cmdAnotarBorrarNotificaciones::ejecutarComando()
                             Seccion* secc;
                             if ((secc = dynamic_cast<Seccion*> (it4->getCurrent())) != NULL)
                             {
+                                IObserver *iobs = dynamic_cast<IObserver*> (estRecordado);
                                 switch (opcion)
                                 {
-                                    case "A":
-                                        secc->addObserver(estRecordado);
+                                    case 'A':
+                                        secc->addObserver(iobs);
                                         break;
-                                    case "B":
-                                        secc->removeObserver(estRecordado);
+                                    case 'B':
+                                        secc->removeObserver(iobs);
                                     break;
                                 }
                             } else
