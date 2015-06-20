@@ -9,6 +9,7 @@
 #include "Seccion.h"
 #include "Date.h"
 #include "Rango.h"
+#include "EstrategiaAsignaturas.h"
 
 class IEmpresaController
 {

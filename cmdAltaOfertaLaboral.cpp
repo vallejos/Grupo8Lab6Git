@@ -13,6 +13,7 @@
 #include "ManejadorEstudiante.h"
 #include "String.h"
 #include "collections/OrderedDictionary.h"
+#include "EstrategiaAsignaturas.h"
 #include "Criterio1.h"
 #include "Criterio2.h"
 
@@ -141,7 +142,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         //Solicitar Asignaturas
         cout<< "\nAsignaturas:";
         bool desea = true;
-        bool strategyOK = false;
+//        bool strategyOK = false;
 
 
 //        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
@@ -154,11 +155,11 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         {
             // muestro asignaturas
             cout << "Lista de Asignaturas:\n";
-            IIterator * it = asignaturasIngresadas->getIterator();
-            while(it->hasCurrent())
+            IIterator * it4 = asignaturasIngresadas->getIterator();
+            while(it4->hasCurrent())
             {
                 DataAsignatura *dAsignatura;
-                if( (dAsignatura = dynamic_cast<DataAsignatura*> (it->getCurrent())) != NULL )
+                if( (dAsignatura = dynamic_cast<DataAsignatura*> (it4->getCurrent())) != NULL )
                 {
                     cout << "CODIGO: " << dAsignatura->getCodigo() << ", NOMBRE:" << dAsignatura->getNombre() << "\n";
                 }
@@ -166,9 +167,9 @@ void cmdAltaOfertaLaboral::ejecutarComando()
                 {
                     throw "AltaOfertaLaboral -> El objeto no es de la clase DataAsignatura.";
                 }
-                it->next();
+                it4->next();
             }
-            delete it;
+            delete it4;
 
             // pido asignatura
             cout<< "\n  Ingrese el codigo: ";
@@ -197,12 +198,12 @@ void cmdAltaOfertaLaboral::ejecutarComando()
 
         // aca hay que verificar los criterios del strategy y pedir que strategy usar
         bool encontro = false;
-        IDictonary* estudiantes = cEstudiante->getEstudiantes();
-        IIterator * it = estudiantes->getIterator();
-        while(it->hasCurrent())
+        IDictionary* estudiantes = cEstudiante->getEstudiantes();
+        IIterator * it5 = estudiantes->getIterator();
+        while(it5->hasCurrent())
         {
             Estudiante *student;
-            if( (student = dynamic_cast<Estudiante*> (it->getCurrent())) != NULL )
+            if( (student = dynamic_cast<Estudiante*> (it5->getCurrent())) != NULL )
             {
                 if(cEstudiante->EstudianteCumpleRequisitos(student, asignaturasEnOferta))
                 {
@@ -213,15 +214,15 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             {
                 throw "AltaOfertaLaboral -> El objeto no es de la clase Estudiante.";
             }
-            it->next();
+            it5->next();
         }
-        delete it;
+        delete it5;
 
         if(!encontro)
         {
             //Aplicar Estrategia
             int numCriterio;
-            cout << "No existen Estudiantes que tengan aprobadas todas las Asignaturas ingresadas. Seleccione un criterio para obtener una lista de asignaturas validas(1 o 2)\n"
+            cout << "No existen Estudiantes que tengan aprobadas todas las Asignaturas ingresadas. Seleccione un criterio para obtener una lista de asignaturas validas(1 o 2)\n";
             cout << "1- Devolver las asignaturas aprobadas de algun estudiante.\n";
             cout << "2- Devolver una asignatura de las asignaturas ingresadas que algun estudiante haya aprobado(en caso de que no exista se devuelve el conjunto vacio).\n\n";
             cin >> numCriterio;
