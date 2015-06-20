@@ -11,7 +11,6 @@ class IEstudianteController {
     public:
         IEstudianteController();
         virtual ~IEstudianteController() = 0;
-        void ModificarEstudiante();
         virtual IDictionary *ListarEstudiantesNoInscriptos() = 0;
         virtual void SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos) = 0;
         virtual void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono,
