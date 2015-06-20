@@ -13,10 +13,10 @@ class ManejadorEstudiante
     public:
 		static ManejadorEstudiante *getInstance();
 		IDictionary *getEstNoInscriptos(string numExpediente);
-		IDictionary *getEstInscriptosEnOferta();
+		IDictionary *getEstInscriptosEnOferta(string numExpediente);
 		Estudiante *SeleccionarEstudiante(string cedula);
         void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, ICollection *aprobacionesAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar);
-        IDictionary *getEstudiante();
+        IDictionary *getEstudiante();//obtiene un diccionario de DataEstudiantes
         IDictionary *getEstudiantes();
         IDictionary *getAsignaturas();
         IDictionary *getCarreras();

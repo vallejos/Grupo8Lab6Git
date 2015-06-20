@@ -1,6 +1,8 @@
 #include "EstudianteController.h"
 #include "OfertaLaboralController.h"
+#include "IOfertaLaboralController.h"
 #include "OfertaLaboral.h"
+#include "ManejadorEstudiante.h"
 
 EstudianteController::EstudianteController()
 {
@@ -11,84 +13,59 @@ EstudianteController* EstudianteController::instance = NULL;
 
 EstudianteController* EstudianteController::getInstance()
 {
-    if (instance=NULL)
+    if (instance==NULL)
         instance = new EstudianteController;
     return instance;
 }
 
 IDictionary* EstudianteController::ListarEstudiantesNoInscriptos()
 {
-    try {
-        OfertaLaboralController *olc = OfertaLaboralController::getInstance();
-        string numExpe = olc->getOfertaLaboral()->getNumExpediente();
-    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	IDictionary *estNoInsc = me->getEstNoInscriptos(numExpe);
-    	if (estudiantesNoInsc == NULL)
-            throw std::invalid_argument("No existe un Estudiante no Inscripto a la Oferta Seleccionada");
-    	return estNoInsc;
-    } catch (e) {
-        throw e;
-    }
+    OfertaLaboralController* olc = OfertaLaboralController::getInstance();
+    string numExpe = olc->getOfertaLaboral()->getNumExpediente();
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    IDictionary *estNoInsc = me->getEstNoInscriptos(numExpe);
+    if (estNoInsc == NULL)
+        throw "No existe un Estudiante no Inscripto a la Oferta Seleccionada";
+    return estNoInsc;
 }
 
 IDictionary* EstudianteController::ListarEstudiantesInscriptosEnOferta()
 {
-    try {
-        OfertaLaboralController *olc = OfertaLaboralController::getInstance();
-        string numExpe = olc->getOfertaLaboral()->getNumExpediente();
-    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	IDictionary* studentsInsc = me->getEstInscriptosEnOferta(numExpe);
-    	return studentsInsc;
-    } catch (e) {
-        throw e;
-    }
+    OfertaLaboralController* olc = OfertaLaboralController::getInstance();
+    string numExpe = olc->getOfertaLaboral()->getNumExpediente();
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    IDictionary* studentsInsc = me->getEstInscriptosEnOferta(numExpe);
+    return studentsInsc;
 }
 
 void EstudianteController::SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos)
 {
-    try {
-        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-        String* ci = new String(cedula);
-        if(estudiantesValidos->member(ci))
-        {
-            this->estudiante = me->SeleccionarEstudiante(cedula);
-        }
-        else
-        {
-            throw std::invalid_argument("La cédula " + cedula + " es inválida.");
-        }
-
-
-    } catch (e) {
-        throw e;
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    String* ci = new String(cedula.c_str());
+    if(estudiantesValidos->member(ci))
+    {
+        this->estudiante = me->SeleccionarEstudiante(cedula);
+    }
+    else
+    {
+        throw "La cédula " + cedula + " es inválida.";
     }
 }
 
 DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedula)
 {
-    try
-    {
-        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-        Estudiante *e = me->SeleccionarEstudiante(cedula);
-        return (e->getDataDatosEstudiante());
-    }
-    catch(const std::invalid_argument &e)
-    {
-    	throw std::invalid_argument(e.what());
-    }
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    Estudiante *e = me->SeleccionarEstudiante(cedula);
+    return (e->getDataDatosEstudiante());
 }
 
 IDictionary* EstudianteController::ListarEstudiantesRegistrados()
 {
-    try {
-    	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	IDictionary *estudiantes = me->getEstudiante;
-    	if (estudiantes == NULL)
-            throw "No existe ningún estudiante dado de alta en el Sistema";
-    	return estudiantes;
-    } catch (e) {
-        throw e;
-    }
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    IDictionary *estudiantes = me->getEstudiantes();
+    if (estudiantes == NULL)
+        throw "No existe ningún estudiante dado de alta en el Sistema";
+    return estudiantes;
 }
 
 Estudiante* EstudianteController::getEstudiante()
@@ -98,12 +75,9 @@ Estudiante* EstudianteController::getEstudiante()
 
 void EstudianteController::ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, ICollection *aprobacionesAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar)
 {
-    try {
-        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-        me->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, aprobacionesAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
-    } catch (e) {
-        throw e;
-    }
+
+    ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    me->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, aprobacionesAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
 }
 
 IDictionary* EstudianteController::getAsignaturas()
@@ -123,7 +97,7 @@ IDictionary* EstudianteController::getCarreras()
 IDictionary* EstudianteController::getEstudiantes()
 {
     ManejadorEstudiante* me = ManejadorEstudiante::getInstance();
-    IDictionary students = me->getEstudiantes();
+    IDictionary* students = me->getEstudiantes();
     return students;
 }
 
@@ -138,7 +112,7 @@ void EstudianteController::destroyEstudianteController()
 {
      if (instance != NULL)
      {
-        delete EstudianteController;
+        delete instance;
      }
 }
 
