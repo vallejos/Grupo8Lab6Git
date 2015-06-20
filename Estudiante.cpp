@@ -18,7 +18,7 @@ Estudiante::Estudiante()
 
 }
 
-Estudiante::Estudiante(string cedula,string nombre,string apellido, string telefono, Date* fechaNacimiento, Integer creditos,
+Estudiante::Estudiante(string cedula,string nombre,string apellido, string telefono, Date* fechaNacimiento, int creditos,
                         string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones, ICollection* entrevistas,
                         ICollection* notificaciones)
 {
@@ -77,7 +77,7 @@ Date* Estudiante::getFechaNacimiento()
     return this->fechaNacimiento;
 }
 
-Integer Estudiante::getCreditos()
+int Estudiante::getCreditos()
 {
     return this->creditos;
 }
@@ -137,7 +137,7 @@ void Estudiante::setFechaNacimiento(Date* fechaNacimiento)
     this->fechaNacimiento = fechaNacimiento;
 }
 
-void Estudiante::setCreditos(Integer creditos)
+void Estudiante::setCreditos(int creditos)
 {
     this->creditos = creditos;
 }
