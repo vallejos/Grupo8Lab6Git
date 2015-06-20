@@ -27,6 +27,12 @@ ICollection* EmpresaController::ListarEmpresas()
     return (me->getDataEmpresas());
 }
 
+IDictionary* EmpresaController::getEmpresas()
+{
+    ManejadorEmpresa *me = ManejadorEmpresa::getInstance();
+    return (me->getEmpresas());
+}
+
 ICollection *EmpresaController::ListarSucursales()
 {
 	return this->empresa->getDataSucursales();

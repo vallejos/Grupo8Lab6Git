@@ -55,4 +55,5 @@ Tiempo::~Tiempo()
     {
         delete this->tiempoFijo;
     }
+    this->fijo=false;
 }

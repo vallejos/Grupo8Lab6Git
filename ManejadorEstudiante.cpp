@@ -49,17 +49,17 @@ IDictionary* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
 void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, ICollection *aprobacionesAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar)
 {
     Estudiante* e = this->estudiantes->find(cedula);
-    if(nombre != NULL)
+    if(nombre != "")
         e->setNombre(nombre);
-    if(apellido != NULL)
+    if(apellido != "")
         e->setApellido(apellido);
-    if(telefono != NULL)
+    if(telefono != "")
         e->setTelefono(telefono);
     if(fechaNacimiento != NULL)
         e->setFechaNacimiento(fechaNacimiento);
-    if(creditos != NULL)
+    if(creditos != 0)
         e->setCreditos(creditos);
-    if(email != NULL)
+    if(email != "")
         e->setEmail(email);
 
     IDictionary *carreras = e->getCarreras();
@@ -123,6 +123,10 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
         if( (asig = dynamic_cast<Asignatura*> (it3->getCurrent())) != NULL )
         {
             int cod = asig->getCodigo();
+            int creditosAsig = asig->getCreditos();
+            int creditosEst = e->getCreditos();
+            int restaCreditos = creditosEst - creditosAsig;
+            e->setCreditos(restaCreditos);
             IIterator * it4 = this->aprobadas->getIterator();
             bool encontro = false;
             while (it4->hasCurrent() && !encontro)
@@ -156,42 +160,51 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
     delete it3;
 
     // Agrego las asignaturas que el usuario ingreso al estudiante.
-    IIterator * it5 = this->aprobacionesAAgregar->getIterator();
-    while(it5->hasCurrent())
+    if (PerteneceAsigACarrerasDeEst (carreras, aprobacionesAAgregar))
     {
-        Aprobacion *aprob;
-        if( (aprob = dynamic_cast<Aprobacion*> (it5->getCurrent())) != NULL )
+        IIterator * it5 = this->aprobacionesAAgregar->getIterator();
+        while(it5->hasCurrent())
         {
-            int cod = aprob->getAsignatura()->getCodigo();
-            IIterator * it6 = this->aprobadas->getIterator();
-            while (it6->hasCurrent())
+            Aprobacion *aprob;
+            if( (aprob = dynamic_cast<Aprobacion*> (it5->getCurrent())) != NULL )
             {
-                Aprobacion *aprobacion;
-                if( (aprobacion = dynamic_cast<Aprobacion*> (it6->getCurrent())) != NULL )
+                int cod = aprob->getAsignatura()->getCodigo();
+                int creditosAsig = aprob->getAsignatura()->getCreditos();
+                int creditosEst = e->getCreditos();
+                int sumaCreditos = creditosEst + creditosAsig;
+                e->setCreditos(sumaCreditos);
+                IIterator * it6 = this->aprobadas->getIterator();
+                while (it6->hasCurrent())
                 {
-                    int codAsigEst = aprobacion->getAsignatura()->getCodigo();
-                    if (codigo == codAsigEst)
+                    Aprobacion *aprobacion;
+                    if( (aprobacion = dynamic_cast<Aprobacion*> (it6->getCurrent())) != NULL )
                     {
-                        throw "ManejadorEstudiante -> La Asignatura a Agregar ya es una Asignatura del Estudiate.";
+                        int codAsigEst = aprobacion->getAsignatura()->getCodigo();
+                        if (codigo == codAsigEst)
+                        {
+                            throw "ManejadorEstudiante -> La Asignatura a Agregar ya es una Asignatura del Estudiate.";
+                        }
+                    }else
+                    {
+                         throw "ManejadorEstudiante -> El objeto no es de la clase Aprobacion.";
                     }
-                }else
-                {
-                     throw "ManejadorEstudiante -> El objeto no es de la clase Aprobacion.";
+                    it6->next();
                 }
-                it6->next();
+
+                aprobadas->add(aprob);
+
+                delete it6;
+            }else
+            {
+                throw "ManejadorEstudiante -> El objeto no es de la clase Aprobacion.";
             }
-
-            aprobadas->add(aprob);
-
-            delete it6;
-        }else
-        {
-            throw "ManejadorEstudiante -> El objeto no es de la clase Aprobacion.";
+            it5->next();
         }
-        it5->next();
-    }
     delete it5;
-
+    }else
+    {
+        throw "ManejadorEstudiante -> Alguna de las asignaturas a agregar no perteneces a las carreras que el estudiante cursa.";
+    }
 
 }
 
@@ -283,6 +296,46 @@ bool ManejadorEstudiante::EstudianteCumpleRequisitos(Estudiante* student, IDicti
     delete it;
 
     return true;
+}
+
+bool PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEst, IDictionary *aprobacionesAAgregar)
+{
+    IIterator * it = this->aprobacionesAAgregar->getIterator();
+    while(it->hasCurrent())
+    {
+        Aprobacion *aprob;
+        if( (aprob = dynamic_cast<Aprobacion*> (it->getCurrent())) != NULL )
+        {
+            IDictionary *carreras = aprob->getAsignatura()->getCarreras();
+            IIterator * it2 = carreras->getIterator();
+            bool NoPertenece = false;
+            while (it2->hasCurrent() && !NoPertenece)
+            {
+                Carrera *carreraDeAsig;
+                if( (carreraDeAsig = dynamic_cast<Carrera*> (it2->getCurrent())) != NULL )
+                {
+                    int codAsigEst = carreraDeAsig->getCodigo();
+                    Integer *cod = new Integer(codAsigEst);
+                    if (!carrerasDeEst->member(cod))
+                    {
+                        NoPertenece = true;
+                    }
+                }else
+                {
+                     throw "ManejadorEstudiante -> El objeto no es de la clase Carrera.";
+                }
+                it2->next();
+            }
+            return NoPertenece;
+
+            delete it2;
+        }else
+        {
+            throw "ManejadorEstudiante -> El objeto no es de la clase Aprobacion.";
+        }
+        it->next();
+    }
+    delete it;
 }
 
 void ManejadorEstudiante::destroyManejadorEstudiante()

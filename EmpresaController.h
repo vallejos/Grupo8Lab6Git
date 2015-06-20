@@ -24,6 +24,7 @@ class EmpresaController {
         Seccion* getSeccion();
         IDictionary* obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas);
         void setCriterio(EstrategiaAsignaturas* criterio);
+        IDictionary *getEmpresas();
         void SeleccionarEmpresa(string rut);
         void SeleccionarSucursal(string nombre);
         void SeleccionarSeccion(string nombre);

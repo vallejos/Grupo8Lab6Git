@@ -21,6 +21,7 @@ class ManejadorEstudiante
         IDictionary *getAsignaturas();
         IDictionary *getCarreras();
         bool EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta);
+        bool PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEst, IDictionary *aprobacionesAAgregar);
         void destroyManejadorEstudiante();
 
     private:

@@ -6,6 +6,14 @@
 #include "IEstudianteController.h"
 #include "DataEstudiante.h"
 #include "interfaces/IDictionary.h"
+#include "Integer.h"
+#include "DataAsignatura.h"
+#include "Carrera.h"
+#include <stdlib.h>
+#include "collections/List.h"
+#include "collections/OrderedDictionary.h"
+
+using namespace std;
 
 cmdModificarEstudiante::cmdModificarEstudiante()
 {
@@ -14,8 +22,10 @@ cmdModificarEstudiante::cmdModificarEstudiante()
 
 void cmdModificarEstudiante::ejecutarComando()
 {
-    string cedula, auxNombre, auxApellido, auxTelefono, auxEmail, nombre, apellido, telefono, email, auxFechaNac;
-    int creditos, auxCreditos, codigoAsig, codigoAsig2, codigoCarrera, codigoCarrera2;
+    string cedula, auxCreditos, auxNombre, auxApellido, auxTelefono, auxEmail, nombre, apellido, telefono, email, auxFechaNac;
+    int creditos;
+    string codigoAsig, codigoAsig2, codigoCarrera, codigoCarrera2;
+    int dd, mm, aaaa, notaAprob, dia, mes, anio;
     Date *fechaNacimiento;
     Fabrica* fab = Fabrica::getInstance();
     IEstudianteController *cEstudiante = fab->getIEstudianteController();
@@ -43,7 +53,7 @@ void cmdModificarEstudiante::ejecutarComando()
                     if( (aprobacion = dynamic_cast<Aprobacion*> (it2->getCurrent())) != NULL )
                     {
                         DataAsignatura* dasignatura = aprobacion->getDataAsignatura();
-                        cout << "Código: " << dasignatura->getCedula() << "Nombre: " << dasignatura->getNombre() << "Créditos: " << dasignatura->getCreditos() << "\n";
+                        cout << "Código: " << dasignatura->getCodigo() << "Nombre: " << dasignatura->getNombre() << "Créditos: " << dasignatura->getCreditos() << "\n";
                         it2->next();
                     }else
                     {
@@ -84,38 +94,38 @@ void cmdModificarEstudiante::ejecutarComando()
 
         cout<< "Desea Modificar el Nombre SI o NO?\n";
         cin >> auxNombre;
-        if (auxNombre == "SI")
+        if (auxNombre.compare("SI") != 0)
         {
             cout<< "Ingrese el nuevo Nombre\n";
             cin >> nombre;
         }
         else
         {
-            nombre = NULL;
+            nombre = "";
         }
 
         cout<< "Desea Modificar el Apellido SI o NO?\n";
         cin >> auxApellido;
-        if (auxApellido == "SI")
+        if (auxApellido.compare("SI") != 0)
         {
             cout<< "Ingrese el nuevo Apellido\n";
             cin >> apellido;
         }
         else
         {
-            apellido = NULL;
+            apellido = "";
         }
 
         cout<< "Desea Modificar el Teléfono SI o NO?\n";
         cin >> auxTelefono;
-        if (auxTelefono == "SI")
+        if (auxTelefono.compare("SI") != 0)
         {
             cout<< "Ingrese el nuevo Teléfono\n";
             cin >> telefono;
         }
         else
         {
-            telefono = NULL;
+            telefono = "";
         }
 
         cout<< "Desea Modificar la Fecha de Nacimiento <s,n>?\n";
@@ -137,38 +147,38 @@ void cmdModificarEstudiante::ejecutarComando()
 
         cout<< "Desea Modificar los Créditos SI o NO?\n";
         cin >> auxCreditos;
-        if (auxCreditos == 'SI')
+        if (auxCreditos.compare("SI") != 0)
         {
             cout<< "Ingrese la nueva cantidad de Créditos\n";
             cin >> creditos;
         }
         else
         {
-            creditos = NULL;
+            creditos = 0;
         }
 
         cout<< "Desea Modificar el Email SI o NO?\n";
         cin >> auxEmail;
-        if (auxEmail == 'SI')
+        if (auxEmail.compare("SI") != 0)
         {
             cout<< "Ingrese el nuevo Email\n";
             cin >> email;
         }
         else
         {
-            email = NULL;
+            email = "";
         }
 
         IDictionary *allAsignaturas = cEstudiante->getAsignaturas();
 
         //Lectura de Asignaturas a Agregar
         bool fin = false;
-        IDictionary * asignaturasAAgregar;
+        ICollection * aprobacionesAAgregar = new List();
         while (!fin)
         {
             cout<< "Ingrese el Código de la Asignatura que desea Agregar al Estudiante ó OK si no desea Agregar mas Asignaturas \n";
             cin >> codigoAsig;
-            if (codigoAsig == 'OK'){
+            if (codigoAsig.compare("OK") != 0){
                 fin = true;
             }else
             {
@@ -177,25 +187,27 @@ void cmdModificarEstudiante::ejecutarComando()
                 Date *fechaAprob = new Date(dd,mm,aaaa);
                 cout<< "Ingrese la Nota de Aprobación de la Asignatura que desea Agregar al Estudiante\n";
                 cin >> notaAprob;
-                Asignatura *asignatura = allAsignaturas->find(codigoAsig);
+                Integer *ca = new Integer(atoi(codigoAsig.c_str()));
+                Asignatura *asignatura = dynamic_cast<Asignatura*> (allAsignaturas->find(ca));
                 Aprobacion *aprob = new Aprobacion(fechaAprob, notaAprob, asignatura);
-                ICollection * aprobacionesAAgregar = add(aprob);
+                aprobacionesAAgregar->add(aprob);
             }
         }
 
         //Lectura de Asignaturas a Eliminar
         bool fin2 = false;
-        IDictionary * asignaturasAEliminar;
+        IDictionary * asignaturasAEliminar = new OrderedDictionary();
         while (!fin2)
         {
             cout<< "Ingrese el Código de la Asignatura que desea Eliminar del Estudiante ó OK si no desea Eliminar mas Asignaturas \n";
             cin >> codigoAsig2;
-            if (codigoAsig2 == "OK"){
+            if (codigoAsig2.compare("OK") != 0){
                 fin2 = true;
             }else
             {
 //                Asignatura *asignatura = allAsignaturas->find(codigoAsig2);
-                asignaturasAEliminar->add(codigoAsig2,allAsignaturas->find(codigoAsig2));
+                Integer *ca2 = new Integer(atoi(codigoAsig2.c_str()));
+                asignaturasAEliminar->add(ca2,allAsignaturas->find(ca2));
             }
         }
 
@@ -203,33 +215,35 @@ void cmdModificarEstudiante::ejecutarComando()
 
         //Lectura de Carreras a Agregar
         bool fin3 = false;
-        IDictionary * carrerasAAgregar;
+        IDictionary * carrerasAAgregar = new OrderedDictionary();
         while (!fin3)
         {
             cout<< "Ingrese el Código de la Carrera que desea Agregar al Estudiante ó OK si no desea Agregar mas Carreras \n";
             cin >> codigoCarrera;
-            if (codigoCarrera == "OK"){
+            if (codigoCarrera.compare("OK") != 0){
                 fin3 = true;
             }else
             {
 //                Carrera *carrera = allCarreras->find(codigoCarrera);
-                carrerasAAgregar->add(codigoCarrera,allCarreras->find(codigoCarrera));
+                Integer *cc = new Integer(atoi(codigoCarrera.c_str()));
+                carrerasAAgregar->add(cc,allCarreras->find(cc));
             }
         }
 
         //Lectura de Carreras a Eliminar
         bool fin4 = false;
-        IDictionary * carrerasAEliminar;
+        IDictionary * carrerasAEliminar = new OrderedDictionary();
         while (!fin4)
         {
             cout<< "Ingrese el Código de la Carrera que desea Eliminar del Estudiante ó OK si no desea Eliminar mas Carreras \n";
             cin >> codigoCarrera2;
-            if (codigoCarrera2 == "OK"){
+            if (codigoCarrera2.compare("OK") != 0){
                 fin4 = true;
             }else
             {
 //                Carrera *carrera = allCarreras->find(codigoCarrera2);
-                carrerasAEliminar->add(codigoCarrera2,allCarreras->find(codigoCarrera2));
+                Integer *cc2 = new Integer(atoi(codigoCarrera2.c_str()));
+                carrerasAEliminar->add(cc2,allCarreras->find(cc2));
             }
         }
 
