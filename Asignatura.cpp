@@ -2,7 +2,7 @@
 
 Asignatura::Asignatura()
 {
-    this->codigo = -1;
+    this->codigo = 0;
     this->nombre = '\0';
     this->creditos = 0;
 }
