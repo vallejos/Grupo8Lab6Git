@@ -22,6 +22,7 @@ class EmpresaController {
         Empresa* getEmpresa();
         Sucursal* getSucursal();
         Seccion* getSeccion();
+        IDictionary *getEmpresas();
         void SeleccionarEmpresa(string rut);
         void SeleccionarSucursal(string nombre);
         void SeleccionarSeccion(string nombre);

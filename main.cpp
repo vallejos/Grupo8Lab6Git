@@ -15,7 +15,6 @@
 
 using namespace std;
 
-
 // Imprime el Menu Principal
 void imprimirMenu() {
 	cout << "1. Alta Entrevista \n";
@@ -27,12 +26,14 @@ void imprimirMenu() {
 	cout << "7. Listar Ofertas Activas \n";
 	cout << "8. Modificar Estudiante \n";
 	cout << "9. Modificar Llamado \n";
-	cout << "10. Listar Notificaciones de Estudiante \n";
-	cout << "-";
+	cout << "-\n";
+	cout << "L. Listar Notificaciones de Estudiante \n";
+	cout << "A. Anotar/Borrar a Notificaciones\n";
+	cout << "-\n";
 	cout << "C. Cargar datos de prueba \n";
-	cout << "H. Establecer hora del sistema \n";
+	cout << "E. Establecer hora del sistema \n";
 	cout << "S. Salir \n";
-	cout << "-";
+	cout << "-\n";
 	cout << "Elija una opcion:\n";
 	cout << "> ";
 }
@@ -54,93 +55,100 @@ int main() {
 				//------------------------
 				// ALTA ENTREVISTA
 				//------------------------
-				case '1':
-					cmd->ejecutarComando('cmdAltaEntrevista');
+				case "1":
+					cmd->ejecutarComando("cmdAltaEntrevista");
 					break;
 
 				//------------------------
 				// ALTA OFERTA LABORAL
 				//------------------------
-				case '2':
-					cmd->ejecutarComando('cmdAltaOfertaLaboral');
+				case "2":
+					cmd->ejecutarComando("cmdAltaOfertaLaboral");
 					break;
 
 				//------------------------
 				// ASIGNACION DE OFERTA A ESTUDIANTE
 				//------------------------
-				case '3':
-					cmd->ejecutarComando('cmdAsignacionDeOfertaAEstudiante');
+				case "3":
+					cmd->ejecutarComando("cmdAsignacionDeOfertaAEstudiante");
 					break;
 
 				//------------------------
 				// CONSULTAR DATOS DE ESTUDIANTE
 				//------------------------
-				case '4':
-					cmd->ejecutarComando('cmdConsultarDatosEstudiantes');
+				case "4":
+					cmd->ejecutarComando("cmdConsultarDatosEstudiantes");
 					break;
 
 				//------------------------
 				// DAR DE BAJA LLAMADO
 				//------------------------
-				case '5':
-					cmd->ejecutarComando('cmdDarDeBajaLlamado');
+				case "5":
+					cmd->ejecutarComando("cmdDarDeBajaLlamado");
 					break;
 
 				//------------------------
 				// INSCRIPCION DE OFERTA LABORAL
 				//------------------------
-				case '6':
-					cmd->ejecutarComando('cmdInscripcionOfertaLaboral');
+				case "6":
+					cmd->ejecutarComando("cmdInscripcionOfertaLaboral");
 					break;
 
 				//------------------------
 				// LISTAR OFERTAS ACTIVAS
 				//------------------------
-				case '7':
-					cmd->ejecutarComando('cmdListarOfertasActivas');
+				case "7":
+					cmd->ejecutarComando("cmdListarOfertasActivas");
 					break;
 
 				//------------------------
 				// MODIFICAR ESTUDIANTE
 				//------------------------
-				case '8':
-					cmd->ejecutarComando('cmdModificarEstudiante');
+				case "8":
+					cmd->ejecutarComando("cmdModificarEstudiante");
 					break;
 
 				//------------------------
 				// MODIFICAR LLAMADO
 				//------------------------
-				case '9':
-					cmd->ejecutarComando('cmdModificarLlamado');
+				case "9":
+					cmd->ejecutarComando("cmdModificarLlamado");
 					break;
 
                 //------------------------
 				// LISTAR NOTIFICACIONES
 				//------------------------
-				case '10':
-					cmd->ejecutarComando('cmdListarNotificacionesEstudiante');
+				case "L":
+					cmd->ejecutarComando("cmdListarNotificacionesEstudiante");
+					break;
+
+                //------------------------
+				// ANOTAR/BORRAR NOTIF
+				//------------------------
+				case "A":
+					cmd->ejecutarComando("cmdAnotarBorrarNotificaciones");
 					break;
 
 				//------------------------
 				// CARGAR DATOS DE PRUEBA
 				//------------------------
-				case 'C':
+				case "C":
 					// TODO: poner comandos para carga de pruebas
-					cmd->ejecutarComando('cmdCargarDatosDePrueba');
+					cmd->ejecutarComando("cmdCargarDatosDePrueba");
 					break;
 
 				//------------------------
 				// ESTABLECER HORA SISTEMA
 				//------------------------
-				case 'H':
+				case "E":
 					// TODO: poner comandos para carga de pruebas
-					cmd->ejecutarComando('cmdEstablecerHoraSistema');
+					cmd->ejecutarComando("cmdEstablecerHoraSistema");
 					break;
 
 				//------------------------
 				// SALIR
 				//------------------------
-				case 'S':
+				case "S":
 					salir = true;
 					break;
 			}

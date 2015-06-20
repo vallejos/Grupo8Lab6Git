@@ -15,8 +15,9 @@ using namespace std;
 void cmdModificarLlamado::ejecutarComando()
 {
     string  numExpediente, nomSeccion, nomSucursal, titulo, descripcion;
-    Date *fechaEfectivizacion;
-    int ddi, mmi, aaaai, ddf, mmf, aaaaf, sueldo, cantHorasSemanales, salarioMinimo, salarioMaximo, cantidadPuestos;
+//    Date *fechaEfectivizacion;
+    int ddi, mmi, aaaai, ddf, mmf, aaaaf, cantHorasSemanales, salarioMinimo, salarioMaximo, cantidadPuestos;
+//    int sueldo;
 
     Fabrica* fab = Fabrica::getInstance();
     IOfertaLaboralController *ctrlOL = fab->getIOfertaLaboralController();
