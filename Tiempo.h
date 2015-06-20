@@ -2,6 +2,7 @@
 #define TIEMPO_H
 
 #include <ctime>
+#include "Date.h"
 
 class Tiempo
 {

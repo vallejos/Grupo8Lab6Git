@@ -10,6 +10,8 @@
 #include "Empresa.h"
 #include "interfaces/IIterator.h"
 #include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
+#include "collections/List.h"
 
 using namespace std;
 
@@ -24,9 +26,9 @@ class Sucursal : public ICollectible
     public:
         //operaciones
         Sucursal();
-        Sucursal(string nombre, string direccion, string telefono, ICollection* secciones, Empresa *empresa);
+        Sucursal(string nombre, string direccion, string telefono, IDictionary* secciones, Empresa *empresa);
         DataSucursal *getDataSucursal();
-        ICollection *getDataSecciones();
+        IDictionary *getDataSecciones();
         Seccion *getSeccion(string nombre);
         DataEmpresa *getDataEmpresa();
         //getters
@@ -39,7 +41,7 @@ class Sucursal : public ICollectible
         void setNombre(string nombre);
         void setDireccion(string direccion);
         void setTelefono(string telefono);
-        void setSecciones(ICollection *secciones);
+        void setSecciones(IDictionary *secciones);
         void setEmpresa(Empresa *empresa);
         //destructor
         ~Sucursal();

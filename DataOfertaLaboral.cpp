@@ -18,7 +18,7 @@ DataOfertaLaboral::DataOfertaLaboral()
 
 DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
                         Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
-                        IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
+                        IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas)
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;

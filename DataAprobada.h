@@ -1,6 +1,8 @@
 #ifndef DATAAPROBADA_H
 #define DATAAPROBADA_H
 
+#include "Date.h"
+#include "DataAsignatura.h"
 
 class DataAprobada
 {

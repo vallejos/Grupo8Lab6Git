@@ -7,7 +7,7 @@ DataEstudiante::DataEstudiante()
 
 DataEstudiante::DataEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento,
                                 int creditos, string email, IDictionary* carreras, ICollection* aprobadas,
-                                ICollection* inscripciones, ICollection* entrevistas);
+                                ICollection* inscripciones, ICollection* entrevistas)
 {
     this->cedula = cedula;
     this->nombre = nombre;

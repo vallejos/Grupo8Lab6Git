@@ -44,17 +44,17 @@ Date::Date(const Date &d)
     this->aaaa = d.aaaa;
 };
 
-int Date::get_dd()
+int Date::getDia()
 {
     return this->dd;
 };
 
-int Date::get_mm()
+int Date::getMes()
 {
     return this->mm;
 };
 
-int Date::get_aaaa()
+int Date::getAnio()
 {
     return this->aaaa;
 };
@@ -63,11 +63,11 @@ Date::~Date()
 {
     //dtor
 };
-
-// operadores
-Date Date::operator=(Date fecha) {
-    this->dd = fecha.dd;
-    this->mm = fecha.mm;
-    this->aaaa = fecha.aaaa;
-    return *this;
-};
+//
+//// operadores
+//Date Date::operator=(Date fecha) {
+//    this->dd = fecha.dd;
+//    this->mm = fecha.mm;
+//    this->aaaa = fecha.aaaa;
+//    return *this;
+//};

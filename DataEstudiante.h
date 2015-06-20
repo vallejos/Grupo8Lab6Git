@@ -5,6 +5,8 @@
 #include "DataCarrera.h"
 #include "Date.h"
 #include <string>
+#include "interfaces/IDictionary.h"
+#include "interfaces/ICollection.h"
 
 using namespace std;
 

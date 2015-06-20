@@ -39,7 +39,7 @@ string DataSucursal::getTelefono()
 	return this->telefono;
 }
 
-ICollection *DataSucursal::getSecciones()
+IDictionary *DataSucursal::getSecciones()
 {
 	return this->secciones;
 }
@@ -48,5 +48,5 @@ ICollection *DataSucursal::getSecciones()
 DataSucursal::~DataSucursal()
 {
     if (this->secciones != NULL)
-        delete (this->secciones)
+        delete (this->secciones);
 }
