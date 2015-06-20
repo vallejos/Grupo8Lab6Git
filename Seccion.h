@@ -7,7 +7,6 @@
 #include "String.h"
 #include "DataSeccion.h"
 #include "DataEmpresa.h"
-#include "OfertaLaboral.h"
 #include "IObserver.h"
 #include "Encargado.h"
 #include "interfaces/ICollection.h"
@@ -17,6 +16,7 @@
 using namespace std;
 
 class Sucursal;
+class OfertaLaboral;
 
 class Seccion: public ICollectible
 {
@@ -48,6 +48,7 @@ class Seccion: public ICollectible
         IDictionary *ofertasLaborales; //Pseudoatributo para representar la asociación con un diccionario de ofertas laborales
 };
 
+#include "OfertaLaboral.h"
 #include "Sucursal.h"
 
 #endif // SECCION_H
