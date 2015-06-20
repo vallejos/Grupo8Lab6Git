@@ -117,6 +117,18 @@ IDictionary* EstudianteController::getCarreras()
     return me->getCarreras();
 }
 
+IDictionary* EstudianteController::getEstudiantes()
+{
+    ManejadorEstudiante* me = ManejadorEstudiante::getInstance();
+    return me->getEstudiantes();
+}
+
+bool EstudianteController::EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta)
+{
+    ManejadorEstudiante* me = ManejadorEstudiante::getInstance();
+    return me->EstudianteCumpleRequisitos(student, asignaturasOferta);
+}
+
 void EstudianteController::destroyEstudianteController()
 {
      if (instance != NULL)

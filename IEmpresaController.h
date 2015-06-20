@@ -19,6 +19,8 @@ class IEmpresaController
         virtual ICollection *ListarEmpresas() = 0;
         virtual ICollection *ListarSucursales() = 0;
         virtual ICollection *ListarSecciones() = 0;
+        virtual IDictionary* obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas) = 0;
+        virtual void setCriterio(EstrategiaAsignaturas* criterio) = 0;
         virtual void SeleccionarEmpresa(string rut) = 0;
         virtual void SeleccionarSucursal(string nombre) = 0;
         virtual void SeleccionarSeccion(string nombre) = 0;

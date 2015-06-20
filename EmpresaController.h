@@ -27,6 +27,8 @@ class EmpresaController {
         Empresa* getEmpresa();
         Sucursal* getSucursal();
         Seccion* getSeccion();
+        IDictionary* obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas);
+        void setCriterio(EstrategiaAsignaturas* criterio);
         IDictionary *getEmpresas();
         void SeleccionarEmpresa(string rut);
         void SeleccionarSucursal(string nombre);
@@ -38,6 +40,7 @@ class EmpresaController {
         Empresa *empresa; // la empresa que se recuerda
         Sucursal *sucursal; // la sucursal que se recuerda
         Seccion *seccion;
+        EstrategiaAsignaturas* criterio;
     	static EmpresaController *instance;
         ~EmpresaController();
 };

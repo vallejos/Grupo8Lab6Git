@@ -13,6 +13,8 @@
 #include "ManejadorEstudiante.h"
 #include "String.h"
 #include "collections/OrderedDictionary.h"
+#include "Criterio1.h"
+#include "Criterio2.h"
 
 using namespace std;
 
@@ -146,59 +148,111 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         IEstudianteController* cEstudiante = fab->getIEstudianteController();
         IDictionary *asignaturasIngresadas = cEstudiante->getAsignaturas();
 
-        while (!strategyOK)
+        //while (!strategyOK)
+        //{
+        while (desea)
         {
-            while (desea)
+            // muestro asignaturas
+            cout << "Lista de Asignaturas:\n";
+            IIterator * it = asignaturasIngresadas->getIterator();
+            while(it->hasCurrent())
             {
-                // muestro asignaturas
-                cout << "Lista de Asignaturas:\n";
-                IIterator * it = asignaturasIngresadas->getIterator();
-                while(it->hasCurrent())
+                DataAsignatura *dAsignatura;
+                if( (dAsignatura = dynamic_cast<DataAsignatura*> (it->getCurrent())) != NULL )
                 {
-                    DataAsignatura *dAsignatura;
-                    if( (dAsignatura = dynamic_cast<DataAsignatura*> (it->getCurrent())) != NULL )
-                    {
-                        cout << "CODIGO: " << dAsignatura->getCodigo() << ", NOMBRE:" << dAsignatura->getNombre() << "\n";
-                    }
-                    else
-                    {
-                        throw "AltaOfertaLaboral -> El objeto no es de la clase DataAsignatura.";
-                    }
-                    it->next();
+                    cout << "CODIGO: " << dAsignatura->getCodigo() << ", NOMBRE:" << dAsignatura->getNombre() << "\n";
                 }
-                delete it;
-
-                // pido asignatura
-                cout<< "\n  Ingrese el codigo: ";
-                cin >> codAsig;
-                Integer* codigo = new Integer(codAsig);
-
-                // busco la asignatura
-                if (asignaturasIngresadas->member(codigo))
+                else
                 {
-                    // la agrego
-                    asignaturasEnOferta->add(codigo, asignaturasIngresadas->find(codigo));
-                } else {
-                    throw "Codigo de Asignatura incorrecto.";
+                    throw "AltaOfertaLaboral -> El objeto no es de la clase DataAsignatura.";
                 }
+                it->next();
+            }
+            delete it;
 
-                // seguir ingresando
-                cout<< "\n  Desea ingresar otra asignatura?(s/n): ";
-                cin >> respuesta;
-                if(respuesta == "n")
-                {
-                    desea = false;
-                }
+            // pido asignatura
+            cout<< "\n  Ingrese el codigo: ";
+            cin >> codAsig;
+            Integer* codigo = new Integer(codAsig);
+
+            // busco la asignatura
+            if (asignaturasIngresadas->member(codigo))
+            {
+                // la agrego
+                asignaturasEnOferta->add(codigo, asignaturasIngresadas->find(codigo));
+            } else {
+                throw "Codigo de Asignatura incorrecto.";
             }
 
-            // strategy
-
-            // aca hay que verificar los criterios del strategy y pedir que strategy usar
-
-
+            // seguir ingresando
+            cout<< "\n  Desea ingresar otra asignatura?(s/n): ";
+            cin >> respuesta;
+            if(respuesta == "n")
+            {
+                desea = false;
+            }
         }
 
-        cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasEnOferta);
+        // strategy
+
+        // aca hay que verificar los criterios del strategy y pedir que strategy usar
+        bool encontro = false;
+        IDictonary* estudiantes = cEstudiante->getEstudiantes();
+        IIterator * it = estudiantes->getIterator();
+        while(it->hasCurrent())
+        {
+            Estudiante *student;
+            if( (student = dynamic_cast<Estudiante*> (it->getCurrent())) != NULL )
+            {
+                if(cEstudiante->EstudianteCumpleRequisitos(student, asignaturasEnOferta))
+                {
+                    encontro = true;
+                }
+            }
+            else
+            {
+                throw "AltaOfertaLaboral -> El objeto no es de la clase Estudiante.";
+            }
+            it->next();
+        }
+        delete it;
+
+        if(!encontro)
+        {
+            //Aplicar Estrategia
+            int numCriterio;
+            cout << "No existen Estudiantes que tengan aprobadas todas las Asignaturas ingresadas. Seleccione un criterio para obtener una lista de asignaturas validas(1 o 2)\n"
+            cout << "1- Devolver las asignaturas aprobadas de algun estudiante.\n";
+            cout << "2- Devolver una asignatura de las asignaturas ingresadas que algun estudiante haya aprobado(en caso de que no exista se devuelve el conjunto vacio).\n\n";
+            cin >> numCriterio;
+
+            if(numCriterio == 1)
+            {
+                Criterio1* critery1 = new Criterio1();
+                cEmpresa->setCriterio(critery1);
+                IDictionary* asignaturasSugeridas = cEmpresa->obtenerAsignaturasValidas(asignaturasEnOferta);
+                cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasSugeridas);
+            }
+            else if(numCriterio == 2)
+            {
+                Criterio2* critery2 = new Criterio2();
+                cEmpresa->setCriterio(critery2);
+                IDictionary* asignaturasSugeridas = cEmpresa->obtenerAsignaturasValidas(asignaturasEnOferta);
+                cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasSugeridas);
+            }
+            else
+            {
+                throw "El valor ingresado es incorrecto, ingrese 1 o 2.";
+            }
+        }
+        else
+        {
+            cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasEnOferta);
+        }
+
+        //}
+
+        //cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasEnOferta);
 
     }
     catch (const char* e)

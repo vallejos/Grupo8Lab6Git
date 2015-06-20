@@ -76,6 +76,18 @@ void EmpresaController::SeleccionarSeccion(string nombre)
     this->seccion = this->sucursal->getSeccion(nombre);
 }
 
+void EmpresaController::setCriterio(EstrategiaAsignaturas* criterio)
+{
+    this->criterio = criterio;
+}
+
+IDictionary* EmpresaController::obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas)
+{
+    IDictionary* asignaturasValidas = new OrderedDictionary();
+    asignaturasValidas = this->criterio->devolverListaAsignatura(asignaturasIngresadas);
+    return asignaturasValidas;
+}
+
 void EmpresaController::destroyEmpresaController()
 {
      if (instance != NULL)

@@ -20,8 +20,7 @@ class IEstudianteController {
         virtual DataDatosEstudiante *ConsultarDatosEstudiante(string cedula) = 0;
         virtual IDictionary *ListarEstudiantesRegistrados() = 0;
         virtual IDictionary *ListarEstudiantesInscriptosEnOferta() = 0;
-        virtual IDictionary *getAsignaturas() = 0;
-        virtual IDictionary *getCarreras() = 0;
+        virtual IDictionary* EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta) = 0;
         virtual Estudiante *getEstudiante() = 0;
         virtual IDictionary *getEstudiantes() = 0;
 };
