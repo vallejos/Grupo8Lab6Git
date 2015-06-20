@@ -123,6 +123,10 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
         if( (asig = dynamic_cast<Asignatura*> (it3->getCurrent())) != NULL )
         {
             int cod = asig->getCodigo();
+            int creditosAsig = asig->getCreditos();
+            int creditosEst = e->getCreditos();
+            int restaCreditos = creditosEst - creditosAsig;
+            e->setCreditos(restaCreditos);
             IIterator * it4 = this->aprobadas->getIterator();
             bool encontro = false;
             while (it4->hasCurrent() && !encontro)
@@ -165,6 +169,10 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
             if( (aprob = dynamic_cast<Aprobacion*> (it5->getCurrent())) != NULL )
             {
                 int cod = aprob->getAsignatura()->getCodigo();
+                int creditosAsig = aprob->getAsignatura()->getCreditos();
+                int creditosEst = e->getCreditos();
+                int sumaCreditos = creditosEst + creditosAsig;
+                e->setCreditos(sumaCreditos);
                 IIterator * it6 = this->aprobadas->getIterator();
                 while (it6->hasCurrent())
                 {
