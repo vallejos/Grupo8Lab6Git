@@ -23,6 +23,7 @@ class IEmpresaController
         virtual void SeleccionarSucursal(string nombre) = 0;
         virtual void SeleccionarSeccion(string nombre) = 0;
         virtual Seccion *getSeccion() = 0;
+        virtual IDictionary *getEmpresas() = 0;
 };
 
 #endif // IEMPRESACONTROLLER_H
