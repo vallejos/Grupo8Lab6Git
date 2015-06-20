@@ -15,16 +15,16 @@ Entrevista::Entrevista(Date* fechaEntrevista, OfertaLaboral* ofertaLab, Estudian
     this->estudiant = estu;
 }
 
-Entrevista::Entrevista(const Entrevista &i)
+/*Entrevista::Entrevista(const Entrevista &i)
 {
-    Date* fechaEnt = new Date(i.fechaEntrevista);
+    Date* fechaEnt = new Date(&i.fechaEntrevista);
     OfertaLaboral* oferta = new OfertaLaboral(i.ofertaLab);
     Estudiante* estu = new Estudiante(i.estudiant);
 
     this->fechaEntrevista = fechaEnt;
     this->ofertaLab = oferta;
     this->estudiant = estu;
-}
+}*/
 
 Date* Entrevista::getFechaEntrevista()
 {
