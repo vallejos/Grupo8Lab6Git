@@ -10,6 +10,11 @@
 #include "Date.h"
 #include "DataEstudiante.h"
 #include "DataDatosEstudiante.h"
+#include "Aprobacion.h"
+#include "Carrera.h"
+#include "collections/OrderedDictionary.h"
+#include "interfaces/IKey.h"
+#include "Integer.h"
 
 class Inscripcion;
 class Entrevista;
@@ -23,7 +28,8 @@ class Estudiante : public ICollectible
 
         Estudiante();
         Estudiante(string cedula, string nombre, string apellido, string telefono, Date* fechaNacimiento, int creditos,
-                    string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones, ICollection* entrevistas);
+                    string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones,
+                    ICollection* entrevistas, ICollection* notificaciones);
         Estudiante(const Estudiante &e);
 
         //getters
@@ -41,17 +47,17 @@ class Estudiante : public ICollectible
         ICollection* getNotificaciones();
 
         //setters
-        static void setCedula(string cedula);
-        static void setNombre(string nombre);
-        static void setApellido(string apellido);
-        static void setTelefono(string telefono);
-        static void setFechaNacimiento(Date* fechaNacimiento);
-        static void setCreditos(int creditos);
-        static void setEmail(string email);
-        static void setInscripciones(ICollection* inscripciones);
-        static void setEntrevistas(ICollection* entrevistas);
-        static void setCarreras(IDictionary* carreras);
-        static void setAprobadas(ICollection* aprobadas);
+        void setCedula(string cedula);
+        void setNombre(string nombre);
+        void setApellido(string apellido);
+        void setTelefono(string telefono);
+        void setFechaNacimiento(Date* fechaNacimiento);
+        void setCreditos(int creditos);
+        void setEmail(string email);
+        void setInscripciones(ICollection* inscripciones);
+        void setEntrevistas(ICollection* entrevistas);
+        void setCarreras(IDictionary* carreras);
+        void setAprobadas(ICollection* aprobadas);
 
         //operaciones particulares
         DataEstudiante* getDataEstudiante();

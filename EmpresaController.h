@@ -11,6 +11,7 @@
 #include "Empresa.h"
 #include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
+#include "collections/OrderedDictionary.h"
 #include "Empresa.h"
 #include "Sucursal.h"
 #include "Seccion.h"
@@ -25,11 +26,11 @@ class EmpresaController {
         	IDictionary *asignaturas);
         ICollection* ListarEmpresas();
         ICollection* ListarSucursales();
-        ICollection* ListarSecciones();
+        IDictionary* ListarSecciones();
         Empresa* getEmpresa();
         Sucursal* getSucursal();
         Seccion* getSeccion();
-        IDictionary* obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas);
+        ICollection* obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas);
         void setCriterio(EstrategiaAsignaturas* criterio);
         IDictionary *getEmpresas();
         void SeleccionarEmpresa(string rut);

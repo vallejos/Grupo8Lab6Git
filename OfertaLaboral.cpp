@@ -1,7 +1,7 @@
 #include "OfertaLaboral.h"
-#include "EstudianteController"
+#include "EstudianteController.h"
 #include "ManejadorEstudiante.h"
-#include "Estudiante"
+#include "Estudiante.h"
 #include "Tiempo.h"
 
 OfertaLaboral::OfertaLaboral()
