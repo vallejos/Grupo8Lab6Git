@@ -56,77 +56,77 @@ int main() {
 				// ALTA ENTREVISTA
 				//------------------------
 				case "1":
-					cmd->ejecutarComando("cmdAltaEntrevista");
+					cmd->ejecutarComando('B');
 					break;
 
 				//------------------------
 				// ALTA OFERTA LABORAL
 				//------------------------
 				case "2":
-					cmd->ejecutarComando("cmdAltaOfertaLaboral");
+					cmd->ejecutarComando('A');
 					break;
 
 				//------------------------
 				// ASIGNACION DE OFERTA A ESTUDIANTE
 				//------------------------
 				case "3":
-					cmd->ejecutarComando("cmdAsignacionDeOfertaAEstudiante");
+					cmd->ejecutarComando('C');
 					break;
 
 				//------------------------
 				// CONSULTAR DATOS DE ESTUDIANTE
 				//------------------------
 				case "4":
-					cmd->ejecutarComando("cmdConsultarDatosEstudiantes");
+					cmd->ejecutarComando('D');
 					break;
 
 				//------------------------
 				// DAR DE BAJA LLAMADO
 				//------------------------
 				case "5":
-					cmd->ejecutarComando("cmdDarDeBajaLlamado");
+					cmd->ejecutarComando('H');
 					break;
 
 				//------------------------
 				// INSCRIPCION DE OFERTA LABORAL
 				//------------------------
 				case "6":
-					cmd->ejecutarComando("cmdInscripcionOfertaLaboral");
+					cmd->ejecutarComando('I');
 					break;
 
 				//------------------------
 				// LISTAR OFERTAS ACTIVAS
 				//------------------------
 				case "7":
-					cmd->ejecutarComando("cmdListarOfertasActivas");
+					cmd->ejecutarComando('E');
 					break;
 
 				//------------------------
 				// MODIFICAR ESTUDIANTE
 				//------------------------
 				case "8":
-					cmd->ejecutarComando("cmdModificarEstudiante");
+					cmd->ejecutarComando('F');
 					break;
 
 				//------------------------
 				// MODIFICAR LLAMADO
 				//------------------------
 				case "9":
-					cmd->ejecutarComando("cmdModificarLlamado");
+					cmd->ejecutarComando('G');
 					break;
 
                 //------------------------
 				// LISTAR NOTIFICACIONES
 				//------------------------
 				case "L":
-					cmd->ejecutarComando("cmdListarNotificacionesEstudiante");
+					cmd->ejecutarComando('K');
 					break;
 
                 //------------------------
 				// ANOTAR/BORRAR NOTIF
 				//------------------------
 				case "A":
-					cmd->ejecutarComando("cmdAnotarBorrarNotificaciones");
+					cmd->ejecutarComando('M');
 					break;
 
 				//------------------------
@@ -134,7 +134,7 @@ int main() {
 				//------------------------
 				case "C":
 					// TODO: poner comandos para carga de pruebas
-					cmd->ejecutarComando("cmdCargarDatosDePrueba");
+					cmd->ejecutarComando('J');
 					break;
 
 				//------------------------
@@ -142,7 +142,7 @@ int main() {
 				//------------------------
 				case "E":
 					// TODO: poner comandos para carga de pruebas
-					cmd->ejecutarComando("cmdEstablecerHoraSistema");
+					cmd->ejecutarComando('L');
 					break;
 
 				//------------------------

@@ -1,14 +1,16 @@
 #ifndef FABRICACOMANDO_H
 #define FABRICACOMANDO_H
+#include "IComando.h"
+#include <string>
 
+using namespace std;
 
 class FabricaComando
 {
     public:
         static FabricaComando *getInstance();
-        IComando* obtenerComando(string cmd);
+        IComando* obtenerComando(char cmd);
         void destroyFabricaComando();
-    protected:
     private:
         ~FabricaComando();
         FabricaComando();
