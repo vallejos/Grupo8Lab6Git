@@ -1,5 +1,6 @@
 #include "OfertaLaboral.h"
 #include "EstudianteController"
+#include "ManejadorEstudiante.h"
 #include "Estudiante"
 #include "Tiempo.h"
 
@@ -159,44 +160,19 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
         throw std::invalid_argument("El sistema no recuerda a ningun estudiante Seleccionado");
     OfertaLaboralController *oc = OfertaLaboralController::getInstance();
     IDictionary *asigDeOL = oc->getOfertaLaboral()->getAsignaturas();
-    ICollection *aprobadas = e->getAprobadas();
-    IIterator * it = asigDeOL->getIterator();
-    while(it->hasCurrent())
-    {
-        Asignatura *asig;
-        if( (asig = dynamic_cast<Asignatura*> (it->getCurrent())) != NULL )
-        {
-            int cod = asig->getCodigo();
-            IIterator * it2 = aprobadas->getIterator();
-            bool encontro = false;
-            while (it2->hasCurrent() && !encontro)
-            {
-                Aprobacion *aprobada;
-                if( (aprobada = dynamic_cast<Aprobacion*> (it2->getCurrent())) != NULL )
-                {
-                    int codAsigEst = aprobada->getAsignatura()->getCodigo();
-                    if (codAsigEst == cod)
-                        encontro = true;
-                }else
-                {
-                    throw std::invalid_argument("OfertaLaboral -> El objeto no es de la clase Aprobacion.");
-                }
-                it2->next();
-            }
-            delete it2;
-            if (!encontro)
-                 throw std::invalid_argument("OfertaLaboral -> El Estudiante no cumple con los requisitos para Inscribirse a la Oferta Laboral.");
-        }else
-        {
-            throw std::invalid_argument("OfertaLaboral -> El objeto no es de la clase Asignatura.");
-        }
-        it->next();
-    }
-    delete it;
+    ManejadorEstudiante* mEstu = ManejadorEstudiante::getInstance();
 
-    Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
-    e->AsociarInscripcion(i);
-    this->inscripciones->add(i);
+    if (mEstu->EstudianteCumpleRequisitos(e, asigDeOL))
+    {
+        Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
+        e->AsociarInscripcion(i);
+        this->inscripciones->add(i);
+    }
+    else
+    {
+        throw "OfertaLaboral -> El Estudiante no cumple con los requisitos para Inscribirse a la Oferta Laboral.";
+    }
+
 }
 
 void OfertaLaboral::Entrevista(Date *fechaEntrevista)

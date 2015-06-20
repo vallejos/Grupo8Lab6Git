@@ -130,6 +130,46 @@ IDictionary* ManejadorEstudiante::getCarreras()
     return this->carreras;
 }
 
+bool ManejadorEstudiante::EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta)
+{
+    ICollection *aprobadas = student->getAprobadas();
+    IIterator * it = asignaturasOferta->getIterator();
+    while(it->hasCurrent())
+    {
+        Asignatura *asig;
+        if( (asig = dynamic_cast<Asignatura*> (it->getCurrent())) != NULL )
+        {
+            int cod = asig->getCodigo();
+            IIterator * it2 = aprobadas->getIterator();
+            bool encontro = false;
+            while (it2->hasCurrent() && !encontro)
+            {
+                Aprobacion *aprobada;
+                if( (aprobada = dynamic_cast<Aprobacion*> (it2->getCurrent())) != NULL )
+                {
+                    int codAsigEst = aprobada->getAsignatura()->getCodigo();
+                    if (codAsigEst == cod)
+                        encontro = true;
+                }else
+                {
+                    throw "ManejadorEstudiante -> El objeto no es de la clase Aprobacion.";
+                }
+                it2->next();
+            }
+            delete it2;
+            if (!encontro)
+                 return false;
+        }else
+        {
+            throw std::invalid_argument("ManejadorEstudiante -> El objeto no es de la clase Asignatura.");
+        }
+        it->next();
+    }
+    delete it;
+
+    return true;
+}
+
 void ManejadorEstudiante::destroyManejadorEstudiante()
 {
      if (instance != NULL)
