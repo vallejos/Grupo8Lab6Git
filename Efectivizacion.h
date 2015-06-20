@@ -1,6 +1,8 @@
 #ifndef EFECTIVIZACION_H
 #define EFECTIVIZACION_H
 
+#include "Date.h"
+#include <string>
 
 class Efectivizacion
 {

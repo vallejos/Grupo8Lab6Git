@@ -9,6 +9,11 @@
 #include "Rango.h"
 #include "DataAsignatura.h"
 #include "Empresa.h"
+#include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
+#include "Empresa.h"
+#include "Sucursal.h"
+#include "Seccion.h"
 
 class EmpresaController {
     public:

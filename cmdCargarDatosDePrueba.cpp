@@ -349,14 +349,13 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     o4a->add(new Integer(1689), a5);
 
 // CARGA: APROBACIONES
-    ICollection *ap1,*ap2, *ap3, *ap4, *ap5, *ap6, *ap7, *ap8, *ap9, *ap10, *ap11, *ap12;
+    ICollection *ap1,*ap2, *ap3, *ap4, *ap5, *ap7, *ap8, *ap9, *ap10, *ap11, *ap12;
 
     ap1 = es1->getAprobadas();
     ap2 = es2->getAprobadas();
     ap3 = es3->getAprobadas();
     ap4 = es4->getAprobadas();
     ap5 = es5->getAprobadas();
-    ap6 = es6->getAprobadas();
     ap7 = es7->getAprobadas();
     ap8 = es8->getAprobadas();
     ap9 = es9->getAprobadas();
