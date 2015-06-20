@@ -38,7 +38,7 @@ ICollection *EmpresaController::ListarSucursales()
 	return this->empresa->getDataSucursales();
 }
 
-ICollection* EmpresaController::ListarSecciones()
+IDictionary* EmpresaController::ListarSecciones()
 {
 	return this->sucursal->getDataSecciones();
 }
@@ -81,10 +81,14 @@ void EmpresaController::setCriterio(EstrategiaAsignaturas* criterio)
     this->criterio = criterio;
 }
 
-IDictionary* EmpresaController::obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas)
+ICollection* EmpresaController::obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas)
 {
-    IDictionary* asignaturasValidas = new OrderedDictionary();
-    asignaturasValidas = this->criterio->devolverListaAsignatura(asignaturasIngresadas);
+//    IDictionary* asignaturasValidas = new OrderedDictionary();
+//    IDictionary *col = dynamic_cast<IDictionary*> ();
+
+//    ICollection *asignaturasValidas = dynamic_cast<ICollection*> (this->criterio->devolverListaAsignatura(asignaturasIngresadas));
+    ICollection *asignaturasValidas = dynamic_cast<ICollection*> (this->criterio->devolverListaAsignatura());
+
     return asignaturasValidas;
 }
 
@@ -92,7 +96,7 @@ void EmpresaController::destroyEmpresaController()
 {
      if (instance != NULL)
      {
-        delete EmpresaController;
+        this->~EmpresaController();
      }
 }
 

@@ -15,8 +15,8 @@ class DataEstudiante
     public:
 		DataEstudiante();
         DataEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos,
-                    string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones,
-                    ICollection* entrevistas);
+                    string email, IDictionary* carreras, ICollection* aprobadas);
+//, ICollection* inscripciones,ICollection* entrevistas);
         DataEstudiante(const DataEstudiante &e);
         ~DataEstudiante();
         string getCedula();

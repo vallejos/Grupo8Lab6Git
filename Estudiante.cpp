@@ -87,27 +87,27 @@ string Estudiante::getEmail()
     return this->email;
 }
 
-List* Estudiante::getCarreras()
+IDictionary* Estudiante::getCarreras()
 {
     return this->carreras;
 }
 
-List* Estudiante::getAprobadas()
+ICollection* Estudiante::getAprobadas()
 {
     return this->aprobadas;
 }
 
-List* Estudiante::getInscripciones()
+ICollection* Estudiante::getInscripciones()
 {
     return this->inscripciones;
 }
 
-List* Estudiante::getEntrevistas()
+ICollection* Estudiante::getEntrevistas()
 {
     return this->entrevistas;
 }
 
-List* Estudiante::getNotificaciones()
+ICollection* Estudiante::getNotificaciones()
 {
     return this->notificaciones;
 }
@@ -152,8 +152,8 @@ DataEstudiante* Estudiante::getDataEstudiante()
     try
     {
         //Se obtiene la coleccion de DataAsignatura
-        List* dataAsignaturas = new List();
-        ListIterator * lIt = this->aprobadas->getIterator();
+        ICollection* dataAsignaturas = new List();
+        IIterator * lIt = this->aprobadas->getIterator();
         while(lIt->hasCurrent())
         {
             Aprobacion *apro;
@@ -162,7 +162,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
                 dataAsignaturas->add(apro->getDataAsignatura());
             } else
             {
-                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Aprobacion.");
+                throw "Estudiante -> El objeto no es de la clase Aprobacion.";
             }
 
             lIt->next();
@@ -170,31 +170,33 @@ DataEstudiante* Estudiante::getDataEstudiante()
         delete lIt;
 
         //Se obtiene la coleccion de DataCarrera
-        List* dataCarreras = new List();
+        IDictionary* dataCarreras = new OrderedDictionary();
         IIterator * It = this->carreras->getIterator();
         while(It->hasCurrent())
         {
             Carrera *carr;
             if( (carr = dynamic_cast<Carrera*> (It->getCurrent())) != NULL )
             {
-                dataCarreras->add(carr->getDataCarrera());
+                Integer* cod = new Integer (carr->getCodigo());
+                dataCarreras->add(cod, carr->getDataCarrera());
             } else
             {
-                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Carrera.");
+                throw "Estudiante -> El objeto no es de la clase Carrera.";
             }
 
             It->next();
         }
         delete It;
 
-        DataEstudiante* dataEstudiante = new DataEstudiante(this->cedula, this->nombre, this->apellido, this->telefono, this->fechaNacimiento, this->creditos, dataAsignaturas, dataCarreras);
-
+        DataEstudiante* dataEstudiante = new DataEstudiante(this->cedula, this->nombre, this->apellido, this->telefono,
+                                             this->fechaNacimiento, this->creditos, this->email, dataCarreras, dataAsignaturas);
+//ICollection* inscripciones
+//ICollection* entrevistas
         return dataEstudiante;
-
     }
-    catch(const std::invalid_argument &e)
+    catch (const char* e)
     {
-    	throw std::invalid_argument(e.what());
+    	throw;
     }
 
 }
@@ -205,7 +207,7 @@ bool Estudiante::EstNoInscripto(string numExpediente)
     {
         bool res;
         bool noEstaInscripto = true;
-        ListIterator * lIt = this->inscripciones->getIterator();
+        IIterator * lIt = this->inscripciones->getIterator();
         while(lIt->hasCurrent() && (noEstaInscripto))
         {
             Inscripcion *insc;
@@ -218,7 +220,7 @@ bool Estudiante::EstNoInscripto(string numExpediente)
                 }
             } else
             {
-                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
+                throw "Estudiante -> El objeto no es de la clase Inscripcion.";
             }
 
             lIt->next();
@@ -227,9 +229,9 @@ bool Estudiante::EstNoInscripto(string numExpediente)
 
         return noEstaInscripto;
     }
-    catch(const std::invalid_argument &e)
+    catch (const char* e)
     {
-    	throw std::invalid_argument(e.what());
+    	throw;
     }
 }
 
@@ -239,8 +241,8 @@ bool Estudiante::EstInscripto(string numExpediente)
     {
         bool res;
         bool estaInscripto = true;
-        ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt->hasCurrent() && (noEstaInscripto))
+        IIterator * lIt = this->inscripciones->getIterator();
+        while(lIt->hasCurrent() && (estaInscripto))
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt->getCurrent())) != NULL )
@@ -252,7 +254,7 @@ bool Estudiante::EstInscripto(string numExpediente)
                 }
             } else
             {
-                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
+                throw "Estudiante -> El objeto no es de la clase Inscripcion.";
             }
 
             lIt->next();
@@ -261,19 +263,19 @@ bool Estudiante::EstInscripto(string numExpediente)
 
         return estaInscripto;
     }
-    catch(const std::invalid_argument &e)
+    catch (const char* e)
     {
-    	throw std::invalid_argument(e.what());
+    	throw;
     }
 }
 
 
-void AsociarInscripcion (Inscripcion *insc)
+void Estudiante::AsociarInscripcion (Inscripcion *insc)
 {
     this->inscripciones->add(insc);
 }
 
-void AsociarEntrevista (Entrevista *ent)
+void Estudiante::AsociarEntrevista (Entrevista *ent)
 {
     this->entrevistas->add(ent);
 }
@@ -284,7 +286,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
     {
         //Se obtiene la coleccion de DataAprobada
         List* dataAprobadas = new List();
-        ListIterator * lIt = this->aprobadas->getIterator();
+        IIterator * lIt = this->aprobadas->getIterator();
         while(lIt->hasCurrent())
         {
             Aprobacion *apro;
@@ -293,7 +295,7 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
                 dataAprobadas->add(apro->getDataAprobada());
             } else
             {
-                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Aprobacion.");
+                throw "Estudiante -> El objeto no es de la clase Aprobacion.";
             }
 
             lIt->next();
@@ -301,36 +303,35 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
         delete lIt;
 
         List* dataOfertasEmpresas = new List();
-        ListIterator * lIt = this->inscripciones->getIterator();
-        while(lIt->hasCurrent())
+        IIterator * lIt2 = this->inscripciones->getIterator();
+        while(lIt2->hasCurrent())
         {
             Inscripcion *insc;
-            if( (insc = dynamic_cast<Inscripcion*> (lIt->getCurrent())) != NULL )
+            if( (insc = dynamic_cast<Inscripcion*> (lIt2->getCurrent())) != NULL )
             {
                 dataOfertasEmpresas->add(insc->getDataOfertaLaboral());
             } else
             {
-                throw std::invalid_argument("Estudiante -> El objeto no es de la clase Inscripcion.");
+                throw "Estudiante -> El objeto no es de la clase Inscripcion.";
             }
-
-            lIt->next();
+            lIt2->next();
         }
 
-        delete lIt;
+        delete lIt2;
 
         DataDatosEstudiante* datosEstudiante = new DataDatosEstudiante(dataAprobadas, dataOfertasEmpresas);
 
         return datosEstudiante;
     }
-    catch(const std::invalid_argument &e)
+    catch (const char* e)
     {
-    	throw std::invalid_argument(e.what());
+    	throw;
     }
 }
 
 void Estudiante::enviarMail(string numExpediente)
 {
-    String* nExp = new String(numExpediente);
+    String* nExp = new String(numExpediente.c_str());
     this->notificaciones->add(nExp);
 }
 

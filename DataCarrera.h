@@ -2,10 +2,11 @@
 #define DTCARRERA_H
 
 #include <string>
+#include "interfaces/ICollectible.h"
 
 using namespace std;
 
-class DataCarrera
+class DataCarrera : public ICollectible
 {
     public:
 		DataCarrera();

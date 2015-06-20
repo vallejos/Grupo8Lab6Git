@@ -9,7 +9,7 @@
 
 class OfertaLaboralController {
     public:
-        OfertaLaboralController *getInstance();
+        static OfertaLaboralController *getInstance();
         IDictionary *ListarOfertas();
         void SeleccionarOferta(string numExpediente, IDictionary *ofertasLabVigentes);
         void Inscribir(Date *fechaInscripcion);

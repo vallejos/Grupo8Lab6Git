@@ -3,6 +3,7 @@
 #include "DataSucursal.h"
 #include <string>
 #include "interfaces/ICollectible.h"
+#include "interfaces/ICollection.h"
 
 using namespace std;
 

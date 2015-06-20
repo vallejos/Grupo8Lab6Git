@@ -16,24 +16,24 @@ Fabrica* Fabrica::getInstance()
 
 IOfertaLaboralController* Fabrica::getIOfertaLaboralController()
 {
-    return OfertaLaboralController.getInstance();
+    return IOfertaLaboralController::getInstance();
 }
 
 IEmpresaController* Fabrica::getIEmpresaController()
 {
-    return EmpresaController.getInstance();
+    return IEmpresaController::getInstance();
 }
 
 IEstudianteController* Fabrica::getIEstudianteController()
 {
-    return EstudianteController.getInstance();
+    return IEstudianteController::getInstance();
 }
 
 void Fabrica::destroyFabrica()
 {
     if (instance != NULL)
     {
-        delete Fabrica;
+        this->~Fabrica();
     }
 }
 

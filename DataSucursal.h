@@ -2,7 +2,6 @@
 #define DATASUCURSAL_H
 
 #include <string>
-#include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
 #include "interfaces/ICollectible.h"
 
@@ -18,13 +17,13 @@ class DataSucursal: public ICollectible
         string getNombre();
         string getDireccion();
         string getTelefono();
-        ICollection *getSecciones();
+        IDictionary *getSecciones();
 
     private:
         string nombre;
         string direccion;
         string telefono;
-        ICollection *secciones;
+        IDictionary *secciones;
 };
 
 #endif // DATASUCURSAL_H

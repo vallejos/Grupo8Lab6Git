@@ -67,8 +67,9 @@ IDictionary* ManejadorEmpresa::getEmpresas()
 void ManejadorEmpresa::destroyManejadorEmpresa()
 {
      if (instance != NULL)
-        delete instance;
-
+     {
+        this->~ManejadorEmpresa();
+     }
 }
 
 ManejadorEmpresa::~ManejadorEmpresa()

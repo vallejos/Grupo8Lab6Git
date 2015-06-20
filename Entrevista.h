@@ -5,6 +5,7 @@
 #include "OfertaLaboral.h"
 #include "DataOfertaLaboral.h"
 #include "Estudiante.h"
+#include "interfaces/ICollectible.h"
 
 class Entrevista : public ICollectible
 {

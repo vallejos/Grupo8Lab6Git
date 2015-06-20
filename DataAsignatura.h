@@ -2,10 +2,12 @@
 #define DATAASIGNATURA_H
 
 #include <string>
+#include "interfaces/ICollectible.h"
+#include "interfaces/ICollection.h"
 
 using namespace std;
 
-class DataAsignatura
+class DataAsignatura : public ICollectible
 {
     public:
 		DataAsignatura();

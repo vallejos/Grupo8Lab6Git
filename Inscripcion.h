@@ -6,6 +6,7 @@
 #include "DataOfertaLaboral.h"
 #include "Estudiante.h"
 #include "Efectivizacion.h"
+#include "interfaces/ICollectible.h"
 
 class Inscripcion : public ICollectible
 {
