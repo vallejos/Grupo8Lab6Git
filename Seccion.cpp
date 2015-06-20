@@ -1,5 +1,6 @@
 #include "Seccion.h"
 #include "String.h";
+#include "ManejadorEstudiante.h"
 
 Seccion::Seccion()
 {
@@ -87,6 +88,26 @@ OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string de
     OfertaLaboral * dataOferta = new OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
     String *numExp = new String(numExpediente);
     this->ofertasLaborales->add(numExp,dataOferta);
+
+    ManejadorEstudiante* mEstu = ManejadorEstudiante::getInstance();
+    //Se notifica a los observadores
+    IIterator * it = this->observers->getIterator();
+    while(it->hasCurrent())
+    {
+        Estudiante *student;
+        if( (student = dynamic_cast<Estudiante*> (it->getCurrent())) != NULL )
+        {
+            if(mEstu->EstudianteCumpleRequisitos(student, asignaturas))
+            {
+                student->enviarMail(numExpediente);
+            }
+        } else
+        {
+            throw "Seccion -> El objeto no es de la clase Estudiante.";
+        }
+    }
+    delete it;
+
     return dataOferta;
 }
 
