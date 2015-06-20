@@ -6,6 +6,7 @@
 #include "DataDatosEstudiante.h"
 #include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
+#include "Estudiante.h"
 
 class IEstudianteController {
     public:
