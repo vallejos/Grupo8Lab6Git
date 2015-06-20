@@ -2,12 +2,12 @@
 #include "OfertaLaboralController.h"
 #include "OfertaLaboral.h"
 
+EstudianteController* EstudianteController::instance = NULL;
+
 EstudianteController::EstudianteController()
 {
  //constructor
 }
-
-EstudianteController* EstudianteController::instance = NULL;
 
 EstudianteController* EstudianteController::getInstance()
 {
