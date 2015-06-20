@@ -19,22 +19,22 @@ Inscripcion::Inscripcion(Date* fechaInscripcion, OfertaLaboral* ofertaLab, Estud
     // cuando se le haga esa efectivizacion usamos el set y listo :D
 }
 
-Inscripcion::Inscripcion(const Inscripcion &i)
-{
-    Date* fechaInsc = new Date(i.fechaInscripcion);
-    OfertaLaboral* oferta = new OfertaLaboral(i.ofertaLab);
-    Estudiante* estu = new Estudiante(i.estudiant);
-
-    this->fechaInscripcion = fechaInsc;
-    this->ofertaLab = oferta;
-    this->estudiant = estu;
-
-    if (i.efectivo != NULL)
-    {
-        Efectivizacion* efe = new Efectivizacion(i.efectivo);
-        this->efectivo = efe;
-    }
-}
+//Inscripcion::Inscripcion(const Inscripcion &i)
+//{
+//    Date* fechaInsc = new Date(i.fechaInscripcion);
+//    OfertaLaboral* oferta = new OfertaLaboral(i.ofertaLab);
+//    Estudiante* estu = new Estudiante(i.estudiant);
+//
+//    this->fechaInscripcion = fechaInsc;
+//    this->ofertaLab = oferta;
+//    this->estudiant = estu;
+//
+//    if (i.efectivo != NULL)
+//    {
+//        Efectivizacion* efe = new Efectivizacion(i.efectivo);
+//        this->efectivo = efe;
+//    }
+//}
 
 Date* Inscripcion::getFechaInscripcion()
 {
@@ -58,7 +58,12 @@ Efectivizacion* Inscripcion::getEfectivizacion()
 
 DataOfertaLaboral* Inscripcion::getDataOfertaLaboral()
 {
-    DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->ofertaLab->getNumExpediente(), this->ofertaLab->getTitulo(), this->ofertaLab->getDescripcion(), this->ofertaLab->getCantidadHorasSemanales(), this->ofertaLab->getRangoSalarial(), this->ofertaLab->getFechaComienzo(), this->ofertaLab->getFechaFin(), this->ofertaLab->getCantidadPuestosNecesarios());
+    DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->ofertaLab->getNumExpediente(), this->ofertaLab->getTitulo(),
+                                                        this->ofertaLab->getDescripcion(), this->ofertaLab->getCantidadHorasSemanales(),
+                                                        this->ofertaLab->getRangoSalarial(), this->ofertaLab->getFechaComienzo(),
+                                                        this->ofertaLab->getFechaFin(), this->ofertaLab->getCantidadPuestosNecesarios(),
+                                                        this->ofertaLab->getAsignaturas(), this->ofertaLab->getSeccion(),
+                                                        this->ofertaLab->getInscripciones(), this->ofertaLab->getEntrevistas());
     return dataOferta;
 }
 

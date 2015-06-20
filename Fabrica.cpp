@@ -9,7 +9,7 @@ Fabrica* Fabrica::instance = NULL;
 
 Fabrica* Fabrica::getInstance()
 {
-    if (instance = NULL)
+    if (instance == NULL)
         instance = new Fabrica();
     return instance;
 }

@@ -50,5 +50,6 @@ class Seccion: public ICollectible
 
 #include "OfertaLaboral.h"
 #include "Sucursal.h"
+#include "OfertaLaboral.h"
 
 #endif // SECCION_H
