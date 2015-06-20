@@ -21,6 +21,7 @@ class IEstudianteController {
         virtual IDictionary *ListarEstudiantesInscriptosEnOferta() = 0;
         virtual IDictionary* getAsignaturas() = 0;
         virtual IDictionary* getCarreras() = 0;
+        virtual IDictionary* EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta) = 0;
 };
 
 #endif // IESTUDIANTECONTROLLER_H

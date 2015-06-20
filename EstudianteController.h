@@ -31,6 +31,8 @@ class EstudianteController : public IEstudianteController
         Estudiante* getEstudiante();
         IDictionary* getAsignaturas();
         IDictionary* getCarreras();
+        IDictionary* getEstudiantes();
+        bool EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta);
         void destroyEstudianteController();
 };
 
