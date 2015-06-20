@@ -5,6 +5,8 @@
 #include "interfaces/IDictionary.h"
 #include "Empresa.h"
 
+using namespace std;
+
 class ManejadorEmpresa
 {
     public:

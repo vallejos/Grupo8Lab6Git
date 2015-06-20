@@ -8,7 +8,7 @@ DataSucursal::DataSucursal()
 	this->secciones = NULL;
 }
 
-DataSucursal::DataSucursal(string nombre, string direccion, string telefono, ICollection *secciones)
+DataSucursal::DataSucursal(string nombre, string direccion, string telefono, IDictionary *secciones)
 {
 	this->nombre = nombre;
 	this->direccion = direccion;
