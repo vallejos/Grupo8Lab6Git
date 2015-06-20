@@ -23,6 +23,8 @@ class IEstudianteController {
         virtual bool EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta) = 0;
         virtual Estudiante *getEstudiante() = 0;
         virtual IDictionary *getEstudiantes() = 0;
+        virtual IDictionary* getAsignaturas() = 0;
+        virtual IDictionary* getCarreras() = 0;
 };
 
 #endif // IESTUDIANTECONTROLLER_H

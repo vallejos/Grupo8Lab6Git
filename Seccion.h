@@ -48,6 +48,7 @@ class Seccion: public ICollectible
         IDictionary *ofertasLaborales; //Pseudoatributo para representar la asociación con un diccionario de ofertas laborales
 };
 
+#include "OfertaLaboral.h"
 #include "Sucursal.h"
 #include "OfertaLaboral.h"
 

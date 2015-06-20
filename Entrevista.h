@@ -16,7 +16,7 @@ class Entrevista : public ICollectible
     public:
         Entrevista();
         Entrevista(Date* fechaEntrevista, OfertaLaboral* ofertaLab, Estudiante* estu);
-
+        //Entrevista(const Entrevista &i);
         //getters
         Date* getFechaEntrevista();
         OfertaLaboral* getOfertaLaboral();

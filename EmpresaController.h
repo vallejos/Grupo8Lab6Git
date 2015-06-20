@@ -15,6 +15,7 @@
 #include "Sucursal.h"
 #include "Seccion.h"
 #include "EstrategiaAsignaturas.h"
+#include "ManejadorEmpresa.h"
 
 class EmpresaController {
     public:
