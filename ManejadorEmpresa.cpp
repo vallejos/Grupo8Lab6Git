@@ -23,7 +23,7 @@ ManejadorEmpresa* ManejadorEmpresa::getInstance()
 ICollection* ManejadorEmpresa::getDataEmpresas()
 {
     List* result = new List();
-    IIterator * it = this->empresas->getElemIterator();
+    IIterator * it = this->empresas->getIterator();
     while(it->hasCurrent())
     {
         result->add(it->getCurrent()->getDatosEmpresa());

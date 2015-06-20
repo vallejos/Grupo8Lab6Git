@@ -85,10 +85,18 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     IIterator * it = inscripciones->getIterator();
     while(it->hasCurrent())
     {
-        Estudiante *e = it->getCurrent()->getEstudiante();
-        ICollection *insc = e->getInscripciones();
-        insc->remove(it->getCurrent());
-        it->getCurrent()->estudiant = NULL;// para que al llamar al destructor de oferta al final no destruya al estudiante cuando destruye la inscripcion
+        Inscripcion *inscrip;
+        if( (inscrip = dynamic_cast<Inscripcion*> (it->getCurrent())) != NULL )
+        {
+            Estudiante *e = inscrip->getEstudiante();
+            ICollection *insc = e->getInscripciones();
+            insc->remove(inscrip);
+            inscrip->estudiant = NULL;// para que al llamar al destructor de oferta al final no destruya al estudiante cuando destruye la inscripcion
+        }
+        else
+        {
+            throw "ManejadorOfertaLaboral -> El objeto no es de la clase Inscripcion.";
+        }
         it->next();
     }
     delete it;
@@ -96,11 +104,18 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     IIterator * it2 = entrevistas->getIterator();
     while(it2->hasCurrent())
     {
-        Estudiante *e = it2->getCurrent()->getEstudiante();
-        ICollection *entre = e->getEntrevistas();
-        entre->remove(it2->getCurrent());
-        it2->getCurrent()->estudiant = NULL;// igual que arriba no se si esté bien
-        it2->next();
+        Entrevista *interview;
+        if( (interview = dynamic_cast<Entrevista*> (it2->getCurrent())) != NULL )
+        {
+            Estudiante *e = interview->getEstudiante();
+            ICollection *entre = e->getEntrevistas();
+            entre->remove(interview);
+            interview->estudiant = NULL;// igual que arriba no se si esté bien
+        }
+        else
+        {
+            throw "ManejadorOfertaLaboral -> El objeto no es de la clase Entrevista.";
+        }
     }
     delete it2;
     Seccion *seccion = o->getSeccion();

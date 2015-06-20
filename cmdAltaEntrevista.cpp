@@ -29,15 +29,15 @@ void cmdAltaEntrevista::ejecutarComando()
     try
     {
         //LISTAR OFERTAS LABORALES
-        IDictionary *dataOfertas = cOferta->ListarOfertas();
+        IDictionary* dataOfertasActivas = cOferta->MostrarOfertasActivas();
         cout << "Lista de Ofertas:\n";
-        IIterator *it = dataOfertas->getIterator();
+        IIterator *it = dataOfertasActivas->getIterator();
         while(it->hasCurrent())
         {
             DataOfertaLaboral* dol;
             if( (dol = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-                cout << "Numero de Expediente: " + dol->getNumExpediente() + ", Titulo:" + dol->getTitulo() + ", Descripcion:" + dol->getDescripcion() + "\n";
+                cout << "Numero de Expediente: " << dol->getNumExpediente() << ", Titulo:" << dol->getTitulo() << ", Descripcion:" << dol->getDescripcion() << "\n";
             } else
             {
                 //throw std::bad_cast("cmdAltaEntrevista -> El objeto no es de la clase DataOfertaLaboral.")
@@ -50,7 +50,7 @@ void cmdAltaEntrevista::ejecutarComando()
         //SELECCIONAR OFERTA LABORAL
         cout<< "Seleccione una Oferta Laboral indicando el numero de expediente\n";
         cin >> numExpe;
-        cOferta->SeleccionarOferta(numExpe);
+        cOferta->SeleccionarOferta(numExpe, dataOfertasActivas);
 
         //LISTAR ESTUDIANTES INSCRIPTOS EN ESA OFERTA LABORAL
         IDictionary *dataEstudiantes = cEstudiante->ListarEstudiantesInscriptosEnOferta();
@@ -61,7 +61,7 @@ void cmdAltaEntrevista::ejecutarComando()
             DataEstudiante* dEstudiante;
             if ((dEstudiante = dynamic_cast<DataEstudiante*> (it2->getCurrent())) != NULL)
             {
-                cout << "Cedula: " + dEstudiante->getCedula() + ", Apellido: " + dEstudiante->getApellido() + "\n";
+                cout << "Cedula: " << dEstudiante->getCedula() << ", Apellido: " << dEstudiante->getApellido() << "\n";
             } else
             {
                 throw "cmdAltaEntrevista -> El objeto no es de la clase DataEstudiante.";

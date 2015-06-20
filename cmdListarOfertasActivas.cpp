@@ -7,7 +7,8 @@
 #include "DataOfertaLaboral.h"
 #include "Rango.h"
 #include "Date.h"
-#include "IDictionary.h"
+#include "interfaces/IDictionary.h"
+#include "Fabrica.h"
 
 using namespace std;
 
@@ -33,7 +34,7 @@ void cmdListarOfertasActivas::ejecutarComando()
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-            //calculo la cantidad de inscriptos
+                //calculo la cantidad de inscriptos
                 IIterator *it2 = dOferta->getInscripciones()->getIterator();
                 cantInscriptos = 0;
                 while (it2->hasCurrent())
@@ -42,19 +43,20 @@ void cmdListarOfertasActivas::ejecutarComando()
                     it2->next();
                 }
                 delete it2;
-            //IMPRIMO LOS DATOS QUE INDICA ELCASO DE USO
-                cout << "---------------" + "\n" + "NOMBRE: " + dOferta->getTitulo() + "\n" + ", EMPRESA:" + dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() + "\n" + ", UBICACION:" + dOferta->getSeccion()->getSucursal()->getDireccion() + "\n" + ", CANTIDAD DE INSCRIPTOS: " + cantInscriptos + "\n" + ", RANGO SALARIAL:" + dOferta->getRangoSalarial()->getSueldoMinimo() + " - " + dOferta->getRangoSalarial()->getSueldoMaximo() + "\n" + ", CANTIDAD DE PLAZAS:" + dOferta->cantidadPuestosNecesarios() + "\n";
+
+                //IMPRIMO LOS DATOS QUE INDICA ELCASO DE USO
+                cout << "---------------" << "\n" << "NOMBRE: " << dOferta->getTitulo() << "\n" << ", EMPRESA:" << dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() << "\n" << ", UBICACION:" << dOferta->getSeccion()->getSucursal()->getDireccion() << "\n" << ", CANTIDAD DE INSCRIPTOS: " << cantInscriptos << "\n" << ", RANGO SALARIAL:" << dOferta->getRangoSalarial()->getSueldoMinimo() << " - " << dOferta->getRangoSalarial()->getSueldoMaximo() << "\n" << ", CANTIDAD DE PLAZAS:" << dOferta->getCantidadPuestosNecesarios() << "\n";
             } else
             {
-                throw std::invalid_argument("cmdListarOfertasActivas -> El objeto no es de la clase DataOfertaLaboral.");
+                throw "cmdListarOfertasActivas -> El objeto no es de la clase DataOfertaLaboral.";
             }
             it->next();
         }
         delete it;
     }
-    catch(const std::invalid_argument &e)
+    catch(exception &e)
     {
-        cout << e.what();
+        throw;
     }
 }
 

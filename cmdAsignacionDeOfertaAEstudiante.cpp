@@ -1,10 +1,12 @@
 #include <iostream>
 #include <string>
 #include "cmdAsignacionDeOfertaAEstudiante.h"
-#include "OfertaLaboralController.h"
+#include "IOfertaLaboralController.h"
+#include "IEstudianteController.h"
 #include "interfaces/ICollection.h"
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
+#include "Fabrica.h"
 
 using namespace std;
 
@@ -14,8 +16,9 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
     string numExpediente, cedula;
     Date *fechaEfectivizacion;
     int dd, mm, aa, sueldo;
-    OfertaLaboralController *ctrlOL = OfertaLaboralController::getInstance();
-    EstudianteController *ctrlE = EstudianteController::getInstance();
+    Fabrica* fab = Fabrica::getInstance();
+    IOfertaLaboralController *ctrlOL = fab->getIOfertaLaboralController();
+    IEstudianteController *ctrlE = fab->getIEstudianteController();
 
     try
     {
@@ -24,16 +27,16 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
 
         cout << "Lista de Ofertas Laborales Activas:\n";
 
-        IIterator *it = dataOfertas->getElemIterator();
+        IIterator *it = dataOfertasActivas->getIterator();
         while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
             if ( (dOferta = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-                cout << "NRO. EXPEDIENTE: " + dOferta->getNumExpediente() + ", TITULO:" + dOferta->getTitulo() + "\n";
+                cout << "NRO. EXPEDIENTE: " << dOferta->getNumExpediente() << ", TITULO:" << dOferta->getTitulo() << "\n";
             } else
             {
-                throw std::invalid_argument("cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase DataOfertaLaboral.");
+                throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase DataOfertaLaboral.";
             }
         }
         delete it;
@@ -49,17 +52,17 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
 
         cout << "Lista de Estudiantes inscriptos en la Oferta Laboral seleccionada:\n";
 
-        IIterator *itE = dataEstudiante->getElemIterator();
+        IIterator *itE = estudiantes->getIterator();
         while (itE->hasCurrent())
         {
-            dataEstudiante *dEstudiante;
-            if ( (dEstudiante = dynamic_cast<dataEstudiante*> (itE->getCurrent())) != NULL )
+            DataEstudiante *dEstudiante;
+            if ( (dEstudiante = dynamic_cast<DataEstudiante*> (itE->getCurrent())) != NULL )
             {
-                cout << "CEDULA: " + dEstudiante->getCedula() + ", NOMBRE:" + dEstudiante->getNombre() +
-                    ", APELLIDO:" + dEstudiante->getApellido() + ", EMAIL:" + dEstudiante->getEmail() + "\n";
+                cout << "CEDULA: " << dEstudiante->getCedula() << ", NOMBRE:" << dEstudiante->getNombre() <<
+                    ", APELLIDO:" << dEstudiante->getApellido() << ", EMAIL:" << dEstudiante->getEmail() << "\n";
             } else
             {
-                throw std::invalid_argument("cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase dataEstudiante.");
+                throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase dataEstudiante.";
             }
         }
         delete itE;
@@ -82,9 +85,9 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
         // alta asignacion del cargo
         ctrlOL->AltaAsignacionDelCargo(fechaEfectivizacion, sueldo);
     }
-    catch(const std::invalid_argument &e)
+    catch (const char* e)
     {
-        cout << e.what();
+        throw;
     }
 }
 
