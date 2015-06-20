@@ -25,7 +25,7 @@ class EstudianteController : public IEstudianteController
         IDictionary *ListarEstudiantesNoInscriptos();
         IDictionary *ListarEstudiantesInscriptosEnOferta();
         void SeleccionarEstudiante(string cedula, IDictionary *estudiantesValidos);
-        void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar);
+        void ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, ICollection *aprobacionesAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar);
         DataDatosEstudiante *ConsultarDatosEstudiante(string cedula);
         IDictionary *ListarEstudiantesRegistrados();
         Estudiante* getEstudiante();

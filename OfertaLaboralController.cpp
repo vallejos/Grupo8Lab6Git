@@ -71,7 +71,7 @@ IDictionary *OfertaLaboralController::MostrarOfertasActivas()
 {
 	try {
 	    ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
-	    ofertasActivas = mol->getDataOfertaLaboral();
+	    IDictionary *ofertasActivas = mol->getDataOfertaLaboral();
 	    if (ofertasActivas == NULL)
 	         throw "No existe una Oferta Activa";
         return ofertasActivas;

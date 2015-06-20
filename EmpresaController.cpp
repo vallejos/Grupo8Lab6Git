@@ -18,42 +18,7 @@ void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, s
         	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
         	IDictionary *codAsignaturas)
 {
-    ManejadorEstudiante* mEstudiante = ManejadorEstudiante::getInstance();
-    IDictionary* asignaturas = mEstudiante->getAsignaturas()
-    IDictionary* asignaturasAdd;
-    IIterator * it = codAsignaturas->getIterator();
-    while(it.hasCurrent())
-    {
-        if(asignaturas->member(it.current()))
-        {
-
-            Asignatura* asig;
-            if( (asig = dynamic_cast<Asignatura*> (this->asignaturas->find(it.current()))) != NULL )
-            {
-                asignaturasAdd->add(asig);
-            }
-            else
-            {
-                throw "EmpresaController -> El objeto no es de la clase Asignatura.";
-            }
-        }
-        else
-        {
-            Integer* codigo;
-            if( (codigo = dynamic_cast<Integer*> (it->getCurrent()))) != NULL )
-            {
-                throw "La Asignatura de codigo " + codigo->getValue() + " no existe en el Sistema.";
-            }
-            else
-            {
-                throw "EmpresaController -> El objeto no es de la clase Integer.";
-            }
-        }
-        it->next();
-    }
-    delete it;
-
-    this->seccion->addOferta(numExpediente,titulo,descripcion,cantidadHorasSemanales,rangoSalarial,fechaComienzo,fechaFin,cantidadPuestosNecesarios,asignaturasAdd);
+    this->seccion->addOferta(numExpediente,titulo,descripcion,cantidadHorasSemanales,rangoSalarial,fechaComienzo,fechaFin,cantidadPuestosNecesarios,codAsignaturas);
 }
 
 ICollection* EmpresaController::ListarEmpresas()

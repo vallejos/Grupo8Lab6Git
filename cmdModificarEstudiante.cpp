@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Fabrica.h"
+#include "Aprobacion.h"
 #include "IEstudianteController.h"
 #include "DataEstudiante.h"
 #inclide "IDictionary.h"
@@ -157,7 +158,7 @@ void cmdModificarEstudiante::ejecutarComando()
             email = 'NULL';
         }
 
-        IDictionary *allAsignaturas = cEstudiante->getAsignaturas(); //La va a crear el negro en IEstidianteCrontroller
+        IDictionary *allAsignaturas = cEstudiante->getAsignaturas();
 
         //Lectura de Asignaturas a Agregar
         bool fin = false;
@@ -169,8 +170,14 @@ void cmdModificarEstudiante::ejecutarComando()
                 fin = true;
             }else
             {
+                cout<< "Ingrese la Fecha de Aprobación de la Asignatura que desea Agregar al Estudiante (dd mm aaaa)\n";
+                cin >> dd >> mm >> aaaa;
+                Date *fechaAprob = new Date(dd,mm,aaaa);
+                cout<< "Ingrese la Nota de Aprobación de la Asignatura que desea Agregar al Estudiante\n";
+                cin >> notaAprob;
                 Asignatura *asignatura = allAsignaturas->find(codigoAsig);
-                IDictionary * asignaturasAAgregar = add(codigoAsig,asignatura);
+                Aprobacion *aprob = new Aprobacion(fechaAprob, notaAprob, asignatura);
+                ICollection * aprobacionesAAgregar = add(aprob);
             }
         }
 
@@ -222,7 +229,7 @@ void cmdModificarEstudiante::ejecutarComando()
             }
         }
 
-        cEstudiante->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, asignaturasAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
+        cEstudiante->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, aprobacionesAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
 
     }
     catch(const std::invalid_argument &e)

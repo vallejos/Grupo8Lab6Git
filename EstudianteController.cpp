@@ -81,7 +81,10 @@ IDictionary* EstudianteController::ListarEstudiantesRegistrados()
 {
     try {
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	return (me->getEstudiante);
+    	IDictionary *estudiantes = me->getEstudiante;
+    	if (estudiantes == NULL)
+            throw "No existe ningún estudiante dado de alta en el Sistema";
+    	return estudiantes;
     } catch (e) {
         throw e;
     }
@@ -92,11 +95,11 @@ Estudiante* EstudianteController::getEstudiante()
     return this->estudiante;
 }
 
-void EstudianteController::ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, IDictionary *asignaturasAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar)
+void EstudianteController::ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, ICollection *aprobacionesAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar)
 {
     try {
         ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-        me->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, asignaturasAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
+        me->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, aprobacionesAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
     } catch (e) {
         throw e;
     }
