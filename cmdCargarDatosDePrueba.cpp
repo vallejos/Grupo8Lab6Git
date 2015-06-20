@@ -55,13 +55,13 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 
 	Sucursal *su1, *su2, *su3, *su4, *su5, *su6, *su7;
 
-	su1 = new Sucursal("Casa central","24598765","Ciudad Vieja");
-	su2 = new Sucursal("Sucursal comercial","25225323","Malvin");
-	su3 = new Sucursal("Sucursal San Carlos","42668350","San Carlos");
-	su4 = new Sucursal("Sede Montevideo","25468932","Buceo");
-	su5 = new Sucursal("Sede Ciudad de la Costa","43764232","Solymar");
-	su6 = new Sucursal("Oficina central","25495878","Centro");
-	su7 = new Sucursal("Academia","24594565","Parque Rodo");
+	su1 = new Sucursal("Casa central","Ciudad Vieja","24598765", NULL, e1);
+	su2 = new Sucursal("Sucursal comercial","Malvin","25225323", NULL, e2);
+	su3 = new Sucursal("Sucursal San Carlos","San Carlos","42668350", NULL, e2);
+	su4 = new Sucursal("Sede Montevideo","Buceo","25468932", NULL, e3);
+	su5 = new Sucursal("Sede Ciudad de la Costa","Solymar","43764232", NULL, e3);
+	su6 = new Sucursal("Oficina central","Centro","25495878", NULL, e4);
+	su7 = new Sucursal("Academia","Parque Rodo","24594565", NULL, e5);
 
 	sue1->add(new String("Casa central"), su1);
 	sue2->add(new String("Sucursal comercial"), su2);
