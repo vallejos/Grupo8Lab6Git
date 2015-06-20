@@ -7,7 +7,7 @@
 #include "DataDatosEstudiante.h"
 #include "Estudiante.h"
 #include "IEstudianteController.h"
-#include "IDictionary.h"
+#include "interfaces/IDictionary.h"
 
 using namespace std;
 

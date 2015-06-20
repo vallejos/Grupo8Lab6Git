@@ -37,7 +37,8 @@ IDictionary* EstudianteController::ListarEstudiantesInscriptosEnOferta()
         OfertaLaboralController *olc = OfertaLaboralController::getInstance();
         string numExpe = olc->getOfertaLaboral()->getNumExpediente();
     	ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    	return (me->getEstInscriptosEnOferta(numExpe));
+    	IDictionary* studentsInsc = me->getEstInscriptosEnOferta(numExpe);
+    	return studentsInsc;
     } catch (e) {
         throw e;
     }
@@ -48,7 +49,7 @@ void EstudianteController::SeleccionarEstudiante(string cedula, IDictionary *est
     try {
         ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
         String* ci = new String(cedula);
-        if(this->estudiantesValidos->member(ci))
+        if(estudiantesValidos->member(ci))
         {
             this->estudiante = me->SeleccionarEstudiante(cedula);
         }
@@ -108,25 +109,29 @@ void EstudianteController::ModificarEstudiante(string cedula, string nombre, str
 IDictionary* EstudianteController::getAsignaturas()
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    return me->getAsignaturas();
+    IDictionary* asigs = me->getAsignaturas();
+    return asigs;
 }
 
 IDictionary* EstudianteController::getCarreras()
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    return me->getCarreras();
+    IDictionary* carrs = me->getCarreras();
+    return carrs;
 }
 
 IDictionary* EstudianteController::getEstudiantes()
 {
     ManejadorEstudiante* me = ManejadorEstudiante::getInstance();
-    return me->getEstudiantes();
+    IDictionary students = me->getEstudiantes();
+    return students;
 }
 
 bool EstudianteController::EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta)
 {
     ManejadorEstudiante* me = ManejadorEstudiante::getInstance();
-    return me->EstudianteCumpleRequisitos(student, asignaturasOferta);
+    bool cumple = me->EstudianteCumpleRequisitos(student, asignaturasOferta);
+    return cumple;
 }
 
 void EstudianteController::destroyEstudianteController()
