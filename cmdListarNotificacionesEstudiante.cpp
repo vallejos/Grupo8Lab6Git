@@ -10,7 +10,6 @@
 #include "DataEstudiante.h"
 #include "Estudiante.h"
 
-
 using namespace std;
 
 cmdListarNotificacionesEstudiante::cmdListarNotificacionesEstudiante()
@@ -18,7 +17,6 @@ cmdListarNotificacionesEstudiante::cmdListarNotificacionesEstudiante()
     //ctor
 }
 
-//LA IDEA :)
 void cmdListarNotificacionesEstudiante::ejecutarComando()
 {
     Fabrica* fab = Fabrica::getInstance();
@@ -50,21 +48,18 @@ void cmdListarNotificacionesEstudiante::ejecutarComando()
         cEstudiante->SeleccionarEstudiante(cedEstudiante, dataEstudiantes);
 
         //LISTAR NOTIFICACIONES DEL ESTUDIANTE SELECCIONADO
-        ICollection* notificaciones =
-//DUDAS:
-//como obtengo las notificaciones desde la Interfaz???  getNotificaciones();
-//notificacion no tiene que ser una clase? si es así que tiene como atrituros?
-//se necesita un DataNotificacion?
+        Estudiante* estRecordado =cEstudiante->getEstudiante();
+        ICollection* notificaciones= estRecordado->getNotificaciones();
         IIterator *it = notificaciones->getIterator();
         while(it2->hasCurrent())
         {
-//            Notificaciones* notif;
-//            if ((notif = dynamic_cast<Notificacion*> (it->getCurrent())) != NULL)
+            String* notif;
+            if ((notif = dynamic_cast<String*> (it->getCurrent())) != NULL)
             {
-                cout << //Imprimo los datos de la notificacion
+                cout << (notif->getValue());
             } else
             {
-                throw "cmdListarNotificacionesEstudiante -> El objeto no es de la clase ???????????????????????.";
+                throw "cmdListarNotificacionesEstudiante -> El objeto no es de la clase String.";
             }
             it2->next();
         }
