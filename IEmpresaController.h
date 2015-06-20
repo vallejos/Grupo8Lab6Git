@@ -4,6 +4,7 @@
 #include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
 #include "collections/List.h"
+#include "EstrategiaAsignaturas.h"
 #include "Empresa.h"
 #include "Sucursal.h"
 #include "Seccion.h"

@@ -7,6 +7,7 @@ class IObserver: public ICollectible
 {
 public:
     //Estudiante debe implementar enviarMail
+    IObserver();
     virtual void enviarMail() = 0;
     virtual ~IObserver();
 };

@@ -7,7 +7,6 @@
 #include "String.h"
 #include "DataSeccion.h"
 #include "DataEmpresa.h"
-#include "OfertaLaboral.h"
 #include "IObserver.h"
 #include "Encargado.h"
 #include "interfaces/ICollection.h"
@@ -17,6 +16,7 @@
 using namespace std;
 
 class Sucursal;
+class OfertaLaboral;
 
 class Seccion: public ICollectible
 {
@@ -49,5 +49,6 @@ class Seccion: public ICollectible
 };
 
 #include "Sucursal.h"
+#include "OfertaLaboral.h"
 
 #endif // SECCION_H

@@ -1,6 +1,7 @@
 #ifndef ESTRATEGIAASIGNATURAS_H
 #define ESTRATEGIAASIGNATURAS_H
 
+#include "interfaces/IDictionary.h"
 
 class EstrategiaAsignaturas
 {

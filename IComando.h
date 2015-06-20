@@ -5,6 +5,8 @@
 class IComando
 {
     public:
+        IComando();
+        virtual ~IComando();
         virtual void ejecutarComando() = 0;
 };
 

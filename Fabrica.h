@@ -5,6 +5,9 @@
 #include "IOfertaLaboralController.h"
 #include "IEmpresaController.h"
 #include "IEstudianteController.h"
+#include "OfertaLaboralController.h"
+#include "EmpresaController.h"
+#include "EstudianteController.h"
 
 using namespace std;
 
