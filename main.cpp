@@ -27,8 +27,10 @@ void imprimirMenu() {
 	cout << "7. Listar Ofertas Activas \n";
 	cout << "8. Modificar Estudiante \n";
 	cout << "9. Modificar Llamado \n";
+	cout << "10. Listar Notificaciones de Estudiante \n";
 	cout << "-";
 	cout << "C. Cargar datos de prueba \n";
+	cout << "H. Establecer hora del sistema \n";
 	cout << "S. Salir \n";
 	cout << "-";
 	cout << "Elija una opcion:\n";
@@ -112,12 +114,27 @@ int main() {
 					cmd->ejecutarComando('cmdModificarLlamado');
 					break;
 
+                //------------------------
+				// LISTAR NOTIFICACIONES
+				//------------------------
+				case '10':
+					cmd->ejecutarComando('cmdListarNotificacionesEstudiante');
+					break;
+
 				//------------------------
 				// CARGAR DATOS DE PRUEBA
 				//------------------------
 				case 'C':
 					// TODO: poner comandos para carga de pruebas
 					cmd->ejecutarComando('cmdCargarDatosDePrueba');
+					break;
+
+				//------------------------
+				// ESTABLECER HORA SISTEMA
+				//------------------------
+				case 'H':
+					// TODO: poner comandos para carga de pruebas
+					cmd->ejecutarComando('cmdEstablecerHoraSistema');
 					break;
 
 				//------------------------

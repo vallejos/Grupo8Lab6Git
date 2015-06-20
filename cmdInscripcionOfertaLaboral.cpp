@@ -79,13 +79,9 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
 
         cEstudiante->SeleccionarEstudiante(cedula,dataEstudiante);
 
-        cout<< "Ingrese la Fecha de Inscripción\n";
-        cout<< "Ingrese el Día\n";
-        cin >> dia;
-        cout<< "Ingrese el Mes\n";
-        cin >> mes;
-        cout<< "Ingrese el Año\n";
-        cin >> anio;
+        cout<< "Ingrese la Fecha de Inscripción (dd mm aaaa)\n";
+        cin >> dia >> mes >> anio;
+
         Date *fechaInsc = new Date(dia,mes,anio);
         cOfertaLab->Inscribir(fechaInsc);
 
