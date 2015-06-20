@@ -1,14 +1,14 @@
 #include "cmdInscripcionOfertaLaboral.h"
 #include <iostream>
 #include <string>
-#incluce "Date.h"
-#incluce "Fabrica.h"
+#include "Date.h"
+#include "Fabrica.h"
 #include "IOfertaLaboralController.h"
 #include "IEstudianteController.h"
 #include "DataOfertaLaboral.h"
 #include "DataEstudiante.h"
 #include "interfaces/ICollection.h"
-#include "IDictionary.h"
+#include "interfaces/IDictionary.h"
 
 cmdInscripcionOfertaLaboral::cmdInscripcionOfertaLaboral()
 {
@@ -18,6 +18,7 @@ cmdInscripcionOfertaLaboral::cmdInscripcionOfertaLaboral()
 void cmdInscripcionOfertaLaboral::ejecutarComando()
 {
     string numExpediente, cedula;
+    int dia, mes, anio;
     Fabrica* fab = Fabrica::getInstance();
     IOfertaLaboralController *cOfertaLab = fab->getIOfertaLaboralController();
 
@@ -34,12 +35,12 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
             DataOfertaLaboral *dOfertaLab;// Esto cambia si no traemos dataOfertas
             if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-                cout << "Número de Expediente: " + dOfertaLab->getNumExpediente() + ", Título:" + dOfertaLab->getTitulo() + "\n";
+                cout << "Número de Expediente: " << dOfertaLab->getNumExpediente() << ", Título:" << dOfertaLab->getTitulo() << "\n";
                 it->next();
 
             } else
             {
-                throw std::invalid_argument("InscripcionOfertaLaboral -> El objeto no es de la clase DataOfertaLaboral.");
+                throw "InscripcionOfertaLaboral -> El objeto no es de la clase DataOfertaLaboral.";
             }
 
         }
@@ -52,7 +53,8 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
 
         IEstudianteController *cEstudiante = fab->getIEstudianteController();
         //Debe ser diccionario
-        IDictionary* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
+//        IDictionary* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
+        IDictionary* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos();
 
         cout << "Lista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
 
@@ -62,12 +64,12 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2->getCurrent())) != NULL )
             {
-                cout << "Cédula: " + dEstudiante->getCedula() + "Nombre: " + dEstudiante->getNombre() + "Apellido: " + dEstudiante->getApellido() + "\n";
+                cout << "Cédula: " << dEstudiante->getCedula() << "Nombre: " << dEstudiante->getNombre() << "Apellido: " << dEstudiante->getApellido() << "\n";
                 it2->next();
 
             } else
             {
-                throw std::invalid_argument("InscripcionOfertaLaboral -> El objeto no es de la clase DataEstudiante.");
+                throw "InscripcionOfertaLaboral -> El objeto no es de la clase DataEstudiante.";
             }
         }
         delete it2;
@@ -79,13 +81,14 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
 
         cout<< "Ingrese la Fecha de Inscripción (dd mm aaaa)\n";
         cin >> dia >> mes >> anio;
+
         Date *fechaInsc = new Date(dia,mes,anio);
         cOfertaLab->Inscribir(fechaInsc);
 
     }
-    catch(const std::invalid_argument &e)
+    catch(exception &e)
     {
-    	throw std::invalid_argument(e.what());
+        throw;
     }
 
 }

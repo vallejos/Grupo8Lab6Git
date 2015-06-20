@@ -12,6 +12,7 @@
 #include "Integer.h"
 #include "ManejadorEstudiante.h"
 #include "String.h"
+#include "collections/OrderedDictionary.h"
 
 using namespace std;
 
@@ -26,7 +27,6 @@ void cmdAltaOfertaLaboral::ejecutarComando()
     int cantHorasSema, cantPuestos, salMinimo, salMaximo, ddCom, ddFin, mmCom, mmFin, aaaaCom, aaaaFin, codAsig;
     Fabrica* fab = Fabrica::getInstance();
     IEmpresaController* cEmpresa = fab->getIEmpresaController();
-//    IEstudianteController* cEstudiante = fab->getIEstudianteController();
 
     try
     {
@@ -39,7 +39,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             DataEmpresa *dEmpresa;
             if( (dEmpresa = dynamic_cast<DataEmpresa*> (it->getCurrent())) != NULL )
             {
-                cout << "Nombre: " + dEmpresa->getNombre() + ", RUT:" + dEmpresa->getRut() + "\n";
+                cout << "Nombre: " << dEmpresa->getNombre() << ", RUT:" << dEmpresa->getRut() << "\n";
             }
             else
             {
@@ -62,7 +62,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             DataSucursal *dSucursal;
             if( (dSucursal = dynamic_cast<DataSucursal*> (it2->getCurrent())) != NULL )
             {
-                cout << "Nombre: " + dSucursal->getNombre() + "\n";
+                cout << "Nombre: " << dSucursal->getNombre() << "\n";
             } else
             {
                 throw "AltaOfertaLaboral -> El objeto no es de la clase DataSucursal.";
@@ -83,7 +83,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             DataSeccion *dSeccion;
             if( (dSeccion = dynamic_cast<DataSeccion*> (it3->getCurrent())) != NULL )
             {
-                cout << "Nombre: " + dSeccion->getNombre() + "\n";
+                cout << "Nombre: " << dSeccion->getNombre() << "\n";
             } else
             {
                 throw "AltaOfertaLaboral -> El objeto no es de la clase DataSeccion.";
@@ -120,6 +120,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         cout<< "\nCantidad de puestos necesarios: ";
         cin >> cantPuestos;
 
+/*
         // doy de alta la oferta
         cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, NULL);
 
@@ -132,14 +133,18 @@ void cmdAltaOfertaLaboral::ejecutarComando()
 
         // obtengo el dictionary de asignaturas de esa oferta
         IDictionary *asignaturasEnOferta = ol->getAsignaturas();
+*/
 
+        IDictionary *asignaturasEnOferta = new OrderedDictionary();
         //Solicitar Asignaturas
         cout<< "\nAsignaturas:";
         bool desea = true;
         bool strategyOK = false;
 
-        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-        IDictionary *asignaturasIngresadas = me->getAsignaturas();
+
+//        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+        IEstudianteController* cEstudiante = fab->getIEstudianteController();
+        IDictionary *asignaturasIngresadas = cEstudiante->getAsignaturas();
 
         while (!strategyOK)
         {
@@ -153,7 +158,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
                     DataAsignatura *dAsignatura;
                     if( (dAsignatura = dynamic_cast<DataAsignatura*> (it->getCurrent())) != NULL )
                     {
-                        cout << "CODIGO: " + std::to_string(dAsignatura->getCodigo()) + ", NOMBRE:" + dAsignatura->getNombre() + "\n";
+                        cout << "CODIGO: " << dAsignatura->getCodigo() << ", NOMBRE:" << dAsignatura->getNombre() << "\n";
                     }
                     else
                     {
@@ -172,7 +177,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
                 if (asignaturasIngresadas->member(codigo))
                 {
                     // la agrego
-                    asignaturasEnOferta->add(codigo, asignaturasEnOferta);
+                    asignaturasEnOferta->add(codigo, asignaturasIngresadas->find(codigo));
                 } else {
                     throw "Codigo de Asignatura incorrecto.";
                 }
@@ -192,6 +197,8 @@ void cmdAltaOfertaLaboral::ejecutarComando()
 
 
         }
+
+        cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasEnOferta);
 
     }
     catch (const char* e)

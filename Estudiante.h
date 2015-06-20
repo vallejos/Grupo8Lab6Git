@@ -10,20 +10,19 @@
 #include "Date.h"
 #include "DataEstudiante.h"
 #include "DataDatosEstudiante.h"
-#include "String.h"
-#include "Integer.h"
 
 class Inscripcion;
 class Entrevista;
 
 //class Estudiante : public ICollectible, public IObserver
 // IObserver ya es ICollectible
-class Estudiante : public IObserver
+//class Estudiante : public IObserver
+class Estudiante : public ICollectible
 {
     public:
 
         Estudiante();
-        Estudiante(string cedula, string nombre, string apellido, string telefono, Date* fechaNacimiento, Integer creditos,
+        Estudiante(string cedula, string nombre, string apellido, string telefono, Date* fechaNacimiento, int creditos,
                     string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones, ICollection* entrevistas);
         Estudiante(const Estudiante &e);
 
@@ -33,7 +32,7 @@ class Estudiante : public IObserver
         string getApellido();
         string getTelefono();
         Date* getFechaNacimiento();
-        Integer getCreditos();
+        int getCreditos();
         string getEmail();
         IDictionary* getCarreras();
         ICollection* getAprobadas();
@@ -47,7 +46,7 @@ class Estudiante : public IObserver
         static void setApellido(string apellido);
         static void setTelefono(string telefono);
         static void setFechaNacimiento(Date* fechaNacimiento);
-        static void setCreditos(Integer creditos);
+        static void setCreditos(int creditos);
         static void setEmail(string email);
         static void setInscripciones(ICollection* inscripciones);
         static void setEntrevistas(ICollection* entrevistas);
@@ -71,7 +70,7 @@ class Estudiante : public IObserver
         string apellido;
         string telefono;
         Date *fechaNacimiento;
-        Integer creditos;
+        int creditos;
         string email;
         IDictionary *carreras;
         ICollection *aprobadas;

@@ -49,6 +49,12 @@ IComando* FabricaComando::obtenerComando(string cmd)
             case 'cmdCargarDatosDePrueba':
                 return new cmdCargarDatosDePrueba();
                 break;
+            case 'cmdListarNotificacionesEstudiante':
+                return new cmdListarNotificacionesEstudiante();
+                break;
+            case 'cmdEstablecerHoraSistema':
+                return new cmdEstablecerHoraSistema();
+                break;
     }
 }
 

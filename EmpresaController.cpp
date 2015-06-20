@@ -23,7 +23,8 @@ void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, s
 
 ICollection* EmpresaController::ListarEmpresas()
 {
-	return NULL;
+    ManejadorEmpresa *me = ManejadorEmpresa::getInstance();
+    return (me->getDataEmpresas());
 }
 
 ICollection *EmpresaController::ListarSucursales()
@@ -33,7 +34,7 @@ ICollection *EmpresaController::ListarSucursales()
 
 ICollection* EmpresaController::ListarSecciones()
 {
-	return NULL;
+	return this->sucursal->getDataSecciones();
 }
 
 Empresa* EmpresaController::getEmpresa()
