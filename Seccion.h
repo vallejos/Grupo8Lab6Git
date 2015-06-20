@@ -4,17 +4,19 @@
 #include <string>
 #include "Rango.h"
 #include "Date.h"
+#include "String.h"
 #include "DataSeccion.h"
 #include "DataEmpresa.h"
 #include "OfertaLaboral.h"
 #include "IObserver.h"
-#include "Sucursal.h"
 #include "Encargado.h"
 #include "interfaces/ICollection.h"
 #include "interfaces/ICollectible.h"
 #include "interfaces/IDictionary.h"
 
 using namespace std;
+
+class Sucursal;
 
 class Seccion: public ICollectible
 {
@@ -45,5 +47,7 @@ class Seccion: public ICollectible
         ICollection * observers;//Pseudoatributo para representar la asociación con una coleccion de IObserver
         IDictionary *ofertasLaborales; //Pseudoatributo para representar la asociación con un diccionario de ofertas laborales
 };
+
+#include "Sucursal.h"
 
 #endif // SECCION_H

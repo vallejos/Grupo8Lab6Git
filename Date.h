@@ -7,7 +7,7 @@ class Date
 {
     public:
 		Date();
-        Date(int dia, int mes, int anio);
+        Date(int dd, int mm, int aaaa);
         Date(const Date &d);
         ~Date();
         int getDia();
@@ -15,9 +15,9 @@ class Date
         int getAnio();
 
     private:
-        int dia;
-        int mes;
-        int anio;
+        int dd;
+        int mm;
+        int aaaa;
 };
 
 #endif // DATE_H

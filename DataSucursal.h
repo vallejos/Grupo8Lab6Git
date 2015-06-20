@@ -3,6 +3,7 @@
 
 #include <string>
 #include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ class DataSucursal
 {
     public:
 		DataSucursal();
-        DataSucursal(string nombre, string direccion, string telefono, ICollection *secciones);
+        DataSucursal(string nombre, string direccion, string telefono, IDictionary *secciones);
         DataSucursal(const DataSucursal &s);
         ~DataSucursal();
         string getNombre();

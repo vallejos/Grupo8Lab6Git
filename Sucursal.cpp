@@ -9,7 +9,7 @@ Sucursal::Sucursal()
     this->empresa = NULL;
 }
 
-Sucursal::Sucursal(string nombre, string direccion, string telefono, ICollection* secciones, Empresa* empresa)
+Sucursal::Sucursal(string nombre, string direccion, string telefono, IDictionary* secciones, Empresa* empresa)
 {
     this->nombre = nombre;
     this->direccion = direccion;
@@ -20,10 +20,10 @@ Sucursal::Sucursal(string nombre, string direccion, string telefono, ICollection
 
 DataSucursal *Sucursal::getDataSucursal()
 {
-    return new DataSucursal(this->nombre, this->direccion, this->telefono, this->getDataSecciones(), this->empresa->getDataEmpresa());
+    return new DataSucursal(this->nombre, this->direccion, this->telefono, this->getDataSecciones());
 }
 
-ICollection *Sucursal::getDataSecciones()
+IDictionary *Sucursal::getDataSecciones()
 {
     List* result = new List();
     IIterator * it = this->secciones->getIterator();
@@ -97,7 +97,7 @@ void Sucursal::setTelefono(string telefono)
     this->telefono = telefono;
 }
 
-void Sucursal::setSecciones(ICollection* secciones)
+void Sucursal::setSecciones(IDictionary* secciones)
 {
     this->secciones = secciones;
 }
