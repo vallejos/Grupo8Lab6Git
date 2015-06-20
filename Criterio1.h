@@ -3,8 +3,9 @@
 
 #include "DataAsignatura.h"
 #include "interfaces/ICollection.h"
+#include "EstrategiaAsignaturas.h"
 
-class Criterio1
+class Criterio1: public EstrategiaAsignaturas
 {
     public:
         Criterio1();
