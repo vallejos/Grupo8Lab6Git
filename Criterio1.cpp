@@ -1,5 +1,8 @@
 #include "Criterio1.h"
 #include "interfaces/IDictionary.h"
+#include "interfaces/IIterator.h"
+#include "ManejadorEstudiante.h"
+#include "DataEstudiante.h"
 
 // constructor
 Criterio1::Criterio1()
@@ -24,14 +27,22 @@ IDictionary *Criterio1::devolverListaAsignatura(IDictionary *asignaturas)
 
     bool found = false;
 
-    IDictionary result = NULL;
+    IDictionary *result;
     IIterator * it = e->getIterator();
+    DataEstudiante *da;
+    ICollectible *col;
     while(it->hasCurrent() && !found)
     {
-        if(it->getCurrent()->getAprobadas() != NULL)
+        col = it->getCurrent();
+        if ((da = dynamic_cast<DataEstudiante*> (col)) != NULL)
         {
-            result = it->getCurrent()->getAprobadas();
-            found = true;
+            if(da->getAprobadas() != NULL)
+            {
+                result = da->getAprobadas();
+                found = true;
+            }
+        } else {
+            throw "Criterio1: el parametro no es del tipo DataAprobadas";
         }
         it->next();
     }
