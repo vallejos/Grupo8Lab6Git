@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
 #include "cmdModificarLlamado.h"
-#include "OfertaLaboralController.h"
+#include "IOfertaLaboralController.h"
 #include "interfaces/ICollection.h"
 #include "DataOfertaLaboral.h"
-#include "dataEstudiante.h"
-#include "IDictionary.h"
+#include "DataEstudiante.h"
+#include "interfaces/IDictionary.h"
+#include "Fabrica.h"
+#include "String.h"
 
 using namespace std;
 
@@ -14,8 +16,10 @@ void cmdModificarLlamado::ejecutarComando()
 {
     string  numExpediente, nomSeccion, nomSucursal, titulo, descripcion;
     Date *fechaEfectivizacion;
-    int ddi, mmi, aaaai, ddf, mmf, aaaf, sueldo, cantHorasSemanales, salarioMinimo, salarioMaximo, cantidadPuestos;
-    OfertaLaboralController *ctrlOL = OfertaLaboralController::getInstance();
+    int ddi, mmi, aaaai, ddf, mmf, aaaaf, sueldo, cantHorasSemanales, salarioMinimo, salarioMaximo, cantidadPuestos;
+
+    Fabrica* fab = Fabrica::getInstance();
+    IOfertaLaboralController *ctrlOL = fab->getIOfertaLaboralController();
 
     try
     {
@@ -24,7 +28,7 @@ void cmdModificarLlamado::ejecutarComando()
 
         cout << "Lista de Ofertas Laborales Activas:\n";
 
-        IIterator *it = dataOfertas->getIterator();
+        IIterator *it = dataOfertasActivas->getIterator();
         while (it->hasCurrent())
         {
             DataOfertaLaboral *dOferta;
@@ -74,12 +78,73 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> cantidadPuestos;
 
         //Solicitar Asignaturas
+/*
+        IDictionary *nuevasAsignaturasEnOferta = new OrderedDictionary();
+        //Solicitar Asignaturas
+        cout<< "\nAsignaturas:";
+        bool continuar = true;
+
+        IEstudianteController* cEstudiante = fab->getIEstudianteController();
+        IDictionary *asignaturasIngresadas = cEstudiante->getAsignaturas();
+
+        while (continuar)
+        {
+            // muestro asignaturas
+            cout << "Lista de Asignaturas:\n";
+            IIterator * it = asignaturasIngresadas->getIterator();
+            while(it->hasCurrent())
+            {
+                DataAsignatura *dAsignatura;
+                if( (dAsignatura = dynamic_cast<DataAsignatura*> (it->getCurrent())) != NULL )
+                {
+                    cout << "CODIGO: " << dAsignatura->getCodigo() << ", NOMBRE:" << dAsignatura->getNombre() << "\n";
+                }
+                else
+                {
+                    throw "AltaOfertaLaboral -> El objeto no es de la clase DataAsignatura.";
+                }
+                it->next();
+            }
+            delete it;
+
+            // pido asignatura
+            cout<< "\n  Ingrese el codigo: ";
+            cin >> codAsig;
+            Integer* codigo = new Integer(codAsig);
+
+            // busco la asignatura
+            if (asignaturasIngresadas->member(codigo))
+            {
+                // la agrego
+                asignaturasEnOferta->add(codigo, asignaturasIngresadas->find(codigo));
+            } else {
+                throw "Codigo de Asignatura incorrecto.";
+            }
+
+            // seguir ingresando
+            cout<< "\n  Desea ingresar otra asignatura?(s/n): ";
+            cin >> respuesta;
+            if(respuesta == "n")
+            {
+                desea = false;
+            }
+        }
+*/
+
+        // en caso de no sustituir
+        String *expe = new String(numExpediente.c_str());
+        DataOfertaLaboral *dataAsignatura = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
+        IDictionary *asignaturas = dataAsignatura->getAsignaturas();
+        ICollection *inscripciones = dataAsignatura->getInscripciones();
+        ICollection *entrevistas = dataAsignatura->getEntrevistas();
+        Seccion *seccion = dataAsignatura->getSeccion();
 
         // creo el nuevo Data Oferta Laboral
-        DataOfertaLaboral *nuevosDatos = new OfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, rangoSalarial, fechaIni, fechaFin, cantidadPuestos, "AGREGAR ASIGNATURAS");
-
+        DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 
+            rangoSalarial, fechaIni, fechaFin, cantidadPuestos, asignaturas, seccion, inscripciones, entrevistas);
+//IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
         // alta asignacion del cargo
-        ctrlOL->ModificarOferta(numExpediente, DataOfertaLaboral *nuevosDatos);
+        ctrlOL->ModificarOferta(numExpediente, nuevosDatos);
     }
     catch(exception &e)
     {

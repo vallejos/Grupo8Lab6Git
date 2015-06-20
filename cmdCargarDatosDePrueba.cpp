@@ -16,6 +16,8 @@
 #include "Seccion.h"
 #include "Encargado.h"
 #include "OfertaLaboral.h"
+#include "Integer.h"
+#include "String.h"
 
 using namespace std;
 
