@@ -3,52 +3,50 @@
 
 OfertaLaboralController* OfertaLaboralController::instance = NULL;
 
+OfertaLaboralController::OfertaLaboralController()
+{
 // constructor
-OfertaLaboralController::OfertaLaboralController() {
-
 }
 
+OfertaLaboralController::~OfertaLaboralController()
+{
 // destructor
-OfertaLaboralController::~OfertaLaboralController() {
-
 }
 
-OfertaLaboralController *OfertaLaboralController::getInstance() {
-	if (instance == NULL) {
+OfertaLaboralController *OfertaLaboralController::getInstance()
+{
+	if (instance == NULL)
 		instance = new OfertaLaboralController();
-	}
 	return instance;
 }
 
-IDictionary *OfertaLaboralController::ListarOfertas() {
+IDictionary *OfertaLaboralController::ListarOfertas()
+{
     ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
     return mo->getAllDataOfertaLaboral();
 }
 
-void OfertaLaboralController::SeleccionarOferta(string numExpediente, IDictionary *ofertasLabVigentes) {
-
+void OfertaLaboralController::SeleccionarOferta(string numExpediente, IDictionary *ofertasLabVigentes)
+{
     ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
     String* numExp = new String(numExpediente.c_str());
-    if(ofertasLabVigentes->member(numExp))
-    {
-        this->oferta = mo->SeleccionarOferta(numExpediente);
-    }
-    else
-    {
-        //Significa que la oferta no es válida en caso que el usuario tuviera que elegir una oferta válida
-        //ó no existe en el sistema en caso que tuviera que elegir una oferta del sistema
+    if(! (ofertasLabVigentes->member(numExp)))
         throw "El Número de Expediente" + numExpediente + " no es válido.";
-    }
+    this->oferta = mo->SeleccionarOferta(numExpediente);
 }
 
-void OfertaLaboralController::Inscribir(Date *fechaInscripcion) {
+void OfertaLaboralController::Inscribir(Date *fechaInscripcion)
+{
     if (this->oferta == NULL)
         throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
     this->oferta->Inscribir(fechaInscripcion);
     //BORRAR MEMORIA ?? oferta y estudiante en memoria
 }
 
-void OfertaLaboralController::Entrevistar(Date *fechaEntrevista) {
+void OfertaLaboralController::Entrevistar(Date *fechaEntrevista)
+{
+    if (this->oferta == NULL)
+        throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
     this->oferta->Entrevistar(fechaEntrevista);
     //BORRAR MEMORIA ?? oferta y estudiante en memoria
 }
@@ -64,11 +62,13 @@ IDictionary *OfertaLaboralController::MostrarOfertasActivas()
 
 OfertaLaboral* OfertaLaboralController::getOfertaLaboral()
 {
+    if (this->oferta == NULL)
+        throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
     return this->oferta;
 }
 
 void OfertaLaboralController::ModificarOferta(string numExpediente, string titulo, string descripcion, int cantHorasSemanales, Rango *rangoSalarial, Date *fechaIni,
-            Date *fechaFin, int cantidadPuestos, IDictionary *asignaturas, Seccion *seccion, ICollection *inscripciones, 
+            Date *fechaFin, int cantidadPuestos, IDictionary *asignaturas, Seccion *seccion, ICollection *inscripciones,
             ICollection *entrevistas)
 {
     ManejadorOfertaLaboral *mol = ManejadorOfertaLaboral::getInstance();
@@ -79,11 +79,16 @@ void OfertaLaboralController::ModificarOferta(string numExpediente, string titul
 void OfertaLaboralController::AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)
 {
     //ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
+    if (this->oferta == NULL)
+        throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
     this->oferta->AltaAsignacionCargo(fechaEfectivizacion, sueldo);
     // BORRAR MEMORIA??
 }
 
-void OfertaLaboralController::DarBajaLlamado() {
+void OfertaLaboralController::DarBajaLlamado()
+{
+    if (this->oferta == NULL)
+        throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
     ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
     mo->DarDeBajaLlamado(this->oferta);
 }

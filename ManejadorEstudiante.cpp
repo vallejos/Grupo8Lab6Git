@@ -222,14 +222,9 @@ Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
     //Va a buscar en la coleccion de estudiantes del manejador,
     //y va a buscar el estudiante con cedula "cedula".
     String* ci = new String(cedula.c_str());
-    if(this->estudiantes->member(ci))
-    {
-        return dynamic_cast<Estudiante*> (this->estudiantes->find(ci));
-    }
-    else
-    {
+    if(! (this->estudiantes->member(ci)))
         throw "El Estudiante con C.I. " + cedula + " no existe en el Sistema.";
-    }
+    return dynamic_cast<Estudiante*> (this->estudiantes->find(ci));
 }
 
 IDictionary *ManejadorEstudiante::getEstudiante()
@@ -250,16 +245,22 @@ IDictionary *ManejadorEstudiante::getEstudiante()
 
 IDictionary *ManejadorEstudiante::getEstudiantes()
 {
+    if (this->estudiantes == NULL)
+        throw "No hay ningun estudiante dado de alta en el Sistema";
     return this->estudiantes;
 }
 
 IDictionary* ManejadorEstudiante::getAsignaturas()
 {
+    if (this->asignaturas == NULL)
+        throw "No hay ninguna asignatura dado de alta en el Sistema";
     return this->asignaturas;
 }
 
 IDictionary* ManejadorEstudiante::getCarreras()
 {
+    if (this->carreras== NULL)
+        throw "No hay ninguna carrera dada de alta en el Sistema";
     return this->carreras;
 }
 

@@ -167,8 +167,9 @@ int main() {
 					salir = true;
 					break;
 			}
-		} catch (exception &e) {
-			cout << e.what();
+		} catch (char const *e) {
+			cout << e;
+			cout << "\n";
 		}
 	}
 
