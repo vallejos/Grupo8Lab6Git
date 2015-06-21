@@ -224,13 +224,13 @@ bool OfertaLaboral::EsActiva()
     struct tm tm;
     time_t t1, t2, t3;
 
-    strptime(shoy, "%d\\%m\\%Y", &tm);
+    strptime(shoy.c_str(), "%d\\%m\\%Y", &tm);
     t1 = mktime(&tm);//Fecha equivalente a hoy->now()
 
-    strptime(sfechaComienzo, "%d\\%m\\%Y", &tm);
+    strptime(sfechaComienzo.c_str(), "%d\\%m\\%Y", &tm);
     t2 = mktime(&tm);//Fecha equivalente a this->FechaComienzo
 
-    strptime(sfechaFin, "%d\\%m\\%Y", &tm);
+    strptime(sfechaFin.c_str(), "%d\\%m\\%Y", &tm);
     t3 = mktime(&tm);//Fecha equivalente a hoy->now()
 
     // do the same with d2
