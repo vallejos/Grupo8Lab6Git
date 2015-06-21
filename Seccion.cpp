@@ -1,5 +1,6 @@
 #include "Seccion.h"
-#include "String.h";
+#include "OfertaLaboral.h"
+#include "String.h"
 #include "ManejadorEstudiante.h"
 
 Seccion::Seccion()
@@ -48,7 +49,7 @@ Encargado* Seccion::getEncargado()
     return this->encargado;
 }
 
-IDictionay *Seccion::getOfertasLaborales()
+IDictionary *Seccion::getOfertasLaborales()
 {
     return this->ofertasLaborales;
 }
@@ -80,13 +81,13 @@ DataEmpresa *Seccion::getDataEmpresa()
 
 }
 
-OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionay *asignaturas)
+OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas)
 {
     //Debo llamar al constructor de OfertaLaboral
     //con los datos de la oferta pasados como parametros
     //y de alguna manera asociar esta nueva oferta a las asignaturas pasadas en el set.
     OfertaLaboral * dataOferta = new OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
-    String *numExp = new String(numExpediente);
+    String *numExp = new String(numExpediente.c_str());
     this->ofertasLaborales->add(numExp,dataOferta);
 
     ManejadorEstudiante* mEstu = ManejadorEstudiante::getInstance();

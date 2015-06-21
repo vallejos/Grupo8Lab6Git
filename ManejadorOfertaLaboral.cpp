@@ -22,12 +22,22 @@ IDictionary *ManejadorOfertaLaboral::getDataOfertaLaboral()
 {
     //Se rotorna un set de DataOfertaLaboral con las ofertas activas del sistema.
     //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar una coleccion de las mismas.
-    List* result = new List();
+    OrderedDictionary* result = new OrderedDictionary();
     IIterator * it = this->ofertasLaborales->getIterator();
     while(it->hasCurrent())
     {
-        if(it->getCurrent()->EsActiva())
-            result->add(it->getCurrent()->getDataOfertaLaboral());
+        OfertaLaboral* ol;
+        if( ( ol = dynamic_cast<OfertaLaboral*> (it->getCurrent())) != NULL )
+        {
+            if(ol->EsActiva()){
+                string numExpediente = ol->getNumExpediente();
+                String *nExp = new String(numExpediente.c_str());
+                result->add(nExp,ol->getDataOfertaLaboral());
+            }
+        }else
+        {
+            throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";
+        }
         it->next();
     }
     delete it;
@@ -40,11 +50,20 @@ IDictionary *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
 {
     //Se rotorna un set de DataOfertaLaboral con las ofertas del sistema.
     //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar un una coleccion de las mismas.
-    List* result = new List();
+    OrderedDictionary* result = new OrderedDictionary();
     IIterator * it = this->ofertasLaborales->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it->getCurrent()->getDataOfertaLaboral());
+        OfertaLaboral *ol;
+        if (( ol = dynamic_cast<OfertaLaboral*> (it->getCurrent())) != NULL)
+        {
+            string numExpediente = ol->getNumExpediente();
+            String *nExp = new String(numExpediente.c_str());
+            result->add(nExp,ol->getDataOfertaLaboral());
+        }else
+        {
+            throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";
+        }
         it->next();
     }
     delete it;
@@ -60,8 +79,15 @@ IDictionary* ManejadorOfertaLaboral::getOfertasLaborales()
 OfertaLaboral *ManejadorOfertaLaboral::SeleccionarOferta(string numExpediente)
 {
     //Va a buscar en la coleccion que tiene de ofertas como pseudoatributo la oferta con numero de expediente numExpediente.
-    String *numExp = String(numExpediente);
-    return this->ofertasLaborales->find(numExp);
+    String *numExp = new String(numExpediente.c_str());
+    OfertaLaboral *ol;
+    if( (ol = dynamic_cast<OfertaLaboral*> (this->ofertasLaborales->find(numExp))) != NULL )
+    {
+        return ol;
+    }else
+    {
+        throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";
+    }
 }
 
 void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral *ol)
@@ -69,7 +95,7 @@ void ManejadorOfertaLaboral::addOfertaManejador(OfertaLaboral *ol)
     //Se agrega a la coleccion de ofertas del manejador una oferta que fue dada de alta por seccion.
     //obtener numexpediente y hacer add (ikey, objeto)
     string numExpediente = ol->getNumExpediente();
-    String *numExp = String(numExpediente);
+    String *numExp = new String(numExpediente.c_str());
     this->ofertasLaborales->add(numExp,ol);
 }
 
@@ -79,57 +105,61 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
     //luego borrar la coleccion de inscripciones, borrar el link con seccion, borrar la coleccion de asignaturas (con el destructor de oferta creo)
     //luego dar de baja la oferta de la coleccion de ofertasLaborales
     string numExpediente = ol->getNumExpediente();
-    String *numExp = String(numExpediente);
-    OfertaLaboral *o = this->ofertasLaborales->find(numExp);// Es necesario buscarla si ya me pasan el puntero a la oferta que debo eliminar?
-    ICollection *inscripciones = o->getInscripciones();
-    IIterator * it = inscripciones->getIterator();
-    while(it->hasCurrent())
+    String *numExp = new String(numExpediente.c_str());
+    OfertaLaboral *o;
+    if( (o = dynamic_cast<OfertaLaboral*> (this->ofertasLaborales->find(numExp))) != NULL )
     {
-        Inscripcion *inscrip;
-        if( (inscrip = dynamic_cast<Inscripcion*> (it->getCurrent())) != NULL )
+        ICollection *inscripciones = o->getInscripciones();
+        IIterator * it = inscripciones->getIterator();
+        while(it->hasCurrent())
         {
-            Estudiante *e = inscrip->getEstudiante();
-            ICollection *insc = e->getInscripciones();
-            insc->remove(inscrip);
-            inscrip->estudiant = NULL;// para que al llamar al destructor de oferta al final no destruya al estudiante cuando destruye la inscripcion
+            Inscripcion *inscrip;
+            if( (inscrip = dynamic_cast<Inscripcion*> (it->getCurrent())) != NULL )
+            {
+                Estudiante *e = inscrip->getEstudiante();
+                ICollection *insc = e->getInscripciones();
+                insc->remove(inscrip);
+            }
+            else
+            {
+                throw "ManejadorOfertaLaboral -> El objeto no es de la clase Inscripcion.";
+            }
+            it->next();
         }
-        else
+        delete it;
+        ICollection *entrevistas = o->getEntrevistas();
+        IIterator * it2 = entrevistas->getIterator();
+        while(it2->hasCurrent())
         {
-            throw "ManejadorOfertaLaboral -> El objeto no es de la clase Inscripcion.";
+            Entrevista *interview;
+            if( (interview = dynamic_cast<Entrevista*> (it2->getCurrent())) != NULL )
+            {
+                Estudiante *e = interview->getEstudiante();
+                ICollection *entre = e->getEntrevistas();
+                entre->remove(interview);
+            }
+            else
+            {
+                throw "ManejadorOfertaLaboral -> El objeto no es de la clase Entrevista.";
+            }
         }
-        it->next();
-    }
-    delete it;
-    ICollection *entrevistas = o->getEntrevistas();
-    IIterator * it2 = entrevistas->getIterator();
-    while(it2->hasCurrent())
+        delete it2;
+        Seccion *seccion = o->getSeccion();
+        IDictionary *ofertas = seccion->getOfertasLaborales();
+        ofertas->remove(numExp);
+        this->ofertasLaborales->remove(numExp);
+        delete o;
+    }else
     {
-        Entrevista *interview;
-        if( (interview = dynamic_cast<Entrevista*> (it2->getCurrent())) != NULL )
-        {
-            Estudiante *e = interview->getEstudiante();
-            ICollection *entre = e->getEntrevistas();
-            entre->remove(interview);
-            interview->estudiant = NULL;// igual que arriba no se si esté bien
-        }
-        else
-        {
-            throw "ManejadorOfertaLaboral -> El objeto no es de la clase Entrevista.";
-        }
+        throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";
     }
-    delete it2;
-    Seccion *seccion = o->getSeccion();
-    seccion->ofertasLaborales->remove(numExp);
-    o->seccion = NULL;// no se si sea asi, con aignaturas debería iterar e ir asignandole NULL antes de llamar al destructor de oferta?
-    this->ofertasLaborales->remove(numExp);
-    delete o;
 
 }
 void ManejadorOfertaLaboral::destroyManejadorOfertaLaboral()
 {
      if (instance != NULL)
      {
-        delete ManejadorOfertaLaboral;
+        this->~ManejadorOfertaLaboral();
      }
 }
 
@@ -137,17 +167,23 @@ void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, DataOfertaLab
 {
 //Pre: ningun dato del nuevosDatos es vacio.
 //p.e si el usuario no modifica el titulo, el DataOfertaLaboral debe contener el titulo de la oferta y no ser vacio
-    OfertaLaboral* ol = this->ofertasLaborales->find(numExpediente);
-    ol->setTitulo(nuevosDatos->getTitulo());
-    ol->setDescripcion(nuevosDatos->getDescripcion());
-    ol->setCantidadHorasSemanales(nuevosDatos->getCantidadHorasSemanales());
-    ol->setRangoSalarial(nuevosDatos->getRangoSalarial());
-    ol->setFechaComienzo(nuevosDatos->getFechaComienzo());
-    ol->setFechaFin(nuevosDatos->getFechaFin());
-    ol->setCantidadPuestosNecesarios(nuevosDatos->getCantidadPuestosNecesarios());
-    ol->setInscripciones(nuevosDatos->getInscripciones());
-    ol->setEntrevistas(nuevosDatos->getEntrevistas());
-    ol->setAsignaturas(nuevosDatos->getAsignaturas());
+    String *numExp = new String(numExpediente.c_str());
+    OfertaLaboral* ol;
+    if( (ol = dynamic_cast<OfertaLaboral*> (this->ofertasLaborales->find(numExp))) != NULL ){
+        ol->setTitulo(nuevosDatos->getTitulo());
+        ol->setDescripcion(nuevosDatos->getDescripcion());
+        ol->setCantidadHorasSemanales(nuevosDatos->getCantidadHorasSemanales());
+        ol->setRangoSalarial(nuevosDatos->getRangoSalarial());
+        ol->setFechaComienzo(nuevosDatos->getFechaComienzo());
+        ol->setFechaFin(nuevosDatos->getFechaFin());
+        ol->setCantidadPuestosNecesarios(nuevosDatos->getCantidadPuestosNecesarios());
+        ol->setInscripciones(nuevosDatos->getInscripciones());
+        ol->setEntrevistas(nuevosDatos->getEntrevistas());
+        ol->setAsignaturas(nuevosDatos->getAsignaturas());
+    }else
+    {
+        throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";
+    }
 }
 
 ManejadorOfertaLaboral::~ManejadorOfertaLaboral()
