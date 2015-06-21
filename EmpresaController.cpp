@@ -10,10 +10,9 @@ EmpresaController::EmpresaController()
 
 EmpresaController *EmpresaController::getInstance()
 {
-	if (this->instance == NULL) {
-		this->instance = new EmpresaController();
-	}
-	return this->instance;
+	if (instance == NULL)
+		instance = new EmpresaController;
+	return instance;
 }
 
 void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
@@ -83,13 +82,13 @@ void EmpresaController::setCriterio(EstrategiaAsignaturas* criterio)
     this->criterio = criterio;
 }
 
-ICollection* EmpresaController::obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas)
+IDictionary* EmpresaController::obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas)
 {
 //    IDictionary* asignaturasValidas = new OrderedDictionary();
 //    IDictionary *col = dynamic_cast<IDictionary*> ();
 
 //    ICollection *asignaturasValidas = dynamic_cast<ICollection*> (this->criterio->devolverListaAsignatura(asignaturasIngresadas));
-    ICollection *asignaturasValidas = dynamic_cast<ICollection*> (this->criterio->devolverListaAsignatura());
+    IDictionary *asignaturasValidas = dynamic_cast<IDictionary*> (this->criterio->devolverListaAsignatura());
 
     return asignaturasValidas;
 }
