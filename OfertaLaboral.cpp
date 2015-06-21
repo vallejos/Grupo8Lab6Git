@@ -112,7 +112,6 @@ ICollection *OfertaLaboral::getEntrevistas()
     return this->entrevistas;
 }
 
-
 void OfertaLaboral::setNumExpediente(string numExpediente)
 {
     this->numExpediente = numExpediente;
