@@ -2,6 +2,8 @@
 #include "OfertaLaboral.h"
 #include "String.h"
 #include "ManejadorEstudiante.h"
+#include "collections/List.h"
+#include "collections/OrderedDictionary.h"
 
 Seccion::Seccion()
 {
@@ -9,14 +11,18 @@ Seccion::Seccion()
     this->interno = '\0';
     this->sucursal = NULL;
     this->encargado = NULL;
-    this->observers = NULL;
-    this->ofertasLaborales = NULL;
+    this->observers = new List();
+    this->ofertasLaborales = new OrderedDictionary();
 }
 
 Seccion::Seccion(string nombre, string interno)
 {
     this->nombre = nombre;
     this->interno = interno;
+    this->sucursal = NULL;
+    this->encargado = NULL;
+    this->observers = new List();
+    this->ofertasLaborales = new OrderedDictionary();
 }
 
 Seccion::Seccion(const Seccion &s)
@@ -129,8 +135,6 @@ Seccion::~Seccion()
         delete this->sucursal;
     if (this->encargado != NULL)
         delete this->encargado;
-    if (this->observers != NULL)
-        delete this->observers;
-    if (this->ofertasLaborales != NULL)
-        delete this->ofertasLaborales;
+    delete this->observers;
+    delete this->ofertasLaborales;
 }

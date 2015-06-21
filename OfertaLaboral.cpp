@@ -45,6 +45,8 @@ OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descrip
     } else {
         this->asignaturas = new OrderedDictionary();
     }
+    this->inscripciones = NULL;
+    this->entrevistas = NULL;
 }
 
 OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
