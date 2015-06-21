@@ -9,6 +9,10 @@
 #include "interfaces/ICollection.h"
 #include "interfaces/ICollectible.h"
 #include "interfaces/IDictionary.h"
+#include "OfertaLaboralController.h"
+#include "ManejadorEstudiante.h"
+#include "Inscripcion.h"
+#include "Entrevista.h"
 
 class Seccion;
 
@@ -54,8 +58,8 @@ class OfertaLaboral: public ICollectible
 
         // otros metodos
         void AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo);
-        void Inscripcion(Date *fechaInscripcion);
-        void Entrevista(Date *fechaEntrevista);
+        void Inscribir(Date *fechaInscripcion);
+        void Entrevistar(Date *fechaEntrevista);
         bool EsOferta(string numExpediente);
         bool EsActiva();
 

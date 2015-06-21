@@ -136,35 +136,40 @@ DataOfertaLaboral *OfertaLaboral::getDataOfertaLaboral()
 {
     return new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
         this->cantidadHorasSemanales, this->rangoSalarial, this->fechaComienzo, this->fechaFin,
-        this->cantidadPuestosNecesarios, this->asignaturas, this->seccion, this->inscripciones,
-        this->entrevistas);
+        this->cantidadPuestosNecesarios);
+//, this->asignaturas, this->seccion, this->inscripciones,        this->entrevistas);
 }
 
 DataOfertaEmpresa* OfertaLaboral::getDataOfertaLaboralEmpresa()
 {
 
     DataEmpresa *dataEmpresa = this->seccion->getDataEmpresa();
+    Rango* r = new Rango(this->rangoSalarial->getSueldoMinimo(), this->rangoSalarial->getSueldoMaximo());
+    Date* fechaC = new Date(this->fechaComienzo->getDia(), this->fechaComienzo->getMes(), this->fechaComienzo->getAnio());
+    Date* fechaF = new Date(this->fechaFin->getDia(), this->fechaFin->getMes(), this->fechaFin->getAnio());
     DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
-                                                          this->cantidadHorasSemanales, new Rango(this->rangoSalarial),
-                                                          new Date(this->fechaComienzo), new Date(this->fechaFin),
+                                                          this->cantidadHorasSemanales, r, fechaC, fechaF,
                                                           this->cantidadPuestosNecesarios);
+
     DataOfertaEmpresa *dataOfertaEmpresa = new DataOfertaEmpresa(dataEmpresa,dataOferta);
     return dataOfertaEmpresa;
 }
 
-void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
+void OfertaLaboral::Inscribir(Date *fechaInscripcion)
 {
     EstudianteController* ec = EstudianteController::getInstance();
-    e = ec->getEstudiante();
+    Estudiante* e = ec->getEstudiante();
     if (e == NULL)
-        throw std::invalid_argument("El sistema no recuerda a ningun estudiante Seleccionado");
+    {
+        throw "El sistema no recuerda a ningun estudiante Seleccionado";
+    }
     OfertaLaboralController *oc = OfertaLaboralController::getInstance();
     IDictionary *asigDeOL = oc->getOfertaLaboral()->getAsignaturas();
     ManejadorEstudiante* mEstu = ManejadorEstudiante::getInstance();
 
     if (mEstu->EstudianteCumpleRequisitos(e, asigDeOL))
     {
-        Inscripcion *i = new Inscripcion(fechaInscripcion, this, e);
+        Inscripcion* i = new Inscripcion(fechaInscripcion, this, e);
         e->AsociarInscripcion(i);
         this->inscripciones->add(i);
     }
@@ -172,13 +177,12 @@ void OfertaLaboral::Inscripcion(Date *fechaInscripcion)
     {
         throw "OfertaLaboral -> El Estudiante no cumple con los requisitos para Inscribirse a la Oferta Laboral.";
     }
-
 }
 
-void OfertaLaboral::Entrevista(Date *fechaEntrevista)
+void OfertaLaboral::Entrevistar(Date *fechaEntrevista)
 {
     EstudianteController* ec = EstudianteController::getInstance();
-    e = ec->getEstudiante();
+    Estudiante* e = ec->getEstudiante();
     Entrevista *ent = new Entrevista(fechaEntrevista, this, e);
     e->AsociarEntrevista(ent);
     this->entrevistas->add(ent);
@@ -192,8 +196,8 @@ bool OfertaLaboral::EsOferta(string numExpediente)
 bool OfertaLaboral::EsActiva()
 {
     Tiempo* hoy = Tiempo::getInstance();
-    secondsInicio = difftime(hoy->now(), this->fechaComienzo);
-    secondsFin = difftime(hoy->now(), this->fechaFin);
+    double secondsInicio = difftime(hoy->now(), this->fechaComienzo);
+    double secondsFin = difftime(hoy->now(), this->fechaFin);
 
     return ((secondsInicio >= 0) && (secondsFin <= 0));
 }
@@ -202,15 +206,23 @@ void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
 {
     EstudianteController* ec = EstudianteController::getInstance();
     Estudiante* e = ec->getEstudiante();
-    IIterator * it = e->inscripciones()->getIterator();
+    IIterator * it = e->getInscripciones()->getIterator();
     bool noEncontrada = true;
     while((it->hasCurrent())&&(noEncontrada))
     {
-        if(it->getCurrent()->EstInscripto(this->numExpediente))
+        Inscripcion* insc;
+        if ((insc = dynamic_cast<Inscripcion*> (it->getCurrent())) != NULL )
         {
-            Efectivizacion* efe = Efectivizacion(sueldo, fechaEfectivizacion);
-            it->getCurrent()->setEfectivizacion(efe);
-            noEncontrada = false;
+            if (insc->EstInscripto(this->numExpediente))
+            {
+                Efectivizacion* efe = new Efectivizacion(sueldo, fechaEfectivizacion);
+                insc->setEfectivizacion(efe);
+                noEncontrada = false;
+            }
+
+        } else
+        {
+            throw "OfertaLaboral-> El objeto no es de la clase Inscripcion.";
         }
         it->next();
     }

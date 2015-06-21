@@ -18,8 +18,8 @@ class DataOfertaLaboral: public ICollectible
     public:
 		DataOfertaLaboral();
         DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
-                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
-                        IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
+                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios);
+                //IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
         DataOfertaLaboral(const DataOfertaLaboral &dol);
         ~DataOfertaLaboral();
         string getNumExpediente();

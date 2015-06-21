@@ -10,15 +10,15 @@ DataOfertaLaboral::DataOfertaLaboral()
     this->fechaComienzo = NULL;
     this->fechaFin = NULL;
     this->cantidadPuestosNecesarios = 0;
-    this->asignaturas = NULL;
-    this->seccion = NULL;
-    this->inscripciones = NULL;
-    this->entrevistas = NULL;
+//    this->asignaturas = NULL;
+//    this->seccion = NULL;
+//    this->inscripciones = NULL;
+//    this->entrevistas = NULL;
 }
 
 DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
-                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
-                        IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas)
+                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios)
+//                        IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas)
 {
     this->numExpediente = numExpediente;
     this->titulo = titulo;
@@ -28,10 +28,10 @@ DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string
     this->fechaComienzo = fechaComienzo;
     this->fechaFin = fechaFin;
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
-    this->asignaturas = asignaturas;
-    this->seccion = seccion;
-    this->inscripciones = inscripciones;
-    this->entrevistas = entrevistas;
+//    this->asignaturas = asignaturas;
+//    this->seccion = seccion;
+//    this->inscripciones = inscripciones;
+//    this->entrevistas = entrevistas;
 }
 
 DataOfertaLaboral::DataOfertaLaboral(const DataOfertaLaboral &dol)
@@ -44,10 +44,10 @@ DataOfertaLaboral::DataOfertaLaboral(const DataOfertaLaboral &dol)
     this->fechaComienzo = dol.fechaComienzo;
     this->fechaFin = dol.fechaFin;
     this->cantidadPuestosNecesarios = dol.cantidadPuestosNecesarios;
-    this->asignaturas = dol.asignaturas;
-    this->seccion = dol.seccion;
-    this->inscripciones = dol.inscripciones;
-    this->entrevistas = dol.entrevistas;
+//    this->asignaturas = dol.asignaturas;
+//    this->seccion = dol.seccion;
+//    this->inscripciones = dol.inscripciones;
+//    this->entrevistas = dol.entrevistas;
 }
 
 string DataOfertaLaboral::getNumExpediente()
@@ -118,12 +118,12 @@ DataOfertaLaboral::~DataOfertaLaboral()
         delete this->fechaComienzo;
     if (this->fechaFin != NULL)
         delete this->fechaFin;
-    if (this->asignaturas != NULL)
-        delete this->asignaturas;
-    if (this->seccion != NULL)
-        delete this->seccion;
-    if (this->inscripciones!= NULL)
-        delete this->inscripciones;
-    if (this->entrevistas!= NULL)
-        delete this->entrevistas;
+//    if (this->asignaturas != NULL)
+//        delete this->asignaturas;
+//    if (this->seccion != NULL)
+//        delete this->seccion;
+//    if (this->inscripciones!= NULL)
+//        delete this->inscripciones;
+//    if (this->entrevistas!= NULL)
+//        delete this->entrevistas;
 }

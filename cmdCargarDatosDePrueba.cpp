@@ -186,18 +186,18 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	IDictionary *estudiantes = mest->getEstudiantes ();
 	Estudiante *es1, *es2, *es3, *es4, *es5, *es6, *es7, *es8, *es9, *es10, *es11, *es12;
 
-	es1 = new Estudiante("4516231", "Esteban", "Perez", "099111222", new Date(10, 2, 1990), 56, "esteban.perez@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es2 = new Estudiante("5111235", "Felipe", "Garcia", "24035612", new Date(20, 8, 1992), 47, "felipe.garcia@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es3 = new Estudiante("3594561", "Juan", "Wolf", "091222223", new Date(30, 1, 1980), 146, "juan.wolf@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es4 = new Estudiante("2784531", "Alfonsina", "Ramirez", "43712345", new Date(5, 6, 1975), 22, "alfonsina.ramirez@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es5 = new Estudiante("1956234", "Hector", "Otonello", "098334456", new Date(10, 10, 1969), 52, "hector.otonello@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es6 = new Estudiante("5005684", "Lorena", "Nuñez", "092659878", new Date(3, 1, 1994), 0, "lorena.nuñez@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es7 = new Estudiante("4686231", "Hector", "Lorenzo", "21656498", new Date(9, 3, 1993), 26, "hector.lorenzo@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es8 = new Estudiante("4987623", "Julio", "Lee", "26984899", new Date(5, 8, 1992), 110, "julio.lee@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es9 = new Estudiante("4986313", "Rodrigo", "Fernandez", "22233346", new Date(7, 9, 1990), 16, "rodrigo.fernandez@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es10 = new Estudiante("3659532", "Noelia", "Pereira", "099112233", new Date(2, 9, 1990), 38, "noelia.pereira@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es11 = new Estudiante("3665492", "Cecilia", "Garrido", "094698568", new Date(30, 3, 1984), 112, "cecilia.garrido@fing.edu.uy", NULL, NULL, NULL, NULL);
-	es12 = new Estudiante("3335689", "Roman", "Gul", "096677889", new Date(9, 12, 1983), 32, "roman.gul@fing.edu.uy", NULL, NULL, NULL, NULL);
+	es1 = new Estudiante("4516231", "Esteban", "Perez", "099111222", new Date(10, 2, 1990), 56, "esteban.perez@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es2 = new Estudiante("5111235", "Felipe", "Garcia", "24035612", new Date(20, 8, 1992), 47, "felipe.garcia@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es3 = new Estudiante("3594561", "Juan", "Wolf", "091222223", new Date(30, 1, 1980), 146, "juan.wolf@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es4 = new Estudiante("2784531", "Alfonsina", "Ramirez", "43712345", new Date(5, 6, 1975), 22, "alfonsina.ramirez@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es5 = new Estudiante("1956234", "Hector", "Otonello", "098334456", new Date(10, 10, 1969), 52, "hector.otonello@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es6 = new Estudiante("5005684", "Lorena", "Nuñez", "092659878", new Date(3, 1, 1994), 0, "lorena.nuñez@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es7 = new Estudiante("4686231", "Hector", "Lorenzo", "21656498", new Date(9, 3, 1993), 26, "hector.lorenzo@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es8 = new Estudiante("4987623", "Julio", "Lee", "26984899", new Date(5, 8, 1992), 110, "julio.lee@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es9 = new Estudiante("4986313", "Rodrigo", "Fernandez", "22233346", new Date(7, 9, 1990), 16, "rodrigo.fernandez@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es10 = new Estudiante("3659532", "Noelia", "Pereira", "099112233", new Date(2, 9, 1990), 38, "noelia.pereira@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es11 = new Estudiante("3665492", "Cecilia", "Garrido", "094698568", new Date(30, 3, 1984), 112, "cecilia.garrido@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
+	es12 = new Estudiante("3335689", "Roman", "Gul", "096677889", new Date(9, 12, 1983), 32, "roman.gul@fing.edu.uy", NULL, NULL, NULL, NULL, NULL);
 
     //las carreras y las aprobadas son cargadas más abajo (al final)
     //los creditos se calcularon y se ingresaron en base a las aprobadas que se cargan despues
