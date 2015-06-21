@@ -2,11 +2,12 @@
 #define DATASECCION_H
 
 #include "DataEncargado.h"
+#include "interfaces/ICollectible.h"
 #include <string>
 
 using namespace std;
 
-class DataSeccion
+class DataSeccion : public ICollectible
 {
     public:
 		DataSeccion();
@@ -16,7 +17,6 @@ class DataSeccion
         string getNombre();
         string getInterno();
         DataEncargado *getEncargado();
-
     private:
         string nombre;
         string interno;
