@@ -6,8 +6,8 @@ LFLAGS=-Wall
 
 all: lab6
 
-lab6:  Aprobacion.o Asignatura.o Carrera.o cmdAltaEntrevista.o cmdAltaOfertaLaboral.o cmdAnotarBorrarNotificaciones.o cmdAsignacionDeOfertaAEstudiante.o cmdCargarDatosDePrueba.o cmdConsultarDatosEstudiantes.o cmdDarDeBajaLlamado.o cmdEstablecerHoraSistema.o cmdInscripcionOfertaLaboral.o cmdListarNotificacionesEstudiante.o cmdListarOfertasActivas.o cmdModificarEstudiante.o cmdModificarLlamado.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstrategiaAsignaturas.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IComando.o IEmpresaController.o IEstudianteController.o Inscripcion.o Integer.o IObserver.o IOfertaLaboralController.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o String.o Sucursal.o Tiempo.o
-	$(CC) $(LFLAGS)  Aprobacion.o Asignatura.o Carrera.o cmdAltaEntrevista.o cmdAltaOfertaLaboral.o cmdAnotarBorrarNotificaciones.o cmdAsignacionDeOfertaAEstudiante.o cmdCargarDatosDePrueba.o cmdConsultarDatosEstudiantes.o cmdDarDeBajaLlamado.o cmdEstablecerHoraSistema.o cmdInscripcionOfertaLaboral.o cmdListarNotificacionesEstudiante.o cmdListarOfertasActivas.o cmdModificarEstudiante.o cmdModificarLlamado.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstrategiaAsignaturas.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IComando.o IEmpresaController.o IEstudianteController.o Inscripcion.o Integer.o IObserver.o IOfertaLaboralController.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o String.o Sucursal.o Tiempo.o -o lab6
+lab6:  Aprobacion.o Asignatura.o Carrera.o cmdAltaEntrevista.o cmdAltaOfertaLaboral.o cmdAnotarBorrarNotificaciones.o cmdAsignacionDeOfertaAEstudiante.o cmdCargarDatosDePrueba.o cmdConsultarDatosEstudiantes.o cmdDarDeBajaLlamado.o cmdEstablecerHoraSistema.o cmdInscripcionOfertaLaboral.o cmdListarNotificacionesEstudiante.o cmdListarOfertasActivas.o cmdModificarEstudiante.o cmdModificarLlamado.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstrategiaAsignaturas.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IComando.o IEmpresaController.o IEstudianteController.o Inscripcion.o Integer.o IObserver.o IOfertaLaboralController.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o String.o Sucursal.o Tiempo.o interfaces/ICollectible.o interfaces/ICollection.o interfaces/IDictionary.o interfaces/IIterator.o interfaces/IKey.o interfaces/OrderedKey.o collections/List.o collections/ListIterator.o collections/ListNode.o collections/OrderedDictionary.o collections/OrderedDictionaryEntry.o
+	$(CC) $(LFLAGS)  Aprobacion.o Asignatura.o Carrera.o cmdAltaEntrevista.o cmdAltaOfertaLaboral.o cmdAnotarBorrarNotificaciones.o cmdAsignacionDeOfertaAEstudiante.o cmdCargarDatosDePrueba.o cmdConsultarDatosEstudiantes.o cmdDarDeBajaLlamado.o cmdEstablecerHoraSistema.o cmdInscripcionOfertaLaboral.o cmdListarNotificacionesEstudiante.o cmdListarOfertasActivas.o cmdModificarEstudiante.o cmdModificarLlamado.o Criterio1.o Criterio2.o DataAprobada.o DataAsignatura.o DataCarrera.o DataDatosEstudiante.o DataEmpresa.o DataEncargado.o DataEstudiante.o DataOfertaEmpresa.o DataOfertaLaboral.o DataSeccion.o DataSucursal.o Date.o Efectivizacion.o EmpresaController.o Empresa.o Encargado.o Entrevista.o EstrategiaAsignaturas.o EstudianteController.o Estudiante.o FabricaComando.o Fabrica.o IComando.o IEmpresaController.o IEstudianteController.o Inscripcion.o Integer.o IObserver.o IOfertaLaboralController.o main.o ManejadorEmpresa.o ManejadorEstudiante.o ManejadorOfertaLaboral.o OfertaLaboralController.o OfertaLaboral.o Rango.o Seccion.o Sistema.o String.o Sucursal.o Tiempo.o interfaces/ICollectible.o interfaces/ICollection.o interfaces/IDictionary.o interfaces/IIterator.o interfaces/IKey.o interfaces/OrderedKey.o collections/List.o collections/ListIterator.o collections/ListNode.o collections/OrderedDictionary.o collections/OrderedDictionaryEntry.o -o lab6
 
 
 Aprobacion.o: Aprobacion.h Aprobacion.cpp
@@ -184,9 +184,42 @@ Sucursal.o: Sucursal.h Sucursal.cpp
 Tiempo.o: Tiempo.h Tiempo.cpp
 	$(CC) $(CFLAGS) Tiempo.cpp -o Tiempo.o
 
+collections/List.o: collections/List.h collections/List.cpp
+	$(CC) $(CFLAGS) collections/List.cpp -o collections/List.o
+
+collections/ListIterator.o: collections/ListIterator.h collections/ListIterator.cpp
+	$(CC) $(CFLAGS) collections/ListIterator.cpp -o collections/ListIterator.o
+
+collections/ListNode.o: collections/ListNode.h collections/ListNode.cpp
+	$(CC) $(CFLAGS) collections/ListNode.cpp -o collections/ListNode.o
+
+collections/OrderedDictionaryEntry.o: collections/OrderedDictionaryEntry.h collections/OrderedDictionaryEntry.cpp
+	$(CC) $(CFLAGS) collections/OrderedDictionaryEntry.cpp -o collections/OrderedDictionaryEntry.o
+
+collections/OrderedDictionary.o: collections/OrderedDictionary.h collections/OrderedDictionary.cpp
+	$(CC) $(CFLAGS) collections/OrderedDictionary.cpp -o collections/OrderedDictionary.o
+
+interfaces/ICollectible.o: interfaces/ICollectible.h interfaces/ICollectible.cpp
+	$(CC) $(CFLAGS) interfaces/ICollectible.cpp -o interfaces/ICollectible.o
+
+interfaces/ICollection.o: interfaces/ICollection.h interfaces/ICollection.cpp
+	$(CC) $(CFLAGS) interfaces/ICollection.cpp -o interfaces/ICollection.o
+
+interfaces/IDictionary.o: interfaces/IDictionary.h interfaces/IDictionary.cpp
+	$(CC) $(CFLAGS) interfaces/IDictionary.cpp -o interfaces/IDictionary.o
+
+interfaces/IIterator.o: interfaces/IIterator.h interfaces/IIterator.cpp
+	$(CC) $(CFLAGS) interfaces/IIterator.cpp -o interfaces/IIterator.o
+
+interfaces/IKey.o: interfaces/IKey.h interfaces/IKey.cpp
+	$(CC) $(CFLAGS) interfaces/IKey.cpp -o interfaces/IKey.o
+
+interfaces/OrderedKey.o: interfaces/OrderedKey.h interfaces/OrderedKey.cpp
+	$(CC) $(CFLAGS) interfaces/OrderedKey.cpp -o interfaces/OrderedKey.o
+
 main.o: main.cpp
 	$(CC) $(CFLAGS) main.cpp -o main.o
 
 clean:
-	rm *.o lab6
+	rm *.o collections/*.o interfaces/*.o lab6
 
