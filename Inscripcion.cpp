@@ -61,9 +61,8 @@ DataOfertaLaboral* Inscripcion::getDataOfertaLaboral()
     DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->ofertaLab->getNumExpediente(), this->ofertaLab->getTitulo(),
                                                         this->ofertaLab->getDescripcion(), this->ofertaLab->getCantidadHorasSemanales(),
                                                         this->ofertaLab->getRangoSalarial(), this->ofertaLab->getFechaComienzo(),
-                                                        this->ofertaLab->getFechaFin(), this->ofertaLab->getCantidadPuestosNecesarios(),
-                                                        this->ofertaLab->getAsignaturas(), this->ofertaLab->getSeccion(),
-                                                        this->ofertaLab->getInscripciones(), this->ofertaLab->getEntrevistas());
+                                                        this->ofertaLab->getFechaFin(), this->ofertaLab->getCantidadPuestosNecesarios());
+// this->ofertaLab->getAsignaturas(), this->ofertaLab->getSeccion(),                                                        this->ofertaLab->getInscripciones(), this->ofertaLab->getEntrevistas());
     return dataOferta;
 }
 
