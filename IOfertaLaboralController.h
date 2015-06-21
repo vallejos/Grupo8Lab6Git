@@ -13,7 +13,7 @@ class IOfertaLaboralController {
     public:
         IOfertaLaboralController();
         virtual IDictionary* ListarOfertas() = 0;
-        virtual DataOfertaLaboral* SeleccionarOferta(string numExpediente, IDictionary *ofertas) = 0;
+        virtual void SeleccionarOferta(string numExpediente, IDictionary *ofertas) = 0;
         virtual void Inscribir(Date* fechaInscripcion) = 0;
         virtual void Entrevistar(Date* fechaEntrevista) = 0;
         virtual IDictionary* MostrarOfertasActivas() = 0;

@@ -7,10 +7,11 @@
 #include <string>
 #include "interfaces/IDictionary.h"
 #include "interfaces/ICollection.h"
+#include "interfaces/ICollectible.h"
 
 using namespace std;
 
-class DataEstudiante
+class DataEstudiante: public ICollectible
 {
     public:
 		DataEstudiante();

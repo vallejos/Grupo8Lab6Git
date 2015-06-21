@@ -17,10 +17,12 @@
 #include "Seccion.h"
 #include "EstrategiaAsignaturas.h"
 #include "ManejadorEmpresa.h"
+#include "IEmpresaController.h"
 
-class EmpresaController {
+class EmpresaController: public IEmpresaController
+{
     public:
-        EmpresaController *getInstance();
+        static EmpresaController *getInstance();
         void AltaOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
         	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
         	IDictionary *asignaturas);
@@ -30,7 +32,7 @@ class EmpresaController {
         Empresa* getEmpresa();
         Sucursal* getSucursal();
         Seccion* getSeccion();
-        ICollection* obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas);
+        IDictionary* obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas);
         void setCriterio(EstrategiaAsignaturas* criterio);
         IDictionary *getEmpresas();
         void SeleccionarEmpresa(string rut);

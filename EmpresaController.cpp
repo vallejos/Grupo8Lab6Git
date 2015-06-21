@@ -1,5 +1,7 @@
 #include "EmpresaController.h"
 
+EmpresaController* EmpresaController::instance = NULL;
+
 // constructor
 EmpresaController::EmpresaController()
 {
