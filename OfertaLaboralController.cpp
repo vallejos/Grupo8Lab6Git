@@ -67,10 +67,13 @@ OfertaLaboral* OfertaLaboralController::getOfertaLaboral()
     return this->oferta;
 }
 
-void OfertaLaboralController::ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos)
+void OfertaLaboralController::ModificarOferta(string numExpediente, string titulo, string descripcion, int cantHorasSemanales, Rango *rangoSalarial, Date *fechaIni,
+            Date *fechaFin, int cantidadPuestos, IDictionary *asignaturas, Seccion *seccion, ICollection *inscripciones, 
+            ICollection *entrevistas)
 {
     ManejadorOfertaLaboral *mol = ManejadorOfertaLaboral::getInstance();
-    mol->ModificarOferta(numExpediente, nuevosDatos);
+    mol->ModificarOferta(numExpediente, titulo, descripcion, cantHorasSemanales, rangoSalarial, fechaIni,
+            fechaFin, cantidadPuestos, asignaturas, seccion, inscripciones, entrevistas);
 }
 
 void OfertaLaboralController::AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)

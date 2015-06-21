@@ -163,23 +163,26 @@ void ManejadorOfertaLaboral::destroyManejadorOfertaLaboral()
      }
 }
 
-void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, DataOfertaLaboral* nuevosDatos)
+void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, string titulo, string descripcion, int cantHorasSemanales, Rango *rangoSalarial, Date *fechaIni,
+            Date *fechaFin, int cantidadPuestos, IDictionary *asignaturas, Seccion *seccion, ICollection *inscripciones, 
+            ICollection *entrevistas)
 {
 //Pre: ningun dato del nuevosDatos es vacio.
 //p.e si el usuario no modifica el titulo, el DataOfertaLaboral debe contener el titulo de la oferta y no ser vacio
     String *numExp = new String(numExpediente.c_str());
     OfertaLaboral* ol;
     if( (ol = dynamic_cast<OfertaLaboral*> (this->ofertasLaborales->find(numExp))) != NULL ){
-        ol->setTitulo(nuevosDatos->getTitulo());
-        ol->setDescripcion(nuevosDatos->getDescripcion());
-        ol->setCantidadHorasSemanales(nuevosDatos->getCantidadHorasSemanales());
-        ol->setRangoSalarial(nuevosDatos->getRangoSalarial());
-        ol->setFechaComienzo(nuevosDatos->getFechaComienzo());
-        ol->setFechaFin(nuevosDatos->getFechaFin());
-        ol->setCantidadPuestosNecesarios(nuevosDatos->getCantidadPuestosNecesarios());
-        ol->setInscripciones(nuevosDatos->getInscripciones());
-        ol->setEntrevistas(nuevosDatos->getEntrevistas());
-        ol->setAsignaturas(nuevosDatos->getAsignaturas());
+        ol->setTitulo(titulo);
+        ol->setDescripcion(descripcion);
+        ol->setCantidadHorasSemanales(cantHorasSemanales);
+        ol->setRangoSalarial(rangoSalarial);
+        ol->setFechaComienzo(fechaIni);
+        ol->setFechaFin(fechaFin);
+        ol->setCantidadPuestosNecesarios(cantidadPuestos);
+        ol->setInscripciones(inscripciones);
+        ol->setEntrevistas(entrevistas);
+        ol->setAsignaturas(asignaturas);
+        ol->setSeccion(seccion);
     }else
     {
         throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";

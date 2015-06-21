@@ -127,6 +127,11 @@ void OfertaLaboral::setFechaFin(Date *fechaFin)
     this->fechaFin = fechaFin;
 }
 
+void OfertaLaboral::setSeccion(Seccion *seccion)
+{
+    this->seccion = seccion;
+}
+
 void OfertaLaboral::setCantidadPuestosNecesarios(int cantidadPuestosNecesarios)
 {
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
