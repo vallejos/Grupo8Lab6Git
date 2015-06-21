@@ -79,11 +79,13 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> cantidadPuestos;
 
         //Solicitar Asignaturas
-/*
-        IDictionary *nuevasAsignaturasEnOferta = new OrderedDictionary();
-        //Solicitar Asignaturas
+
+        OrderedDictionary *nuevasAsignaturasEnOferta = new OrderedDictionary();
+
         cout<< "\nAsignaturas:";
         bool continuar = true;
+        int codAsig;
+        char respuesta;
 
         IEstudianteController* cEstudiante = fab->getIEstudianteController();
         IDictionary *asignaturasIngresadas = cEstudiante->getAsignaturas();
@@ -117,7 +119,7 @@ void cmdModificarLlamado::ejecutarComando()
             if (asignaturasIngresadas->member(codigo))
             {
                 // la agrego
-                asignaturasEnOferta->add(codigo, asignaturasIngresadas->find(codigo));
+                nuevasAsignaturasEnOferta->add(codigo, asignaturasIngresadas->find(codigo));
             } else {
                 throw "Codigo de Asignatura incorrecto.";
             }
@@ -125,33 +127,38 @@ void cmdModificarLlamado::ejecutarComando()
             // seguir ingresando
             cout<< "\n  Desea ingresar otra asignatura?(s/n): ";
             cin >> respuesta;
-            if(respuesta == "n")
+            if(respuesta == 'n')
             {
-                desea = false;
+                continuar = false;
             }
         }
-*/
+
 
         // en caso de no sustituir
-//        String *expe = new String(numExpediente.c_str());
-//        DataOfertaLaboral *dataAsignatura = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
+        String *expe = new String(numExpediente.c_str());
+        DataOfertaLaboral *dataAsignatura = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
 //        IDictionary *asignaturas = dataAsignatura->getAsignaturas();
-//        ICollection *inscripciones = dataAsignatura->getInscripciones();
-//        ICollection *entrevistas = dataAsignatura->getEntrevistas();
-//        Seccion *seccion = dataAsignatura->getSeccion();
+        ICollection *inscripciones = dataAsignatura->getInscripciones();
+        ICollection *entrevistas = dataAsignatura->getEntrevistas();
+        Seccion *seccion = dataAsignatura->getSeccion();
 
         // creo el nuevo Data Oferta Laboral
 //        DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 
 //            rangoSalarial, fechaIni, fechaFin, cantidadPuestos, asignaturas, seccion, inscripciones, entrevistas);
-        DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 
-            rangoSalarial, fechaIni, fechaFin, cantidadPuestos);
+//        DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 
+//            rangoSalarial, fechaIni, fechaFin, cantidadPuestos);
 
 //        DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
 //                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios);
 
 //IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
         // alta asignacion del cargo
-        ctrlOL->ModificarOferta(numExpediente, nuevosDatos);
+
+//        ctrlOL->ModificarOferta(numExpediente, nuevosDatos);
+
+        ctrlOL->ModificarOferta(numExpediente, titulo, descripcion, cantHorasSemanales, rangoSalarial, fechaIni,
+            fechaFin, cantidadPuestos, nuevasAsignaturasEnOferta, seccion, inscripciones, entrevistas);
+
     }
     catch(exception &e)
     {
