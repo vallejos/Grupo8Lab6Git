@@ -5,3 +5,8 @@ IEmpresaController::~IEmpresaController()
 {
 
 }
+
+IEmpresaController::IEmpresaController()
+{
+
+}

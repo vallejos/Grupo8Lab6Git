@@ -9,3 +9,7 @@ IEstudianteController::IEstudianteController() {
 IEstudianteController::~IEstudianteController() {
 
 }
+
+IEstudianteController::IEstudianteController() {
+
+}
