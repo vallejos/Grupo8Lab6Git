@@ -3,6 +3,11 @@
 #include "ManejadorEstudiante.h"
 #include "Estudiante.h"
 #include "Tiempo.h"
+#include <string>
+#include <sstream>
+#include <ctime>
+#include <iostream>
+#include <time.h>
 
 OfertaLaboral::OfertaLaboral()
 {
@@ -196,8 +201,38 @@ bool OfertaLaboral::EsOferta(string numExpediente)
 bool OfertaLaboral::EsActiva()
 {
     Tiempo* hoy = Tiempo::getInstance();
-    double secondsInicio = difftime(hoy->now(), this->fechaComienzo);
-    double secondsFin = difftime(hoy->now(), this->fechaFin);
+    string sddHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getDia()) )->str();
+    string smmHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getMes()) )->str();
+    string saaaaHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getAnio()) )->str();
+    string shoy = sddHoy + "/" + smmHoy + "/" + saaaaHoy;
+
+    string sddCom = static_cast<ostringstream*>( &(ostringstream() << this->fechaComienzo->getDia()) )->str();
+    string smmCom = static_cast<ostringstream*>( &(ostringstream() << this->fechaComienzo->getMes()) )->str();
+    string saaaaCom = static_cast<ostringstream*>( &(ostringstream() << this->fechaComienzo->getAnio()) )->str();
+    string sfechaComienzo = sddCom + "/" + smmCom + "/" + saaaaCom;
+
+    string sddFin = static_cast<ostringstream*>( &(ostringstream() << this->fechaFin->getDia()) )->str();
+    string smmFin = static_cast<ostringstream*>( &(ostringstream() << this->fechaFin->getMes()) )->str();
+    string saaaaFin = static_cast<ostringstream*>( &(ostringstream() << this->fechaFin->getAnio()) )->str();
+    string sfechaFin = sddFin + "/" + smmFin + "/" + saaaaFin;
+
+    struct tm tm;
+    time_t t1, t2, t3;
+
+    strptime(shoy, "%d\\%m\\%Y", &tm);
+    t1 = mktime(&tm);//Fecha equivalente a hoy->now()
+
+    strptime(sfechaComienzo, "%d\\%m\\%Y", &tm);
+    t2 = mktime(&tm);//Fecha equivalente a this->FechaComienzo
+
+    strptime(sfechaFin, "%d\\%m\\%Y", &tm);
+    t3 = mktime(&tm);//Fecha equivalente a hoy->now()
+
+    // do the same with d2
+    double secondsInicio = difftime(t1, t2);
+    double secondsFin = difftime(t1, t3);
+    //double secondsInicio = difftime(hoy->now(), this->fechaComienzo);
+    //double secondsFin = difftime(hoy->now(), this->fechaFin);
 
     return ((secondsInicio >= 0) && (secondsFin <= 0));
 }
