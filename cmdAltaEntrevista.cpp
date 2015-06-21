@@ -1,16 +1,4 @@
-#include <string>
-#include <iostream>
 #include "cmdAltaEntrevista.h"
-#include "IOfertaLaboralController.h"
-#include "interfaces/ICollection.h"
-#include "interfaces/IDictionary.h"
-#include "DataOfertaLaboral.h"
-#include "Fabrica.h"
-#include "Date.h"
-#include "IComando.h"
-#include "interfaces/IIterator.h"
-#include "IEstudianteController.h"
-#include "DataEstudiante.h"
 
 using namespace std;
 
