@@ -11,7 +11,6 @@ Empresa::Empresa()
 
 Empresa::Empresa(string rut, string nombre)
 {
-    cout << "rut: " << rut << ", nombre: " << nombre;
 	this->rut = rut;
 	this->nombre = nombre;
 }

@@ -33,16 +33,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	IDictionary *empresas = me->getEmpresas();
 	Empresa *e1, *e2, *e3, *e4, *e5;
 
-        string r = "1112335684";
-        string s = "Segurol S.A.";
-
-        cout << "Hola Mundo";
-        
-        printf("hola lala");
-        
-        cout << "r: " << r << ", s: " << s;
-        
-	e1 = new Empresa(r, s);
+	e1 = new Empresa("1112335684", "Segurol S.A.");
 	e2 = new Empresa("1298865497","RoboTI");
 	e3 = new Empresa("1265498765","MiniSoft Uy");
 	e4 = new Empresa("5464897986","Ingenieros Electricos Unidos");
