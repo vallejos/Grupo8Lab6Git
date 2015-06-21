@@ -1,7 +1,11 @@
 #include "DataEstudiante.h"
+#include "collections/OrderedDictionary.h"
+#include "colletions/List.h"
 
 DataEstudiante::DataEstudiante()
 {
+    this->carreras = new OrderdDictionary();
+    this->aprobadas = new List();
 
 }
 

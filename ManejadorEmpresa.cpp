@@ -1,11 +1,12 @@
 #include "ManejadorEmpresa.h"
+#include "collections/OrderedDictionary.h"
 
 ManejadorEmpresa* ManejadorEmpresa::instance = NULL;
 
 ManejadorEmpresa::ManejadorEmpresa()
 {
     //ctor
-    this->empresas = NULL;
+    this->empresas = new OrderedDictionary();
 }
 
 ManejadorEmpresa::ManejadorEmpresa(IDictionary* empresas)
@@ -60,7 +61,7 @@ Empresa* ManejadorEmpresa::getEmpresa(string rut)
 IDictionary* ManejadorEmpresa::getEmpresas()
 {
     if (this->empresas ==NULL)
-        throw "Manejador Empresa -> No hay empresas dadas de akta en el Sistema";
+       // throw "Manejador Empresa -> No hay empresas dadas de akta en el Sistema";
     return this->empresas;
 }
 
