@@ -2,11 +2,12 @@
 #define DATASECCION_H
 
 #include "DataEncargado.h"
+#include "interfaces/ICollectible.h"
 #include <string>
 
 using namespace std;
 
-class DataSeccion
+class DataSeccion : public ICollectible
 {
     public:
 		DataSeccion();
