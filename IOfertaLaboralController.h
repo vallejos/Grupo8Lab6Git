@@ -2,9 +2,10 @@
 #define IOFERTALABORALCONTROLLER_H
 
 #include <string>
-#include "Date.h"
-#include "DataOfertaLaboral.h"
-#include "interfaces/IDictionary.h"
+
+class Date;
+class DataOfertaLaboral;
+class IDictionary;
 
 using namespace std;
 
@@ -22,5 +23,9 @@ class IOfertaLaboralController {
         virtual void DarBajaLlamado() = 0;
         virtual ~IOfertaLaboralController() = 0; //virtual y vacio
 };
+
+#include "Date.h"
+#include "DataOfertaLaboral.h"
+#include "interfaces/IDictionary.h"
 
 #endif // IOFERTALABORALCONTROLLER_H
