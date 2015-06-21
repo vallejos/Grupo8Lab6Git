@@ -70,6 +70,11 @@ DataEmpresa *Sucursal::getDataEmpresa()
     return this->empresa->getDataEmpresa();
 }
 
+Empresa* Sucursal::getEmpresa()
+{
+    return this->empresa;
+}
+
 string Sucursal::getNombre()
 {
     return this->nombre;
