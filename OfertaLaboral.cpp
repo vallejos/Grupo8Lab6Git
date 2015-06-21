@@ -112,6 +112,21 @@ ICollection *OfertaLaboral::getEntrevistas()
     return this->entrevistas;
 }
 
+void OfertaLaboral::setAsignaturas(IDictionary *asignaturas)
+{
+    this->asignaturas = asignaturas;
+}
+
+void OfertaLaboral::setInscripciones(ICollection *inscripciones)
+{
+    this->inscripciones = inscripciones;
+}
+
+void OfertaLaboral::setEntrevistas(ICollection *entrevistas)
+{
+    this->entrevistas = entrevistas;
+}
+
 void OfertaLaboral::setNumExpediente(string numExpediente)
 {
     this->numExpediente = numExpediente;
