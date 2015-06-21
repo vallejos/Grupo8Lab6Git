@@ -78,7 +78,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         cin >> nomSucursal;
         cEmpresa->SeleccionarSucursal(nomSucursal);
 
-        ICollection* dataSecciones = cEmpresa->ListarSecciones();
+        IDictionary* dataSecciones = cEmpresa->ListarSecciones();
         cout<< "Lista de Secciones:\n";
         IIterator * it3 = dataSecciones->getIterator();
         while(it3->hasCurrent())

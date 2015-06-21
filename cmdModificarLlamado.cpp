@@ -133,16 +133,22 @@ void cmdModificarLlamado::ejecutarComando()
 */
 
         // en caso de no sustituir
-        String *expe = new String(numExpediente.c_str());
-        DataOfertaLaboral *dataAsignatura = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
-        IDictionary *asignaturas = dataAsignatura->getAsignaturas();
-        ICollection *inscripciones = dataAsignatura->getInscripciones();
-        ICollection *entrevistas = dataAsignatura->getEntrevistas();
-        Seccion *seccion = dataAsignatura->getSeccion();
+//        String *expe = new String(numExpediente.c_str());
+//        DataOfertaLaboral *dataAsignatura = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
+//        IDictionary *asignaturas = dataAsignatura->getAsignaturas();
+//        ICollection *inscripciones = dataAsignatura->getInscripciones();
+//        ICollection *entrevistas = dataAsignatura->getEntrevistas();
+//        Seccion *seccion = dataAsignatura->getSeccion();
 
         // creo el nuevo Data Oferta Laboral
+//        DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 
+//            rangoSalarial, fechaIni, fechaFin, cantidadPuestos, asignaturas, seccion, inscripciones, entrevistas);
         DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 
-            rangoSalarial, fechaIni, fechaFin, cantidadPuestos, asignaturas, seccion, inscripciones, entrevistas);
+            rangoSalarial, fechaIni, fechaFin, cantidadPuestos);
+
+//        DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
+//                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios);
+
 //IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
         // alta asignacion del cargo
         ctrlOL->ModificarOferta(numExpediente, nuevosDatos);

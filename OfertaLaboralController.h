@@ -2,13 +2,16 @@
 #define OFERTALABORALCONTROLLER_H
 
 #include <string>
-#include "Date.h"
-#include "DataOfertaLaboral.h"
-#include "interfaces/ICollection.h"
-#include "interfaces/IDictionary.h"
 #include "IOfertaLaboralController.h"
 
-class OfertaLaboralController: public IOfertaLaboralController 
+class Date;
+class DataOfertaLaboral;
+class OfertaLaboral;
+class IDictionary;
+
+using namespace std;
+
+class OfertaLaboralController: public IOfertaLaboralController
 {
     public:
         static OfertaLaboralController *getInstance();
@@ -28,5 +31,10 @@ class OfertaLaboralController: public IOfertaLaboralController
     	static OfertaLaboralController *instance;
         OfertaLaboral *oferta;
 };
+
+#include "Date.h"
+#include "DataOfertaLaboral.h"
+#include "interfaces/IDictionary.h"
+#include "OfertaLaboral.h"
 
 #endif // OFERTALABORALCONTROLLER_H
