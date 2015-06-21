@@ -4,3 +4,8 @@ IComando::~IComando()
 {
 
 }
+
+IComando::IComando()
+{
+
+}
