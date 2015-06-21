@@ -46,7 +46,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	empresas->add(new String("1326548654"), e5);
 
 // CARGA: SUCURSALES
-	OrderedDictionary *sue1, *sue2, *sue3, *sue4, *sue5;
+	IDictionary *sue1, *sue2, *sue3, *sue4, *sue5;
 
 	sue1 = e1->getSucursales();
 	sue2 = e2->getSucursales();
@@ -158,7 +158,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	se15->setEncargado(new Encargado("2165498","Ivana","Herrera",new Date(4, 12, 1970)));
 	se16->setEncargado(new Encargado("1895432","Lucas","Pereira",new Date(16, 10, 1963)));
 	se17->setEncargado(new Encargado("3216548","Adrian","Moreno",new Date(5, 5, 1980)));
-	se18->setEncargado(new Encargado("1489623","Laura","Pereira",new Date(0, 12, 1964)));
+	se18->setEncargado(new Encargado("1489623","Laura","Pereira",new Date(1, 12, 1964)));
 	se19->setEncargado(new Encargado("4231568","Benjamin","Gomez",new Date(20, 3, 1984)));
 	se20->setEncargado(new Encargado("4123465","Mia","Costa",new Date(31, 12, 1988)));
 	se21->setEncargado(new Encargado("3216585","Alejandro","Roche",new Date(30, 8, 1976)));
