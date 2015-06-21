@@ -43,7 +43,7 @@ void EstudianteController::SeleccionarEstudiante(string cedula, IDictionary *est
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     String* ci = new String(cedula.c_str());
     if(! (estudiantesValidos->member(ci)))
-        throw "La cédula " + cedula + " es inválida.";
+        throw "La cedula " + cedula + " es invalida.";
     this->estudiante = me->SeleccionarEstudiante(cedula);
 }
 
@@ -58,6 +58,8 @@ IDictionary* EstudianteController::ListarEstudiantesRegistrados()
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     IDictionary *estudiantes = me->getEstudiantes();
+    if (estudiantes == NULL)
+        throw "No hay estudiantes registrados en el Sistema.";
     return estudiantes;
 }
 
@@ -79,6 +81,8 @@ IDictionary* EstudianteController::getAsignaturas()
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     IDictionary* asigs = me->getAsignaturas();
+    if (asigs == NULL)
+        throw "No hay asignaturas registradas en el Sistema.";
     return asigs;
 }
 
@@ -86,6 +90,8 @@ IDictionary* EstudianteController::getCarreras()
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     IDictionary* carrs = me->getCarreras();
+    if (carrs == NULL)
+        throw "No hay carreras registradas en el Sistema.";
     return carrs;
 }
 
@@ -93,6 +99,8 @@ IDictionary* EstudianteController::getEstudiantes()
 {
     ManejadorEstudiante* me = ManejadorEstudiante::getInstance();
     IDictionary* students = me->getEstudiantes();
+    if (students == NULL)
+        throw "No hay estudiantes registrados en el Sistema.";
     return students;
 }
 

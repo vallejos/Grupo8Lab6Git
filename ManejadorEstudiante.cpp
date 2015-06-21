@@ -18,7 +18,7 @@ ManejadorEstudiante *ManejadorEstudiante::getInstance()
 IDictionary *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
 {
     //Se va a mover por la coleccion de estudiantes que el manejador conoce
-    //se invoca a EstNoInscripto para corroborar si el estudiante está inscripto a la oferta con numExpediente
+    //se invoca a EstNoInscripto para corroborar si el estudiante estï¿½ inscripto a la oferta con numExpediente
     //por cada estudiante no inscripto se crea un DataEstudiante para luego retornar una coleccion de DataEstudiante.
     OrderedDictionary* result = new OrderedDictionary();
     IIterator * it = this->estudiantes->getIterator();
@@ -245,22 +245,16 @@ IDictionary *ManejadorEstudiante::getEstudiante()
 
 IDictionary *ManejadorEstudiante::getEstudiantes()
 {
-    if (this->estudiantes == NULL)
-        throw "No hay ningun estudiante dado de alta en el Sistema";
     return this->estudiantes;
 }
 
 IDictionary* ManejadorEstudiante::getAsignaturas()
 {
-    if (this->asignaturas == NULL)
-        throw "No hay ninguna asignatura dado de alta en el Sistema";
     return this->asignaturas;
 }
 
 IDictionary* ManejadorEstudiante::getCarreras()
 {
-    if (this->carreras== NULL)
-        throw "No hay ninguna carrera dada de alta en el Sistema";
     return this->carreras;
 }
 
