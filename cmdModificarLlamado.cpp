@@ -136,11 +136,11 @@ void cmdModificarLlamado::ejecutarComando()
 
         // en caso de no sustituir
         String *expe = new String(numExpediente.c_str());
-        DataOfertaLaboral *dataAsignatura = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
-//        IDictionary *asignaturas = dataAsignatura->getAsignaturas();
-        ICollection *inscripciones = dataAsignatura->getInscripciones();
-        ICollection *entrevistas = dataAsignatura->getEntrevistas();
-        Seccion *seccion = dataAsignatura->getSeccion();
+        DataOfertaLaboral *dol = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
+//        IDictionary *asignaturas = dol->getAsignaturas();
+        ICollection *inscripciones = dol->getInscripciones();
+        ICollection *entrevistas = dol->getEntrevistas();
+        Seccion *seccion = dol->getSeccion();
 
         // creo el nuevo Data Oferta Laboral
 //        DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 

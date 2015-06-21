@@ -1,10 +1,10 @@
 #include "DataEstudiante.h"
 #include "collections/OrderedDictionary.h"
-#include "colletions/List.h"
+#include "collections/List.h"
 
 DataEstudiante::DataEstudiante()
 {
-    this->carreras = new OrderdDictionary();
+    this->carreras = new OrderedDictionary();
     this->aprobadas = new List();
 
 }

@@ -1,5 +1,5 @@
 #include "DataDatosEstudiante.h"
-#include "colletions/List.h"
+#include "collections/List.h"
 
 // constructor
 DataDatosEstudiante::DataDatosEstudiante()

@@ -10,11 +10,11 @@ Estudiante::Estudiante()
     this->fechaNacimiento = NULL;
     this->creditos = 0;
     this->email = '\0';
-    this->carreras = NULL;
-    this->aprobadas= NULL;
-    this->inscripciones = NULL;
-    this->entrevistas = NULL;
-    this->notificaciones = NULL;
+    this->carreras = new OrderedDictionary();
+    this->aprobadas= new List();
+    this->inscripciones = new List();
+    this->entrevistas = new List();
+    this->notificaciones = new List();
 
 }
 
@@ -29,11 +29,36 @@ Estudiante::Estudiante(string cedula,string nombre,string apellido, string telef
     this->fechaNacimiento = fechaNacimiento;
     this->creditos = creditos;
     this->email = email;
-    this->carreras = carreras;
-    this->aprobadas = aprobadas;
-    this->inscripciones = inscripciones;
-    this->entrevistas = entrevistas;
-    this->notificaciones = notificaciones;
+
+    if (carreras != NULL) {
+        this->carreras = carreras;
+    } else {
+        this->carreras = new OrderedDictionary();
+    }
+
+    if (aprobadas != NULL) {
+        this->aprobadas = aprobadas;
+    } else {
+        this->aprobadas = new List();
+    }
+
+    if (inscripciones != NULL) {
+        this->inscripciones = inscripciones;
+    } else {
+        this->inscripciones = new List();
+    }
+
+    if (entrevistas != NULL) {
+        this->entrevistas = entrevistas;
+    } else {
+        this->entrevistas = new List();
+    }
+
+    if (notificaciones != NULL) {
+        this->notificaciones = notificaciones;
+    } else {
+        this->notificaciones = new List();
+    }
 }
 
 Estudiante::Estudiante(const Estudiante &e)
@@ -340,14 +365,9 @@ Estudiante::~Estudiante()
     //dtor
     if (this->fechaNacimiento != NULL)
         delete this->fechaNacimiento;
-    if (this->carreras != NULL)
-        delete this->carreras;
-    if (this->aprobadas!= NULL)
-        delete this->aprobadas;
-    if (this->inscripciones!= NULL)
-        delete this->inscripciones;
-    if (this->entrevistas!= NULL)
-        delete this->entrevistas;
-    if (this->notificaciones!= NULL)
-        delete this->notificaciones;
+    delete this->carreras;
+    delete this->aprobadas;
+    delete this->inscripciones;
+    delete this->entrevistas;
+    delete this->notificaciones;
 }
