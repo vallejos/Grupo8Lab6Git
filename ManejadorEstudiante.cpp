@@ -169,7 +169,7 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
     delete it3;
 
     // Agrego las asignaturas que el usuario ingreso al estudiante.
-    if (this->PerteneceAsigACarrerasDeEst (carreras, aprobacionesAAgregar))
+    if (this->PerteneceAsigACarrerasDeEst(carreras, aprobacionesAAgregar))
     {
         IIterator * it5 = aprobacionesAAgregar->getIterator();
         while(it5->hasCurrent())
@@ -303,7 +303,7 @@ bool ManejadorEstudiante::EstudianteCumpleRequisitos(Estudiante* student, IDicti
     return true;
 }
 
-bool PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEst, IDictionary *aprobacionesAAgregar)
+bool ManejadorEstudiante::PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEst, ICollection *aprobacionesAAgregar)
 {
     IIterator * it = aprobacionesAAgregar->getIterator();
     while(it->hasCurrent())

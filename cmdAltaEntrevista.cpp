@@ -7,6 +7,7 @@
 #include "DataOfertaLaboral.h"
 #include "Fabrica.h"
 #include "Date.h"
+#include "IComando.h"
 #include "interfaces/IIterator.h"
 #include "IEstudianteController.h"
 #include "DataEstudiante.h"

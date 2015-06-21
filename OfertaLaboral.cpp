@@ -62,6 +62,11 @@ string OfertaLaboral::getNumExpediente()
 	return this->numExpediente;
 }
 
+IDictionary* OfertaLaboral::getAsignaturas()
+{
+    return this->asignaturas;
+}
+
 string OfertaLaboral::getTitulo()
 {
 	return this->titulo;
@@ -205,7 +210,7 @@ bool OfertaLaboral::EsOferta(string numExpediente)
 
 bool OfertaLaboral::EsActiva()
 {
-    Tiempo* hoy = Tiempo::getInstance();
+    /*Tiempo* hoy = Tiempo::getInstance();
     string sddHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getDia()) )->str();
     string smmHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getMes()) )->str();
     string saaaaHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getAnio()) )->str();
@@ -239,7 +244,8 @@ bool OfertaLaboral::EsActiva()
     //double secondsInicio = difftime(hoy->now(), this->fechaComienzo);
     //double secondsFin = difftime(hoy->now(), this->fechaFin);
 
-    return ((secondsInicio >= 0) && (secondsFin <= 0));
+    return ((secondsInicio >= 0) && (secondsFin <= 0));*/
+    return false;
 }
 
 void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
