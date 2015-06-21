@@ -38,7 +38,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	e3 = new Empresa("1265498765","MiniSoft Uy");
 	e4 = new Empresa("5464897986","Ingenieros Electricos Unidos");
 	e5 = new Empresa("1326548654","Academia Yotexplico");
-
+        
 	empresas->add(new String("1112335684"), e1);
 	empresas->add(new String("1298865497"), e2);
 	empresas->add(new String("1265498765"), e3);
@@ -158,7 +158,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	se15->setEncargado(new Encargado("2165498","Ivana","Herrera",new Date(4, 12, 1970)));
 	se16->setEncargado(new Encargado("1895432","Lucas","Pereira",new Date(16, 10, 1963)));
 	se17->setEncargado(new Encargado("3216548","Adrian","Moreno",new Date(5, 5, 1980)));
-	se18->setEncargado(new Encargado("1489623","Laura","Pereira",new Date(0, 12, 1964)));
+	se18->setEncargado(new Encargado("1489623","Laura","Pereira",new Date(1, 12, 1964)));
 	se19->setEncargado(new Encargado("4231568","Benjamin","Gomez",new Date(20, 3, 1984)));
 	se20->setEncargado(new Encargado("4123465","Mia","Costa",new Date(31, 12, 1988)));
 	se21->setEncargado(new Encargado("3216585","Alejandro","Roche",new Date(30, 8, 1976)));

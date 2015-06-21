@@ -1,5 +1,6 @@
 #include "Empresa.h"
 #include <iostream>
+#include "collections/OrderedDictionary.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ Empresa::Empresa(string rut, string nombre)
 {
 	this->rut = rut;
 	this->nombre = nombre;
+        this->sucursales = new OrderedDictionary();
 }
 
 Empresa::Empresa(const Empresa &e)
@@ -24,7 +26,7 @@ Empresa::Empresa(const Empresa &e)
 // destructor
 Empresa::~Empresa()
 {
-
+    delete this->sucursales;
 }
 
 DataEmpresa *Empresa::getDataEmpresa()

@@ -8,6 +8,8 @@
 #include <ctime>
 #include <iostream>
 #include <time.h>
+#include "collections/List.h"
+#include "collections/OrderedDictionary.h"
 
 OfertaLaboral::OfertaLaboral()
 {
@@ -20,9 +22,9 @@ OfertaLaboral::OfertaLaboral()
     this->fechaFin = NULL;
     this->cantidadPuestosNecesarios = 0;
     this->seccion = NULL;
-    this->inscripciones = NULL;
-    this->asignaturas = NULL;
-    this->entrevistas = NULL;
+    this->inscripciones = new List();
+    this->asignaturas = new OrderedDictionary();
+    this->entrevistas = new List();
 
 }
 
@@ -38,7 +40,11 @@ OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descrip
     this->fechaComienzo = fechaComienzo;
     this->fechaFin = fechaFin;
     this->cantidadPuestosNecesarios = cantidadPuestosNecesarios;
-    this->asignaturas = asignaturas;
+    if (asignaturas != NULL) {
+        this->asignaturas = asignaturas;
+    } else {
+        this->asignaturas = new OrderedDictionary();
+    }
 }
 
 OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)

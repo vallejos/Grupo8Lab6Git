@@ -1,11 +1,12 @@
 #include "Sucursal.h"
+#include "collections/OrderedDictionary.h"
 
 Sucursal::Sucursal()
 {
     this->nombre = '\0';
     this->direccion = '\0';
     this->telefono = '\0';
-    this->secciones = NULL;
+    this->secciones = new OrderedDictionary();
     this->empresa = NULL;
 }
 
@@ -14,7 +15,12 @@ Sucursal::Sucursal(string nombre, string direccion, string telefono, IDictionary
     this->nombre = nombre;
     this->direccion = direccion;
     this->telefono = telefono;
-    this->secciones = secciones;
+    if (secciones == NULL)
+    {
+        this->secciones = new OrderedDictionary();
+    } else {
+        this->secciones = secciones;
+    }
     this->empresa = empresa;
 }
 
