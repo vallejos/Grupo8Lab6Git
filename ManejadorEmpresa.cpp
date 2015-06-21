@@ -59,8 +59,6 @@ Empresa* ManejadorEmpresa::getEmpresa(string rut)
 
 IDictionary* ManejadorEmpresa::getEmpresas()
 {
-    if (this->empresas ==NULL)
-        throw "Manejador Empresa -> No hay empresas dadas de akta en el Sistema";
     return this->empresas;
 }
 
