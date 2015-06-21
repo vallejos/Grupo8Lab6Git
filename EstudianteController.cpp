@@ -42,14 +42,9 @@ void EstudianteController::SeleccionarEstudiante(string cedula, IDictionary *est
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     String* ci = new String(cedula.c_str());
-    if(estudiantesValidos->member(ci))
-    {
-        this->estudiante = me->SeleccionarEstudiante(cedula);
-    }
-    else
-    {
+    if(! (estudiantesValidos->member(ci)))
         throw "La cédula " + cedula + " es inválida.";
-    }
+    this->estudiante = me->SeleccionarEstudiante(cedula);
 }
 
 DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedula)
@@ -63,13 +58,13 @@ IDictionary* EstudianteController::ListarEstudiantesRegistrados()
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     IDictionary *estudiantes = me->getEstudiantes();
-    if (estudiantes == NULL)
-        throw "No existe ningún estudiante dado de alta en el Sistema";
     return estudiantes;
 }
 
 Estudiante* EstudianteController::getEstudiante()
 {
+    if (this->estudiante == NULL)
+        throw "No hay ningun estudiante recordado en el sistema";
     return this->estudiante;
 }
 

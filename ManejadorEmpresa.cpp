@@ -22,6 +22,8 @@ ManejadorEmpresa* ManejadorEmpresa::getInstance()
 
 ICollection* ManejadorEmpresa::getDataEmpresas()
 {
+    if (this->empresas == NULL)
+        throw "Manejador Empresa -> No hay empresas dadas de alta en el Sistema.";
     List* result = new List();
     IIterator * it = this->empresas->getIterator();
     while(it->hasCurrent())
@@ -42,25 +44,23 @@ ICollection* ManejadorEmpresa::getDataEmpresas()
 Empresa* ManejadorEmpresa::getEmpresa(string rut)
 {
     String* sRut = new String(rut.c_str());
-    if (this->empresas->member(sRut))
+    if (! (this->empresas->member(sRut)))
+        throw "La Empresa con RUT " + rut + " no existe en el Sistema.";
+    Empresa *emp;
+    if( (emp = dynamic_cast<Empresa*> (this->empresas->find(sRut))) != NULL )
     {
-        Empresa *emp;
-        if( (emp = dynamic_cast<Empresa*> (this->empresas->find(sRut))) != NULL )
-        {
-            return emp;
-        } else
-        {
-            throw "ManejadorEmpresa -> El objeto no es de la clase Empresa.";
-        }
+        return emp;
     }
     else
     {
-        throw "La Empresa con RUT " + rut + " no existe en el Sistema.";
+        throw "ManejadorEmpresa -> El objeto no es de la clase Empresa.";
     }
 }
 
 IDictionary* ManejadorEmpresa::getEmpresas()
 {
+    if (this->empresas ==NULL)
+        throw "Manejador Empresa -> No hay empresas dadas de akta en el Sistema";
     return this->empresas;
 }
 

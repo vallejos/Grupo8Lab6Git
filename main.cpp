@@ -169,6 +169,7 @@ int main() {
 			}
 		} catch (char const *e) {
 			cout << e;
+			cout << "\n";
 		}
 	}
 

@@ -46,16 +46,22 @@ IDictionary* EmpresaController::ListarSecciones()
 
 Empresa* EmpresaController::getEmpresa()
 {
+    if (this->empresa)
+        throw "No hay una Empresa recordada en el Sistema";
     return this->empresa;
 }
 
 Sucursal* EmpresaController::getSucursal()
 {
+    if (this->sucursal)
+        throw "No hay una Sucursal recordada en el Sistema";
     return this->sucursal;
 }
 
 Seccion* EmpresaController::getSeccion()
 {
+    if (this->seccion)
+        throw "No hay una Seccion recordada en el Sistema";
     return this->seccion;
 }
 
