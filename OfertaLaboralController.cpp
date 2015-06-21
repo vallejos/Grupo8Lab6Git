@@ -46,12 +46,12 @@ void OfertaLaboralController::SeleccionarOferta(string numExpediente, IDictionar
 void OfertaLaboralController::Inscribir(Date *fechaInscripcion) {
     if (this->oferta == NULL)
         throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
-    this->oferta->Inscripcion(fechaInscripcion);
+    this->oferta->Inscribir(fechaInscripcion);
     //BORRAR MEMORIA ?? oferta y estudiante en memoria
 }
 
 void OfertaLaboralController::Entrevistar(Date *fechaEntrevista) {
-    this->oferta->Entrevista(fechaEntrevista);
+    this->oferta->Entrevistar(fechaEntrevista);
     //BORRAR MEMORIA ?? oferta y estudiante en memoria
 }
 

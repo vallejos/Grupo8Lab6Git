@@ -3,8 +3,9 @@
 
 #include "Date.h"
 #include <string>
+#include "interfaces/ICollectible.h"
 
-class Efectivizacion
+class Efectivizacion : public ICollectible
 {
     private:
         int sueldo;
