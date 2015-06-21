@@ -110,6 +110,7 @@ void Sucursal::setSecciones(IDictionary* secciones)
     this->secciones = secciones;
 }
 
+
 Sucursal::~Sucursal()
 {
     //dtor

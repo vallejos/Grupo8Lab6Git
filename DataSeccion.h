@@ -17,7 +17,6 @@ class DataSeccion : public ICollectible
         string getNombre();
         string getInterno();
         DataEncargado *getEncargado();
-
     private:
         string nombre;
         string interno;

@@ -19,6 +19,7 @@ using namespace std;
 
 class Sucursal : public ICollectible
 {
+
     private:
         string nombre;
         string direccion;
