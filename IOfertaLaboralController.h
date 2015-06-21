@@ -22,8 +22,8 @@ class IOfertaLaboralController {
         virtual void Entrevistar(Date* fechaEntrevista) = 0;
         virtual IDictionary* MostrarOfertasActivas() = 0;
         virtual void ModificarOferta(string numExpediente, string titulo, string descripcion, int cantHorasSemanales, Rango *rangoSalarial, Date *fechaIni,
-            Date *fechaFin, int cantidadPuestos, IDictionary *asignaturas, Seccion *seccion, ICollection *inscripciones, 
-            ICollection *entrevistas) = 0;        
+            Date *fechaFin, int cantidadPuestos, IDictionary *asignaturas, Seccion *seccion, ICollection *inscripciones,
+            ICollection *entrevistas) = 0;
         virtual void AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)=0;
         virtual void DarBajaLlamado() = 0;
         virtual ~IOfertaLaboralController() = 0; //virtual y vacio

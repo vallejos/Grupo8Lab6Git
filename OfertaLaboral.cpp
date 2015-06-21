@@ -97,6 +97,11 @@ int OfertaLaboral::getCantidadPuestosNecesarios()
 	return this->cantidadPuestosNecesarios;
 }
 
+IDictionary* OfertaLaboral::getAsignaturas()
+{
+    return this->asignaturas;
+}
+
 void OfertaLaboral::setNumExpediente(string numExpediente)
 {
     this->numExpediente = numExpediente;

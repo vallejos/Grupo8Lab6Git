@@ -4,3 +4,8 @@ IObserver::~IObserver()
 {
 
 }
+
+IObserver::IObserver()
+{
+
+}
