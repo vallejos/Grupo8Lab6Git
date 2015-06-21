@@ -36,31 +36,24 @@ IComando* FabricaComando::obtenerComando(char cmd)
     {
 			case 'A':
                 c = new cmdAltaOfertaLaboral();
-                return c;
 				break;
 			case 'B':
                 c = new cmdAltaEntrevista();
-                return c;
 				break;
 			case 'C':
                 c = new cmdAsignacionDeOfertaAEstudiante();
-                return c;
 				break;
 			case 'D':
                 c = new cmdConsultarDatosEstudiantes();
-                return c;
 				break;
 			case 'E':
                 c = new cmdListarOfertasActivas();
-                return c;
 				break;
 			case 'F':
                 c = new cmdModificarEstudiante();
-                return c;
 				break;
 			case 'G':
                 c = new cmdModificarLlamado();
-                return c;
 				break;
 			case 'H':
                 c = new cmdDarDeBajaLlamado();
@@ -68,25 +61,21 @@ IComando* FabricaComando::obtenerComando(char cmd)
 				break;
             case 'I':
                 c = new cmdInscripcionOfertaLaboral();
-                return c;
 				break;
             case 'J':
                 c = new cmdCargarDatosDePrueba();
-                return c;
                 break;
             case 'K':
                 c = new cmdListarNotificacionesEstudiante();
-                return c;
                 break;
             case 'L':
                 c = new cmdEstablecerHoraSistema();
-                return c;
                 break;
             case 'M':
                 c = new cmdAnotarBorrarNotificaciones();
-                return c;
                 break;
     }
+    return c;
 }
 
 void FabricaComando::destroyFabricaComando()
