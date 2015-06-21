@@ -14,27 +14,15 @@ Date::Date() {
 Date::Date(int dd, int mm, int aaaa)
 {
     //ctor
-    try{
-        if(dd>31 or dd<1){
-            throw std::invalid_argument("Dia invalido");
-        }else{
-            this->dd = dd;
-        }
-
-        if(mm>12 or mm<1){
-            throw std::invalid_argument("Mes invalido");
-        }else{
-            this->mm = mm;
-        }
-
-        if(aaaa<1900){
-            throw std::invalid_argument("Año invalido");
-        }else{
-            this->aaaa = aaaa;
-        }
-    }catch(const std::invalid_argument &e){
-    	throw std::invalid_argument(e.what());
-    }
+    if(dd>31 or dd<1)
+        throw "Dia invalido";
+    if(mm>12 or mm<1)
+        throw "Mes invalido";
+    if(aaaa<1900)
+        throw "Año invalido";
+    this->dd = dd;
+    this->mm = mm;
+    this->aaaa = aaaa;
 };
 
 Date::Date(const Date &d)
