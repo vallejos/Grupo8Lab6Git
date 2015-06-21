@@ -3,6 +3,8 @@
 
 #include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
+#include "collections/OrderedDictionary.h"
+#include "collections/List.h"
 #include "Estudiante.h"
 #include <string>
 
@@ -21,7 +23,7 @@ class ManejadorEstudiante
         IDictionary *getAsignaturas();
         IDictionary *getCarreras();
         bool EstudianteCumpleRequisitos(Estudiante* student, IDictionary* asignaturasOferta);
-        bool PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEst, IDictionary *aprobacionesAAgregar);
+        bool PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEst, ICollection *aprobacionesAAgregar);
         void destroyManejadorEstudiante();
 
     private:

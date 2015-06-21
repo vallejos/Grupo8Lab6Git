@@ -1,7 +1,7 @@
 #include "OfertaLaboralController.h"
 #include "ManejadorOfertaLaboral.h"
 
-
+OfertaLaboralController* OfertaLaboralController::instance = NULL;
 
 // constructor
 OfertaLaboralController::OfertaLaboralController() {
@@ -12,8 +12,6 @@ OfertaLaboralController::OfertaLaboralController() {
 OfertaLaboralController::~OfertaLaboralController() {
 
 }
-
-OfertaLaboralController* OfertaLaboralController::instance = NULL;
 
 OfertaLaboralController *OfertaLaboralController::getInstance() {
 	if (instance == NULL) {

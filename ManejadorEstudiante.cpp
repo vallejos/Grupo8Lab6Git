@@ -20,12 +20,16 @@ IDictionary *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
     //Se va a mover por la coleccion de estudiantes que el manejador conoce
     //se invoca a EstNoInscripto para corroborar si el estudiante está inscripto a la oferta con numExpediente
     //por cada estudiante no inscripto se crea un DataEstudiante para luego retornar una coleccion de DataEstudiante.
-    List* result = new List();
+    OrderedDictionary* result = new OrderedDictionary();
     IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
-        if (it->getCurrent()->EstNoInscripto(numExpediente))
-            result->add(it->getCurrent()->getDataEstudiante());
+        Estudiante *de = dynamic_cast<Estudiante*> (it->getCurrent());
+        if (de->EstNoInscripto(numExpediente))
+        {
+            String *cedula = new String(de->getDataEstudiante()->getCedula().c_str());
+            result->add(cedula, de->getDataEstudiante());
+        }
         it->next();
     }
     delete it;
@@ -34,12 +38,16 @@ IDictionary *ManejadorEstudiante::getEstNoInscriptos(string numExpediente)
 
 IDictionary* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
 {
-    List* result = new List();
+    OrderedDictionary* result = new OrderedDictionary();
     IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
-        if (it->getCurrent()->EstInscripto(numExpediente))
-            result->add(it->getCurrent()->getDataEstudiante());
+        Estudiante *de = dynamic_cast<Estudiante*> (it->getCurrent());
+        if (de->EstInscripto(numExpediente))
+        {
+            String *cedula = new String(de->getDataEstudiante()->getCedula().c_str());
+            result->add(cedula, de->getDataEstudiante());
+        }
         it->next();
     }
     delete it;
@@ -48,7 +56,8 @@ IDictionary* ManejadorEstudiante::getEstInscriptosEnOferta(string numExpediente)
 
 void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento, int creditos, string email, ICollection *aprobacionesAAgregar, IDictionary *asignaturasAEliminar, IDictionary *carrerasAAgregar, IDictionary *carrerasAEliminar)
 {
-    Estudiante* e = this->estudiantes->find(cedula);
+    String *ced = new String(cedula.c_str());
+    Estudiante* e = dynamic_cast<Estudiante*> (this->estudiantes->find(ced));
     if(nombre != "")
         e->setNombre(nombre);
     if(apellido != "")
@@ -65,7 +74,7 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
     IDictionary *carreras = e->getCarreras();
 
     // Elimino las carreras que el usuario ingreso del estudiante.
-    IIterator * it = this->carrerasAEliminar->getIterator();
+    IIterator * it = this->carreras->getIterator();
     while(it->hasCurrent())
     {
         Carrera *carrera;
@@ -89,7 +98,7 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
     delete it;
 
      // Agrego las carreras que el usuario ingreso al estudiante.
-     IIterator * it2 = this->carrerasAAgregar->getIterator();
+     IIterator * it2 = this->carreras->getIterator();
      while(it2->hasCurrent())
     {
         Carrera *carrera;
@@ -99,7 +108,7 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
             Integer *codigo = new Integer(cod);
             if (!carreras->member(codigo))
             {
-                Carrera *c = carreras->find(codigo);
+                Carrera *c = dynamic_cast<Carrera*> (carreras->find(codigo));
                 carreras->add(codigo,c);
             }else
             {
@@ -116,7 +125,7 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
     ICollection *aprobadas = e->getAprobadas();
 
     // Elimino las asignaturas que el usuario ingreso del estudiante.
-    IIterator * it3 = this->asignaturasAEliminar->getIterator();
+    IIterator * it3 = this->asignaturas->getIterator();
     while(it3->hasCurrent())
     {
         Asignatura *asig;
@@ -127,7 +136,7 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
             int creditosEst = e->getCreditos();
             int restaCreditos = creditosEst - creditosAsig;
             e->setCreditos(restaCreditos);
-            IIterator * it4 = this->aprobadas->getIterator();
+            IIterator * it4 = aprobadas->getIterator();
             bool encontro = false;
             while (it4->hasCurrent() && !encontro)
             {
@@ -135,7 +144,7 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
                 if( (aprobacion = dynamic_cast<Aprobacion*> (it4->getCurrent())) != NULL )
                 {
                     int codAsigEst = aprobacion->getAsignatura()->getCodigo();
-                    if (codigo == codAsigEst)
+                    if (cod == codAsigEst)
                     {
                         aprobadas->remove(aprobacion);
                         encontro = true;
@@ -160,9 +169,9 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
     delete it3;
 
     // Agrego las asignaturas que el usuario ingreso al estudiante.
-    if (PerteneceAsigACarrerasDeEst (carreras, aprobacionesAAgregar))
+    if (this->PerteneceAsigACarrerasDeEst (carreras, aprobacionesAAgregar))
     {
-        IIterator * it5 = this->aprobacionesAAgregar->getIterator();
+        IIterator * it5 = aprobacionesAAgregar->getIterator();
         while(it5->hasCurrent())
         {
             Aprobacion *aprob;
@@ -173,14 +182,14 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
                 int creditosEst = e->getCreditos();
                 int sumaCreditos = creditosEst + creditosAsig;
                 e->setCreditos(sumaCreditos);
-                IIterator * it6 = this->aprobadas->getIterator();
+                IIterator * it6 = aprobadas->getIterator();
                 while (it6->hasCurrent())
                 {
                     Aprobacion *aprobacion;
                     if( (aprobacion = dynamic_cast<Aprobacion*> (it6->getCurrent())) != NULL )
                     {
                         int codAsigEst = aprobacion->getAsignatura()->getCodigo();
-                        if (codigo == codAsigEst)
+                        if (cod == codAsigEst)
                         {
                             throw "ManejadorEstudiante -> La Asignatura a Agregar ya es una Asignatura del Estudiate.";
                         }
@@ -212,31 +221,27 @@ Estudiante *ManejadorEstudiante::SeleccionarEstudiante(string cedula)
 {
     //Va a buscar en la coleccion de estudiantes del manejador,
     //y va a buscar el estudiante con cedula "cedula".
-    try
+    String* ci = new String(cedula.c_str());
+    if(this->estudiantes->member(ci))
     {
-        String* ci = new String(cedula);
-        if(this->estudiantes->member(ci))
-        {
-            return this->estudiantes->find(cedula);
-        }
-        else
-        {
-            throw std::invalid_argument("El Estudiante con C.I. " + cedula + " no existe en el Sistema.");
-        }
+        return dynamic_cast<Estudiante*> (this->estudiantes->find(ci));
     }
-    catch(const std::invalid_argument &e)
+    else
     {
-    	throw std::invalid_argument(e.what());
+        throw "El Estudiante con C.I. " + cedula + " no existe en el Sistema.";
     }
 }
 
 IDictionary *ManejadorEstudiante::getEstudiante()
+{
 //Va a recorrer los estudiantes del sistema y por cada estudiante crea un DataEstudiante para luego retornar un set.
-    List* result = new List();
+    OrderedDictionary* result = new OrderedDictionary();
     IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
-        result->add(it->getCurrent()->getDataEstudiante());
+        Estudiante *e = dynamic_cast<Estudiante*> (it->getCurrent());
+        String *cedula = new String(e->getDataEstudiante()->getCedula().c_str());
+        result->add(cedula, e->getDataEstudiante());
         it->next();
     }
     delete it;
@@ -289,7 +294,7 @@ bool ManejadorEstudiante::EstudianteCumpleRequisitos(Estudiante* student, IDicti
                  return false;
         }else
         {
-            throw std::invalid_argument("ManejadorEstudiante -> El objeto no es de la clase Asignatura.");
+            throw "ManejadorEstudiante -> El objeto no es de la clase Asignatura.";
         }
         it->next();
     }
@@ -300,7 +305,7 @@ bool ManejadorEstudiante::EstudianteCumpleRequisitos(Estudiante* student, IDicti
 
 bool PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEst, IDictionary *aprobacionesAAgregar)
 {
-    IIterator * it = this->aprobacionesAAgregar->getIterator();
+    IIterator * it = aprobacionesAAgregar->getIterator();
     while(it->hasCurrent())
     {
         Aprobacion *aprob;
@@ -336,13 +341,14 @@ bool PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEst, IDictionary *aprob
         it->next();
     }
     delete it;
+    return false;
 }
 
 void ManejadorEstudiante::destroyManejadorEstudiante()
 {
      if (instance != NULL)
      {
-        delete ManejadorEstudiante;
+        this->~ManejadorEstudiante();
      }
 }
 

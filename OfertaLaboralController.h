@@ -6,8 +6,10 @@
 #include "DataOfertaLaboral.h"
 #include "interfaces/ICollection.h"
 #include "interfaces/IDictionary.h"
+#include "IOfertaLaboralController.h"
 
-class OfertaLaboralController {
+class OfertaLaboralController: public IOfertaLaboralController 
+{
     public:
         static OfertaLaboralController *getInstance();
         IDictionary *ListarOfertas();
