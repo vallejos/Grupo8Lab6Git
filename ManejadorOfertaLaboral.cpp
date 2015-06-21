@@ -2,12 +2,13 @@
 #include "String.h"
 #include "Estudiante.h"
 #include "Seccion.h"
+#include "collections/OrderedDictionary.h"
 
 ManejadorOfertaLaboral* ManejadorOfertaLaboral::instance = NULL;
 
 ManejadorOfertaLaboral::ManejadorOfertaLaboral()
 {
-    this->ofertasLaborales = NULL;
+    this->ofertasLaborales = new OrderedDictionary();
 }
 
 ManejadorOfertaLaboral *ManejadorOfertaLaboral::getInstance()
@@ -22,6 +23,8 @@ IDictionary *ManejadorOfertaLaboral::getDataOfertaLaboral()
 {
     //Se rotorna un set de DataOfertaLaboral con las ofertas activas del sistema.
     //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar una coleccion de las mismas.
+    if(this->ofertasLaborales == NULL)
+    throw "ManejadorOfertaLaboral -> No hay Ofertas Laborales en el Sistema";
     OrderedDictionary* result = new OrderedDictionary();
     IIterator * it = this->ofertasLaborales->getIterator();
     while(it->hasCurrent())
@@ -164,7 +167,7 @@ void ManejadorOfertaLaboral::destroyManejadorOfertaLaboral()
 }
 
 void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, string titulo, string descripcion, int cantHorasSemanales, Rango *rangoSalarial, Date *fechaIni,
-            Date *fechaFin, int cantidadPuestos, IDictionary *asignaturas, Seccion *seccion, ICollection *inscripciones, 
+            Date *fechaFin, int cantidadPuestos, IDictionary *asignaturas, Seccion *seccion, ICollection *inscripciones,
             ICollection *entrevistas)
 {
 //Pre: ningun dato del nuevosDatos es vacio.

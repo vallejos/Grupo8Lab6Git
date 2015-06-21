@@ -1,10 +1,11 @@
 #include "DataDatosEstudiante.h"
+#include "colletions/List.h"
 
 // constructor
 DataDatosEstudiante::DataDatosEstudiante()
 {
-    this->dataAprobadas = NULL;
-    this->dataOfertasEmpresas = NULL;
+    this->dataAprobadas = new List();
+    this->dataOfertasEmpresas = new List();
 }
 
 DataDatosEstudiante::DataDatosEstudiante(ICollection* dataAprobadas, ICollection* dataOfertasEmpresas)
