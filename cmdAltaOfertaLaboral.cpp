@@ -232,14 +232,14 @@ void cmdAltaOfertaLaboral::ejecutarComando()
                 Criterio1* critery1 = new Criterio1();
                 cEmpresa->setCriterio(critery1);
                 IDictionary* asignaturasSugeridas = cEmpresa->obtenerAsignaturasValidas(asignaturasEnOferta);
-                cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasSugeridas);
+                cEmpresa->AltaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasSugeridas);
             }
             else if(numCriterio == 2)
             {
                 Criterio2* critery2 = new Criterio2();
                 cEmpresa->setCriterio(critery2);
                 IDictionary* asignaturasSugeridas = cEmpresa->obtenerAsignaturasValidas(asignaturasEnOferta);
-                cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasSugeridas);
+                cEmpresa->AltaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasSugeridas);
             }
             else
             {
@@ -248,7 +248,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         }
         else
         {
-            cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasEnOferta);
+            cEmpresa->AltaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasEnOferta);
         }
 
         //}
