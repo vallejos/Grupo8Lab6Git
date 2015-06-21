@@ -4,16 +4,17 @@
 #include "Date.h"
 #include "OfertaLaboral.h"
 #include "DataOfertaLaboral.h"
-#include "Estudiante.h"
 #include "Efectivizacion.h"
 #include "interfaces/ICollectible.h"
+
+class Estudiante;
 
 class Inscripcion : public ICollectible
 {
     public:
         Inscripcion();
         Inscripcion(Date* fechaInscripcion, OfertaLaboral* ofertaLab, Estudiante* estu);
-        Inscripcion(const Inscripcion &i);
+//        Inscripcion(const Inscripcion &i);
 
         //getters
         Date* getFechaInscripcion();
@@ -39,5 +40,8 @@ class Inscripcion : public ICollectible
         Estudiante* estudiant;
         Efectivizacion* efectivo;
 };
+
+#include "Estudiante.h"
+
 
 #endif // INSCRIPCION_H

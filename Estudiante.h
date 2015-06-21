@@ -9,13 +9,13 @@
 #include "IObserver.h"
 #include "Date.h"
 #include "DataEstudiante.h"
-#include "DataDatosEstudiante.h"
 #include "Aprobacion.h"
 #include "Carrera.h"
 #include "collections/OrderedDictionary.h"
 #include "interfaces/IKey.h"
 #include "Integer.h"
 
+class DataDatosEstudiante;
 class Inscripcion;
 class Entrevista;
 
@@ -87,5 +87,6 @@ class Estudiante : public ICollectible
 
 #include "Inscripcion.h"
 #include "Entrevista.h"
+#include "DataDatosEstudiante.h"
 
 #endif // ESTUDIANTE_H
