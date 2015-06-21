@@ -1,11 +1,12 @@
 #include "ManejadorEmpresa.h"
+#include "collections/OrderedDictionary.h"
 
 ManejadorEmpresa* ManejadorEmpresa::instance = NULL;
 
 ManejadorEmpresa::ManejadorEmpresa()
 {
     //ctor
-    this->empresas = NULL;
+    this->empresas = new OrderedDictionary();
 }
 
 ManejadorEmpresa::ManejadorEmpresa(IDictionary* empresas)
@@ -73,6 +74,7 @@ void ManejadorEmpresa::destroyManejadorEmpresa()
 ManejadorEmpresa::~ManejadorEmpresa()
 {
     //dtor
+    delete this->empresas;
     delete instance;
     instance = NULL;
 }

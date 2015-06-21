@@ -38,7 +38,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	e3 = new Empresa("1265498765","MiniSoft Uy");
 	e4 = new Empresa("5464897986","Ingenieros Electricos Unidos");
 	e5 = new Empresa("1326548654","Academia Yotexplico");
-
+        
 	empresas->add(new String("1112335684"), e1);
 	empresas->add(new String("1298865497"), e2);
 	empresas->add(new String("1265498765"), e3);
@@ -46,7 +46,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	empresas->add(new String("1326548654"), e5);
 
 // CARGA: SUCURSALES
-	IDictionary *sue1, *sue2, *sue3, *sue4, *sue5;
+	OrderedDictionary *sue1, *sue2, *sue3, *sue4, *sue5;
 
 	sue1 = e1->getSucursales();
 	sue2 = e2->getSucursales();
