@@ -60,8 +60,6 @@ Empresa* ManejadorEmpresa::getEmpresa(string rut)
 
 IDictionary* ManejadorEmpresa::getEmpresas()
 {
-    if (this->empresas ==NULL)
-       // throw "Manejador Empresa -> No hay empresas dadas de akta en el Sistema";
     return this->empresas;
 }
 
@@ -76,6 +74,7 @@ void ManejadorEmpresa::destroyManejadorEmpresa()
 ManejadorEmpresa::~ManejadorEmpresa()
 {
     //dtor
+    delete this->empresas;
     delete instance;
     instance = NULL;
 }
