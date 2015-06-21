@@ -1,10 +1,12 @@
 #include "Asignatura.h"
+#include "collections/OrderedDictionary.h"
 
 Asignatura::Asignatura()
 {
     this->codigo = 0;
     this->nombre = '\0';
     this->creditos = 0;
+    this->carreras = new OrderedDictionary();
 }
 
 Asignatura::Asignatura(int codigo, string nombre, int creditos)
@@ -12,7 +14,7 @@ Asignatura::Asignatura(int codigo, string nombre, int creditos)
     this->codigo = codigo;
     this->nombre = nombre;
     this->creditos = creditos;
-
+    this->carreras = new OrderedDictionary();
 }
 
 Asignatura::Asignatura(const Asignatura &a)
@@ -76,5 +78,5 @@ DataAsignatura *Asignatura::getDataAsignatura()
 Asignatura::~Asignatura()
 {
     //dtor
-    //vacio
+    delete this->carreras;
 }

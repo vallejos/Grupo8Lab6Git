@@ -1,22 +1,26 @@
 #include "Carrera.h"
+#include "collections/OrderedDictionary.h"
 
 Carrera::Carrera()
 {
     //ctor
     this->codigo = 0;
     this->nombreCarrera = '\0';
+    this->asignaturas = new OrderedDictionary();
 }
 
 Carrera::Carrera(const Carrera &c)
 {
     this->codigo = c.codigo;
     this->nombreCarrera = c.nombreCarrera;
+    // asignaturas?
 }
 
 Carrera::Carrera(int codigo, string nombreCarrera)
 {
     this->codigo = codigo;
     this->nombreCarrera = nombreCarrera;
+    this->asignaturas = new OrderedDictionary();
 }
 
 int Carrera::getCodigo()
@@ -62,5 +66,5 @@ void Carrera::setNombreCarrera(string nombreCarrera)
 Carrera::~Carrera()
 {
     //dtor
-    //vacio
+    delete this->asignaturas;
 }
