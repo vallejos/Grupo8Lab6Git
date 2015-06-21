@@ -1,4 +1,7 @@
 #include "Empresa.h"
+#include <iostream>
+
+using namespace std;
 
 // default constructor
 Empresa::Empresa()

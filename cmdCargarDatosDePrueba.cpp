@@ -18,6 +18,7 @@
 #include "OfertaLaboral.h"
 #include "Integer.h"
 #include "String.h"
+#include <stdio.h>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	IDictionary *empresas = me->getEmpresas();
 	Empresa *e1, *e2, *e3, *e4, *e5;
 
-	e1 = new Empresa("1112335684","Segurol S.A.");
+	e1 = new Empresa("1112335684", "Segurol S.A.");
 	e2 = new Empresa("1298865497","RoboTI");
 	e3 = new Empresa("1265498765","MiniSoft Uy");
 	e4 = new Empresa("5464897986","Ingenieros Electricos Unidos");
