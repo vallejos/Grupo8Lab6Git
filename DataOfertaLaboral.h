@@ -44,10 +44,10 @@ class DataOfertaLaboral: public ICollectible
         Date *fechaComienzo;
         Date *fechaFin;
         int cantidadPuestosNecesarios;
-        Seccion* seccion;
-        ICollection *inscripciones;
-        ICollection *entrevistas;
-        IDictionary *asignaturas;
+      //Seccion* seccion;
+      //ICollection *inscripciones;
+      //ICollection *entrevistas;
+      //IDictionary *asignaturas;
 };
 
 #include "Seccion.h"

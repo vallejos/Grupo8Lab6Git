@@ -1,10 +1,13 @@
 #include "ManejadorEstudiante.h"
+#include "collections/OrderedDictionary.h"
 
 ManejadorEstudiante *ManejadorEstudiante::instance = NULL;
 
 ManejadorEstudiante::ManejadorEstudiante()
 {
-    this->estudiantes=NULL;
+    this->estudiantes = new OrderedDictionary();
+    this->asignaturas = new OrderedDictionary();
+    this->carreras = new OrderedDictionary();
 }
 
 ManejadorEstudiante *ManejadorEstudiante::getInstance()
