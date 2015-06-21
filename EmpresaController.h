@@ -40,6 +40,7 @@ class EmpresaController: public IEmpresaController
         void SeleccionarSeccion(string nombre);
         void destroyEmpresaController();
 
+
     private:
         EmpresaController();
         Empresa *empresa; // la empresa que se recuerda
