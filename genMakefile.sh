@@ -7,7 +7,7 @@ rm -f AutoMakefile
 echo "# compilador
 CC=g++
 # flags para el compiler
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -Wextra -Wunreachable-code -ggdb -O0
 LFLAGS=-Wall
 
 all: lab6
