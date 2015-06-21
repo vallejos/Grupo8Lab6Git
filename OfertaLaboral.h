@@ -52,9 +52,9 @@ class OfertaLaboral: public ICollectible
         void setFechaFin(Date *fechaFin);
         void setCantidadPuestosNecesarios(int cantidadPuestosNecesarios);
         void setSeccion(Seccion* seccion);
-        void setInscripciones(ICollection *inscripciones);
-        void setEntrevistas(ICollection *entrevistas);
-        void setAsignaturas(IDictionary *asignaturas);
+//        void setInscripciones(ICollection *inscripciones);
+//        void setEntrevistas(ICollection *entrevistas);
+//        void setAsignaturas(IDictionary *asignaturas);
 
         // otros metodos
         void AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo);
