@@ -8,8 +8,3 @@ IComando::~IComando()
 {
 
 }
-
-IComando::IComando()
-{
-
-}
