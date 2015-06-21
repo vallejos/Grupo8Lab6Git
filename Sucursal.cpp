@@ -25,19 +25,11 @@ DataSucursal *Sucursal::getDataSucursal()
 
 IDictionary *Sucursal::getDataSecciones()
 {
-    IDictionary* result = new OrderedDictionary();
+    List* result = new List();
     IIterator * it = this->secciones->getIterator();
     while(it->hasCurrent())
     {
-        Seccion *sec;
-        if( (sec = dynamic_cast<Seccion*> (it->getCurrent())) != NULL )
-        {
-            String* nombreSec = new String(sec->getNombre().c_str());
-            result->add(nombreSec,sec->getDataSeccion());
-        } else
-        {
-            throw "Sucursal -> El objeto no es de la clase Estudiante.";
-        }
+        result->add(it->getCurrent()->getDataSeccion());
         it->next();
     }
     delete it;
@@ -47,7 +39,7 @@ IDictionary *Sucursal::getDataSecciones()
 
 Seccion *Sucursal::getSeccion(string nombre)
 {
-    String* nomSeccion = new String(nombre.c_str());
+    String* nomSeccion = new String(nombre);
     if(this->secciones->member(nomSeccion))
     {
         Seccion *sec;
@@ -56,12 +48,12 @@ Seccion *Sucursal::getSeccion(string nombre)
             return sec;
         } else
         {
-            throw "Sucursal -> El objeto no es de la clase Seccion.";
+            throw std::invalid_argument("Sucursal -> El objeto no es de la clase Seccion.");
         }
     }
     else
     {
-        throw "La Seccion de nombre " + nombre + " no existe en el Sistema.";
+        throw std::invalid_argument("La Seccion de nombre " + nombre + " no existe en el Sistema.");
     }
 }
 

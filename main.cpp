@@ -44,8 +44,7 @@ int main() {
 	char opcion;
 	bool salir = false;
 
-	FabricaComando *fab = FabricaComando::getInstance();
-	IComando* cmd;
+	FabricaComando *cmd = FabricaComando::getInstance();
 
 	while (!salir) {
 		try {
@@ -56,114 +55,101 @@ int main() {
 				//------------------------
 				// ALTA ENTREVISTA
 				//------------------------
-				case '1':
-				    cmd = fab->obtenerComando('B');
-					cmd->ejecutarComando();
+				case "1":
+					cmd->ejecutarComando('B');
 					break;
 
 				//------------------------
 				// ALTA OFERTA LABORAL
 				//------------------------
-				case '2':
-				    cmd = fab->obtenerComando('A');
-					cmd->ejecutarComando();
+				case "2":
+					cmd->ejecutarComando('A');
 					break;
 
 				//------------------------
 				// ASIGNACION DE OFERTA A ESTUDIANTE
 				//------------------------
-				case '3':
-				    cmd = fab->obtenerComando('C');
-					cmd->ejecutarComando();
+				case "3":
+					cmd->ejecutarComando('C');
 					break;
 
 				//------------------------
 				// CONSULTAR DATOS DE ESTUDIANTE
 				//------------------------
-				case '4':
-				    cmd = fab->obtenerComando('D');
-					cmd->ejecutarComando();
+				case "4":
+					cmd->ejecutarComando('D');
 					break;
 
 				//------------------------
 				// DAR DE BAJA LLAMADO
 				//------------------------
-				case '5':
-				    cmd = fab->obtenerComando('H');
-					cmd->ejecutarComando();
+				case "5":
+					cmd->ejecutarComando('H');
 					break;
 
 				//------------------------
 				// INSCRIPCION DE OFERTA LABORAL
 				//------------------------
-				case '6':
-				    cmd = fab->obtenerComando('I');
-					cmd->ejecutarComando();
+				case "6":
+					cmd->ejecutarComando('I');
 					break;
 
 				//------------------------
 				// LISTAR OFERTAS ACTIVAS
 				//------------------------
-				case '7':
-				    cmd = fab->obtenerComando('E');
-					cmd->ejecutarComando();
+				case "7":
+					cmd->ejecutarComando('E');
 					break;
 
 				//------------------------
 				// MODIFICAR ESTUDIANTE
 				//------------------------
-				case '8':
-				    cmd = fab->obtenerComando('F');
-					cmd->ejecutarComando();
+				case "8":
+					cmd->ejecutarComando('F');
 					break;
 
 				//------------------------
 				// MODIFICAR LLAMADO
 				//------------------------
-				case '9':
-				    cmd = fab->obtenerComando('G');
-					cmd->ejecutarComando();
+				case "9":
+					cmd->ejecutarComando('G');
 					break;
 
                 //------------------------
 				// LISTAR NOTIFICACIONES
 				//------------------------
-				case 'L':
-				    cmd = fab->obtenerComando('K');
-					cmd->ejecutarComando();
+				case "L":
+					cmd->ejecutarComando('K');
 					break;
 
                 //------------------------
 				// ANOTAR/BORRAR NOTIF
 				//------------------------
-				case 'A':
-				    cmd = fab->obtenerComando('M');
-					cmd->ejecutarComando();
+				case "A":
+					cmd->ejecutarComando('M');
 					break;
 
 				//------------------------
 				// CARGAR DATOS DE PRUEBA
 				//------------------------
-				case 'C':
+				case "C":
 					// TODO: poner comandos para carga de pruebas
-					cmd = fab->obtenerComando('J');
-					cmd->ejecutarComando();
+					cmd->ejecutarComando('J');
 					break;
 
 				//------------------------
 				// ESTABLECER HORA SISTEMA
 				//------------------------
-				case 'E':
+				case "E":
 					// TODO: poner comandos para carga de pruebas
-					cmd = fab->obtenerComando('L');
-					cmd->ejecutarComando();
+					cmd->ejecutarComando('L');
 					break;
 
 
 				//------------------------
 				// SALIR
 				//------------------------
-				case 'S':
+				case "S":
 					salir = true;
 					break;
 			}
