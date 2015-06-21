@@ -112,6 +112,11 @@ ICollection *OfertaLaboral::getEntrevistas()
     return this->entrevistas;
 }
 
+Seccion *OfertaLaboral::getSeccion()
+{
+    return this->seccion;
+}
+
 void OfertaLaboral::setAsignaturas(IDictionary *asignaturas)
 {
     this->asignaturas = asignaturas;
