@@ -1,4 +1,7 @@
 #include "Empresa.h"
+#include <iostream>
+
+using namespace std;
 
 // default constructor
 Empresa::Empresa()
@@ -8,6 +11,7 @@ Empresa::Empresa()
 
 Empresa::Empresa(string rut, string nombre)
 {
+    cout << "rut: " << rut << ", nombre: " << nombre;
 	this->rut = rut;
 	this->nombre = nombre;
 }
