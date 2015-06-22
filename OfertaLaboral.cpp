@@ -249,20 +249,40 @@ bool OfertaLaboral::EsActiva()
     string smmHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getMes()) )->str();
     string saaaaHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getAnio()) )->str();
     string shoy = sddHoy + "/" + smmHoy + "/" + saaaaHoy;
+    string sh = saaaaHoy + "-" + smmHoy + "-" + sddHoy + " 00:00";
 
     string sddCom = static_cast<ostringstream*>( &(ostringstream() << this->fechaComienzo->getDia()) )->str();
     string smmCom = static_cast<ostringstream*>( &(ostringstream() << this->fechaComienzo->getMes()) )->str();
     string saaaaCom = static_cast<ostringstream*>( &(ostringstream() << this->fechaComienzo->getAnio()) )->str();
     string sfechaComienzo = sddCom + "/" + smmCom + "/" + saaaaCom;
+    string si = saaaaCom + "-" + smmCom + "-" + sddCom + " 00:00";
 
-    string sddFin = static_cast<ostringstream*>( &(ostringstream() << this->fechaFin->getDia()) )->str();
+    string sddFin = static_cast<ostringstream*>( &(ostringstream() << this->fechaFin->getDia() -1) )->str();
     string smmFin = static_cast<ostringstream*>( &(ostringstream() << this->fechaFin->getMes()) )->str();
     string saaaaFin = static_cast<ostringstream*>( &(ostringstream() << this->fechaFin->getAnio()) )->str();
     string sfechaFin = sddFin + "/" + smmFin + "/" + saaaaFin;
+    string sf = saaaaFin + "-" + smmFin + "-" + sddFin + " 00:00";
 
     struct tm tm;
     time_t t1, t2, t3;
+    time_t tth, tti, ttf;
 
+    strptime(sh.c_str(), "%Y-%m-%d %H:%M", &tm);
+    tm.tm_mon = tm.tm_mon + 1;
+    tm.tm_year = tm.tm_year + 1900;
+    tth = mktime(&tm);
+
+    strptime(si.c_str(), "%Y-%m-%d %H:%M", &tm);
+    tm.tm_mon = tm.tm_mon + 1;
+    tm.tm_year = tm.tm_year + 1900;
+    tti = mktime(&tm);
+
+    strptime(sf.c_str(), "%Y-%m-%d %H:%M", &tm);
+    tm.tm_mon = tm.tm_mon + 1;
+    tm.tm_year = tm.tm_year + 1900;
+    ttf = mktime(&tm);
+
+    
     strptime(shoy.c_str(), "%d\\%m\\%Y", &tm);
     t1 = mktime(&tm);//Fecha equivalente a hoy->now()
 
@@ -270,15 +290,20 @@ bool OfertaLaboral::EsActiva()
     t2 = mktime(&tm);//Fecha equivalente a this->FechaComienzo
 
     strptime(sfechaFin.c_str(), "%d\\%m\\%Y", &tm);
-    t3 = mktime(&tm);//Fecha equivalente a hoy->now()
+    t3 = mktime(&tm);//Fecha equivalente a this->FechaFin()
 
     // do the same with d2
-    double secondsInicio = difftime(t1, t2);
-    double secondsFin = difftime(t1, t3);
+//    double secondsInicio = difftime(t1, t2);
+//    double secondsFin = difftime(t1, t3);
     //double secondsInicio = difftime(hoy->now(), this->fechaComienzo);
     //double secondsFin = difftime(hoy->now(), this->fechaFin);
 
-    return ((secondsInicio >= 0) && (secondsFin <= 0));
+    double difIni = difftime(tth, tti);
+    double difFin = difftime(tth, ttf);
+
+    return ((difIni >= 0) && (difFin <= 0));
+
+//    return ((secondsInicio >= 0) && (secondsFin <= 0));
 }
 
 void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
