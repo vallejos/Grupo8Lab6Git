@@ -27,7 +27,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         //Debe ser diccionario
         IDictionary* ofertasLaborales = cOfertaLab->MostrarOfertasActivas();
 
-        cout << "Lista de Ofertas Laborales Vigentes:\n";
+        cout << "\nLista de Ofertas Laborales Vigentes:\n";
 
         IIterator * it = ofertasLaborales->getIterator();
         while(it->hasCurrent())
@@ -35,7 +35,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
             DataOfertaLaboral *dOfertaLab;// Esto cambia si no traemos dataOfertas
             if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-                cout << "N�mero de Expediente: " << dOfertaLab->getNumExpediente() << ", T�tulo:" << dOfertaLab->getTitulo() << "\n";
+                cout << "NUM EXPEDIENTE: " << dOfertaLab->getNumExpediente() << ", TITULO:" << dOfertaLab->getTitulo() << "\n";
                 it->next();
 
             } else
@@ -46,7 +46,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         }
         delete it;
 
-        cout<< "Seleccione una Oferta Laboral indicando el N�mero de Expediente\n";
+        cout<< "Seleccione una Oferta Laboral indicando el Numero de Expediente\n";
         cin >> numExpediente;
 
         cOfertaLab->SeleccionarOferta(numExpediente,ofertasLaborales);
@@ -56,7 +56,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
 //        IDictionary* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos(numExpediente);
         IDictionary* dataEstudiante = cEstudiante->ListarEstudiantesNoInscriptos();
 
-        cout << "Lista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
+        cout << "\nLista de Estudiantes no Inscriptos a la Oferta Seleccionada:\n";
 
         IIterator * it2 = dataEstudiante->getIterator();
         while(it2->hasCurrent())
@@ -64,7 +64,9 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2->getCurrent())) != NULL )
             {
-                cout << "C�dula: " << dEstudiante->getCedula() << "Nombre: " << dEstudiante->getNombre() << "Apellido: " << dEstudiante->getApellido() << "\n";
+                cout << "CEDULA: " << dEstudiante->getCedula() 
+                        << ", NOMBRE: " << dEstudiante->getNombre() 
+                        << ", APELLIDO: " << dEstudiante->getApellido() << "\n";
                 it2->next();
 
             } else
@@ -74,17 +76,18 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         }
         delete it2;
 
-        cout<< "Seleccione el Estudiante a inscribir indicando la C�dula\n";
+        cout<< "\nSeleccione el Estudiante a inscribir indicando la Cedula\n";
         cin >> cedula;
 
         cEstudiante->SeleccionarEstudiante(cedula,dataEstudiante);
 
-        cout<< "Ingrese la Fecha de Inscripci�n (dd mm aaaa)\n";
+        cout<< "\nIngrese la Fecha de Inscripcion (dd mm aaaa)\n";
         cin >> dia >> mes >> anio;
 
         Date *fechaInsc = new Date(dia,mes,anio);
         cOfertaLab->Inscribir(fechaInsc);
 
+        cout << "\nSe inscribio al Estudiante correctamente.\n\n";
     }
     catch (const char* e)
     {

@@ -38,6 +38,7 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
             {
                 throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase DataOfertaLaboral.";
             }
+            it->next();
         }
         delete it;
 
@@ -50,40 +51,47 @@ void cmdAsignacionDeOfertaAEstudiante::ejecutarComando()
         // listar estudiantes inscriptos en oferta
         IDictionary *estudiantes = ctrlE->ListarEstudiantesInscriptosEnOferta(); // la oferta recordada en el ctrlOL
 
-        cout << "Lista de Estudiantes inscriptos en la Oferta Laboral seleccionada:\n";
+        cout << "\nLista de Estudiantes que se pueden inscribir a la Oferta Laboral seleccionada:\n";
 
-        IIterator *itE = estudiantes->getIterator();
-        while (itE->hasCurrent())
-        {
-            DataEstudiante *dEstudiante;
-            if ( (dEstudiante = dynamic_cast<DataEstudiante*> (itE->getCurrent())) != NULL )
+        if (estudiantes->isEmpty()) {
+            cout << "- No hay estudiantes que cumplan los requisitos de la Oferta seleccionada.\n\n";
+        } else {
+            IIterator *itE = estudiantes->getIterator();
+            while (itE->hasCurrent())
             {
-                cout << "CEDULA: " << dEstudiante->getCedula() << ", NOMBRE:" << dEstudiante->getNombre() <<
-                    ", APELLIDO:" << dEstudiante->getApellido() << ", EMAIL:" << dEstudiante->getEmail() << "\n";
-            } else
-            {
-                throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase dataEstudiante.";
+                DataEstudiante *dEstudiante;
+                if ( (dEstudiante = dynamic_cast<DataEstudiante*> (itE->getCurrent())) != NULL )
+                {
+                    cout << "CEDULA: " << dEstudiante->getCedula() << ", NOMBRE:" << dEstudiante->getNombre() <<
+                        ", APELLIDO:" << dEstudiante->getApellido() << ", EMAIL:" << dEstudiante->getEmail() << "\n";
+                } else
+                {
+                    throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase dataEstudiante.";
+                }
+                itE->next();
             }
+            delete itE;
+
+            // seleccionar estudiante (cedula)
+            cout<< "\nSeleccione un Estudiante indicando la Cedula: \n";
+            cin >> cedula;
+
+            ctrlE->SeleccionarEstudiante(cedula,estudiantes);
+
+            // solicitar datos que faltan
+            cout<< "\nFecha de Efectivizacion (dd mm aaaa): ";
+            cin >> dd >> mm >> aa;
+
+            fechaEfectivizacion = new Date(dd, mm, aa);
+
+            cout<< "\nIngrese el Sueldo: \n";
+            cin >> sueldo;
+
+            // alta asignacion del cargo
+            ctrlOL->AltaAsignacionDelCargo(fechaEfectivizacion, sueldo);
+
+            cout << "\El Estudiante se ha efectivizado correctamente.\n\n";
         }
-        delete itE;
-
-        // seleccionar estudiante (cedula)
-        cout<< "Seleccione un Estudiante indicando la Cedula: \n";
-        cin >> cedula;
-
-        ctrlE->SeleccionarEstudiante(cedula,estudiantes);
-
-        // solicitar datos que faltan
-        cout<< "\nFecha de Efectivizacion (dd mm aaaa): ";
-        cin >> dd >> mm >> aa;
-
-        fechaEfectivizacion = new Date(dd, mm, aa);
-
-        cout<< "Ingrese el Sueldo: \n";
-        cin >> sueldo;
-
-        // alta asignacion del cargo
-        ctrlOL->AltaAsignacionDelCargo(fechaEfectivizacion, sueldo);
     }
     catch (const char* e)
     {
