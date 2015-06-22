@@ -75,7 +75,8 @@ void cmdAnotarBorrarNotificaciones::ejecutarComando()
                             Seccion* secc;
                             if ((secc = dynamic_cast<Seccion*> (it4->getCurrent())) != NULL)
                             {
-                                IObserver *iobs = dynamic_cast<IObserver*> (estRecordado);
+                                //IObserver *iobs = dynamic_cast<IObserver*> (estRecordado);
+                                IObserver *iobs = estRecordado;
                                 switch (opcion)
                                 {
                                     case 'A':

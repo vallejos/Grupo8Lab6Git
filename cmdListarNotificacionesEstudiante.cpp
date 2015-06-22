@@ -58,7 +58,7 @@ void cmdListarNotificacionesEstudiante::ejecutarComando()
             String* notif;
             if ((notif = dynamic_cast<String*> (it2->getCurrent())) != NULL)
             {
-                cout << (notif->getValue());
+                cout << "NOTIFICACION: Se dio de alta la Oferta Laboral con Nro. de Exp. " << (notif->getValue()) << "\n";
             } else
             {
                 throw "cmdListarNotificacionesEstudiante -> El objeto no es de la clase String.";
