@@ -95,7 +95,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         }
         delete it3;
 
-        cout<< "Seleccione una Sección indicando su nombre\n";
+        cout<< "Seleccione una Secciï¿½n indicando su nombre\n";
         cin >> nomSeccion;
         cEmpresa->SeleccionarSeccion(nomSeccion);
 
@@ -104,9 +104,11 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         cout<< "Numero de expediente: ";
         cin >> numExpe;
         cout<< "\nTitulo: ";
-        cin >> titulo;
+        //cin >> titulo;
+        getline(cin, titulo);
         cout<< "\nDescripcion: ";
-        cin >> descripcion;
+        //cin >> descripcion;
+        getline(cin, descripcion);
         cout<< "\nCantidad de horas semanales: ";
         cin >> cantHorasSema;
         cout<< "\nSalario minimo: ";

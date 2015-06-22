@@ -2,11 +2,11 @@
 #include "collections/List.h"
 
 // constructor
-DataDatosEstudiante::DataDatosEstudiante()
+/*DataDatosEstudiante::DataDatosEstudiante()
 {
     this->dataAprobadas = new List();
     this->dataOfertasEmpresas = new List();
-}
+}*/
 
 DataDatosEstudiante::DataDatosEstudiante(ICollection* dataAprobadas, ICollection* dataOfertasEmpresas)
 {
@@ -33,8 +33,8 @@ ICollection* DataDatosEstudiante::getDataOfertasEmpresas()
 // destructor
 DataDatosEstudiante::~DataDatosEstudiante()
 {
-    if (this->dataAprobadas != NULL)
+    /*if (this->dataAprobadas != NULL)
         delete this->dataAprobadas;
     if (this->dataOfertasEmpresas !=NULL)
-        delete this->dataOfertasEmpresas;
+        delete this->dataOfertasEmpresas*/
 }

@@ -8,7 +8,7 @@
 class DataAprobada : public ICollectible
 {
     public:
-        DataAprobada();
+        //DataAprobada();
         DataAprobada(int nota, Date* fecha, DataAsignatura* dataAsig);
         DataAprobada(const DataAprobada &dAp);
 
