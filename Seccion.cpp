@@ -121,6 +121,7 @@ OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string de
         {
             throw "Seccion -> El objeto no es de la clase Estudiante.";
         }
+        it->next();
     }
     delete it;
 
