@@ -72,7 +72,7 @@ DataAsignatura *Asignatura::getDataAsignatura()
 {
     //Llama al constructor de DataAsignatura
     //con los datos codigo, nombre y creditos de asignatura y lo retorna.
-    return new DataAsignatura(this->codigo, this->nombre, this->creditos);
+    return new DataAsignatura(this->codigo, this->nombre, this->creditos, this->carreras);
 }
 
 Asignatura::~Asignatura()
