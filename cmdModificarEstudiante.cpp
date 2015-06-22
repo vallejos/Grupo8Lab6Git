@@ -22,7 +22,7 @@ cmdModificarEstudiante::cmdModificarEstudiante()
 
 void cmdModificarEstudiante::ejecutarComando()
 {
-    string cedula, auxCreditos, auxNombre, auxApellido, auxTelefono, auxEmail, nombre, apellido, telefono, email, auxFechaNac;
+    string cedula, auxCreditos, auxNombre, auxApellido, auxTelefono, auxEmail, nombre, apellido, telefono, email, auxFechaNac, Nom, Apell;
     int creditos;
     string codigoAsig, codigoAsig2, codigoCarrera, codigoCarrera2, auxAsig, auxAsig2, auxCarrera, auxCarrera2;
     int dd, mm, aaaa, notaAprob, dia, mes, anio;
@@ -99,6 +99,8 @@ void cmdModificarEstudiante::ejecutarComando()
         {
             cout<< "Ingrese el nuevo Nombre\n";
             cin >> nombre;
+            getline(cin, Nom);
+            nombre += Nom;
         }
         else
         {
@@ -111,6 +113,8 @@ void cmdModificarEstudiante::ejecutarComando()
         {
             cout<< "Ingrese el nuevo Apellido\n";
             cin >> apellido;
+            getline(cin, Apell);
+            apellido += Apell;
         }
         else
         {
