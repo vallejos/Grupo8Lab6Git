@@ -43,8 +43,9 @@ void cmdModificarEstudiante::ejecutarComando()
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it->getCurrent())) != NULL )
             {
                 cout << "Cedula: " << dEstudiante->getCedula() << " Nombre: " << dEstudiante->getNombre() << " Apellido: " << dEstudiante->getApellido() << "\n";
-                cout << "Fecha de Nacimiento: " << dEstudiante->getFechaNacimiento()->getDia() << "/" << dEstudiante->getFechaNacimiento()->getMes() << "/" << dEstudiante->getFechaNacimiento()->getAnio() << " Telefono: " << dEstudiante->getTelefono() << " Email: " << dEstudiante-> getEmail() << " Creditos: " << dEstudiante->getCreditos() << "\n";
-                cout << "Asignaturas Aprobadas:\n\n";
+                cout << "Fecha de Nacimiento: " << dEstudiante->getFechaNacimiento()->getDia() << "/" << dEstudiante->getFechaNacimiento()->getMes() << "/" << dEstudiante->getFechaNacimiento()->getAnio() << " Telefono: " << dEstudiante->getTelefono() << "\n";
+                cout << "Email: " << dEstudiante-> getEmail() << " Creditos: " << dEstudiante->getCreditos() << "\n";
+                cout << "\nAsignaturas Aprobadas:\n\n";
                 ICollection *aprobadas = dEstudiante->getAprobadas();
                 IIterator * it2 = aprobadas->getIterator();
                 while(it2->hasCurrent())
@@ -62,7 +63,7 @@ void cmdModificarEstudiante::ejecutarComando()
                 }
                 delete it2;
 
-                cout << "Carreras del Estudiante:\n\n";
+                cout << "\nCarreras del Estudiante:\n\n";
                 IDictionary *carreras = dEstudiante->getCarreras();
                 IIterator * it3 = carreras->getIterator();
                 while(it3->hasCurrent())
