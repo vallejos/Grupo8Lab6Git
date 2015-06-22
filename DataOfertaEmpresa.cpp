@@ -3,9 +3,10 @@
 // constructor
 DataOfertaEmpresa::DataOfertaEmpresa()
 {
+/*
     this->dataEmpresa = NULL;
     this->dataOferta = NULL;
-
+*/
 }
 
 DataOfertaEmpresa::DataOfertaEmpresa(DataEmpresa *dataEmpresa, DataOfertaLaboral *dataOferta)
@@ -33,8 +34,10 @@ DataOfertaLaboral* DataOfertaEmpresa::getDataOfertaLaboral()
 // destructor
 DataOfertaEmpresa::~DataOfertaEmpresa()
 {
+/*
     if (this->dataEmpresa !=NULL)
         delete this->dataEmpresa;
     if (this->dataOferta !=NULL)
         delete this->dataOferta;
+*/
 }

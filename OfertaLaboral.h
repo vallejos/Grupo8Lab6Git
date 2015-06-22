@@ -21,7 +21,7 @@ using namespace std;
 class OfertaLaboral: public ICollectible
 {
     public:
-		OfertaLaboral();
+        OfertaLaboral();
         OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas);
         OfertaLaboral(const OfertaLaboral &o);
         ~OfertaLaboral();
@@ -72,10 +72,10 @@ class OfertaLaboral: public ICollectible
         Date *fechaComienzo;
         Date *fechaFin;
         int cantidadPuestosNecesarios;
-        Seccion * seccion; //Pseudoatributo para representar la asociación con una Seccion
-        ICollection *inscripciones; //Pseudoatributo para representar la asociación con una colección de Incripcion
-        ICollection *entrevistas; //Pseudoatributo para representar la asociación con una colección de Entrevistas
-        IDictionary *asignaturas; //Pseudoatributo para representar la asociación con un diccionario de asignaturas
+        Seccion * seccion; //Pseudoatributo para representar la asociaciï¿½n con una Seccion
+        ICollection *inscripciones; //Pseudoatributo para representar la asociaciï¿½n con una colecciï¿½n de Incripcion
+        ICollection *entrevistas; //Pseudoatributo para representar la asociaciï¿½n con una colecciï¿½n de Entrevistas
+        IDictionary *asignaturas; //Pseudoatributo para representar la asociaciï¿½n con un diccionario de asignaturas
 };
 
 #include "Seccion.h"

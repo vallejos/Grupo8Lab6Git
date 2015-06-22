@@ -2,16 +2,22 @@
 
 DataSeccion::DataSeccion()
 {
+/*
     this->nombre = '\0';
     this->interno = '\0';
     this->encargado = NULL;
+*/
 }
 
-DataSeccion::DataSeccion(string nombre, string interno, DataEncargado *encargado)
+DataSeccion::DataSeccion(string nombre, string interno, DataEncargado *encargado, Sucursal *sucursal,
+        ICollection *observers, IDictionary *ofertas)
 {
     this->nombre = nombre;
     this->interno = interno;
     this->encargado = encargado;
+    this->sucursal = sucursal;
+    this->ofertas = ofertas;
+    this->observers = observers;
 }
 
 DataSeccion::DataSeccion(const DataSeccion &ds)
@@ -38,6 +44,6 @@ DataEncargado *DataSeccion::getEncargado()
 
 DataSeccion::~DataSeccion()
 {
-    if (this->encargado != NULL)
-        delete this->encargado;
+//    if (this->encargado != NULL)
+//        delete this->encargado;
 }
