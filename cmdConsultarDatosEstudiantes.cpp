@@ -114,7 +114,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         }
         else
         {
-            cout << "El estudiante seleccionado no se ha inscripto a ningun llamado.";
+            cout << "El estudiante seleccionado no se ha inscripto a ningun llamado.\n";
         }
     }
      catch (const char* e)
