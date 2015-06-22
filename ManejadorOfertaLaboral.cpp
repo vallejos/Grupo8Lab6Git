@@ -149,7 +149,7 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
         IDictionary *ofertas = seccion->getOfertasLaborales();
         ofertas->remove(numExp);
         this->ofertasLaborales->remove(numExp);
-        delete o;
+//        delete o;
     }else
     {
         throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";

@@ -34,11 +34,12 @@ void cmdDarDeBajaLlamado::ejecutarComando()
             {
                 throw "cmdDarDeBajaLlamado -> El objeto no es de la clase DataOfertaLaboral.";
             }
+            it->next();
         }
         delete it;
 
         // selecciono el llamado
-        cout<< "Seleccione una Oferta Laboral indicando el Nro. Expediente: \n";
+        cout<< "Seleccione una Oferta Laboral indicando el Nro. Expediente: \n> ";
         cin >> numExpediente;
 
         ctrlOL->SeleccionarOferta(numExpediente, dataOfertas);
