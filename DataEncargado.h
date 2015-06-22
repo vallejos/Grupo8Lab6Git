@@ -9,7 +9,7 @@ using namespace std;
 class DataEncargado
 {
     public:
-		DataEncargado();
+		//DataEncargado();
         DataEncargado(string cedula, string nombre, string apellido, Date *fechaNacimiento);
         DataEncargado(const DataEncargado &e);
         ~DataEncargado();

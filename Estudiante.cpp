@@ -177,7 +177,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
     try
     {
         //Se obtiene la coleccion de DataAsignatura
-        ICollection* dataAsignaturas = new List();
+        /*ICollection* dataAsignaturas = new List();
         IIterator * lIt = this->aprobadas->getIterator();
         while(lIt->hasCurrent())
         {
@@ -211,12 +211,10 @@ DataEstudiante* Estudiante::getDataEstudiante()
 
             It->next();
         }
-        delete It;
+        delete It;*/
 
         DataEstudiante* dataEstudiante = new DataEstudiante(this->cedula, this->nombre, this->apellido, this->telefono,
-                                             this->fechaNacimiento, this->creditos, this->email, dataCarreras, dataAsignaturas);
-//ICollection* inscripciones
-//ICollection* entrevistas
+                                             this->fechaNacimiento, this->creditos, this->email, this->carreras, this->aprobadas, this->inscripciones , this->entrevistas);
         return dataEstudiante;
     }
     catch (const char* e)
