@@ -49,63 +49,77 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         cout<< "Ingrese la C.I. del Estudiante a consultar: ";
         cin >> ci;
         DataDatosEstudiante* datosEstudiantes = cEstudiante->ConsultarDatosEstudiante(ci);
-
-        cout<< "\n\nAsignaturas aprobadas:\n";
+        
         ICollection* dataAprobadas = datosEstudiantes->getDataAprobadas();
         IIterator * it2 = dataAprobadas->getIterator();
-        while(it2->hasCurrent())
+        if (it2->hasCurrent())
         {
-            DataAprobada *dAprobada;
-            if( (dAprobada = dynamic_cast<DataAprobada*> (it2->getCurrent())) != NULL )
+            cout<< "\n\nAsignaturas aprobadas:\n";
+            while(it2->hasCurrent())
             {
-                DataAsignatura* dAsignatura = dAprobada->getDataAsignatura();
-                cout << "Nombre: " << dAsignatura->getNombre() << ", Creditos: " << dAsignatura->getCreditos() << ", Nota: " << dAprobada->getNota() << ", Fecha de aprobacion: " << dAprobada->getFecha()->getDia() << "/" << dAprobada->getFecha()->getMes() << "/" << dAprobada->getFecha()->getAnio() << "\n";
+                DataAprobada *dAprobada;
+                if( (dAprobada = dynamic_cast<DataAprobada*> (it2->getCurrent())) != NULL )
+                {
+                    DataAsignatura* dAsignatura = dAprobada->getDataAsignatura();
+                    cout << "Nombre: " << dAsignatura->getNombre() << ", Creditos: " << dAsignatura->getCreditos() << ", Nota: " << dAprobada->getNota() << ", Fecha de aprobacion: " << dAprobada->getFecha()->getDia() << "/" << dAprobada->getFecha()->getMes() << "/" << dAprobada->getFecha()->getAnio() << "\n";
+                }
+                else
+                {
+                    throw "ConsultarDatosEstudiantes -> El objeto no es de la clase DataAprobada.";
+                }
+                it2->next();
             }
-            else
-            {
-                throw "ConsultarDatosEstudiantes -> El objeto no es de la clase DataAprobada.";
-            }
-            it2->next();
+            delete it2;
         }
-        delete it2;
+        else
+        {
+            cout << "El estudiante seleccionado no cuenta con asignaturas aprobadas.";
+        }
 
-        cout<< "\n\nLlamados a los que se inscribio el Estudiante:\n";
         ICollection* dataOfertasEmpresas = datosEstudiantes->getDataOfertasEmpresas();
         IIterator * it3 = dataOfertasEmpresas->getIterator();
-        while(it3->hasCurrent())
+        if (it3->hasCurrent())
         {
-            DataOfertaEmpresa *dOferEmp;
-            if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it3->getCurrent())) != NULL )
+            cout<< "\n\nLlamados a los que se inscribio el Estudiante:\n";
+            while(it3->hasCurrent())
             {
-                DataOfertaLaboral* dataOfertaLab = dOferEmp->getDataOfertaLaboral();
-                DataEmpresa* dataEmpre = dOferEmp->getDataEmpresa();
-                cout<< "Titulo: " << dataOfertaLab->getTitulo() << "(N° Exp. " << dataOfertaLab->getNumExpediente() <<  ")\n";
-                cout<< "    Descripcion: " << dataOfertaLab->getDescripcion() << "\n";
-                cout<< "    Cantidad de horas semanales: " << dataOfertaLab->getCantidadHorasSemanales() << "\n";
-                cout<< "    Sueldo min: " << dataOfertaLab->getRangoSalarial()->getSueldoMinimo() << ", Sueldo max: " << dataOfertaLab->getRangoSalarial()->getSueldoMaximo() << "\n";
-                ddC = dataOfertaLab->getFechaComienzo()->getDia();
-                mmC = dataOfertaLab->getFechaComienzo()->getMes();
-                aaaaC = dataOfertaLab->getFechaComienzo()->getAnio();
-                ddF = dataOfertaLab->getFechaFin()->getDia();
-                mmF = dataOfertaLab->getFechaFin()->getMes();
-                aaaaF = dataOfertaLab->getFechaFin()->getAnio();
-                cout<< "    Fecha de comienzo: " << ddC << "/" << mmC << "/" << aaaaC << ", Fecha de fin: " << ddF << "/" << mmF << "/" << aaaaF << "\n";
-                cout<< "    Cantidad de puestos necesarios: " << dataOfertaLab->getCantidadPuestosNecesarios() << "\n";
-                cout<< "    Empresa: " << dataEmpre->getNombre() << "(RUT " << dataEmpre->getRut() << ")\n";
-                cout<< "    Sucursal: " << dataOfertaLab->getSeccion()->getSucursal()->getNombre() << ", Tel: " << dataOfertaLab->getSeccion()->getSucursal()->getTelefono() << "\n";
-                cout<< "    Seccion: " << dataOfertaLab->getSeccion()->getNombre() << ", Interno: " << dataOfertaLab->getSeccion()->getInterno() << ", Encargado: " << dataOfertaLab->getSeccion()->getEncargado()->getNombre() << " " << dataOfertaLab->getSeccion()->getEncargado()->getApellido() << "\n\n";
+                DataOfertaEmpresa *dOferEmp;
+                if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it3->getCurrent())) != NULL )
+                {
+                    DataOfertaLaboral* dataOfertaLab = dOferEmp->getDataOfertaLaboral();
+                    DataEmpresa* dataEmpre = dOferEmp->getDataEmpresa();
+                    cout<< "Titulo: " << dataOfertaLab->getTitulo() << "(Nï¿½ Exp. " << dataOfertaLab->getNumExpediente() <<  ")\n";
+                    cout<< "    Descripcion: " << dataOfertaLab->getDescripcion() << "\n";
+                    cout<< "    Cantidad de horas semanales: " << dataOfertaLab->getCantidadHorasSemanales() << "\n";
+                    cout<< "    Sueldo min: " << dataOfertaLab->getRangoSalarial()->getSueldoMinimo() << ", Sueldo max: " << dataOfertaLab->getRangoSalarial()->getSueldoMaximo() << "\n";
+                    ddC = dataOfertaLab->getFechaComienzo()->getDia();
+                    mmC = dataOfertaLab->getFechaComienzo()->getMes();
+                    aaaaC = dataOfertaLab->getFechaComienzo()->getAnio();
+                    ddF = dataOfertaLab->getFechaFin()->getDia();
+                    mmF = dataOfertaLab->getFechaFin()->getMes();
+                    aaaaF = dataOfertaLab->getFechaFin()->getAnio();
+                    cout<< "    Fecha de comienzo: " << ddC << "/" << mmC << "/" << aaaaC << ", Fecha de fin: " << ddF << "/" << mmF << "/" << aaaaF << "\n";
+                    cout<< "    Cantidad de puestos necesarios: " << dataOfertaLab->getCantidadPuestosNecesarios() << "\n";
+                    cout<< "    Empresa: " << dataEmpre->getNombre() << "(RUT " << dataEmpre->getRut() << ")\n";
+                    cout<< "    Sucursal: " << dataOfertaLab->getSeccion()->getSucursal()->getNombre() << ", Tel: " << dataOfertaLab->getSeccion()->getSucursal()->getTelefono() << "\n";
+                    cout<< "    Seccion: " << dataOfertaLab->getSeccion()->getNombre() << ", Interno: " << dataOfertaLab->getSeccion()->getInterno() << ", Encargado: " << dataOfertaLab->getSeccion()->getEncargado()->getNombre() << " " << dataOfertaLab->getSeccion()->getEncargado()->getApellido() << "\n\n";
+                }
+                else
+                {
+                    throw "ConsultarDatosEstudiantes -> El objeto no es de la clase DataOfertaEmpresa.";
+                }
+                it3->next();
             }
-            else
-            {
-                throw "ConsultarDatosEstudiantes -> El objeto no es de la clase DataOfertaEmpresa.";
-            }
-            it3->next();
+            delete it3;
         }
-        delete it3;
+        else
+        {
+            cout << "El estudiante seleccionado no se ha inscripto a ningun llamado.";
+        }
     }
-    catch(exception &e)
+     catch (const char* e)
     {
-        throw;
+    	throw;
     }
 }
 

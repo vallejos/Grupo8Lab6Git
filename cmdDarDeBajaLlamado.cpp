@@ -46,9 +46,9 @@ void cmdDarDeBajaLlamado::ejecutarComando()
         // borro el llamado
         ctrlOL->DarBajaLlamado();
     }
-    catch(exception &e)
+    catch (const char* e)
     {
-        throw;
+    	throw;
     }
 }
 

@@ -7,7 +7,7 @@ using namespace std;
 Date::Date() {
 	this->dd = 1;
 	this->mm = 1;
-	this->aaaa = 1900;
+	this->aaaa = 1990;
 };
 
 
@@ -19,7 +19,7 @@ Date::Date(int dd, int mm, int aaaa)
     if(mm>12 or mm<1)
         throw "Mes invalido";
     if(aaaa<1900)
-        throw "Año invalido";
+        throw "Anio invalido";
     this->dd = dd;
     this->mm = mm;
     this->aaaa = aaaa;

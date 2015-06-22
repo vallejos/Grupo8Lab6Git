@@ -67,7 +67,7 @@ void cmdListarNotificacionesEstudiante::ejecutarComando()
         }
         delete it2;
     }
-    catch(exception &e)
+    catch (const char* e)
     {
     	throw;
     }

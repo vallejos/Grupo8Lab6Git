@@ -43,13 +43,17 @@ void EstudianteController::SeleccionarEstudiante(string cedula, IDictionary *est
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     String* ci = new String(cedula.c_str());
     if(! (estudiantesValidos->member(ci)))
-        throw "La cedula " + cedula + " es invalida.";
+        throw "La cedula es invalida.";
     this->estudiante = me->SeleccionarEstudiante(cedula);
 }
 
 DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedula)
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+    String* ci = new String(cedula.c_str());
+    if(! (me->getEstudiantes()->member(ci)))
+        throw "La cedula es invalida.";
+
     Estudiante *e = me->SeleccionarEstudiante(cedula);
     return (e->getDataDatosEstudiante());
 }

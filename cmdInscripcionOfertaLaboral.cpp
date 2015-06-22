@@ -35,7 +35,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
             DataOfertaLaboral *dOfertaLab;// Esto cambia si no traemos dataOfertas
             if( (dOfertaLab = dynamic_cast<DataOfertaLaboral*> (it->getCurrent())) != NULL )
             {
-                cout << "Número de Expediente: " << dOfertaLab->getNumExpediente() << ", Título:" << dOfertaLab->getTitulo() << "\n";
+                cout << "Nï¿½mero de Expediente: " << dOfertaLab->getNumExpediente() << ", Tï¿½tulo:" << dOfertaLab->getTitulo() << "\n";
                 it->next();
 
             } else
@@ -46,7 +46,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         }
         delete it;
 
-        cout<< "Seleccione una Oferta Laboral indicando el Número de Expediente\n";
+        cout<< "Seleccione una Oferta Laboral indicando el Nï¿½mero de Expediente\n";
         cin >> numExpediente;
 
         cOfertaLab->SeleccionarOferta(numExpediente,ofertasLaborales);
@@ -64,7 +64,7 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it2->getCurrent())) != NULL )
             {
-                cout << "Cédula: " << dEstudiante->getCedula() << "Nombre: " << dEstudiante->getNombre() << "Apellido: " << dEstudiante->getApellido() << "\n";
+                cout << "Cï¿½dula: " << dEstudiante->getCedula() << "Nombre: " << dEstudiante->getNombre() << "Apellido: " << dEstudiante->getApellido() << "\n";
                 it2->next();
 
             } else
@@ -74,23 +74,22 @@ void cmdInscripcionOfertaLaboral::ejecutarComando()
         }
         delete it2;
 
-        cout<< "Seleccione el Estudiante a inscribir indicando la Cédula\n";
+        cout<< "Seleccione el Estudiante a inscribir indicando la Cï¿½dula\n";
         cin >> cedula;
 
         cEstudiante->SeleccionarEstudiante(cedula,dataEstudiante);
 
-        cout<< "Ingrese la Fecha de Inscripción (dd mm aaaa)\n";
+        cout<< "Ingrese la Fecha de Inscripciï¿½n (dd mm aaaa)\n";
         cin >> dia >> mes >> anio;
 
         Date *fechaInsc = new Date(dia,mes,anio);
         cOfertaLab->Inscribir(fechaInsc);
 
     }
-    catch(exception &e)
+    catch (const char* e)
     {
-        throw;
+    	throw;
     }
-
 }
 
 cmdInscripcionOfertaLaboral::~cmdInscripcionOfertaLaboral()

@@ -17,6 +17,7 @@ using namespace std;
 
 // Imprime el Menu Principal
 void imprimirMenu() {
+        cout << "\n";
 	cout << "1. Alta Entrevista \n";
 	cout << "2. Alta Oferta Laboral \n";
 	cout << "3. Asignacion de Oferta a Estudiante \n";
@@ -35,7 +36,6 @@ void imprimirMenu() {
 	cout << "S. Salir \n";
 	cout << "-\n";
 	cout << "Elija una opcion:\n";
-	cout << "> ";
 }
 
 
