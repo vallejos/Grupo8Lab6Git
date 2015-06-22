@@ -17,6 +17,8 @@ using namespace std;
 
 // Imprime el Menu Principal
 void imprimirMenu() {
+    cout << "OPCIONES:\n";
+    cout << "--------------------------------------------------------\n";
 	cout << "1. Alta Entrevista \n";
 	cout << "2. Alta Oferta Laboral \n";
 	cout << "3. Asignacion de Oferta a Estudiante \n";
@@ -26,14 +28,14 @@ void imprimirMenu() {
 	cout << "7. Listar Ofertas Activas \n";
 	cout << "8. Modificar Estudiante \n";
 	cout << "9. Modificar Llamado \n";
-	cout << "-\n";
+	cout << "---\n";
 	cout << "L. Listar Notificaciones de Estudiante \n";
 	cout << "A. Anotar/Borrar a Notificaciones\n";
-	cout << "-\n";
+	cout << "---\n";
 	cout << "C. Cargar datos de prueba \n";
 	cout << "E. Establecer hora del sistema \n";
 	cout << "S. Salir \n";
-	cout << "-\n";
+	cout << "------\n";
 	cout << "Elija una opcion:\n";
 	cout << "> ";
 }
@@ -166,7 +168,13 @@ int main() {
 				case 'S':
 					salir = true;
 					break;
+                                        
+                                default:
+                                    cout << "\nOpcion Incorrecta!\n\n";
+                                        
 			}
+                        
+                        opcion = '\0';
 		} catch (char const *e) {
 			cout << e;
 			cout << "\n";
