@@ -9,6 +9,7 @@ class IDictionary;
 class ICollection;
 class Seccion;
 class Rango;
+class OfertaLaboral;
 
 using namespace std;
 
@@ -26,6 +27,7 @@ class IOfertaLaboralController {
             ICollection *entrevistas) = 0;
         virtual void AltaAsignacionDelCargo(Date* fechaEfectivizacion, int sueldo)=0;
         virtual void DarBajaLlamado() = 0;
+        virtual OfertaLaboral* getOfertaLaboral()=0;
         virtual ~IOfertaLaboralController() = 0; //virtual y vacio
 };
 
@@ -35,5 +37,6 @@ class IOfertaLaboralController {
 #include "Seccion.h"
 #include "interfaces/ICollection.h"
 #include "Rango.h"
+#include "OfertaLaboral.h"
 
 #endif // IOFERTALABORALCONTROLLER_H

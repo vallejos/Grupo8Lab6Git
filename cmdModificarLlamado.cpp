@@ -14,12 +14,12 @@ using namespace std;
 // cmdModificarLlamado
 void cmdModificarLlamado::ejecutarComando()
 {
-    string  numExpediente, nomSeccion, nomSucursal, titulo, descripcion;
-    //, modif;
-//    Date *fechaEfectivizacion;
+    string  numExpediente, nomSeccion, nomSucursal, titulo, descripcion, modif;
+    Rango *rangoSalarial;
+    Date *fechaIni, *fechaFin;
     int ddi, mmi, aaaai, ddf, mmf, aaaaf, cantHorasSemanales, salarioMinimo, salarioMaximo, cantidadPuestos;
-//    int sueldo;
-
+    IDictionary *nuevasAsignaturasEnOferta;
+    
     Fabrica* fab = Fabrica::getInstance();
     IOfertaLaboralController *ctrlOL = fab->getIOfertaLaboralController();
 
@@ -51,70 +51,102 @@ void cmdModificarLlamado::ejecutarComando()
 
         ctrlOL->SeleccionarOferta(numExpediente, dataOfertasActivas);
 
+        String *expe = new String(numExpediente.c_str());
+        DataOfertaLaboral *dol = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
+
         // solicitar datos de la nueva oferta laboral
-//        cout << "Desea modificar el Titulo? (s,n)\n";
-//        cin >> modif1;
-//        if (modif == "s")
-//        {
-//            cout << "Ingrese el D�a\n";
-//            cin >> dia;
-//            cout<< "Ingrese el Mes\n";
-//            cin >> mes;
-//            cout<< "Ingrese el A�o\n";
-//            cin >> anio;
-//            fechaNacimiento = new Date(dia,mes,anio);
-//        }
-//        else
-//        {
-//            fechaNacimiento = NULL;
-//        }
-//
-//        
-        
-        cout<< "Ingrese los nuevos datos correspondientes a la nueva Oferta Laboral:\n";
-
-        cout<< "\nTitulo: ";
-        cin >> titulo;
-        cout<< "\nDescripcion: ";
-        cin >> descripcion;
-        cout<< "\nCantidad de horas semanales: ";
-        cin >> cantHorasSemanales;
-        cout<< "\nSalario minimo: ";
-        cin >> salarioMinimo;
-        cout<< "\nSalario maximo: ";
-        cin >> salarioMaximo;
-
-        Rango *rangoSalarial = new Rango(salarioMinimo, salarioMaximo);
-
-        cout<< "\nFecha de comienzo (dd mm aaaa): ";
-        cin >> ddi >> mmi >> aaaai;
-
-        Date *fechaIni = new Date(ddi, mmi, aaaai);
-
-        cout<< "\nFecha de fin (dd mm aaaa): ";
-        cin >> ddf >> mmf >> aaaaf;
-
-        Date *fechaFin = new Date(ddf, mmf, aaaaf);
-
-        cout<< "\nCantidad de puestos necesarios: ";
-        cin >> cantidadPuestos;
-
-        //Solicitar Asignaturas
-
-        OrderedDictionary *nuevasAsignaturasEnOferta = new OrderedDictionary();
-
-        cout<< "\nAsignaturas:";
-        bool continuar = true;
-        int codAsig;
-        char respuesta;
-
-        IEstudianteController* cEstudiante = fab->getIEstudianteController();
-        IDictionary *asignaturasIngresadas = cEstudiante->getAsignaturas();
-
-        while (continuar)
+        cout << "Desea modificar el Titulo? (s,n)\n";
+        cin >> modif;
+        if (modif == "s")
         {
+            cin >> titulo; //ARREGLAR LOS ESPACIOS
+        }
+        else
+        {
+            titulo = dol->getTitulo(); 
+        }
+        modif = '\0';
+        cout << "Desea modificar la Descripcion? (s,n)\n";
+        cin >> modif;
+        if (modif == "s")
+        {
+            cin >> descripcion; //ARREGLAR LOS ESPACIOS
+        }
+        else
+        {
+            descripcion = dol->getDescripcion();
+        }
+        modif = '\0';
+        cout << "Desea modificar la cantidad de horas semanales? (s,n)\n";
+        cin >> modif;
+        if (modif == "s")
+        {
+            cin >> cantHorasSemanales;
+        }
+        else
+        {
+            cantHorasSemanales = dol->getCantidadHorasSemanales();
+        }
+        modif = '\0';
+        cout << "Desea modificar el Rango Salarial? (s,n)\n";
+        cin >> modif;
+        if (modif == "s")
+        {
+            cout << "Indique el Rango (rangoMinimo rangoMaximo)";
+            cin >> salarioMinimo >> salarioMaximo;
+            rangoSalarial = new Rango(salarioMinimo, salarioMaximo);
+        }
+        else
+        {
+            rangoSalarial = dol->getRangoSalarial();
+        }
+        modif = '\0';
+        cout << "Desea modificar la Fecha Comienzo? (s,n)\n";
+        cin >> modif;
+        if (modif == "s")
+        {
+            cin >> ddi >> mmi >> aaaai;
+            fechaIni = new Date(ddi, mmi, aaaai);
+        }
+        else
+        {
+            fechaIni = dol->getFechaComienzo();
+        }
+        modif = '\0';
+        cout << "Desea modificar la Fecha Fin? (s,n)\n";
+        cin >> modif;
+        if (modif == "s")
+        {
+            cin >> ddf >> mmf >> aaaaf;
+            fechaFin = new Date(ddf, mmf, aaaaf);
+        }
+        else
+        {
+            fechaFin = dol->getFechaFin();
+        }
+        modif = '\0';
+        cout << "Desea modificar la cantidad de puestos necesarios? (s,n)\n";
+        cin >> modif;
+        if (modif == "s")
+        {
+            cin >> cantidadPuestos;
+        }
+        else
+        {
+            cantidadPuestos = dol->getCantidadPuestosNecesarios();
+        }
+        modif = '\0';
+        // Solicitar Asignaturas
+        cout << "Desea modificar las Asignaturas? (s,n)\n";
+        cin >> modif;
+        if (modif == "s")
+        {
+            nuevasAsignaturasEnOferta = new OrderedDictionary();
+            int codAsig;
+            IEstudianteController* cEstudiante = fab->getIEstudianteController();
+            IDictionary *asignaturasIngresadas = cEstudiante->getAsignaturas();
             // muestro asignaturas
-            cout << "Lista de Asignaturas:\n";
+            cout << "Lista de Asignaturas ingresadas en el Sistema:\n";
             IIterator * it = asignaturasIngresadas->getIterator();
             while(it->hasCurrent())
             {
@@ -130,56 +162,37 @@ void cmdModificarLlamado::ejecutarComando()
                 it->next();
             }
             delete it;
-
-            // pido asignatura
-            cout<< "\n  Ingrese el codigo: ";
-            cin >> codAsig;
-            Integer* codigo = new Integer(codAsig);
-
-            // busco la asignatura
-            if (asignaturasIngresadas->member(codigo))
+            
+            while (modif == "s")
             {
-                // la agrego
-                nuevasAsignaturasEnOferta->add(codigo, asignaturasIngresadas->find(codigo));
-            } else {
-                throw "Codigo de Asignatura incorrecto.";
-            }
-
-            // seguir ingresando
-            cout<< "\n  Desea ingresar otra asignatura?(s/n): ";
-            cin >> respuesta;
-            if(respuesta == 'n')
-            {
-                continuar = false;
+                // pido asignatura
+                cout<< "\n  Ingrese el codigo de la Asignatura: ";
+                cin >> codAsig;
+                Integer* codigo = new Integer(codAsig);
+                // busco la asignatura
+                if (asignaturasIngresadas->member(codigo))
+                {
+                    nuevasAsignaturasEnOferta->add(codigo, asignaturasIngresadas->find(codigo));
+                } else 
+                {
+                    throw "Codigo de Asignatura incorrecto.";
+                }
+                // seguir ingresando
+                cout<< "\n  Desea ingresar otra asignatura?(s/n): ";
+                cin >> modif;
             }
         }
+        else
+        {
+            nuevasAsignaturasEnOferta = dol->getAsignaturas();
+        }
 
-
-        // en caso de no sustituir
-        String *expe = new String(numExpediente.c_str());
-        DataOfertaLaboral *dol = dynamic_cast<DataOfertaLaboral*> (dataOfertasActivas->find(expe));
-//        IDictionary *asignaturas = dol->getAsignaturas();
         ICollection *inscripciones = dol->getInscripciones();
         ICollection *entrevistas = dol->getEntrevistas();
         Seccion *seccion = dol->getSeccion();
 
-        // creo el nuevo Data Oferta Laboral
-//        DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 
-//            rangoSalarial, fechaIni, fechaFin, cantidadPuestos, asignaturas, seccion, inscripciones, entrevistas);
-//        DataOfertaLaboral *nuevosDatos = new DataOfertaLaboral(numExpediente, titulo, descripcion, cantHorasSemanales, 
-//            rangoSalarial, fechaIni, fechaFin, cantidadPuestos);
-
-//        DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
-//                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios);
-
-//IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
-        // alta asignacion del cargo
-
-//        ctrlOL->ModificarOferta(numExpediente, nuevosDatos);
-
         ctrlOL->ModificarOferta(numExpediente, titulo, descripcion, cantHorasSemanales, rangoSalarial, fechaIni,
-            fechaFin, cantidadPuestos, nuevasAsignaturasEnOferta, seccion, inscripciones, entrevistas);
-
+                fechaFin, cantidadPuestos, nuevasAsignaturasEnOferta, seccion, inscripciones, entrevistas);
     }
     catch (const char* e)
     {
@@ -187,14 +200,12 @@ void cmdModificarLlamado::ejecutarComando()
     }
 }
 
-// constructor
 cmdModificarLlamado::cmdModificarLlamado()
 {
-
+// constructor
 }
 
-// destructor
 cmdModificarLlamado::~cmdModificarLlamado()
 {
-
+// destructor
 }

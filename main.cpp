@@ -126,7 +126,7 @@ int main() {
 					cmd->ejecutarComando();
 					break;
 
-                //------------------------
+                                //------------------------
 				// LISTAR NOTIFICACIONES
 				//------------------------
 				case 'L':
@@ -134,7 +134,7 @@ int main() {
 					cmd->ejecutarComando();
 					break;
 
-                //------------------------
+                                //------------------------
 				// ANOTAR/BORRAR NOTIF
 				//------------------------
 				case 'A':
