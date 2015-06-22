@@ -80,32 +80,7 @@ void cmdAltaEntrevista::ejecutarComando()
             
             cout << "\nSe agendo la Entrevista al Estudiante correctamente.\n\n";
         }
-/*        
-        //LISTAR ESTUDIANTES NO INSCRIPTOS EN ESA OFERTA LABORAL
-        IDictionary *dataEstudiantesNo = cEstudiante->ListarEstudiantesNoInscriptos();
-        cout << "\nLista de Estudiantes que se pueden inscribir a la Oferta Laboral seleccionada:\n";
 
-        if (dataEstudiantesNo->isEmpty()) {
-            cout << "- No hay estudiantes que cumplan los requisitos de la Oferta seleccionada.";
-        } else {
-            IIterator *it3 = dataEstudiantesNo->getIterator();
-            while(it3->hasCurrent())
-            {
-                DataEstudiante* dEstudiante;
-                if ((dEstudiante = dynamic_cast<DataEstudiante*> (it3->getCurrent())) != NULL)
-                {
-                    cout << "CEDULA: " << dEstudiante->getCedula() 
-                            << ", NOMBRE: " << dEstudiante->getNombre() 
-                            << ", APELLIDO: " << dEstudiante->getApellido() << "\n";
-                } else
-                {
-                    throw "cmdAltaEntrevista -> El objeto no es de la clase DataEstudiante.";
-                }
-                it3->next();
-            }
-            delete it3;
-        }
-*/
     }
     catch (const char* e)
     {

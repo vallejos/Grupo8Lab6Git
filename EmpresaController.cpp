@@ -19,7 +19,8 @@ void EmpresaController::AltaOfertaLaboral(string numExpediente, string titulo, s
         	Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
         	IDictionary *codAsignaturas)
 {
-    this->seccion->addOferta(numExpediente,titulo,descripcion,cantidadHorasSemanales,rangoSalarial,fechaComienzo,fechaFin,cantidadPuestosNecesarios,codAsignaturas);
+    OfertaLaboral *o = this->seccion->addOferta(numExpediente,titulo,descripcion,cantidadHorasSemanales,rangoSalarial,fechaComienzo,fechaFin,cantidadPuestosNecesarios,codAsignaturas);
+    o->setSeccion(this->seccion);
 }
 
 ICollection* EmpresaController::ListarEmpresas()
@@ -69,8 +70,6 @@ void EmpresaController::SeleccionarEmpresa(string rut)
 {
 	ManejadorEmpresa *me = ManejadorEmpresa::getInstance();
 	this->empresa = me->getEmpresa(rut);
-	// para borrar la memoria, tenemos que llamar al constru x copia
-//	delete me;
 }
 
 void EmpresaController::SeleccionarSucursal(string nombre)
@@ -99,13 +98,12 @@ void EmpresaController::destroyEmpresaController()
 {
      if (instance != NULL)
      {
-        this->~EmpresaController();
+        delete instance;
+        instance = NULL;
      }
 }
 
 EmpresaController::~EmpresaController()
 {
     //dtor
-    delete instance;
-    instance = NULL;
 }

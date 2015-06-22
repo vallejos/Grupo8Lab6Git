@@ -176,43 +176,7 @@ DataEstudiante* Estudiante::getDataEstudiante()
 {
     try
     {
-        //Se obtiene la coleccion de DataAsignatura
-        /*ICollection* dataAsignaturas = new List();
-        IIterator * lIt = this->aprobadas->getIterator();
-        while(lIt->hasCurrent())
-        {
-            Aprobacion *apro;
-            if( (apro = dynamic_cast<Aprobacion*> (lIt->getCurrent())) != NULL )
-            {
-                dataAsignaturas->add(apro->getDataAsignatura());
-            } else
-            {
-                throw "Estudiante -> El objeto no es de la clase Aprobacion.";
-            }
-
-            lIt->next();
-        }
-        delete lIt;
-
-        //Se obtiene la coleccion de DataCarrera
-        IDictionary* dataCarreras = new OrderedDictionary();
-        IIterator * It = this->carreras->getIterator();
-        while(It->hasCurrent())
-        {
-            Carrera *carr;
-            if( (carr = dynamic_cast<Carrera*> (It->getCurrent())) != NULL )
-            {
-                Integer* cod = new Integer (carr->getCodigo());
-                dataCarreras->add(cod, carr->getDataCarrera());
-            } else
-            {
-                throw "Estudiante -> El objeto no es de la clase Carrera.";
-            }
-
-            It->next();
-        }
-        delete It;*/
-
+        //Se obtiene la coleccion de DataEstudiante
         DataEstudiante* dataEstudiante = new DataEstudiante(this->cedula, this->nombre, this->apellido, this->telefono,
                                              this->fechaNacimiento, this->creditos, this->email, this->carreras, this->aprobadas, this->inscripciones , this->entrevistas);
         return dataEstudiante;
@@ -342,10 +306,6 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
         }
 
         delete lIt2;
-
-        // DataEmpresa *dataEmpresa, DataOfertaLaboral *dataOferta
-        
-//        DataOfertaEmpresa *doe = new DataOfertaEmpresa(dataEmpresa, dataOfertaLaboral);
         
         DataDatosEstudiante* datosEstudiante = new DataDatosEstudiante(dataAprobadas, dataOfertasEmpresas);
 
@@ -368,9 +328,4 @@ Estudiante::~Estudiante()
     //dtor
     if (this->fechaNacimiento != NULL)
         delete this->fechaNacimiento;
-    delete this->carreras;
-    delete this->aprobadas;
-    delete this->inscripciones;
-    delete this->entrevistas;
-    delete this->notificaciones;
 }

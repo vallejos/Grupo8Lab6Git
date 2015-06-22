@@ -66,5 +66,5 @@ void Carrera::setNombreCarrera(string nombreCarrera)
 Carrera::~Carrera()
 {
     //dtor
-    delete this->asignaturas;
+//    delete this->asignaturas;
 }

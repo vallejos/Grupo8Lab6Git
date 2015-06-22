@@ -2,11 +2,7 @@
 
 DataSeccion::DataSeccion()
 {
-/*
-    this->nombre = '\0';
-    this->interno = '\0';
-    this->encargado = NULL;
-*/
+
 }
 
 DataSeccion::DataSeccion(string nombre, string interno, DataEncargado *encargado, Sucursal *sucursal,
@@ -44,6 +40,5 @@ DataEncargado *DataSeccion::getEncargado()
 
 DataSeccion::~DataSeccion()
 {
-//    if (this->encargado != NULL)
-//        delete this->encargado;
+
 }

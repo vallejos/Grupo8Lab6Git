@@ -15,17 +15,6 @@ Entrevista::Entrevista(Date* fechaEntrevista, OfertaLaboral* ofertaLab, Estudian
     this->estudiant = estu;
 }
 
-/*Entrevista::Entrevista(const Entrevista &i)
-{
-    Date* fechaEnt = new Date(&i.fechaEntrevista);
-    OfertaLaboral* oferta = new OfertaLaboral(i.ofertaLab);
-    Estudiante* estu = new Estudiante(i.estudiant);
-
-    this->fechaEntrevista = fechaEnt;
-    this->ofertaLab = oferta;
-    this->estudiant = estu;
-}*/
-
 Date* Entrevista::getFechaEntrevista()
 {
     return this->fechaEntrevista;
@@ -61,13 +50,5 @@ Entrevista::~Entrevista()
     if (this->fechaEntrevista != NULL)
     {
         delete this->fechaEntrevista;
-    }
-    if (this->ofertaLab != NULL)
-    {
-        delete this->ofertaLab;
-    }
-    if (this->estudiant != NULL)
-    {
-        delete this->estudiant;
     }
 }

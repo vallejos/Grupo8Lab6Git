@@ -244,7 +244,6 @@ bool OfertaLaboral::EsOferta(string numExpediente)
 
 bool OfertaLaboral::EsActiva()
 {
-   
     Tiempo* hoy = Tiempo::getInstance();
     string sddHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getDia()) )->str();
     string smmHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getMes()) )->str();
@@ -265,7 +264,6 @@ bool OfertaLaboral::EsActiva()
     string sf = saaaaFin + "-" + smmFin + "-" + sddFin + " 00:00";
 
     struct tm tm;
-   // time_t t1, t2, t3;
     time_t tth, tti, ttf;
 
     strptime(sh.c_str(), "%Y-%m-%d %H:%M", &tm);
@@ -283,28 +281,10 @@ bool OfertaLaboral::EsActiva()
     tm.tm_year = tm.tm_year + 1900;
     ttf = mktime(&tm);
 
-    
-//    strptime(shoy.c_str(), "%d\\%m\\%Y", &tm);
-//    t1 = mktime(&tm);//Fecha equivalente a hoy->now()
-//
-//    strptime(sfechaComienzo.c_str(), "%d\\%m\\%Y", &tm);
-//    t2 = mktime(&tm);//Fecha equivalente a this->FechaComienzo
-//
-//    strptime(sfechaFin.c_str(), "%d\\%m\\%Y", &tm);
-//    t3 = mktime(&tm);//Fecha equivalente a this->FechaFin()
-//
-    // do the same with d2
-//    double secondsInicio = difftime(t1, t2);
-//    double secondsFin = difftime(t1, t3);
-    //double secondsInicio = difftime(hoy->now(), this->fechaComienzo);
-    //double secondsFin = difftime(hoy->now(), this->fechaFin);
-
     double difIni = difftime(tth, tti);
     double difFin = difftime(tth, ttf);
 
     return ((difIni >= 0) && (difFin <= 0));
-
-//    return ((secondsInicio >= 0) && (secondsFin <= 0));
 }
 
 void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
@@ -336,13 +316,5 @@ void OfertaLaboral::AltaAsignacionCargo(Date* fechaEfectivizacion, int sueldo)
 
 OfertaLaboral::~OfertaLaboral()
 {
-    if (this->seccion != NULL)
-        delete this->seccion;
-//    if (this->inscripciones != NULL)
-        delete this->inscripciones;
-//    if (this->asignaturas != NULL)
-        delete this->asignaturas;
-//    if (this->entrevistas != NULL)
-        delete this->entrevistas;
 
 }

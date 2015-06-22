@@ -19,9 +19,7 @@ class DataDatosEstudiante;
 class Inscripcion;
 class Entrevista;
 
-//class Estudiante : public ICollectible, public IObserver
 // IObserver ya es ICollectible
-//class Estudiante : public ICollectible
 class Estudiante : public IObserver
 {
     public:

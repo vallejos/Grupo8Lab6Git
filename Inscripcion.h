@@ -14,7 +14,6 @@ class Inscripcion : public ICollectible
     public:
         Inscripcion();
         Inscripcion(Date* fechaInscripcion, OfertaLaboral* ofertaLab, Estudiante* estu);
-//        Inscripcion(const Inscripcion &i);
 
         //getters
         Date* getFechaInscripcion();

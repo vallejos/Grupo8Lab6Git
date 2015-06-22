@@ -1,10 +1,5 @@
 #include "DataEncargado.h"
 
-/*DataEncargado::DataEncargado()
-{
-
-}*/
-
 DataEncargado::DataEncargado(string cedula, string nombre, string apellido, Date *fechaNacimiento)
 {
     this->cedula=cedula;
@@ -43,6 +38,6 @@ Date *DataEncargado::getFechaNacimiento()
 
 DataEncargado::~DataEncargado()
 {
-    /*if (this->fechaNacimiento != NULL)
-        delete this->fechaNacimiento;*/
+    if (this->fechaNacimiento != NULL)
+        delete this->fechaNacimiento;
 }

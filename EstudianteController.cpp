@@ -120,12 +120,11 @@ void EstudianteController::destroyEstudianteController()
      if (instance != NULL)
      {
         delete instance;
+        instance = NULL;
      }
 }
 
 EstudianteController::~EstudianteController()
 {
     //dtor
-    delete instance;
-    instance = NULL;
 }

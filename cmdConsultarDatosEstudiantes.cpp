@@ -87,17 +87,11 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
             cout<< "\nLlamados a los que se inscribio el Estudiante:\n";
             while(it3->hasCurrent())
             {
-//                DataOfertaEmpresa *dOferEmp;
                 DataOfertaLaboral *dataOfertaLab;
-//                if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it3->getCurrent())) != NULL )
                 if( (dataOfertaLab = dynamic_cast<DataOfertaLaboral*> (it3->getCurrent())) != NULL )
                 {
-//                    OfertaLaboral *of = dOferEmp->getDataOfertaLaboral();
-//                    DataOfertaLaboral* dataOfertaLab = insc->getDataOfertaLaboral();
-
                     Seccion *doSeccion = dataOfertaLab->getSeccion();
                     Sucursal *doSucursal = doSeccion->getSucursal();
-//                    Empresa *doEmpresa = doSucursal->getEmpresa();
 
                     DataEmpresa* dataEmpre = doSucursal->getEmpresa()->getDataEmpresa();
                     cout<< "Titulo: " << dataOfertaLab->getTitulo() << "(NUM EXP: " << dataOfertaLab->getNumExpediente() <<  ")\n";

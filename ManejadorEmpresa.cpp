@@ -67,14 +67,13 @@ void ManejadorEmpresa::destroyManejadorEmpresa()
 {
      if (instance != NULL)
      {
-        this->~ManejadorEmpresa();
+        delete this->empresas;
+        delete instance;
+        instance = NULL;
      }
 }
 
 ManejadorEmpresa::~ManejadorEmpresa()
 {
     //dtor
-    delete this->empresas;
-    delete instance;
-    instance = NULL;
 }

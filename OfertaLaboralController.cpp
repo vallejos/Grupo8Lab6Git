@@ -43,7 +43,6 @@ void OfertaLaboralController::Inscribir(Date *fechaInscripcion)
     if (this->oferta == NULL)
         throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
     this->oferta->Inscribir(fechaInscripcion);
-    //BORRAR MEMORIA ?? oferta y estudiante en memoria
 }
 
 void OfertaLaboralController::Entrevistar(Date *fechaEntrevista)
@@ -51,7 +50,6 @@ void OfertaLaboralController::Entrevistar(Date *fechaEntrevista)
     if (this->oferta == NULL)
         throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
     this->oferta->Entrevistar(fechaEntrevista);
-    //BORRAR MEMORIA ?? oferta y estudiante en memoria
 }
 
 IDictionary *OfertaLaboralController::MostrarOfertasActivas()
@@ -85,7 +83,6 @@ void OfertaLaboralController::AltaAsignacionDelCargo(Date* fechaEfectivizacion, 
     if (this->oferta == NULL)
         throw "El sistema no recuerda a ninguna Oferta Laboral Seleccionada";
     this->oferta->AltaAsignacionCargo(fechaEfectivizacion, sueldo);
-    // BORRAR MEMORIA??
 }
 
 void OfertaLaboralController::DarBajaLlamado()

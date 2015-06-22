@@ -125,12 +125,5 @@ void Sucursal::setSecciones(IDictionary* secciones)
 Sucursal::~Sucursal()
 {
     //dtor
-    if (this->secciones != NULL)
-    {
-        delete (this->secciones);
-    }
-    if (this->empresa != NULL)
-    {
-        delete (this->empresa);
-    }
+
 }

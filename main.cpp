@@ -11,7 +11,9 @@
 #include "cmdModificarLlamado.h"
 #include "cmdDarDeBajaLlamado.h"
 #include "cmdCargarDatosDePrueba.h"
-
+#include "ManejadorEmpresa.h"
+#include "ManejadorEstudiante.h"
+#include "ManejadorOfertaLaboral.h"
 
 using namespace std;
 
@@ -180,8 +182,15 @@ int main() {
 		}
 	}
 
-	// TODO: liberar memoria
+	// liberar memoria
+	ManejadorEmpresa *me = ManejadorEmpresa::getInstance();
+	ManejadorEstudiante *mest = ManejadorEstudiante::getInstance();
+	ManejadorOfertaLaboral *mol = ManejadorOfertaLaboral::getInstance();
 
+        me->destroyManejadorEmpresa();
+        mest->destroyManejadorEstudiante();
+        mol->destroyManejadorOfertaLaboral();
 
+        cout << "\nChau!\n\n";
     return 0;
 }

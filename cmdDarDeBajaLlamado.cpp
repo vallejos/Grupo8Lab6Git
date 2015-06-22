@@ -46,6 +46,8 @@ void cmdDarDeBajaLlamado::ejecutarComando()
 
         // borro el llamado
         ctrlOL->DarBajaLlamado();
+
+        cout << "\n- El Llamado se ha dado de baja correctamente.\n\n";
     }
     catch (const char* e)
     {

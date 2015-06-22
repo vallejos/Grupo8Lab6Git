@@ -30,7 +30,6 @@ IDictionary *ManejadorOfertaLaboral::getDataOfertaLaboral()
             OfertaLaboral* ol;
             if( ( ol = dynamic_cast<OfertaLaboral*> (it->getCurrent())) != NULL )
             {
-//                string borrame = ol->getNumExpediente();
                 if(ol->EsActiva())
                 {
                     string numExpediente = ol->getNumExpediente();
@@ -149,7 +148,6 @@ void ManejadorOfertaLaboral::DarDeBajaLlamado(OfertaLaboral *ol)
         IDictionary *ofertas = seccion->getOfertasLaborales();
         ofertas->remove(numExp);
         this->ofertasLaborales->remove(numExp);
-//        delete o;
     }else
     {
         throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";
@@ -160,8 +158,12 @@ void ManejadorOfertaLaboral::destroyManejadorOfertaLaboral()
 {
      if (instance != NULL)
      {
-        this->~ManejadorOfertaLaboral();
-     }
+        // debo liberar la memoria de la coleccion de ofertasLaborales
+        if (! this->ofertasLaborales->isEmpty())
+           delete this->ofertasLaborales;
+        delete instance;
+        instance = NULL;
+    }
 }
 
 void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, string titulo, string descripcion, int cantHorasSemanales, Rango *rangoSalarial, Date *fechaIni,
@@ -192,9 +194,5 @@ void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, string titulo
 
 ManejadorOfertaLaboral::~ManejadorOfertaLaboral()
 {
-    // debo liberar la memoria de la coleccion de ofertasLaborales
-    if (! this->ofertasLaborales->isEmpty())
-        delete this->ofertasLaborales;
-    delete instance;
-    instance = NULL;
+
 }

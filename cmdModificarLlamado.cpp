@@ -59,6 +59,7 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
+            cout << "\nIndique el nuevo Titulo:\n";
             cin >> titulo;
             getline(cin, title);
             titulo += title;
@@ -72,6 +73,7 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
+            cout << "\nIndique la nueva Descripcion:\n";
             cin >> descripcion;
             getline(cin, des);
             descripcion += des;
@@ -86,6 +88,7 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
+            cout << "\nIndique la nueva Cantidad de horas semanales:\n";
             cin >> cantHorasSemanales;
         }
         else
@@ -97,7 +100,7 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
-            cout << "Indique el Rango (rangoMinimo rangoMaximo)";
+            cout << "Indique el nuevo Rango Salarial(Minimo Maximo)";
             cin >> salarioMinimo >> salarioMaximo;
             rangoSalarial = new Rango(salarioMinimo, salarioMaximo);
         }
@@ -110,6 +113,7 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
+            cout << "\nIndique la nueva Fecha de Comienzo (dd mm aaaa):\n";
             cin >> ddi >> mmi >> aaaai;
             fechaIni = new Date(ddi, mmi, aaaai);
         }
@@ -122,6 +126,7 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
+            cout << "\nIndique la nueva Fecha de Fin (dd mm aaaa):\n";
             cin >> ddf >> mmf >> aaaaf;
             fechaFin = new Date(ddf, mmf, aaaaf);
         }
@@ -134,6 +139,7 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
+            cout << "\nIndique la nueva Cantidad de Puestos:\n";
             cin >> cantidadPuestos;
         }
         else

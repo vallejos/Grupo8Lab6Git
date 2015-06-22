@@ -4,20 +4,7 @@
 
 DataOfertaLaboral::DataOfertaLaboral()
 {
-/*
-    this->numExpediente = '\0';
-    this->titulo = '\0';
-    this->descripcion = '\0';
-    this->cantidadHorasSemanales = 0;
-    this->rangoSalarial = NULL;
-    this->fechaComienzo = NULL;
-    this->fechaFin = NULL;
-    this->cantidadPuestosNecesarios = 0;
-    this->seccion = NULL;
-    this->inscripciones = new List();
-    this->asignaturas = new OrderedDictionary();
-    this->entrevistas = new List();
- */
+
 }
 
 DataOfertaLaboral::DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
@@ -116,18 +103,5 @@ IDictionary* DataOfertaLaboral::getAsignaturas()
 
 DataOfertaLaboral::~DataOfertaLaboral()
 {
-//    if (this->rangoSalarial != NULL)
-//        delete this->rangoSalarial;
-//    if (this->fechaComienzo != NULL)
-//        delete this->fechaComienzo;
-//    if (this->fechaFin != NULL)
-//        delete this->fechaFin;
-//    if (this->asignaturas != NULL)
-//        delete this->asignaturas;
-//    if (this->seccion != NULL)
-//        delete this->seccion;
-//    if (this->inscripciones!= NULL)
-//        delete this->inscripciones;
-//    if (this->entrevistas!= NULL)
-//        delete this->entrevistas;
+
 }

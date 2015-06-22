@@ -354,15 +354,14 @@ void ManejadorEstudiante::destroyManejadorEstudiante()
 {
      if (instance != NULL)
      {
-        this->~ManejadorEstudiante();
+        if (this->estudiantes != NULL)
+            delete this->estudiantes;
+        delete instance;
+        instance = NULL;
      }
 }
 
 ManejadorEstudiante::~ManejadorEstudiante()
 {
-    //Debo liberar la meoria de el diccionario de estudiantes
-    if (this->estudiantes != NULL)
-        delete this->estudiantes;
-    delete instance;
-    instance = NULL;
+
 }

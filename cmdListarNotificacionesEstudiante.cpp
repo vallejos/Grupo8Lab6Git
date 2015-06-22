@@ -52,20 +52,24 @@ void cmdListarNotificacionesEstudiante::ejecutarComando()
         //LISTAR NOTIFICACIONES DEL ESTUDIANTE SELECCIONADO
         Estudiante* estRecordado =cEstudiante->getEstudiante();
         ICollection* notificaciones= estRecordado->getNotificaciones();
-        IIterator *it2 = notificaciones->getIterator();
-        while(it2->hasCurrent())
-        {
-            String* notif;
-            if ((notif = dynamic_cast<String*> (it2->getCurrent())) != NULL)
+        if (notificaciones->isEmpty()) {
+            cout << "\n- El Estudiante seleccionado no tiene notificaciones.\n\n";
+        } else {
+            IIterator *it2 = notificaciones->getIterator();
+            while(it2->hasCurrent())
             {
-                cout << "NOTIFICACION: Se dio de alta la Oferta Laboral con Nro. de Exp. " << (notif->getValue()) << "\n";
-            } else
-            {
-                throw "cmdListarNotificacionesEstudiante -> El objeto no es de la clase String.";
+                String* notif;
+                if ((notif = dynamic_cast<String*> (it2->getCurrent())) != NULL)
+                {
+                    cout << "NOTIFICACION: Se dio de alta la Oferta Laboral con Nro. de Exp. " << (notif->getValue()) << "\n";
+                } else
+                {
+                    throw "cmdListarNotificacionesEstudiante -> El objeto no es de la clase String.";
+                }
+                it2->next();
             }
-            it2->next();
+            delete it2;
         }
-        delete it2;
     }
     catch (const char* e)
     {
