@@ -25,7 +25,6 @@ OfertaLaboral::OfertaLaboral()
     this->inscripciones = new List();
     this->asignaturas = new OrderedDictionary();
     this->entrevistas = new List();
-
 }
 
 OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
@@ -45,8 +44,8 @@ OfertaLaboral::OfertaLaboral(string numExpediente, string titulo, string descrip
     } else {
         this->asignaturas = new OrderedDictionary();
     }
-    this->inscripciones = NULL;
-    this->entrevistas = NULL;
+    this->inscripciones = new List();
+    this->entrevistas = new List();
 }
 
 OfertaLaboral::OfertaLaboral(const OfertaLaboral &o)
@@ -189,20 +188,17 @@ DataOfertaLaboral *OfertaLaboral::getDataOfertaLaboral()
 {
     return new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
         this->cantidadHorasSemanales, this->rangoSalarial, this->fechaComienzo, this->fechaFin,
-        this->cantidadPuestosNecesarios);
-//, this->asignaturas, this->seccion, this->inscripciones,        this->entrevistas);
+        this->cantidadPuestosNecesarios, this->asignaturas, this->seccion, this->inscripciones,
+        this->entrevistas);
 }
 
 DataOfertaEmpresa* OfertaLaboral::getDataOfertaLaboralEmpresa()
 {
-
     DataEmpresa *dataEmpresa = this->seccion->getDataEmpresa();
-    Rango* r = new Rango(this->rangoSalarial->getSueldoMinimo(), this->rangoSalarial->getSueldoMaximo());
-    Date* fechaC = new Date(this->fechaComienzo->getDia(), this->fechaComienzo->getMes(), this->fechaComienzo->getAnio());
-    Date* fechaF = new Date(this->fechaFin->getDia(), this->fechaFin->getMes(), this->fechaFin->getAnio());
-    DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->numExpediente, this->titulo, this->descripcion,
-                                                          this->cantidadHorasSemanales, r, fechaC, fechaF,
-                                                          this->cantidadPuestosNecesarios);
+    DataOfertaLaboral* dataOferta = new DataOfertaLaboral(this->numExpediente, this->titulo, 
+            this->descripcion, this->cantidadHorasSemanales, this->rangoSalarial,
+            this->fechaComienzo, this->fechaFin, this->cantidadPuestosNecesarios,
+            this->asignaturas, this->seccion, this->inscripciones, this->entrevistas);
 
     DataOfertaEmpresa *dataOfertaEmpresa = new DataOfertaEmpresa(dataEmpresa,dataOferta);
     return dataOfertaEmpresa;
@@ -316,11 +312,11 @@ OfertaLaboral::~OfertaLaboral()
 {
     if (this->seccion != NULL)
         delete this->seccion;
-    if (this->inscripciones != NULL)
+//    if (this->inscripciones != NULL)
         delete this->inscripciones;
-    if (this->asignaturas != NULL)
+//    if (this->asignaturas != NULL)
         delete this->asignaturas;
-    if (this->entrevistas != NULL)
+//    if (this->entrevistas != NULL)
         delete this->entrevistas;
 
 }
