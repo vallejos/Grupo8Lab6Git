@@ -101,9 +101,9 @@ OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string de
     //Debo llamar al constructor de OfertaLaboral
     //con los datos de la oferta pasados como parametros
     //y de alguna manera asociar esta nueva oferta a las asignaturas pasadas en el set.
-    OfertaLaboral * dataOferta = new OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
+    OfertaLaboral *oferta = new OfertaLaboral(numExpediente, titulo, descripcion, cantidadHorasSemanales, rangoSalarial, fechaComienzo, fechaFin, cantidadPuestosNecesarios, asignaturas);
     String *numExp = new String(numExpediente.c_str());
-    this->ofertasLaborales->add(numExp,dataOferta);
+    this->ofertasLaborales->add(numExp,oferta);
 
     ManejadorEstudiante* mEstu = ManejadorEstudiante::getInstance();
     //Se notifica a los observadores
@@ -124,7 +124,7 @@ OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string de
     }
     delete it;
 
-    return dataOferta;
+    return oferta;
 }
 
 void Seccion::addObserver(IObserver *obs)

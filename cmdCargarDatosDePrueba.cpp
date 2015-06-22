@@ -200,6 +200,10 @@ void cmdCargarDatosDePrueba::ejecutarComando()
                         40, new Rango(5000, 6000), new Date(5, 6, 2015), new Date(6, 8, 2015), 4, NULL);
     o4 = se22->addOferta("49563", "Estudiantes para dictar clases de Calculo I y II", "Buscamos estudiantes de Ingenieria con Calculo 1 y 2 aprobadas. Deben tener disponibilidad horaria y gusto por enseñar. Enviar mail a academiayotexplico@gmail.com.",
                         5, new Rango(500, 2000), new Date(10, 9, 2015), new Date(20, 12, 2015), 10, NULL);
+    o1->setSeccion(se2);
+    o2->setSeccion(se10);
+    o3->setSeccion(se15);
+    o4->setSeccion(se22);
 
     ofertas->add(new String("45896"), o1);
     ofertas->add(new String("12356"), o2);
@@ -466,6 +470,9 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     car11->add(new Integer(1010), c1);
     car11->add(new Integer(1011), c2);
     car12->add(new Integer(1010), c1);
+
+    cout << "\nDatos cargados correctamente!\n\n";
+    
 }
 
 // constructor

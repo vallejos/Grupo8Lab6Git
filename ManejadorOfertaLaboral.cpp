@@ -30,6 +30,7 @@ IDictionary *ManejadorOfertaLaboral::getDataOfertaLaboral()
             OfertaLaboral* ol;
             if( ( ol = dynamic_cast<OfertaLaboral*> (it->getCurrent())) != NULL )
             {
+//                string borrame = ol->getNumExpediente();
                 if(ol->EsActiva())
                 {
                     string numExpediente = ol->getNumExpediente();
