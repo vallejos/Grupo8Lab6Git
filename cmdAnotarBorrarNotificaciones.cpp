@@ -107,6 +107,17 @@ void cmdAnotarBorrarNotificaciones::ejecutarComando()
             it2->next();
         }
         delete it2;
+
+        switch (opcion)
+        {
+            case 'A':
+                cout << "\n- El Estudiante se ha Anotado a las Notificaciones.\n\n";
+                break;
+            case 'B':
+                cout << "\n- El Estudiante se ha Borrado de las Notificaciones.\n\n";
+            break;
+        }
+
     }
     catch (const char* e)
     {

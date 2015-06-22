@@ -34,13 +34,12 @@ void Fabrica::destroyFabrica()
 {
     if (instance != NULL)
     {
-        this->~Fabrica();
+        delete instance;
+        instance = NULL;
     }
 }
 
 Fabrica::~Fabrica()
 {
     //destructor
-    delete instance;
-    instance = NULL;
 }

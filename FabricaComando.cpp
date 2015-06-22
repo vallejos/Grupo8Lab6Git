@@ -82,13 +82,12 @@ void FabricaComando::destroyFabricaComando()
 {
     if (instance != NULL)
     {
-        this->~FabricaComando();
+        delete instance;
+        instance = NULL;
     }
 }
 
 FabricaComando::~FabricaComando()
 {
     //destructor
-    delete instance;
-    instance = NULL;
 }

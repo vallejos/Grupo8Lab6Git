@@ -1,13 +1,5 @@
 #include "DataAprobada.h"
 
-/*DataAprobada::DataAprobada()
-{
-    //ctor
-    this->nota = 0;
-    this->fecha = NULL;
-    this->asig = NULL;
-}*/
-
 DataAprobada::DataAprobada(int nota, Date* fecha, DataAsignatura* dAsig)
 {
     this->nota = nota;
@@ -42,6 +34,7 @@ DataAprobada::~DataAprobada()
     //dtor
     /*if (this->asig != NULL)
         delete this->asig;
+     */
     if (this->fecha !=NULL)
-        delete this->fecha;*/
+        delete this->fecha;
 }

@@ -221,33 +221,50 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             cout << "2 - Devolver una asignatura de las asignaturas ingresadas que algun estudiante haya aprobado(en caso de que no exista se devuelve el conjunto vacio).\n\n";
             cin >> numCriterio;
 
+            IDictionary *asignaturasSugeridas;
             if(numCriterio == 1)
             {
                 Criterio1* critery1 = new Criterio1();
                 cEmpresa->setCriterio(critery1);
-                IDictionary* asignaturasSugeridas = cEmpresa->obtenerAsignaturasValidas(asignaturasEnOferta);
+                asignaturasSugeridas = cEmpresa->obtenerAsignaturasValidas(asignaturasEnOferta);
                 cEmpresa->AltaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasSugeridas);
             }
             else if(numCriterio == 2)
             {
                 Criterio2* critery2 = new Criterio2();
                 cEmpresa->setCriterio(critery2);
-                IDictionary* asignaturasSugeridas = cEmpresa->obtenerAsignaturasValidas(asignaturasEnOferta);
+                asignaturasSugeridas = cEmpresa->obtenerAsignaturasValidas(asignaturasEnOferta);
                 cEmpresa->AltaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasSugeridas);
             }
             else
             {
                 throw "El valor ingresado es incorrecto, ingrese 1 o 2.";
             }
+            
+            cout << "\n- Se ha dado de alta la nueva Oferta con las siguientes Asignaturas del Criterio seleccionado:\n\n";
+            IIterator * ite = asignaturasSugeridas->getIterator();
+            while(ite->hasCurrent() && !encontro)
+            {
+                Asignatura *asigSug;
+                if( (asigSug = dynamic_cast<Asignatura*> (ite->getCurrent())) != NULL )
+                {
+                    cout << "CODIGO: " << asigSug->getCodigo() << ", NOMBRE: " << asigSug->getNombre() << "\n";
+                }
+                else
+                {
+                    throw "AltaOfertaLaboral -> El objeto no es de la clase Estudiante.";
+                }
+                ite->next();
+            }
+            delete ite;
+
+
         }
         else
         {
             cEmpresa->AltaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasEnOferta);
+            cout << "\n- Se ha dado de alta la nueva Oferta.\n\n";
         }
-
-        //}
-
-        //cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, asignaturasEnOferta);
 
     }
     catch (const char* e)

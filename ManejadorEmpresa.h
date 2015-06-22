@@ -14,11 +14,10 @@ class ManejadorEmpresa
         ICollection *getDataEmpresas();
         Empresa *getEmpresa(string rut);
         IDictionary* getEmpresas();
-        //Se debe crear un getter y un setter para la coleccion???
         void destroyManejadorEmpresa();
     protected:
     private:
-        ManejadorEmpresa();//Se puede crear un constructor con parametros para un singleton???
+        ManejadorEmpresa();
         ManejadorEmpresa(IDictionary* empresas);
         static ManejadorEmpresa* instance;
         IDictionary* empresas;

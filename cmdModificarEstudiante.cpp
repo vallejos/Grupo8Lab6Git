@@ -34,51 +34,41 @@ void cmdModificarEstudiante::ejecutarComando()
     {
         IDictionary* estudiantes = cEstudiante->ListarEstudiantesRegistrados();
 
-        cout << "Lista de Estudiantes del Sistema:\n\n";
+        cout << "\nLista de Estudiantes del Sistema:";
 
         IIterator * it = estudiantes->getIterator();
+        ICollection *aprobadas;
+        DataEstudiante *dEstudiante;
+        
         while(it->hasCurrent())
         {
-            DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it->getCurrent())) != NULL )
             {
-                cout << "Cedula: " << dEstudiante->getCedula() << " Nombre: " << dEstudiante->getNombre() << " Apellido: " << dEstudiante->getApellido() << "\n";
-                cout << "Fecha de Nacimiento: " << dEstudiante->getFechaNacimiento()->getDia() << "/" << dEstudiante->getFechaNacimiento()->getMes() << "/" << dEstudiante->getFechaNacimiento()->getAnio() << " Telefono: " << dEstudiante->getTelefono() << "\n";
-                cout << "Email: " << dEstudiante-> getEmail() << " Creditos: " << dEstudiante->getCreditos() << "\n";
-                cout << "\nAsignaturas Aprobadas:\n\n";
-                ICollection *aprobadas = dEstudiante->getAprobadas();
-                IIterator * it2 = aprobadas->getIterator();
-                while(it2->hasCurrent())
-                {
-                    Aprobacion *aprobacion;
-                    if( (aprobacion = dynamic_cast<Aprobacion*> (it2->getCurrent())) != NULL )
-                    {
-                        DataAsignatura* dasignatura = aprobacion->getDataAsignatura();
-                        cout << "Codigo: " << dasignatura->getCodigo() << " Nombre: " << dasignatura->getNombre() << " Creditos: " << dasignatura->getCreditos() << "\n";
-                        it2->next();
-                    }else
-                    {
-                       throw "ModificarEstudiante -> El objeto no es de la clase Aprobacion.";
-                    }
-                }
-                delete it2;
+                cout << "\n\n---------------------------------\n";
+                cout << "Cedula: " << dEstudiante->getCedula() << ", Nombre: " << dEstudiante->getNombre() << ", Apellido: " << dEstudiante->getApellido() << "\n";
+                cout << "Fecha de Nacimiento: " << dEstudiante->getFechaNacimiento()->getDia() << "/" << dEstudiante->getFechaNacimiento()->getMes() << "/" << dEstudiante->getFechaNacimiento()->getAnio() << ", Telefono: " << dEstudiante->getTelefono() << "\n";
+                cout << "Email: " << dEstudiante-> getEmail() << ", Creditos: " << dEstudiante->getCreditos() << "\n";
 
                 cout << "\nCarreras del Estudiante:\n\n";
                 IDictionary *carreras = dEstudiante->getCarreras();
-                IIterator * it3 = carreras->getIterator();
-                while(it3->hasCurrent())
-                {
-                    Carrera *carrera;
-                    if( (carrera = dynamic_cast<Carrera*> (it3->getCurrent()) ) != NULL )
+                if (carreras->isEmpty()) {
+                    cout << "- No hay Carreras asociadas al Estudiante.\n\n";
+                } else {
+                    IIterator * it3 = carreras->getIterator();
+                    while(it3->hasCurrent())
                     {
-                        cout << "Codigo: " << carrera->getCodigo() << " Nombre: " << carrera->getNombreCarrera() << "\n";
-                        it3->next();
-                    }else
-                    {
-                       throw "ModificarEstudiante -> El objeto no es de la clase Carrera.";
+                        Carrera *carrera;
+                        if( (carrera = dynamic_cast<Carrera*> (it3->getCurrent()) ) != NULL )
+                        {
+                            cout << "Codigo: " << carrera->getCodigo() << ", Nombre: " << carrera->getNombreCarrera() << "\n";
+                            it3->next();
+                        }else
+                        {
+                           throw "ModificarEstudiante -> El objeto no es de la clase Carrera.";
+                        }
                     }
+                    delete it3;
                 }
-                delete it3;
                 it->next();
             } else
             {
@@ -181,7 +171,23 @@ void cmdModificarEstudiante::ejecutarComando()
                 fin = true;
         while (!fin)
         {
-            cout<< "Ingrese el Codigo de la Asignatura que desea Agregar\n";
+            IIterator * ita = allAsignaturas->getIterator();
+            while(ita->hasCurrent())
+            {
+                Asignatura *asig;
+                if( (asig = dynamic_cast<Asignatura*> (ita->getCurrent())) != NULL )
+                {
+                    DataAsignatura* dasig = asig->getDataAsignatura();
+                    cout << "Codigo: " << dasig->getCodigo() << ", Nombre: " << dasig->getNombre() 
+                            << ", Creditos: " << dasig->getCreditos() << "\n";
+                    ita->next();
+                }else
+                {
+                   throw "ModificarEstudiante -> El objeto no es de la clase Carrera.";
+                }
+            }
+            delete ita;
+            cout<< "\nIngrese el Codigo de la Asignatura que desea Agregar\n";
             cin >> codigoAsig;
             cout<< "Ingrese la Fecha de Aprobacion de la Asignatura que desea Agregar (dd mm aaaa)\n";
             cin >> dd >> mm >> aaaa;
@@ -207,15 +213,43 @@ void cmdModificarEstudiante::ejecutarComando()
                 fin2 = true;
         while (!fin2)
         {
-            cout<< "Ingrese el Codigo de la Asignatura que desea Eliminar\n";
-            cin >> codigoAsig2;
-//          Asignatura *asignatura = allAsignaturas->find(codigoAsig2);
-            Integer *ca2 = new Integer(atoi(codigoAsig2.c_str()));
-            asignaturasAEliminar->add(ca2,allAsignaturas->find(ca2));
-            cout<< "Desea Eliminar otra Asignatura <s,n>?\n";
+            IIterator * itV = estudiantes->getIterator();
+
+            while(itV->hasCurrent() && !fin2)
+            {
+                if( (dEstudiante = dynamic_cast<DataEstudiante*> (itV->getCurrent())) != NULL )
+                {
+                    aprobadas = dEstudiante->getAprobadas();
+                    IIterator * itap = aprobadas->getIterator();
+                    while(itap->hasCurrent())
+                    {
+                        Aprobacion *apro;
+                        if( (apro = dynamic_cast<Aprobacion*> (itap->getCurrent())) != NULL )
+                        {
+                            DataAsignatura* das = apro->getDataAsignatura();
+                            cout << "Codigo: " << das->getCodigo() << ", Nombre: " << das->getNombre()
+                                    << ", Creditos: " << das->getCreditos() << "\n";
+                            itap->next();
+                        }else
+                        {
+                           throw "ModificarEstudiante -> El objeto no es de la clase Aprobacion.";
+                        }
+                    }
+                    delete itap;
+
+                    cout<< "Ingrese el Codigo de la Asignatura que desea Eliminar\n";
+                    cin >> codigoAsig2;
+                    Integer *ca2 = new Integer(atoi(codigoAsig2.c_str()));
+                    asignaturasAEliminar->add(ca2,allAsignaturas->find(ca2));
+                     cout<< "Desea Eliminar otra Asignatura <s,n>?\n";
             cin>> auxAsig2;
             if (auxAsig2.compare("n") == 0)
                 fin2 = true;
+                } else {
+                    throw "ModificarEstudiante -> El objeto no es de la clase DataEstudiante.";
+                }
+            }
+           
         }
 
         IDictionary *allCarreras = cEstudiante->getCarreras(); 
@@ -223,7 +257,7 @@ void cmdModificarEstudiante::ejecutarComando()
         //Lectura de Carreras a Agregar
         bool fin3 = false;
         IDictionary * carrerasAAgregar = new OrderedDictionary();
-        cout<< "Desea Agregar Carrras al Estudiante <s,n>?\n";
+        cout<< "Desea Agregar Carreras al Estudiante <s,n>?\n";
         cin>> auxCarrera;
         if (auxCarrera.compare("n") == 0)
                 fin3 = true;
@@ -231,7 +265,6 @@ void cmdModificarEstudiante::ejecutarComando()
         {
             cout<< "Ingrese el Codigo de la Carrera que desea Agregar al Estudiante\n";
             cin >> codigoCarrera;
-//          Carrera *carrera = allCarreras->find(codigoCarrera);
             Integer *cc = new Integer(atoi(codigoCarrera.c_str()));
             carrerasAAgregar->add(cc,allCarreras->find(cc));
             cout<< "Desea Agregar otra Carrera <s,n>?\n";
@@ -243,7 +276,7 @@ void cmdModificarEstudiante::ejecutarComando()
         //Lectura de Carreras a Eliminar
         bool fin4 = false;
         IDictionary * carrerasAEliminar = new OrderedDictionary();
-        cout<< "Desea Eliminar Carrras del Estudiante <s,n>?\n";
+        cout<< "Desea Eliminar Carreras del Estudiante <s,n>?\n";
         cin>> auxCarrera2;
         if (auxCarrera2.compare("n") == 0)
                 fin4 = true;
@@ -251,7 +284,6 @@ void cmdModificarEstudiante::ejecutarComando()
         {
             cout<< "Ingrese el Codigo de la Carrera que desea Eliminar\n";
             cin >> codigoCarrera2;
-//          Carrera *carrera = allCarreras->find(codigoCarrera2);
             Integer *cc2 = new Integer(atoi(codigoCarrera2.c_str()));
             carrerasAEliminar->add(cc2,allCarreras->find(cc2));
             cout<< "Desea Eliminar otra Carrera <s,n>?\n";
@@ -262,6 +294,7 @@ void cmdModificarEstudiante::ejecutarComando()
 
         cEstudiante->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, aprobacionesAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
 
+        cout << "\n- Se ha modificado el Estudiante correctamente.\n\n";
     }
     catch (const char* e)
     {

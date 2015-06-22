@@ -4,6 +4,7 @@
 #include "ManejadorEstudiante.h"
 #include "collections/List.h"
 #include "collections/OrderedDictionary.h"
+#include "ManejadorOfertaLaboral.h"
 
 Seccion::Seccion()
 {
@@ -105,6 +106,10 @@ OfertaLaboral *Seccion::addOferta(string numExpediente, string titulo, string de
     String *numExp = new String(numExpediente.c_str());
     this->ofertasLaborales->add(numExp,oferta);
 
+    ManejadorOfertaLaboral *mol = ManejadorOfertaLaboral::getInstance();
+    IDictionary *ofertas = mol->getOfertasLaborales();
+    ofertas->add(numExp, oferta);
+    
     ManejadorEstudiante* mEstu = ManejadorEstudiante::getInstance();
     //Se notifica a los observadores
     IIterator * it = this->observers->getIterator();
@@ -140,11 +145,5 @@ void Seccion::removeObserver(IObserver *obs)
 
 Seccion::~Seccion()
 {
-    //Debo destruir la memoria de observers, ofertasLaborales, encargado y sucursal
-    if (this->sucursal != NULL)
-        delete this->sucursal;
-    if (this->encargado != NULL)
-        delete this->encargado;
-    delete this->observers;
-    delete this->ofertasLaborales;
+
 }

@@ -6,7 +6,6 @@
 
 class DataDatosEstudiante: public ICollectible {
     public:
-        //DataDatosEstudiante();
         DataDatosEstudiante(ICollection* dataAprobadas, ICollection* dataOfertasEmpresas);
         ICollection* getDataAprobadas();
         ICollection* getDataOfertasEmpresas();

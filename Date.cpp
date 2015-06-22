@@ -51,11 +51,3 @@ Date::~Date()
 {
     //dtor
 };
-//
-//// operadores
-//Date Date::operator=(Date fecha) {
-//    this->dd = fecha.dd;
-//    this->mm = fecha.mm;
-//    this->aaaa = fecha.aaaa;
-//    return *this;
-//};

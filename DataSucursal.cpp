@@ -1,14 +1,6 @@
 #include "DataSucursal.h"
 #include "collections/OrderedDictionary.h"
 
-/*DataSucursal::DataSucursal()
-{
-	this->nombre = '\0';
-	this->direccion = '\0';
-	this->telefono = '\0';
-	this->secciones = new OrderedDictionary();
-}*/
-
 DataSucursal::DataSucursal(string nombre, string direccion, string telefono, IDictionary *secciones)
 {
 	this->nombre = nombre;

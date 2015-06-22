@@ -39,6 +39,8 @@ void cmdEstablecerHoraSistema::ejecutarComando()
             t->setTiempo(dd, mm, aaaa);
             break;
     }
+
+    cout << "\n- Se ha seteado la hora del sistema.\n\n";
 }
 
 cmdEstablecerHoraSistema::~cmdEstablecerHoraSistema()

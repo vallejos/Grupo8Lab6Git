@@ -15,26 +15,7 @@ Inscripcion::Inscripcion(Date* fechaInscripcion, OfertaLaboral* ofertaLab, Estud
     this->ofertaLab = ofertaLab;
     this->estudiant = estu;
     this->efectivo = NULL;
-    // se hace NULL porque no necesariamente tiene efectivizacion la inscripcion
-    // cuando se le haga esa efectivizacion usamos el set y listo :D
 }
-
-//Inscripcion::Inscripcion(const Inscripcion &i)
-//{
-//    Date* fechaInsc = new Date(i.fechaInscripcion);
-//    OfertaLaboral* oferta = new OfertaLaboral(i.ofertaLab);
-//    Estudiante* estu = new Estudiante(i.estudiant);
-//
-//    this->fechaInscripcion = fechaInsc;
-//    this->ofertaLab = oferta;
-//    this->estudiant = estu;
-//
-//    if (i.efectivo != NULL)
-//    {
-//        Efectivizacion* efe = new Efectivizacion(i.efectivo);
-//        this->efectivo = efe;
-//    }
-//}
 
 Date* Inscripcion::getFechaInscripcion()
 {
@@ -98,10 +79,4 @@ Inscripcion::~Inscripcion()
     //dtor
     if (this->fechaInscripcion != NULL)
         delete (this->fechaInscripcion);
-    if (this->ofertaLab!= NULL)
-        delete (this->ofertaLab);
-    if (this->estudiant!= NULL)
-        delete (this->estudiant);
-    if (this->efectivo!= NULL)
-        delete (this->efectivo);
 }

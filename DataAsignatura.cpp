@@ -2,9 +2,7 @@
 
 DataAsignatura::DataAsignatura()
 {
-   /* this->codigo = -1;
-    this->nombre = '\0';
-    this->creditos = 0;*/
+
 }
 
 DataAsignatura::DataAsignatura(int codigo, string nombre, int creditos, IDictionary *carreras)
