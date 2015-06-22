@@ -115,7 +115,7 @@ void ManejadorEstudiante::ModificarEstudiante(string cedula, string nombre, stri
                Integer *codigo = new Integer(cod);
                if (!carreras->member(codigo))
                {
-                   Carrera *c = dynamic_cast<Carrera*> (carreras->find(codigo));
+                   Carrera *c = dynamic_cast<Carrera*> (carrerasAAgregar->find(codigo));
                    carreras->add(codigo,c);
                }else
                {
@@ -319,17 +319,17 @@ bool ManejadorEstudiante::PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEs
         {
             IDictionary *carreras = aprob->getAsignatura()->getCarreras();
             IIterator * it2 = carreras->getIterator();
-            bool NoPertenece = false;
-            while (it2->hasCurrent() && !NoPertenece)
+            bool pertenece = false;
+            while (it2->hasCurrent() && !pertenece)
             {
                 Carrera *carreraDeAsig;
                 if( (carreraDeAsig = dynamic_cast<Carrera*> (it2->getCurrent())) != NULL )
                 {
                     int codAsigEst = carreraDeAsig->getCodigo();
                     Integer *cod = new Integer(codAsigEst);
-                    if (!carrerasDeEst->member(cod))
+                    if (carrerasDeEst->member(cod))
                     {
-                        NoPertenece = true;
+                        pertenece = true;
                     }
                 }else
                 {
@@ -337,7 +337,7 @@ bool ManejadorEstudiante::PerteneceAsigACarrerasDeEst (IDictionary *carrerasDeEs
                 }
                 it2->next();
             }
-            return NoPertenece;
+            return pertenece;
 
             delete it2;
         }else
