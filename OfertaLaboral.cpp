@@ -248,7 +248,6 @@ bool OfertaLaboral::EsOferta(string numExpediente)
 
 bool OfertaLaboral::EsActiva()
 {
-    return 0;
     Tiempo* hoy = Tiempo::getInstance();
     string sddHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getDia()) )->str();
     string smmHoy = static_cast<ostringstream*>( &(ostringstream() << hoy->now()->getMes()) )->str();

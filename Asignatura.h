@@ -11,7 +11,7 @@ using namespace std;
 class Asignatura: public ICollectible
 {
     public:
-	Asignatura();
+		Asignatura();
         Asignatura(int codigo, string nombre, int creditos);
         Asignatura(const Asignatura &a);
         ~Asignatura();
