@@ -58,8 +58,8 @@ IDictionary* EstudianteController::ListarEstudiantesRegistrados()
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
     IDictionary *estudiantes = me->getEstudiantes();
-    if (estudiantes == NULL)
-        throw "No hay estudiantes registrados en el Sistema.";
+    if (estudiantes->isEmpty())
+        throw "EstudianteController -> No hay estudiantes registrados en el Sistema.";
     return estudiantes;
 }
 

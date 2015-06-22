@@ -23,13 +23,18 @@ OfertaLaboralController *OfertaLaboralController::getInstance()
 IDictionary *OfertaLaboralController::ListarOfertas()
 {
     ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
-    return mo->getAllDataOfertaLaboral();
+    IDictionary* allOfertas = mo->getAllDataOfertaLaboral();
+    if (allOfertas->isEmpty())
+        throw "OfertaLaboralController -> No hay ofertas ingresadas en el Sistema.";
+    return allOfertas;
 }
 
 void OfertaLaboralController::SeleccionarOferta(string numExpediente, IDictionary *ofertasLabVigentes)
 {
     ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
     String* numExp = new String(numExpediente.c_str());
+    if (ofertasLabVigentes->isEmpty())
+        throw "------------------------------------------";
     if(! (ofertasLabVigentes->member(numExp)))
         throw "El Numero de Expediente" + numExpediente + " no es valido.";
     this->oferta = mo->SeleccionarOferta(numExpediente);
@@ -55,8 +60,8 @@ IDictionary *OfertaLaboralController::MostrarOfertasActivas()
 {
     ManejadorOfertaLaboral * mol = ManejadorOfertaLaboral::getInstance();
     IDictionary *ofertasActivas = mol->getDataOfertaLaboral();
-    if (ofertasActivas == NULL)
-         throw "No existe una Oferta Activa";
+    if (ofertasActivas->isEmpty())
+         throw "OfertaLaboralController-> no hay Ofertas Laborales Activas en el Sistema.";
     return ofertasActivas;
 }
 

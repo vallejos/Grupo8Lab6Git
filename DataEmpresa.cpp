@@ -5,10 +5,11 @@ DataEmpresa::DataEmpresa()
 
 }
 
-DataEmpresa::DataEmpresa(string rut, string nombre)
+DataEmpresa::DataEmpresa(string rut, string nombre, IDictionary* sucursales)
 {
     this->rut=rut;
     this->nombre=nombre;
+    this->sucursales=sucursales;
 }
 
 DataEmpresa::DataEmpresa(const DataEmpresa &e)
@@ -27,7 +28,7 @@ string DataEmpresa::getNombre()
 	return this->nombre;
 }
 
-ICollection* DataEmpresa::getSucursal()
+IDictionary* DataEmpresa::getSucursal()
 {
 	return this->sucursales;
 }
