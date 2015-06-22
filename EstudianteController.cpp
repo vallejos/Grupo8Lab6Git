@@ -57,7 +57,7 @@ DataDatosEstudiante* EstudianteController::ConsultarDatosEstudiante(string cedul
 IDictionary* EstudianteController::ListarEstudiantesRegistrados()
 {
     ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
-    IDictionary *estudiantes = me->getEstudiantes();
+    IDictionary *estudiantes = me->getEstudiante();
     if (estudiantes == NULL)
         throw "No hay estudiantes registrados en el Sistema.";
     return estudiantes;
