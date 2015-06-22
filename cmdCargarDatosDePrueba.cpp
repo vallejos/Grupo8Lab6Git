@@ -407,7 +407,7 @@ void cmdCargarDatosDePrueba::ejecutarComando()
     ap3->add(new Aprobacion(new Date(5, 12, 2008), 10, a7));
     ap3->add(new Aprobacion(new Date(15, 12, 2008), 11, a8));
     ap3->add(new Aprobacion(new Date(12, 2, 2009), 8, a12));
-    ap3->add(new Aprobacion(new Date(20, 11, 2010), 10, a13));
+    //ap3->add(new Aprobacion(new Date(20, 11, 2010), 10, a13));
     ap3->add(new Aprobacion(new Date(15, 11, 2007), 6, a14));
     ap3->add(new Aprobacion(new Date(25, 11, 2009), 10, a15));
     ap4->add(new Aprobacion(new Date(10, 6, 2010), 8, a2));

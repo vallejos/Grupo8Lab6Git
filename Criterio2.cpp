@@ -3,6 +3,8 @@
 #include "interfaces/IIterator.h"
 #include "ManejadorEstudiante.h"
 #include "DataEstudiante.h"
+#include "Integer.h"
+#include "collections/OrderedDictionary.h"
 
 // constructor
 Criterio2::Criterio2()
@@ -18,7 +20,7 @@ Criterio2::~Criterio2()
 
 // Sugiere una materia de las asignaturas seleccionadas tal que algun Estudiante haya aprobada.
 // En caso que no exista se retorna un ICollection vacio (List).
-IDictionary *Criterio2::devolverListaAsignatura()
+IDictionary *Criterio2::devolverListaAsignatura(IDictionary* asigsUsuario)
 {
     	// pedimos los estudiantes al manejador y vamos recorriendo uno a uno hasta encontrar alguno que tenga materias
 	// aprobadas, en ese caso retornamos esa lista
@@ -28,11 +30,12 @@ IDictionary *Criterio2::devolverListaAsignatura()
     bool found = false;
 
     ICollection *aprobadas;
-    IDictionary *asignaturas;
+    IDictionary *asignaturasNuevas = new OrderedDictionary();
     IIterator * it = e->getIterator();
     Estudiante *est;
     ICollectible *col;
     ICollectible *col2;
+    ICollectible *col3;
     while(it->hasCurrent() && !found)
     {
         col = it->getCurrent();
@@ -49,18 +52,32 @@ IDictionary *Criterio2::devolverListaAsignatura()
                     if ((apro = dynamic_cast<Aprobacion*> (col2)) != NULL)
                     {
                         Asignatura* asig = apro->getAsignatura();
-                        if(asig != NULL)
+                        
+                        IIterator * it3 = asigsUsuario->getIterator();
+                        while(it3->hasCurrent() && !found)
                         {
-                            Integer* cod = new Integer(asig->getCodigo());
-                            asignaturas->add(cod, asig);
+                            col3 = it3->getCurrent();
+                            Asignatura* asigUsu;
+                            if ((asigUsu = dynamic_cast<Asignatura*> (col3)) != NULL)
+                            {                                
+                                if(asig->getCodigo() == asigUsu->getCodigo())
+                                {
+                                    Integer* cod = new Integer(asig->getCodigo());
+                                    asignaturasNuevas->add(cod, asigUsu);
+                                    found = true;
+                                }
+                            } else {
+                                throw "Criterio1: el parametro no es del tipo Asignatura";
+                            }
+                            it3->next();
                         }
+                        delete it3;
                     } else {
                         throw "Criterio1: el parametro no es del tipo Aprobacion";
                     }
                     it2->next();
                 }
                 delete it2;
-                found = true;
             }
         } else {
             throw "Criterio1: el parametro no es del tipo Estudiante";
@@ -68,25 +85,9 @@ IDictionary *Criterio2::devolverListaAsignatura()
         it->next();
     }
     delete it;
-
-    return asignaturas;
-
-/*
-    bool found = false;
-
-    List *result = new List();
-    IDictionary *it = asignaturas->getIterator();
-    while(it->hasCurrent() && !found)
-    {
-        if(it->getCurrent()->getAprobadas() != NULL)
-        {
-	        result->add(it->getCurrent()->getAprobadas());
-	        found = true;
-        }
-        it->next();
-    }
-    delete it;
-
-    return result;
-*/
+    
+    //if(!found)
+        //asignaturas = new OrderedDictionary();
+    
+    return asignaturasNuevas;
 }

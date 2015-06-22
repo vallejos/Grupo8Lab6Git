@@ -19,7 +19,7 @@ Criterio1::~Criterio1()
 
 // Sugiere las materias aprobadas de algun estudiante o NULL en caso de no encontrar estudiantes con materias aprobadas
 // Nota: Para el Criterio1, no se necesita la lista de asignaturas
-IDictionary *Criterio1::devolverListaAsignatura()
+IDictionary *Criterio1::devolverListaAsignatura(IDictionary* asigsUsuario)
 {
 	// pedimos los estudiantes al manejador y vamos recorriendo uno a uno hasta encontrar alguno que tenga materias
 	// aprobadas, en ese caso retornamos esa lista

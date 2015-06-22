@@ -89,7 +89,7 @@ Sucursal *Empresa::getSucursal(string nombre)
     }
     else
     {
-        throw "La Sucursal de nombre " + nombre + " no existe en el Sistema.";
+        throw "La Sucursal no existe en el Sistema.";
     }
 
 }

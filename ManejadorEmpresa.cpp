@@ -46,7 +46,7 @@ Empresa* ManejadorEmpresa::getEmpresa(string rut)
 {
     String* sRut = new String(rut.c_str());
     if (! (this->empresas->member(sRut)))
-        throw "La Empresa con RUT " + rut + " no existe en el Sistema.";
+        throw "La Empresa no existe en el Sistema.";
     Empresa *emp;
     if( (emp = dynamic_cast<Empresa*> (this->empresas->find(sRut))) != NULL )
     {
