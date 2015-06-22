@@ -5,7 +5,6 @@
 #include "Rango.h"
 #include "Date.h"
 #include "String.h"
-#include "DataSeccion.h"
 #include "DataEmpresa.h"
 #include "IObserver.h"
 #include "Encargado.h"
@@ -17,12 +16,13 @@ using namespace std;
 
 class Sucursal;
 class OfertaLaboral;
+class DataSeccion;
 
 class Seccion: public ICollectible
 {
     public:
-		Seccion();
-        Seccion(string nombre, string interno);
+        Seccion();
+        Seccion(string nombre, string interno, Sucursal *sucursal);
         Seccion(const Seccion &s);
         ~Seccion();
         string getNombre();
@@ -33,6 +33,7 @@ class Seccion: public ICollectible
         void setNombre(string nombre);
         void setInterno(string interno);
         void setEncargado(Encargado* encargado);
+        void setSucursal(Sucursal *sucursal);
         DataSeccion *getDataSeccion();
         DataEmpresa *getDataEmpresa();
         OfertaLaboral *addOferta(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales, Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios, IDictionary *asignaturas);
@@ -42,14 +43,15 @@ class Seccion: public ICollectible
     private:
         string nombre;
         string interno;
-        Sucursal * sucursal;//Pseudoatributo para representar la asociación con una Sucursal
-        Encargado * encargado;//Pseudoatributo para representar la asociación con un Encargado
-        ICollection * observers;//Pseudoatributo para representar la asociación con una coleccion de IObserver
-        IDictionary *ofertasLaborales; //Pseudoatributo para representar la asociación con un diccionario de ofertas laborales
+        Sucursal * sucursal;//Pseudoatributo para representar la asociaciï¿½n con una Sucursal
+        Encargado * encargado;//Pseudoatributo para representar la asociaciï¿½n con un Encargado
+        ICollection * observers;//Pseudoatributo para representar la asociaciï¿½n con una coleccion de IObserver
+        IDictionary *ofertasLaborales; //Pseudoatributo para representar la asociaciï¿½n con un diccionario de ofertas laborales
 };
 
 #include "OfertaLaboral.h"
 #include "Sucursal.h"
 #include "OfertaLaboral.h"
+#include "DataSeccion.h"
 
 #endif // SECCION_H

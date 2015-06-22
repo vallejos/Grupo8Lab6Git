@@ -48,7 +48,23 @@ void cmdListarOfertasActivas::ejecutarComando()
                 }
 
                 //IMPRIMO LOS DATOS QUE INDICA ELCASO DE USO
-                cout << "---------------" << "\n" << "NOMBRE: " << dOferta->getTitulo() << "\n" << ", EMPRESA:" << dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() << "\n" << ", UBICACION:" << dOferta->getSeccion()->getSucursal()->getDireccion() << "\n" << ", CANTIDAD DE INSCRIPTOS: " << cantInscriptos << "\n" << ", RANGO SALARIAL:" << dOferta->getRangoSalarial()->getSueldoMinimo() << " - " << dOferta->getRangoSalarial()->getSueldoMaximo() << "\n" << ", CANTIDAD DE PLAZAS:" << dOferta->getCantidadPuestosNecesarios() << "\n";
+                string doTitulo = dOferta->getTitulo();
+                Seccion *doSeccion = dOferta->getSeccion();
+                Sucursal *doSucursal = doSeccion->getSucursal();
+                Empresa *doEmpresa = doSucursal->getEmpresa();
+                string doRut = doEmpresa->getRut();
+                string doDireccion = doSucursal->getDireccion();
+                Rango *doRango = dOferta->getRangoSalarial();
+                int doSueldoMin = doRango->getSueldoMinimo();
+                int doSueldoMax = doRango->getSueldoMaximo();
+                int doCantPuestos = dOferta->getCantidadPuestosNecesarios();
+                
+                cout << "---------------" << "\n" << "NOMBRE: " << doTitulo << "\n" 
+                        << ", EMPRESA:" << doRut << "\n" << ", UBICACION:" << doDireccion << "\n" 
+                        << ", CANTIDAD DE INSCRIPTOS: " << cantInscriptos << "\n" << ", RANGO SALARIAL:" 
+                        << doSueldoMin << " - " << doSueldoMax << "\n" << ", CANTIDAD DE PLAZAS:" 
+                        << doCantPuestos << "\n";
+//                cout << "---------------" << "\n" << "NOMBRE: " << dOferta->getTitulo() << "\n" << ", EMPRESA:" << dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() << "\n" << ", UBICACION:" << dOferta->getSeccion()->getSucursal()->getDireccion() << "\n" << ", CANTIDAD DE INSCRIPTOS: " << cantInscriptos << "\n" << ", RANGO SALARIAL:" << dOferta->getRangoSalarial()->getSueldoMinimo() << " - " << dOferta->getRangoSalarial()->getSueldoMaximo() << "\n" << ", CANTIDAD DE PLAZAS:" << dOferta->getCantidadPuestosNecesarios() << "\n";
 
             } else
             {

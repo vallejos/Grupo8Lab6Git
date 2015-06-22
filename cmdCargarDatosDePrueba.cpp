@@ -76,29 +76,29 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	Seccion *se1, *se2, *se3, *se4, *se5, *se6, *se7, *se8, *se9, *se10, *se11, *se12, *se13, *se14, *se15,
 			*se16, *se17, *se18, *se19, *se20, *se21, *se22, *se23;
 
-	se1 = new Seccion("Contaduria","101");
-	se2 = new Seccion("Recursos humanos","102");
-	se3 = new Seccion("Recepcion","103");
-	se4 = new Seccion("Desarrollo","104");
-	se5 = new Seccion("Pentesting","105");
-	se6 = new Seccion("Marketing","1201");
-	se7 = new Seccion("Atencion al cliente","1202");
-	se8 = new Seccion("Tesoreria","1203");
-	se9 = new Seccion("Ventas","1204");
-	se10 = new Seccion("Seccion tecnica","1205");
-	se11 = new Seccion("Seccion tecnica","1009");
-	se12 = new Seccion("I+D","1008");
-	se13 = new Seccion("Recepcion","1000");
-	se14 = new Seccion("Secretaria","100");
-	se15 = new Seccion("Desarrollo","1001");
-	se16 = new Seccion("Testing","1002");
-	se17 = new Seccion("Secretaria","100");
-	se18 = new Seccion("Desarrollo","1001");
-	se19 = new Seccion("Testing","1002");
-	se20 = new Seccion("Laboratorio","10");
-	se21 = new Seccion("Atencion comercial","11");
-	se22 = new Seccion("Direccion","101");
-	se23 = new Seccion("Inscripciones","102");
+	se1 = new Seccion("Contaduria","101", NULL);
+	se2 = new Seccion("Recursos humanos","102", NULL);
+	se3 = new Seccion("Recepcion","103", NULL);
+	se4 = new Seccion("Desarrollo","104", NULL);
+	se5 = new Seccion("Pentesting","105", NULL);
+	se6 = new Seccion("Marketing","1201", NULL);
+	se7 = new Seccion("Atencion al cliente","1202", NULL);
+	se8 = new Seccion("Tesoreria","1203", NULL);
+	se9 = new Seccion("Ventas","1204", NULL);
+	se10 = new Seccion("Seccion tecnica","1205", NULL);
+	se11 = new Seccion("Seccion tecnica","1009", NULL);
+	se12 = new Seccion("I+D","1008", NULL);
+	se13 = new Seccion("Recepcion","1000", NULL);
+	se14 = new Seccion("Secretaria","100", NULL);
+	se15 = new Seccion("Desarrollo","1001", NULL);
+	se16 = new Seccion("Testing","1002", NULL);
+	se17 = new Seccion("Secretaria","100", NULL);
+	se18 = new Seccion("Desarrollo","1001", NULL);
+	se19 = new Seccion("Testing","1002", NULL);
+	se20 = new Seccion("Laboratorio","10", NULL);
+	se21 = new Seccion("Atencion comercial","11", NULL);
+	se22 = new Seccion("Direccion","101", NULL);
+	se23 = new Seccion("Inscripciones","102", NULL);
 
 	IDictionary *su1se, *su2se, *su3se, *su4se, *su5se, *su6se, *su7se;
 
@@ -110,33 +110,56 @@ void cmdCargarDatosDePrueba::ejecutarComando()
 	su6se = su6->getSecciones();
 	su7se = su7->getSecciones();
 
+        se1->setSucursal(su1);
+        se2->setSucursal(su1);
+        se3->setSucursal(su1);
+        se4->setSucursal(su1);
+        se5->setSucursal(su1);
 	su1se->add(new String("Contaduria"), se1);
 	su1se->add(new String("Recursos humanos"), se2);
 	su1se->add(new String("Recepcion"), se3);
 	su1se->add(new String("Desarrollo"), se4);
 	su1se->add(new String("Pentesting"), se5);
 
+        se6->setSucursal(su2);
+        se7->setSucursal(su2);
+        se8->setSucursal(su2);
+        se9->setSucursal(su2);
+        se10->setSucursal(su2);
 	su2se->add(new String("Marketing"), se6);
 	su2se->add(new String("Atencion al cliente"), se7);
 	su2se->add(new String("Tesoreria"), se8);
 	su2se->add(new String("Ventas"), se9);
 	su2se->add(new String("Seccion tecnica"), se10);
 
+        se11->setSucursal(su3);
+        se12->setSucursal(su3);
+        se13->setSucursal(su3);
 	su3se->add(new String("Seccion tecnica"), se11);
 	su3se->add(new String("I+D"), se12);
 	su3se->add(new String("Recepcion"), se13);
 
+        se14->setSucursal(su4);
+        se15->setSucursal(su4);
+        se16->setSucursal(su4);
 	su4se->add(new String("Secretaria"), se14);
 	su4se->add(new String("Desarrollo"), se15);
 	su4se->add(new String("Testing"), se16);
 
+        se17->setSucursal(su5);
+        se18->setSucursal(su5);
+        se19->setSucursal(su5);
 	su5se->add(new String("Secretaria"), se17);
 	su5se->add(new String("Desarrollo"), se18);
 	su5se->add(new String("Testing"), se19);
 
+        se20->setSucursal(su6);
+        se21->setSucursal(su6);
 	su6se->add(new String("Laboratorio"), se20);
 	su6se->add(new String("Atencion comercial"), se21);
 
+        se22->setSucursal(su7);
+        se23->setSucursal(su7);
 	su7se->add(new String("Direccion"), se22);
 	su7se->add(new String("Inscripciones"), se23);
 

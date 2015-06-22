@@ -2,20 +2,15 @@
 #include "collections/OrderedDictionary.h"
 #include "collections/List.h"
 
-DataEstudiante::DataEstudiante()
+/*DataEstudiante::DataEstudiante()
 {
     this->carreras = new OrderedDictionary();
     this->aprobadas = new List();
 
-}
+}*/
 
 DataEstudiante::DataEstudiante(string cedula, string nombre, string apellido, string telefono, Date *fechaNacimiento,
-                                int creditos, string email, IDictionary* carreras, ICollection* aprobadas)
-
-//                                ICollection* inscripciones, ICollection* entrevistas)
-
-
-
+                                int creditos, string email, IDictionary* carreras, ICollection* aprobadas, ICollection* inscripciones, ICollection* entrevistas)
 {
     this->cedula = cedula;
     this->nombre = nombre;
@@ -26,8 +21,8 @@ DataEstudiante::DataEstudiante(string cedula, string nombre, string apellido, st
     this->email = email;
     this->carreras = carreras;
     this->aprobadas = aprobadas;
-//    this->inscripciones = inscripciones;
-//    this->entrevistas = entrevistas;
+    this->inscripciones = inscripciones;
+    this->entrevistas = entrevistas;
 }
 
 DataEstudiante::DataEstudiante(const DataEstudiante &e)
@@ -102,12 +97,12 @@ ICollection* DataEstudiante::getEntrevistas()
 
 DataEstudiante::~DataEstudiante()
 {
-    if (this->fechaNacimiento !=NULL)
+    /*if (this->fechaNacimiento !=NULL)
         delete this->fechaNacimiento;
     if (this->carreras !=NULL)
         delete this->carreras;
     if (this->aprobadas!=NULL)
-        delete this->aprobadas;
+        delete this->aprobadas;*/
 //    if (this->inscripciones !=NULL)
 //        delete this->inscripciones;
 //    if (this->entrevistas!=NULL)

@@ -218,5 +218,5 @@ main.o: main.cpp
 	$(CC) $(CFLAGS) main.cpp -o main.o
 
 clean:
-	rm *.o interfaces/*.o collections/*.o lab6
+	rm *.o interfaces/*.o collections/*.o lab6 lab6.exe
 

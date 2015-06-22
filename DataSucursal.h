@@ -10,7 +10,7 @@ using namespace std;
 class DataSucursal: public ICollectible
 {
     public:
-		DataSucursal();
+        //DataSucursal();
         DataSucursal(string nombre, string direccion, string telefono, IDictionary *secciones);
         DataSucursal(const DataSucursal &s);
         ~DataSucursal();

@@ -16,10 +16,10 @@ using namespace std;
 class DataOfertaLaboral: public ICollectible
 {
     public:
-		DataOfertaLaboral();
+        DataOfertaLaboral();
         DataOfertaLaboral(string numExpediente, string titulo, string descripcion, int cantidadHorasSemanales,
-                        Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios);
-                //IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
+                Rango *rangoSalarial, Date *fechaComienzo, Date *fechaFin, int cantidadPuestosNecesarios,
+                IDictionary *asignaturas, Seccion* seccion, ICollection *inscripciones, ICollection *entrevistas);
         DataOfertaLaboral(const DataOfertaLaboral &dol);
         ~DataOfertaLaboral();
         string getNumExpediente();
@@ -44,10 +44,10 @@ class DataOfertaLaboral: public ICollectible
         Date *fechaComienzo;
         Date *fechaFin;
         int cantidadPuestosNecesarios;
-      Seccion* seccion;
-      ICollection *inscripciones;
-      ICollection *entrevistas;
-      IDictionary *asignaturas;
+        Seccion* seccion;
+        ICollection *inscripciones;
+        ICollection *entrevistas;
+        IDictionary *asignaturas;
 };
 
 #include "Seccion.h"

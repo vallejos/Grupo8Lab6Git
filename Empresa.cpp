@@ -31,7 +31,7 @@ Empresa::~Empresa()
 
 DataEmpresa *Empresa::getDataEmpresa()
 {
-    DataEmpresa* dataEmpresa= new DataEmpresa(this->rut, this->nombre);
+    DataEmpresa* dataEmpresa= new DataEmpresa(this->rut, this->nombre, this->sucursales);
     return dataEmpresa;
 }
 

@@ -23,30 +23,27 @@ IDictionary *ManejadorOfertaLaboral::getDataOfertaLaboral()
 {
     //Se rotorna un set de DataOfertaLaboral con las ofertas activas del sistema.
     //Va a recorrer la coleccion que tiene como pseudoatributo de Ofertas e ir creando DataOfertas para luego retornar una coleccion de las mismas.
-    if(this->ofertasLaborales == NULL)
-    throw "ManejadorOfertaLaboral -> No hay Ofertas Laborales en el Sistema";
     OrderedDictionary* result = new OrderedDictionary();
     IIterator * it = this->ofertasLaborales->getIterator();
     while(it->hasCurrent())
-    {
-        OfertaLaboral* ol;
-        if( ( ol = dynamic_cast<OfertaLaboral*> (it->getCurrent())) != NULL )
         {
-            if(ol->EsActiva()){
-                string numExpediente = ol->getNumExpediente();
-                String *nExp = new String(numExpediente.c_str());
-                result->add(nExp,ol->getDataOfertaLaboral());
+            OfertaLaboral* ol;
+            if( ( ol = dynamic_cast<OfertaLaboral*> (it->getCurrent())) != NULL )
+            {
+                if(ol->EsActiva())
+                {
+                    string numExpediente = ol->getNumExpediente();
+                    String *nExp = new String(numExpediente.c_str());
+                    result->add(nExp,ol->getDataOfertaLaboral());
+                }
+            }else
+            {
+                throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";
             }
-        }else
-        {
-            throw "ManejadorOfertaLaboral -> El objeto no es de la clase OfertaLaboral.";
+            it->next();
         }
-        it->next();
-    }
-    delete it;
-
+        delete it;
     return result;
-
 }
 
 IDictionary *ManejadorOfertaLaboral::getAllDataOfertaLaboral()
@@ -195,7 +192,7 @@ void ManejadorOfertaLaboral::ModificarOferta(string numExpediente, string titulo
 ManejadorOfertaLaboral::~ManejadorOfertaLaboral()
 {
     // debo liberar la memoria de la coleccion de ofertasLaborales
-    if (this->ofertasLaborales != NULL)
+    if (! this->ofertasLaborales->isEmpty())
         delete this->ofertasLaborales;
     delete instance;
     instance = NULL;

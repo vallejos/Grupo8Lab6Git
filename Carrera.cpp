@@ -36,7 +36,7 @@ string Carrera::getNombreCarrera()
 DataCarrera* Carrera::getDataCarrera()
 {
     try {
-        DataCarrera* dataC = new DataCarrera(this->codigo, this->nombreCarrera);
+        DataCarrera* dataC = new DataCarrera(this->codigo, this->nombreCarrera, this->asignaturas);
         return dataC;
     } catch (exception &e) {
         throw;
