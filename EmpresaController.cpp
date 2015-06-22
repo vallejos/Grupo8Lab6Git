@@ -90,12 +90,7 @@ void EmpresaController::setCriterio(EstrategiaAsignaturas* criterio)
 
 IDictionary* EmpresaController::obtenerAsignaturasValidas(IDictionary* asignaturasIngresadas)
 {
-//    IDictionary* asignaturasValidas = new OrderedDictionary();
-//    IDictionary *col = dynamic_cast<IDictionary*> ();
-
-//    ICollection *asignaturasValidas = dynamic_cast<ICollection*> (this->criterio->devolverListaAsignatura(asignaturasIngresadas));
-    //IDictionary *asignaturasValidas = dynamic_cast<IDictionary*> (this->criterio->devolverListaAsignatura());
-    IDictionary *asignaturasValidas = this->criterio->devolverListaAsignatura();
+    IDictionary *asignaturasValidas = this->criterio->devolverListaAsignatura(asignaturasIngresadas);
 
     return asignaturasValidas;
 }

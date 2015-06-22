@@ -67,7 +67,7 @@ Seccion *Sucursal::getSeccion(string nombre)
     }
     else
     {
-        throw "La Seccion de nombre " + nombre + " no existe en el Sistema.";
+        throw "La Seccion no existe en el Sistema.";
     }
 }
 

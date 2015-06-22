@@ -8,7 +8,7 @@ class EstrategiaAsignaturas
 {
     public:
         EstrategiaAsignaturas();
-        virtual IDictionary *devolverListaAsignatura() = 0;
+        virtual IDictionary *devolverListaAsignatura(IDictionary* asigsUsuario) = 0;
         virtual ~EstrategiaAsignaturas() = 0;
     protected:
     private:

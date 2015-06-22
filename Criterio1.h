@@ -10,7 +10,7 @@ class Criterio1: public EstrategiaAsignaturas
     public:
         Criterio1();
         ~Criterio1();
-        IDictionary *devolverListaAsignatura();
+        IDictionary *devolverListaAsignatura(IDictionary* asigsUsuario);
 };
 
 #endif // CRITERIO1_H

@@ -26,7 +26,7 @@ cmdAltaOfertaLaboral::cmdAltaOfertaLaboral()
 
 void cmdAltaOfertaLaboral::ejecutarComando()
 {
-    string rutEmpresa, nomSucursal, nomSeccion, descripcion, numExpe, titulo, title, respuesta;
+    string rutEmpresa, nomSucursal, nomSeccion, descripcion, numExpe, titulo, title, respuesta, descAux;
     int cantHorasSema, cantPuestos, salMinimo, salMaximo, ddCom, ddFin, mmCom, mmFin, aaaaCom, aaaaFin, codAsig;
     Fabrica* fab = Fabrica::getInstance();
     IEmpresaController* cEmpresa = fab->getIEmpresaController();
@@ -35,14 +35,14 @@ void cmdAltaOfertaLaboral::ejecutarComando()
     {
         ICollection* dataEmpresas = cEmpresa->ListarEmpresas();
 
-        cout << "Lista de Empresas:\n";
+        cout << "\nLista de Empresas:\n";
         IIterator * it = dataEmpresas->getIterator();
         while(it->hasCurrent())
         {
             DataEmpresa *dEmpresa;
             if( (dEmpresa = dynamic_cast<DataEmpresa*> (it->getCurrent())) != NULL )
             {
-                cout << "Nombre: " << dEmpresa->getNombre() << ", RUT:" << dEmpresa->getRut() << "\n";
+                cout << "Nombre Empresa: " << dEmpresa->getNombre() << ", RUT:" << dEmpresa->getRut() << "\n";
             }
             else
             {
@@ -51,13 +51,13 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             it->next();
         }
         delete it;
-        cout<< "Seleccione una Empresa indicando el RUT\n";
+        cout<< "\n  Seleccione una Empresa indicando el RUT: ";
         cin >> rutEmpresa;
         cEmpresa->SeleccionarEmpresa(rutEmpresa);
 
 
         ICollection* dataSucursales = cEmpresa->ListarSucursales();
-        cout << "Lista de Sucursales:\n";
+        cout << "\n\nLista de Sucursales:\n";
 
         IIterator * it2 = dataSucursales->getIterator();
         while(it2->hasCurrent())
@@ -65,7 +65,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             DataSucursal *dSucursal;
             if( (dSucursal = dynamic_cast<DataSucursal*> (it2->getCurrent())) != NULL )
             {
-                cout << "Nombre: " << dSucursal->getNombre() << "\n";
+                cout << "Nombre Sucursal: " << dSucursal->getNombre() << ", Direccion: " << dSucursal->getDireccion() << ", Tel: " << dSucursal->getTelefono() << "\n";
             } else
             {
                 throw "AltaOfertaLaboral -> El objeto no es de la clase DataSucursal.";
@@ -74,19 +74,19 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         }
         delete it2;
 
-        cout<< "Seleccione una Sucursal indicando el nombre\n";
+        cout<< "\n  Seleccione una Sucursal indicando el nombre: ";
         cin >> nomSucursal;
         cEmpresa->SeleccionarSucursal(nomSucursal);
 
         IDictionary* dataSecciones = cEmpresa->ListarSecciones();
-        cout<< "Lista de Secciones:\n";
+        cout<< "\n\nLista de Secciones:\n";
         IIterator * it3 = dataSecciones->getIterator();
         while(it3->hasCurrent())
         {
             DataSeccion *dSeccion;
             if( (dSeccion = dynamic_cast<DataSeccion*> (it3->getCurrent())) != NULL )
             {
-                cout << "Nombre: " << dSeccion->getNombre() << "\n";
+                cout << "Nombre Seccion: " << dSeccion->getNombre() << ", Interno: " << dSeccion->getInterno() << "\n";
             } else
             {
                 throw "AltaOfertaLaboral -> El objeto no es de la clase DataSeccion.";
@@ -95,55 +95,55 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         }
         delete it3;
 
-        cout<< "Seleccione una Seccion indicando su nombre\n";
+        cout<< "\n  Seleccione una Seccion indicando su nombre: ";
         cin >> nomSeccion;
         cEmpresa->SeleccionarSeccion(nomSeccion);
 
-        cout<< "Ingrese los datos correspondientes a la nueva Oferta Laboral\n";
+        cout<< "\n\nIngrese los datos correspondientes a la nueva Oferta Laboral\n";
         cout<< "\n";
         cout<< "Numero de expediente: ";
         cin >> numExpe;
-        cout<< "\nTitulo: ";
-        /*title = "";
-        while(titulo != '\n')
-        {
-            cin >> titulo;
-            if(title == "")
-                title = titulo; 
-            else
-                title += " " + titulo;
-        }*/
+        cout<< "Titulo: ";
         cin >> titulo;
-        cout<< "\nDescripcion: ";
+        getline(cin, title);
+        titulo += title;
+        cout<< "Descripcion: ";
         cin >> descripcion;
-        getline(cin, descripcion);
-        cout<< "\nCantidad de horas semanales: ";
+        getline(cin, descAux);
+        descripcion += descAux;
+        cout<< "Cantidad de horas semanales: ";
         cin >> cantHorasSema;
-        cout<< "\nSalario minimo: ";
+        cout<< "Salario minimo: ";
         cin >> salMinimo;
-        cout<< "\nSalario maximo: ";
+        cout<< "Salario maximo: ";
         cin >> salMaximo;
         Rango* rangoSalarial = new Rango(salMinimo, salMaximo);
-        cout<< "\nFecha de comienzo(dd mm aaaa): ";
+        cout<< "Fecha de comienzo(dd mm aaaa): ";
         cin >> ddCom >> mmCom >> aaaaCom;
-        cout<< "\nFecha de fin(dd mm aaaa): ";
+        cout<< "Fecha de fin(dd mm aaaa): ";
         cin >> ddFin >> mmFin >> aaaaFin;
         Date* fechaComienzo = new Date(ddCom, mmCom, aaaaCom);
         Date* fechaFin = new Date(ddFin, mmFin, aaaaFin);
-        cout<< "\nCantidad de puestos necesarios: ";
+        cout<< "Cantidad de puestos necesarios: ";
         cin >> cantPuestos;
 
         IDictionary *asignaturasEnOferta = new OrderedDictionary();
         //Solicitar Asignaturas
-        cout<< "\nAsignaturas:";
+        cout<< "Asignaturas: ";
         bool desea = true;
         
         IEstudianteController* cEstudiante = fab->getIEstudianteController();
         IDictionary *asignaturasIngresadas = cEstudiante->getAsignaturas();
+        cout<< "\n  Desea ingresar una asignatura?(s/n): ";
+        cin >> respuesta;
+        if(respuesta == "n")
+        {
+            desea = false;
+        }
         while (desea)
         {
             // muestro asignaturas
-            cout << "Lista de Asignaturas:\n";
+            cout << "\nLista de Asignaturas:\n";
             IIterator * it4 = asignaturasIngresadas->getIterator();
             while(it4->hasCurrent())
             {
@@ -208,9 +208,9 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         {
             //Aplicar Estrategia
             int numCriterio;
-            cout << "No existen Estudiantes que tengan aprobadas todas las Asignaturas ingresadas. Seleccione un criterio para obtener una lista de asignaturas validas(1 o 2)\n";
-            cout << "1- Devolver las asignaturas aprobadas de algun estudiante.\n";
-            cout << "2- Devolver una asignatura de las asignaturas ingresadas que algun estudiante haya aprobado(en caso de que no exista se devuelve el conjunto vacio).\n\n";
+            cout << "No existen Estudiantes que tengan aprobadas todas las Asignaturas ingresadas. \nSeleccione un criterio para obtener una lista de asignaturas validas(1 o 2)\n\n";
+            cout << "1 - Devolver las asignaturas aprobadas de algun estudiante.\n";
+            cout << "2 - Devolver una asignatura de las asignaturas ingresadas que algun estudiante haya aprobado(en caso de que no exista se devuelve el conjunto vacio).\n\n";
             cin >> numCriterio;
 
             if(numCriterio == 1)
