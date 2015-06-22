@@ -19,6 +19,7 @@
 #include "Integer.h"
 #include "String.h"
 #include <stdio.h>
+#include "IObserver.h"
 
 using namespace std;
 

@@ -26,10 +26,15 @@ IDictionary *Criterio1::devolverListaAsignatura(IDictionary* asigsUsuario)
     ManejadorEstudiante *eMgr = ManejadorEstudiante::getInstance();
     IDictionary *e = eMgr->getEstudiantes();
 
-    bool found = false;
+    bool found;
+
+    if (asigsUsuario->isEmpty())
+        found = false;
+    else 
+        found = false;
 
     ICollection *aprobadas;
-    IDictionary *asignaturas;
+    IDictionary *asignaturas = new OrderedDictionary();
     IIterator * it = e->getIterator();
     Estudiante *est;
     ICollectible *col;
