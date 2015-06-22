@@ -94,7 +94,8 @@ IDictionary* EmpresaController::obtenerAsignaturasValidas(IDictionary* asignatur
 //    IDictionary *col = dynamic_cast<IDictionary*> ();
 
 //    ICollection *asignaturasValidas = dynamic_cast<ICollection*> (this->criterio->devolverListaAsignatura(asignaturasIngresadas));
-    IDictionary *asignaturasValidas = dynamic_cast<IDictionary*> (this->criterio->devolverListaAsignatura());
+    //IDictionary *asignaturasValidas = dynamic_cast<IDictionary*> (this->criterio->devolverListaAsignatura());
+    IDictionary *asignaturasValidas = this->criterio->devolverListaAsignatura();
 
     return asignaturasValidas;
 }
