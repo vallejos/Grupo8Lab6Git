@@ -14,7 +14,7 @@ using namespace std;
 // cmdModificarLlamado
 void cmdModificarLlamado::ejecutarComando()
 {
-    string  numExpediente, nomSeccion, nomSucursal, titulo, descripcion, modif;
+    string  numExpediente, nomSeccion, nomSucursal, titulo, descripcion, modif, title, des;
     Rango *rangoSalarial;
     Date *fechaIni, *fechaFin;
     int ddi, mmi, aaaai, ddf, mmf, aaaaf, cantHorasSemanales, salarioMinimo, salarioMaximo, cantidadPuestos;
@@ -59,7 +59,9 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
-            cin >> titulo; //ARREGLAR LOS ESPACIOS
+            cin >> titulo;
+            getline(cin, title);
+            titulo += title;
         }
         else
         {
@@ -70,7 +72,10 @@ void cmdModificarLlamado::ejecutarComando()
         cin >> modif;
         if (modif == "s")
         {
-            cin >> descripcion; //ARREGLAR LOS ESPACIOS
+            cin >> descripcion;
+            getline(cin, des);
+            descripcion += des;
+
         }
         else
         {

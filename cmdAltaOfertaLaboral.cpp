@@ -26,7 +26,7 @@ cmdAltaOfertaLaboral::cmdAltaOfertaLaboral()
 
 void cmdAltaOfertaLaboral::ejecutarComando()
 {
-    string rutEmpresa, nomSucursal, nomSeccion, descripcion, numExpe, titulo, title, respuesta, descAux;
+    string rutEmpresa, nomSucursal, nomSeccion, descripcion, numExpe, titulo, title, respuesta, descAux, nomSe, rutE, nomS;
     int cantHorasSema, cantPuestos, salMinimo, salMaximo, ddCom, ddFin, mmCom, mmFin, aaaaCom, aaaaFin, codAsig;
     Fabrica* fab = Fabrica::getInstance();
     IEmpresaController* cEmpresa = fab->getIEmpresaController();
@@ -53,6 +53,8 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         delete it;
         cout<< "\n  Seleccione una Empresa indicando el RUT: ";
         cin >> rutEmpresa;
+        getline(cin, rutE);
+        rutEmpresa += rutE;
         cEmpresa->SeleccionarEmpresa(rutEmpresa);
 
 
@@ -76,6 +78,9 @@ void cmdAltaOfertaLaboral::ejecutarComando()
 
         cout<< "\n  Seleccione una Sucursal indicando el nombre: ";
         cin >> nomSucursal;
+        getline(cin, nomS);
+        nomSucursal += nomS;
+                
         cEmpresa->SeleccionarSucursal(nomSucursal);
 
         IDictionary* dataSecciones = cEmpresa->ListarSecciones();
@@ -97,6 +102,9 @@ void cmdAltaOfertaLaboral::ejecutarComando()
 
         cout<< "\n  Seleccione una Seccion indicando su nombre: ";
         cin >> nomSeccion;
+        getline(cin, nomSe);
+        nomSeccion += nomSe;
+
         cEmpresa->SeleccionarSeccion(nomSeccion);
 
         cout<< "\n\nIngrese los datos correspondientes a la nueva Oferta Laboral\n";
