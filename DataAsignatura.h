@@ -10,7 +10,7 @@ using namespace std;
 class DataAsignatura : public ICollectible
 {
     public:
-		DataAsignatura();
+	DataAsignatura();
         DataAsignatura(int codigo, string nombre, int creditos);
         DataAsignatura(const DataAsignatura &da);
         ~DataAsignatura();

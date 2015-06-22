@@ -23,7 +23,7 @@ ManejadorEmpresa* ManejadorEmpresa::getInstance()
 
 ICollection* ManejadorEmpresa::getDataEmpresas()
 {
-    if (this->empresas == NULL)
+    if (this->empresas->isEmpty())
         throw "Manejador Empresa -> No hay empresas dadas de alta en el Sistema.";
     List* result = new List();
     IIterator * it = this->empresas->getIterator();
