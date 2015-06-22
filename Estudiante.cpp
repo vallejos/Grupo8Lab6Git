@@ -343,6 +343,10 @@ DataDatosEstudiante* Estudiante::getDataDatosEstudiante()
 
         delete lIt2;
 
+        // DataEmpresa *dataEmpresa, DataOfertaLaboral *dataOferta
+        
+//        DataOfertaEmpresa *doe = new DataOfertaEmpresa(dataEmpresa, dataOfertaLaboral);
+        
         DataDatosEstudiante* datosEstudiante = new DataDatosEstudiante(dataAprobadas, dataOfertasEmpresas);
 
         return datosEstudiante;

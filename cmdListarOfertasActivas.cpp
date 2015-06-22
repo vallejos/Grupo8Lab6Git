@@ -60,7 +60,7 @@ void cmdListarOfertasActivas::ejecutarComando()
                     string doTitulo = dOferta->getTitulo();
                     string doNumExp = dOferta->getNumExpediente();
                     Seccion *doSeccion = dOferta->getSeccion();
-                    Sucursal *doSucursal = doSeccion->getSucursal(); // EXPLOTA
+                    Sucursal *doSucursal = doSeccion->getSucursal();
                     Empresa *doEmpresa = doSucursal->getEmpresa();
                     string doRut = doEmpresa->getRut();
                     string doDireccion = doSucursal->getDireccion();

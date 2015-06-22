@@ -11,6 +11,8 @@
 #include "DataSucursal.h"
 #include "DataSeccion.h"
 #include "DataOfertaLaboral.h"
+#include "Inscripcion.h"
+#include "DataOfertaEmpresa.h"
 
 using namespace std;
 cmdConsultarDatosEstudiantes::cmdConsultarDatosEstudiantes()
@@ -36,7 +38,9 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
             DataEstudiante *dEstudiante;
             if( (dEstudiante = dynamic_cast<DataEstudiante*> (it->getCurrent())) != NULL )
             {
-                cout << "Nombre: " << dEstudiante->getNombre() << ", C.I.:" << dEstudiante->getCedula() << "\n";
+                cout << "CEDULA: " << dEstudiante->getCedula() 
+                        << ", NOMBRE: " << dEstudiante->getNombre() 
+                        << ", APELLIDO: " << dEstudiante->getApellido() << "\n";
             }
             else
             {
@@ -49,12 +53,12 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         cout<< "Ingrese la C.I. del Estudiante a consultar: ";
         cin >> ci;
         DataDatosEstudiante* datosEstudiantes = cEstudiante->ConsultarDatosEstudiante(ci);
-        
+
         ICollection* dataAprobadas = datosEstudiantes->getDataAprobadas();
         IIterator * it2 = dataAprobadas->getIterator();
         if (it2->hasCurrent())
         {
-            cout<< "\n\nAsignaturas aprobadas:\n";
+            cout<< "\nAsignaturas aprobadas:\n";
             while(it2->hasCurrent())
             {
                 DataAprobada *dAprobada;
@@ -73,22 +77,30 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         }
         else
         {
-            cout << "El estudiante seleccionado no cuenta con asignaturas aprobadas.";
+            cout << "- El estudiante seleccionado no cuenta con asignaturas aprobadas.\n";
         }
 
         ICollection* dataOfertasEmpresas = datosEstudiantes->getDataOfertasEmpresas();
         IIterator * it3 = dataOfertasEmpresas->getIterator();
         if (it3->hasCurrent())
         {
-            cout<< "\n\nLlamados a los que se inscribio el Estudiante:\n";
+            cout<< "\nLlamados a los que se inscribio el Estudiante:\n";
             while(it3->hasCurrent())
             {
-                DataOfertaEmpresa *dOferEmp;
-                if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it3->getCurrent())) != NULL )
+//                DataOfertaEmpresa *dOferEmp;
+                DataOfertaLaboral *dataOfertaLab;
+//                if( (dOferEmp = dynamic_cast<DataOfertaEmpresa*> (it3->getCurrent())) != NULL )
+                if( (dataOfertaLab = dynamic_cast<DataOfertaLaboral*> (it3->getCurrent())) != NULL )
                 {
-                    DataOfertaLaboral* dataOfertaLab = dOferEmp->getDataOfertaLaboral();
-                    DataEmpresa* dataEmpre = dOferEmp->getDataEmpresa();
-                    cout<< "Titulo: " << dataOfertaLab->getTitulo() << "(N� Exp. " << dataOfertaLab->getNumExpediente() <<  ")\n";
+//                    OfertaLaboral *of = dOferEmp->getDataOfertaLaboral();
+//                    DataOfertaLaboral* dataOfertaLab = insc->getDataOfertaLaboral();
+
+                    Seccion *doSeccion = dataOfertaLab->getSeccion();
+                    Sucursal *doSucursal = doSeccion->getSucursal();
+//                    Empresa *doEmpresa = doSucursal->getEmpresa();
+
+                    DataEmpresa* dataEmpre = doSucursal->getEmpresa()->getDataEmpresa();
+                    cout<< "Titulo: " << dataOfertaLab->getTitulo() << "(NUM EXP: " << dataOfertaLab->getNumExpediente() <<  ")\n";
                     cout<< "    Descripcion: " << dataOfertaLab->getDescripcion() << "\n";
                     cout<< "    Cantidad de horas semanales: " << dataOfertaLab->getCantidadHorasSemanales() << "\n";
                     cout<< "    Sueldo min: " << dataOfertaLab->getRangoSalarial()->getSueldoMinimo() << ", Sueldo max: " << dataOfertaLab->getRangoSalarial()->getSueldoMaximo() << "\n";
@@ -106,7 +118,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
                 }
                 else
                 {
-                    throw "ConsultarDatosEstudiantes -> El objeto no es de la clase DataOfertaEmpresa.";
+                    throw "\nConsultarDatosEstudiantes -> El objeto no es de la clase DataOfertaEmpresa.\n";
                 }
                 it3->next();
             }
@@ -114,7 +126,7 @@ void cmdConsultarDatosEstudiantes::ejecutarComando()
         }
         else
         {
-            cout << "El estudiante seleccionado no se ha inscripto a ningun llamado.";
+            cout << "- El estudiante seleccionado no se ha inscripto a ningun llamado.\n";
         }
     }
      catch (const char* e)
