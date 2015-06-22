@@ -192,7 +192,7 @@ void cmdModificarLlamado::ejecutarComando()
         Seccion *seccion = dol->getSeccion();
 
         ctrlOL->ModificarOferta(numExpediente, titulo, descripcion, cantHorasSemanales, rangoSalarial, fechaIni,
-                fechaFin, cantidadPuestos, nuevasAsignaturasEnOferta, seccion, inscripciones, entrevistas);
+                fechaFin, cantidadPuestos, nuevasAsignaturasEnOferta, seccion, inscripciones, entrevistas);   
     }
     catch (const char* e)
     {

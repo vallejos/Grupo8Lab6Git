@@ -264,7 +264,7 @@ bool OfertaLaboral::EsActiva()
     string sf = saaaaFin + "-" + smmFin + "-" + sddFin + " 00:00";
 
     struct tm tm;
-    time_t t1, t2, t3;
+   // time_t t1, t2, t3;
     time_t tth, tti, ttf;
 
     strptime(sh.c_str(), "%Y-%m-%d %H:%M", &tm);
@@ -283,15 +283,15 @@ bool OfertaLaboral::EsActiva()
     ttf = mktime(&tm);
 
     
-    strptime(shoy.c_str(), "%d\\%m\\%Y", &tm);
-    t1 = mktime(&tm);//Fecha equivalente a hoy->now()
-
-    strptime(sfechaComienzo.c_str(), "%d\\%m\\%Y", &tm);
-    t2 = mktime(&tm);//Fecha equivalente a this->FechaComienzo
-
-    strptime(sfechaFin.c_str(), "%d\\%m\\%Y", &tm);
-    t3 = mktime(&tm);//Fecha equivalente a this->FechaFin()
-
+//    strptime(shoy.c_str(), "%d\\%m\\%Y", &tm);
+//    t1 = mktime(&tm);//Fecha equivalente a hoy->now()
+//
+//    strptime(sfechaComienzo.c_str(), "%d\\%m\\%Y", &tm);
+//    t2 = mktime(&tm);//Fecha equivalente a this->FechaComienzo
+//
+//    strptime(sfechaFin.c_str(), "%d\\%m\\%Y", &tm);
+//    t3 = mktime(&tm);//Fecha equivalente a this->FechaFin()
+//
     // do the same with d2
 //    double secondsInicio = difftime(t1, t2);
 //    double secondsFin = difftime(t1, t3);
