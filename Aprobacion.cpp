@@ -39,7 +39,7 @@ Asignatura* Aprobacion::getAsignatura()
 
 DataAprobada* Aprobacion::getDataAprobada()
 {
-    DataAsignatura* dAs = new DataAsignatura(this->asig->getCodigo(), this->asig->getNombre(), this->asig->getCreditos());
+    DataAsignatura* dAs = new DataAsignatura(this->asig->getCodigo(), this->asig->getNombre(), this->asig->getCreditos(), this->asig->getCarreras());
     DataAprobada* dAp = new DataAprobada(this->nota, this->fecha, dAs);
 
     return dAp;
@@ -47,7 +47,7 @@ DataAprobada* Aprobacion::getDataAprobada()
 
 DataAsignatura* Aprobacion::getDataAsignatura()
 {
-    DataAsignatura* dAs = new DataAsignatura(this->asig->getCodigo(), this->asig->getNombre(), this->asig->getCreditos());
+    DataAsignatura* dAs = new DataAsignatura(this->asig->getCodigo(), this->asig->getNombre(), this->asig->getCreditos(), this->asig->getCarreras());
     return dAs;
 }
 
