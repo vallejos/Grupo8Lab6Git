@@ -263,17 +263,18 @@ bool Estudiante::EstInscripto(string numExpediente)
     try
     {
         bool res;
-        bool estaInscripto = true;
+        bool estaInscripto = false;
         IIterator * lIt = this->inscripciones->getIterator();
-        while(lIt->hasCurrent() && (estaInscripto))
+        while(lIt->hasCurrent() && (!estaInscripto))
         {
             Inscripcion *insc;
             if( (insc = dynamic_cast<Inscripcion*> (lIt->getCurrent())) != NULL )
             {
                 res = insc->EstInscripto(numExpediente);
-                if (!res)
+                if (res)
                 {
-                    estaInscripto = false;
+                    estaInscripto = true;
+                    return estaInscripto;
                 }
             } else
             {
