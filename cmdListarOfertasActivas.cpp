@@ -75,9 +75,7 @@ void cmdListarOfertasActivas::ejecutarComando()
                             << "EMPRESA:" << doRut << "\n" << "UBICACION:" << doDireccion << "\n" 
                             << "CANTIDAD DE INSCRIPTOS: " << cantInscriptos << "\n" << "RANGO SALARIAL:" 
                             << doSueldoMin << " - " << doSueldoMax << "\n" << "CANTIDAD DE PLAZAS:" 
-                            << doCantPuestos << "\n";
-    //                cout << "---------------" << "\n" << "NOMBRE: " << dOferta->getTitulo() << "\n" << ", EMPRESA:" << dOferta->getSeccion()->getSucursal()->getEmpresa()->getRut() << "\n" << ", UBICACION:" << dOferta->getSeccion()->getSucursal()->getDireccion() << "\n" << ", CANTIDAD DE INSCRIPTOS: " << cantInscriptos << "\n" << ", RANGO SALARIAL:" << dOferta->getRangoSalarial()->getSueldoMinimo() << " - " << dOferta->getRangoSalarial()->getSueldoMaximo() << "\n" << ", CANTIDAD DE PLAZAS:" << dOferta->getCantidadPuestosNecesarios() << "\n";
-
+                            << doCantPuestos << "\n";                    
                 } else
                 {
                     throw "cmdListarOfertasActivas -> El objeto no es de la clase DataOfertaLaboral.";
