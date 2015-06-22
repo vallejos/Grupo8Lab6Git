@@ -15,11 +15,14 @@ Seccion::Seccion()
     this->ofertasLaborales = new OrderedDictionary();
 }
 
-Seccion::Seccion(string nombre, string interno)
+Seccion::Seccion(string nombre, string interno, Sucursal *sucursal)
 {
     this->nombre = nombre;
     this->interno = interno;
-    this->sucursal = NULL;
+    if (this->sucursal != NULL)
+        this->sucursal = sucursal;
+    else
+        this->sucursal = NULL;
     this->encargado = NULL;
     this->observers = new List();
     this->ofertasLaborales = new OrderedDictionary();
@@ -75,10 +78,16 @@ void Seccion::setEncargado(Encargado* encargado)
     this->encargado = encargado;
 }
 
+void Seccion::setSucursal(Sucursal *sucursal)
+{
+    this->sucursal = sucursal;
+}
+
 DataSeccion *Seccion::getDataSeccion()
 {
     DataEncargado *de = this->encargado->getDataEncargado();
-    return new DataSeccion(this->nombre, this->interno, de);
+    return new DataSeccion(this->nombre, this->interno, de, this->sucursal,
+            this->observers, this->ofertasLaborales);
 }
 
 DataEmpresa *Seccion::getDataEmpresa()
