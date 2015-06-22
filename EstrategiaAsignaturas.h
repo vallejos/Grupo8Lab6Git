@@ -2,12 +2,13 @@
 #define ESTRATEGIAASIGNATURAS_H
 
 #include "interfaces/ICollection.h"
+#include "interfaces/IDictionary.h"
 
 class EstrategiaAsignaturas
 {
     public:
         EstrategiaAsignaturas();
-        virtual ICollection *devolverListaAsignatura() = 0;
+        virtual IDictionary *devolverListaAsignatura() = 0;
         virtual ~EstrategiaAsignaturas() = 0;
     protected:
     private:

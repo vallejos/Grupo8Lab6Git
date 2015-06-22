@@ -18,35 +18,58 @@ Criterio2::~Criterio2()
 
 // Sugiere una materia de las asignaturas seleccionadas tal que algun Estudiante haya aprobada.
 // En caso que no exista se retorna un ICollection vacio (List).
-ICollection *Criterio2::devolverListaAsignatura()
+IDictionary *Criterio2::devolverListaAsignatura()
 {
+    	// pedimos los estudiantes al manejador y vamos recorriendo uno a uno hasta encontrar alguno que tenga materias
+	// aprobadas, en ese caso retornamos esa lista
     ManejadorEstudiante *eMgr = ManejadorEstudiante::getInstance();
     IDictionary *e = eMgr->getEstudiantes();
 
     bool found = false;
 
-    ICollection *result;
+    ICollection *aprobadas;
+    IDictionary *asignaturas;
     IIterator * it = e->getIterator();
-    DataEstudiante *da;
+    Estudiante *est;
     ICollectible *col;
+    ICollectible *col2;
     while(it->hasCurrent() && !found)
     {
         col = it->getCurrent();
-        if ((da = dynamic_cast<DataEstudiante*> (col)) != NULL)
+        if ((est = dynamic_cast<Estudiante*> (col)) != NULL)
         {
-            if(da->getAprobadas() != NULL)
+            if(est->getAprobadas() != NULL)
             {
-                result = da->getAprobadas();
+                aprobadas = est->getAprobadas();
+                IIterator * it2 = aprobadas->getIterator();
+                while(it2->hasCurrent() && !found)
+                {
+                    col2 = it2->getCurrent();
+                    Aprobacion* apro;
+                    if ((apro = dynamic_cast<Aprobacion*> (col2)) != NULL)
+                    {
+                        Asignatura* asig = apro->getAsignatura();
+                        if(asig != NULL)
+                        {
+                            Integer* cod = new Integer(asig->getCodigo());
+                            asignaturas->add(cod, asig);
+                        }
+                    } else {
+                        throw "Criterio1: el parametro no es del tipo Aprobacion";
+                    }
+                    it2->next();
+                }
+                delete it2;
                 found = true;
             }
         } else {
-            throw "Criterio2: el parametro no es del tipo DataAprobadas";
+            throw "Criterio1: el parametro no es del tipo Estudiante";
         }
         it->next();
     }
     delete it;
 
-    return result;
+    return asignaturas;
 
 /*
     bool found = false;

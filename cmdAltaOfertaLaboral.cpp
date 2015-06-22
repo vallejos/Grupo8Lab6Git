@@ -26,7 +26,7 @@ cmdAltaOfertaLaboral::cmdAltaOfertaLaboral()
 
 void cmdAltaOfertaLaboral::ejecutarComando()
 {
-    string rutEmpresa, nomSucursal, nomSeccion, descripcion, numExpe, titulo, respuesta;
+    string rutEmpresa, nomSucursal, nomSeccion, descripcion, numExpe, titulo, title, respuesta;
     int cantHorasSema, cantPuestos, salMinimo, salMaximo, ddCom, ddFin, mmCom, mmFin, aaaaCom, aaaaFin, codAsig;
     Fabrica* fab = Fabrica::getInstance();
     IEmpresaController* cEmpresa = fab->getIEmpresaController();
@@ -95,7 +95,7 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         }
         delete it3;
 
-        cout<< "Seleccione una Secci�n indicando su nombre\n";
+        cout<< "Seleccione una Seccion indicando su nombre\n";
         cin >> nomSeccion;
         cEmpresa->SeleccionarSeccion(nomSeccion);
 
@@ -104,10 +104,18 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         cout<< "Numero de expediente: ";
         cin >> numExpe;
         cout<< "\nTitulo: ";
-        //cin >> titulo;
-        getline(cin, titulo);
+        /*title = "";
+        while(titulo != '\n')
+        {
+            cin >> titulo;
+            if(title == "")
+                title = titulo; 
+            else
+                title += " " + titulo;
+        }*/
+        cin >> titulo;
         cout<< "\nDescripcion: ";
-        //cin >> descripcion;
+        cin >> descripcion;
         getline(cin, descripcion);
         cout<< "\nCantidad de horas semanales: ";
         cin >> cantHorasSema;
@@ -125,34 +133,13 @@ void cmdAltaOfertaLaboral::ejecutarComando()
         cout<< "\nCantidad de puestos necesarios: ";
         cin >> cantPuestos;
 
-/*
-        // doy de alta la oferta
-        cEmpresa->altaOfertaLaboral(numExpe, titulo, descripcion, cantHorasSema, rangoSalarial, fechaComienzo, fechaFin, cantPuestos, NULL);
-
-        // obtengo la lista de ofertas de la empresa/seccion
-        IDictionary *ofertasDadasDeAlta = cEmpresa->getSeccion()->getOfertasLaborales();
-
-        // busco la oferta en el dictionary
-        String *expe = new String(numExpe.c_str());
-        OfertaLaboral *ol = dynamic_cast<OfertaLaboral> (ofertasDadasDeAlta->find(expe));
-
-        // obtengo el dictionary de asignaturas de esa oferta
-        IDictionary *asignaturasEnOferta = ol->getAsignaturas();
-*/
-
         IDictionary *asignaturasEnOferta = new OrderedDictionary();
         //Solicitar Asignaturas
         cout<< "\nAsignaturas:";
         bool desea = true;
-//        bool strategyOK = false;
-
-
-//        ManejadorEstudiante *me = ManejadorEstudiante::getInstance();
+        
         IEstudianteController* cEstudiante = fab->getIEstudianteController();
         IDictionary *asignaturasIngresadas = cEstudiante->getAsignaturas();
-
-        //while (!strategyOK)
-        //{
         while (desea)
         {
             // muestro asignaturas
@@ -160,14 +147,14 @@ void cmdAltaOfertaLaboral::ejecutarComando()
             IIterator * it4 = asignaturasIngresadas->getIterator();
             while(it4->hasCurrent())
             {
-                DataAsignatura *dAsignatura;
-                if( (dAsignatura = dynamic_cast<DataAsignatura*> (it4->getCurrent())) != NULL )
+                Asignatura *asign;
+                if( (asign = dynamic_cast<Asignatura*> (it4->getCurrent())) != NULL )
                 {
-                    cout << "CODIGO: " << dAsignatura->getCodigo() << ", NOMBRE:" << dAsignatura->getNombre() << "\n";
+                    cout << "CODIGO: " << asign->getCodigo() << ", NOMBRE:" << asign->getNombre() << "\n";
                 }
                 else
                 {
-                    throw "AltaOfertaLaboral -> El objeto no es de la clase DataAsignatura.";
+                    throw "AltaOfertaLaboral -> El objeto no es de la clase Asignatura.";
                 }
                 it4->next();
             }
@@ -195,14 +182,11 @@ void cmdAltaOfertaLaboral::ejecutarComando()
                 desea = false;
             }
         }
-
-        // strategy
-
-        // aca hay que verificar los criterios del strategy y pedir que strategy usar
+        
         bool encontro = false;
         IDictionary* estudiantes = cEstudiante->getEstudiantes();
         IIterator * it5 = estudiantes->getIterator();
-        while(it5->hasCurrent())
+        while(it5->hasCurrent() && !encontro)
         {
             Estudiante *student;
             if( (student = dynamic_cast<Estudiante*> (it5->getCurrent())) != NULL )
