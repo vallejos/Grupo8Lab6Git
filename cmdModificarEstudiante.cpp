@@ -258,11 +258,10 @@ void cmdModificarEstudiante::ejecutarComando()
         cEstudiante->ModificarEstudiante(cedula, nombre, apellido, telefono, fechaNacimiento, creditos, email, aprobacionesAAgregar, asignaturasAEliminar, carrerasAAgregar, carrerasAEliminar);
 
     }
-    catch(exception &e)
+    catch (const char* e)
     {
-        throw;
+    	throw;
     }
-
 }
 
 cmdModificarEstudiante::~cmdModificarEstudiante()

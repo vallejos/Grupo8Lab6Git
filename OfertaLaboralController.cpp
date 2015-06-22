@@ -33,10 +33,8 @@ void OfertaLaboralController::SeleccionarOferta(string numExpediente, IDictionar
 {
     ManejadorOfertaLaboral *mo = ManejadorOfertaLaboral::getInstance();
     String* numExp = new String(numExpediente.c_str());
-    if (ofertasLabVigentes->isEmpty())
-        throw "------------------------------------------";
     if(! (ofertasLabVigentes->member(numExp)))
-        throw "El Numero de Expediente" + numExpediente + " no es valido.";
+        throw "El Numero de Expediente no es valido.";
     this->oferta = mo->SeleccionarOferta(numExpediente);
 }
 

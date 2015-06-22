@@ -15,6 +15,7 @@ using namespace std;
 void cmdModificarLlamado::ejecutarComando()
 {
     string  numExpediente, nomSeccion, nomSucursal, titulo, descripcion;
+    //, modif;
 //    Date *fechaEfectivizacion;
     int ddi, mmi, aaaai, ddf, mmf, aaaaf, cantHorasSemanales, salarioMinimo, salarioMaximo, cantidadPuestos;
 //    int sueldo;
@@ -40,6 +41,7 @@ void cmdModificarLlamado::ejecutarComando()
             {
                 throw "cmdAsignacionDeOfertaAEstudiante -> El objeto no es de la clase DataOfertaLaboral.";
             }
+            it->next();
         }
         delete it;
 
@@ -50,6 +52,25 @@ void cmdModificarLlamado::ejecutarComando()
         ctrlOL->SeleccionarOferta(numExpediente, dataOfertasActivas);
 
         // solicitar datos de la nueva oferta laboral
+//        cout << "Desea modificar el Titulo? (s,n)\n";
+//        cin >> modif1;
+//        if (modif == "s")
+//        {
+//            cout << "Ingrese el D�a\n";
+//            cin >> dia;
+//            cout<< "Ingrese el Mes\n";
+//            cin >> mes;
+//            cout<< "Ingrese el A�o\n";
+//            cin >> anio;
+//            fechaNacimiento = new Date(dia,mes,anio);
+//        }
+//        else
+//        {
+//            fechaNacimiento = NULL;
+//        }
+//
+//        
+        
         cout<< "Ingrese los nuevos datos correspondientes a la nueva Oferta Laboral:\n";
 
         cout<< "\nTitulo: ";
@@ -97,8 +118,8 @@ void cmdModificarLlamado::ejecutarComando()
             IIterator * it = asignaturasIngresadas->getIterator();
             while(it->hasCurrent())
             {
-                DataAsignatura *dAsignatura;
-                if( (dAsignatura = dynamic_cast<DataAsignatura*> (it->getCurrent())) != NULL )
+                Asignatura *dAsignatura;
+                if( (dAsignatura = dynamic_cast<Asignatura*> (it->getCurrent())) != NULL )
                 {
                     cout << "CODIGO: " << dAsignatura->getCodigo() << ", NOMBRE:" << dAsignatura->getNombre() << "\n";
                 }
@@ -160,9 +181,9 @@ void cmdModificarLlamado::ejecutarComando()
             fechaFin, cantidadPuestos, nuevasAsignaturasEnOferta, seccion, inscripciones, entrevistas);
 
     }
-    catch(exception &e)
+    catch (const char* e)
     {
-        throw;
+    	throw;
     }
 }
 

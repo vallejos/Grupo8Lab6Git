@@ -37,7 +37,6 @@ void imprimirMenu() {
 	cout << "S. Salir \n";
 	cout << "------\n";
 	cout << "Elija una opcion:\n";
-	cout << "> ";
 }
 
 

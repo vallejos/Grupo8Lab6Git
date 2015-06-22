@@ -72,7 +72,7 @@ void cmdAltaEntrevista::ejecutarComando()
         //DA DE ALTA ENTREVISTA
         cOferta->Entrevistar(fechaEntrevista);
     }
-    catch(exception &e)
+    catch (const char* e)
     {
     	throw;
     }
