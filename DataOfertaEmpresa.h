@@ -2,10 +2,11 @@
 #define DATAOFERTAEMPRESA_H
 
 #include "DataEmpresa.h"
+#include "interfaces/ICollectible.h"
 
 class DataOfertaLaboral;
 
-class DataOfertaEmpresa {
+class DataOfertaEmpresa: public ICollectible {
     public:
         DataOfertaEmpresa();
         DataOfertaEmpresa(DataEmpresa *dataEmpresa, DataOfertaLaboral *dataOferta);

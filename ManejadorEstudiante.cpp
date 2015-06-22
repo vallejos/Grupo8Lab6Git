@@ -245,9 +245,9 @@ IDictionary *ManejadorEstudiante::getEstudiante()
     IIterator * it = this->estudiantes->getIterator();
     while(it->hasCurrent())
     {
-        Estudiante *e = dynamic_cast<Estudiante*> (it->getCurrent());
-        String *cedula = new String(e->getDataEstudiante()->getCedula().c_str());
-        result->add(cedula, e->getDataEstudiante());
+        Estudiante *de = dynamic_cast<Estudiante*> (it->getCurrent());
+        String *cedula = new String(de->getDataEstudiante()->getCedula().c_str());
+        result->add(cedula, de->getDataEstudiante());
         it->next();
     }
     delete it;
